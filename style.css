@@ -2679,7 +2679,7 @@ html, body {
     width: 72px;
     height: 72px;
     border-radius: 18px;
-    background: linear-gradient(135deg, #4A90E2 0%, #20C997 100%);
+    background: #20C997;
     display: flex;
     align-items: center;
     justify-content: center;
