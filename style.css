@@ -241,7 +241,7 @@ button {
         bottom: 20px;
         right: 20px;
         z-index: 999;
-        box-shadow: 0 4px 12px rgba(32, 201, 151, 0.4);
+        box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
         padding: 0.75rem 1.25rem;
     }
     
@@ -284,16 +284,16 @@ button {
 }
 
 .btn--primary {
-    background: var(--color-secondary);
+    background: #4A90E2;
     color: var(--color-white);
-    border-color: var(--color-secondary);
+    border-color: #4A90E2;
 }
 
 .btn--primary:hover {
-    background: #1ab386;
-    border-color: #1ab386;
+    background: #3a7bc8;
+    border-color: #3a7bc8;
     transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
 }
 
 .btn--outline {
@@ -331,7 +331,7 @@ button {
     display: flex;
     align-items: center;
     padding: 100px 0 40px;
-    background: linear-gradient(135deg, #f8fafc 0%, #e8f3ff 100%);
+    background: #ffffff;
     position: relative;
     overflow: hidden;
 }
@@ -343,7 +343,7 @@ button {
     right: -20%;
     width: 80%;
     height: 150%;
-    background: radial-gradient(circle, rgba(74, 144, 226, 0.08) 0%, transparent 70%);
+    background: none;
     pointer-events: none;
 }
 
