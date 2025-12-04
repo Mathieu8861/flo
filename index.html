@@ -22,6 +22,42 @@
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="mobile.css">
+    
+    <!-- Animation IA -->
+    <style>
+        .letter-i {
+            color: #4A90E2;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        .letter-a {
+            color: #E84A8A;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+            animation-delay: 0.3s;
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        .btn--outline-pink {
+            background-color: white;
+            color: #E84A8A !important;
+            border: 2px solid #E84A8A !important;
+            box-shadow: 0 4px 12px rgba(232, 74, 138, 0.2);
+        }
+        .btn--outline-pink:hover {
+            background-color: #E84A8A;
+            color: white !important;
+        }
+        .btn--primary {
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+        }
+    </style>
 </head>
 <body>
     <!-- ============================================ -->
@@ -64,7 +100,7 @@
             <div class="hero__content">
                 <div class="hero__text">
                     <h1 class="hero__title">
-                        FLO, l'IA qui structure vos process internes
+                        FLO, l'<span class="letter-i">I</span><span class="letter-a">A</span> qui structure vos process internes
                     </h1>
                     <p class="hero__subtitle">
                         Application no-code qui digitalise vos processus d'entreprise et les enrichit avec l'IA pour rendre votre organisation plus fluide, sans changer vos outils.
@@ -74,20 +110,21 @@
                             <i data-lucide="play-circle"></i>
                             Découvrir FLO
                         </a>
-                        <a href="#comment-ca-marche" class="btn btn--outline btn--large">
+                        <a href="#comment-ca-marche" class="btn btn--outline-pink btn--large">
                             <i data-lucide="check-circle"></i>
                             Sans engagement
                         </a>
                     </div>
                     <p class="hero__note">
-                        <i data-lucide="check-circle"></i>
                         Essai gratuit 14 jours • Sans engagement
                     </p>
                 </div>
                 
        <div class="hero__visual">
-    <img src="hero-illustration.png" alt="Illustration FLO" class="hero-image" style="max-width: 100%; height: auto;">
-</div>
+                    <img src="hero-illustration.png" alt="Illustration FLO" class="hero-image" style="max-width: 100%; height: auto;">
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- ============================================ -->
