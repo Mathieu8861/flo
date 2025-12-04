@@ -355,6 +355,23 @@
             }
         }
         
+        /* ===== RESPONSIVE PROFILES (Mobile only) ===== */
+        @media (max-width: 900px) {
+            .profiles-section {
+                padding: 24px !important;
+                max-width: 100% !important;
+            }
+            
+            .profile-slide {
+                grid-template-columns: 1fr !important;
+                gap: 24px !important;
+            }
+            
+            .profile-slide[style*="display: grid"] {
+                grid-template-columns: 1fr !important;
+            }
+        }
+        
         .btn.btn--primary,
         .hero .btn--primary,
         a.btn.btn--primary {
@@ -444,6 +461,11 @@
     <!-- ============================================ -->
     <section class="features-icons section" style="background-color: #f8fafc; padding: 80px 0;">
         <div class="container">
+            <!-- Titre de section -->
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2 style="font-size: 2rem; font-weight: 700; color: #202020;">3 raisons de passer à FLO</h2>
+            </div>
+            
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; max-width: 1100px; margin: 0 auto;">
                 
                 <!-- Icône 1 - IA -->
@@ -526,9 +548,9 @@
                     <p style="font-size: 0.9rem; color: #64748b; line-height: 1.6;">Une IA puissante qui automatise vos process et vous assiste au quotidien</p>
                 </div>
                 
-                <!-- Icône 2 - Chronomètre -->
+                <!-- Icône 2 - Chronomètre (AGRANDI) -->
                 <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 280px;">
-                    <svg width="180" height="150" viewBox="0 0 280 200">
+                    <svg width="200" height="160" viewBox="0 0 280 200">
                         <!-- Traits de vitesse -->
                         <rect x="30" y="75" width="28" height="8" rx="4" fill="#4A90E2">
                             <animate attributeName="opacity" values="0.3;1;0.3" dur="0.8s" repeatCount="indefinite"/>
@@ -645,9 +667,9 @@
     <!-- ============================================ -->
     <!-- CAS D'USAGE - PROFILS -->
     <!-- ============================================ -->
-    <section class="profiles-section-wrapper section" style="background-color: #f8fafc; padding: 60px 0;">
+    <section class="profiles-section-wrapper section" style="background-color: #f8fafc; padding: 80px 0;">
         <div class="container">
-            <div class="profiles-section" style="max-width: 1000px; margin: 0 auto; background: #ffffff; border-radius: 24px; padding: 40px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.12), 0 4px 20px rgba(0, 0, 0, 0.08);">
+            <div class="profiles-section" style="max-width: 1100px; margin: 0 auto; background: #ffffff; border-radius: 24px; padding: 40px 50px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.06);">
                 
                 <!-- Badge -->
                 <span style="display: inline-block; padding: 8px 20px; background: #E84A8A; border-radius: 50px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: white; margin-bottom: 24px;">Cas d'usage</span>
@@ -674,8 +696,8 @@
                 </div>
                 
                 <!-- Slide 2 - Commercial -->
-                <div class="profile-slide" data-profile="commercial" style="display: none; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-                    <div style="position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
+                <div class="profile-slide" data-profile="commercial" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
                         <img src="profile-commercial.jpg" alt="Profil Commercial" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                     </div>
                     <div style="padding: 20px 0;">
@@ -695,8 +717,8 @@
                 </div>
                 
                 <!-- Slide 3 - Développeur -->
-                <div class="profile-slide" data-profile="developpeur" style="display: none; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-                    <div style="position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
+                <div class="profile-slide" data-profile="developpeur" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
                         <img src="profile-developpeur.jpg" alt="Profil Développeur" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                     </div>
                     <div style="padding: 20px 0;">
@@ -716,8 +738,8 @@
                 </div>
                 
                 <!-- Slide 4 - Support Client -->
-                <div class="profile-slide" data-profile="support" style="display: none; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-                    <div style="position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
+                <div class="profile-slide" data-profile="support" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
                         <img src="profile-support.jpg" alt="Profil Support Client" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                     </div>
                     <div style="padding: 20px 0;">
@@ -737,8 +759,8 @@
                 </div>
                 
                 <!-- Slide 5 - Manager -->
-                <div class="profile-slide" data-profile="manager" style="display: none; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;">
-                    <div style="position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
+                <div class="profile-slide" data-profile="manager" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
+                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
                         <img src="profile-manager.jpg" alt="Profil Manager" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
                     </div>
                     <div style="padding: 20px 0;">
