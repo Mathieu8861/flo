@@ -87,6 +87,269 @@
                 grid-template-columns: 1fr !important;
             }
         }
+        
+        /* ===== NEW TESTIMONIALS CAROUSEL ===== */
+        .new-testimonials-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .new-testimonials-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: #E84A8A;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .new-carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 24px;
+            background: white;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .new-carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .new-testimonial-slide {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 50px;
+        }
+        
+        .new-testimonial-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .new-testimonial-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .new-testimonial-company {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #202020;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .new-testimonial-company svg {
+            width: 30px;
+            height: 30px;
+            color: #4A90E2;
+        }
+        
+        .new-testimonial-stars {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .new-testimonial-stars svg {
+            width: 22px;
+            height: 22px;
+            fill: #4A90E2;
+        }
+        
+        .new-testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.75;
+            color: #202020;
+        }
+        
+        .new-testimonial-author {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-top: 12px;
+        }
+        
+        .new-testimonial-author-name {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #202020;
+        }
+        
+        .new-testimonial-author-role {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .new-testimonial-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);
+            width: 85%;
+            margin-left: auto;
+        }
+        
+        .new-testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+        
+        .new-carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 44px;
+            height: 44px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .new-carousel-nav:hover {
+            background: #4A90E2;
+        }
+        
+        .new-carousel-nav svg {
+            width: 20px;
+            height: 20px;
+            color: #202020;
+            transition: color 0.3s ease;
+        }
+        
+        .new-carousel-nav:hover svg {
+            color: white;
+        }
+        
+        .new-carousel-nav--prev {
+            left: 16px;
+        }
+        
+        .new-carousel-nav--next {
+            right: 16px;
+        }
+        
+        .new-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        
+        .new-carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .new-carousel-dot.active {
+            background: #E84A8A;
+            width: 28px;
+            border-radius: 5px;
+        }
+        
+        .new-testimonials-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 40px;
+            padding: 32px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .new-stat-item {
+            text-align: center;
+        }
+        
+        .new-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4A90E2;
+        }
+        
+        .new-stat-label {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-top: 6px;
+        }
+        
+        /* ===== RESPONSIVE TESTIMONIALS (Mobile only) ===== */
+        @media (max-width: 900px) {
+            .new-testimonial-slide {
+                grid-template-columns: 1fr;
+                padding: 32px;
+                gap: 32px;
+            }
+            
+            .new-testimonial-image {
+                order: -1;
+                width: 100%;
+                aspect-ratio: 16/9;
+                margin-left: 0;
+            }
+            
+            .new-testimonial-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .new-testimonial-quote {
+                font-size: 1rem;
+            }
+            
+            .new-carousel-nav {
+                display: none;
+            }
+            
+            .new-testimonials-stats {
+                flex-direction: column;
+                gap: 24px;
+                padding: 24px;
+            }
+            
+            .new-stat-number {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .new-testimonial-slide {
+                padding: 24px;
+            }
+            
+            .new-testimonial-quote {
+                font-size: 0.95rem;
+                line-height: 1.6;
+            }
+        }
+        
         .btn.btn--primary,
         .hero .btn--primary,
         a.btn.btn--primary {
@@ -673,134 +936,167 @@
     </section>
 
         <!-- ============================================ -->
-    <!-- TÉMOIGNAGES - CARROUSEL DÉFILANT -->
+    <!-- TÉMOIGNAGES - CARROUSEL -->
     <!-- ============================================ -->
-    <section class="testimonials section" id="testimonials">
+    <section class="new-testimonials-section section" id="testimonials">
         <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">Ils ont transformé leur organisation avec FLO</h2>
+            <!-- Header -->
+            <div class="new-testimonials-header">
+                <span class="new-testimonials-badge">Témoignages</span>
+                <h2 class="section__title">Ils nous font confiance</h2>
+                <p class="section__subtitle">Découvrez comment FLO transforme le quotidien de nos clients</p>
             </div>
             
-            <div class="testimonials-carousel">
-                <div class="testimonials-carousel__track" id="testimonials-track">
+            <!-- Carrousel -->
+            <div class="new-carousel-container">
+                <div class="new-carousel-track" id="newCarouselTrack">
                     
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__badge">RH</div>
-                        <div class="testimonial-card__content">
-                            <div class="testimonial-card__quote">"</div>
-                            <p class="testimonial-card__text">FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic.</p>
-                        </div>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__avatar" style="background: #4A90E2;">ML</div>
-                            <div class="testimonial-card__info">
-                                <p class="testimonial-card__name">Marie Legrand</p>
-                                <p class="testimonial-card__company">DRH - TechStart</p>
+                    <!-- Témoignage 1 -->
+                    <div class="new-testimonial-slide">
+                        <div class="new-testimonial-content">
+                            <div class="new-testimonial-header">
+                                <div class="new-testimonial-company">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                                        <path d="M2 17l10 5 10-5"/>
+                                        <path d="M2 12l10 5 10-5"/>
+                                    </svg>
+                                    TechStart
+                                </div>
+                                <div class="new-testimonial-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
                             </div>
+                            
+                            <p class="new-testimonial-quote">
+                                "FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic. L'onboarding qui prenait 2 jours se fait maintenant en 3 heures."
+                            </p>
+                            
+                            <div class="new-testimonial-author">
+                                <span class="new-testimonial-author-name">Marc Leroy</span>
+                                <span class="new-testimonial-author-role">DRH, TechStart</span>
+                            </div>
+                        </div>
+                        
+                        <div class="new-testimonial-image">
+                            <img src="profile-avis1.jpg" alt="Marc Leroy">
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__badge">Recrutement</div>
-                        <div class="testimonial-card__content">
-                            <div class="testimonial-card__quote">"</div>
-                            <p class="testimonial-card__text">Notre onboarding qui prenait 2 jours se fait maintenant en 3 heures. Les nouveaux sont autonomes dès le premier jour.</p>
-                        </div>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__avatar" style="background: #20C997;">TD</div>
-                            <div class="testimonial-card__info">
-                                <p class="testimonial-card__name">Thomas Dubois</p>
-                                <p class="testimonial-card__company">CEO - GrowthLab</p>
+                    <!-- Témoignage 2 -->
+                    <div class="new-testimonial-slide">
+                        <div class="new-testimonial-content">
+                            <div class="new-testimonial-header">
+                                <div class="new-testimonial-company">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 6v6l4 2"/>
+                                    </svg>
+                                    InnovaGroup
+                                </div>
+                                <div class="new-testimonial-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
                             </div>
+                            
+                            <p class="new-testimonial-quote">
+                                "Avant FLO, chaque nouveau collaborateur devait chercher les informations partout. Maintenant, tout est centralisé et intelligent. On a réduit nos erreurs de process de 70% en 3 mois."
+                            </p>
+                            
+                            <div class="new-testimonial-author">
+                                <span class="new-testimonial-author-name">Thomas Dubois</span>
+                                <span class="new-testimonial-author-role">CEO, InnovaGroup</span>
+                            </div>
+                        </div>
+                        
+                        <div class="new-testimonial-image">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop" alt="Thomas Dubois">
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__badge">Marketing</div>
-                        <div class="testimonial-card__content">
-                            <div class="testimonial-card__quote">"</div>
-                            <p class="testimonial-card__text">Fini les emails perdus et les informations éparpillées. FLO est devenu notre source de vérité unique pour tous nos process internes.</p>
-                        </div>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__avatar" style="background: #F59E0B;">SM</div>
-                            <div class="testimonial-card__info">
-                                <p class="testimonial-card__name">Sophie Martin</p>
-                                <p class="testimonial-card__company">CMO - InnovateCo</p>
+                    <!-- Témoignage 3 -->
+                    <div class="new-testimonial-slide">
+                        <div class="new-testimonial-content">
+                            <div class="new-testimonial-header">
+                                <div class="new-testimonial-company">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                                    </svg>
+                                    DataFlow
+                                </div>
+                                <div class="new-testimonial-stars">
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                                </div>
+                            </div>
+                            
+                            <p class="new-testimonial-quote">
+                                "L'IA de FLO nous suggère des améliorations de process auxquelles on n'aurait jamais pensé. C'est comme avoir un consultant en organisation disponible 24h/24. ROI atteint en 2 mois."
+                            </p>
+                            
+                            <div class="new-testimonial-author">
+                                <span class="new-testimonial-author-name">Sophie Chen</span>
+                                <span class="new-testimonial-author-role">COO, DataFlow</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__badge">Operations</div>
-                        <div class="testimonial-card__content">
-                            <div class="testimonial-card__quote">"</div>
-                            <p class="testimonial-card__text">Nos process de recrutement sont maintenant standardisés. Chaque manager sait exactement quoi faire à chaque étape.</p>
-                        </div>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__avatar" style="background: #8B5CF6;">AL</div>
-                            <div class="testimonial-card__info">
-                                <p class="testimonial-card__name">Antoine Leroux</p>
-                                <p class="testimonial-card__company">Directeur Talent - ScaleUp</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__badge">Finance</div>
-                        <div class="testimonial-card__content">
-                            <div class="testimonial-card__quote">"</div>
-                            <p class="testimonial-card__text">La clarté des process a réduit nos erreurs de 60%. Tout est tracé, auditable et nos équipes gagnent un temps précieux.</p>
-                        </div>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__avatar" style="background: #EC4899;">CB</div>
-                            <div class="testimonial-card__info">
-                                <p class="testimonial-card__name">Claire Bernard</p>
-                                <p class="testimonial-card__company">DAF - FinanceFirst</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__badge">IT</div>
-                        <div class="testimonial-card__content">
-                            <div class="testimonial-card__quote">"</div>
-                            <p class="testimonial-card__text">Grâce à FLO, même depuis l'équipe IT, on a pu créer et déployer des process très simplement. Un gain de temps précieux!</p>
-                        </div>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__avatar" style="background: #14B8A6;">PR</div>
-                            <div class="testimonial-card__info">
-                                <p class="testimonial-card__name">Pierre Roux</p>
-                                <p class="testimonial-card__company">CTO - DataFlow</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <div class="testimonial-card__badge">Formation</div>
-                        <div class="testimonial-card__content">
-                            <div class="testimonial-card__quote">"</div>
-                            <p class="testimonial-card__text">Les formations internes sont maintenant structurées et suivies. On voit clairement qui a complété quoi.</p>
-                        </div>
-                        <div class="testimonial-card__author">
-                            <div class="testimonial-card__avatar" style="background: #F97316;">LR</div>
-                            <div class="testimonial-card__info">
-                                <p class="testimonial-card__name">Laura Renaud</p>
-                                <p class="testimonial-card__company">L&D Manager - EduTech</p>
-                            </div>
+                        
+                        <div class="new-testimonial-image">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=750&fit=crop" alt="Sophie Chen">
                         </div>
                     </div>
                     
                 </div>
+                
+                <!-- Flèches de navigation -->
+                <button class="new-carousel-nav new-carousel-nav--prev" id="newPrevBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                </button>
+                <button class="new-carousel-nav new-carousel-nav--next" id="newNextBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6"/>
+                    </svg>
+                </button>
             </div>
             
-            <div class="testimonials-carousel__nav">
-                <button class="testimonials-nav-btn" id="testimonials-prev" aria-label="Précédent">
-                    <i data-lucide="chevron-left"></i>
-                </button>
-                <button class="testimonials-nav-btn" id="testimonials-next" aria-label="Suivant">
-                    <i data-lucide="chevron-right"></i>
-                </button>
+            <!-- Dots de navigation -->
+            <div class="new-carousel-dots" id="newCarouselDots">
+                <button class="new-carousel-dot active" data-index="0"></button>
+                <button class="new-carousel-dot" data-index="1"></button>
+                <button class="new-carousel-dot" data-index="2"></button>
             </div>
             
+            <!-- Stats -->
+            <div class="new-testimonials-stats">
+                <div class="new-stat-item">
+                    <div class="new-stat-number">+500</div>
+                    <div class="new-stat-label">Entreprises nous font confiance</div>
+                </div>
+                <div class="new-stat-item">
+                    <div class="new-stat-number">98%</div>
+                    <div class="new-stat-label">Taux de satisfaction client</div>
+                </div>
+                <div class="new-stat-item">
+                    <div class="new-stat-number">-70%</div>
+                    <div class="new-stat-label">De temps sur les process</div>
+                </div>
+                <div class="new-stat-item">
+                    <div class="new-stat-number">4.9/5</div>
+                    <div class="new-stat-label">Note moyenne</div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1135,6 +1431,71 @@
         });
         
         updatePrices();
+    </script>
+    
+    <!-- Script pour le carrousel témoignages -->
+    <script>
+        const newTrack = document.getElementById('newCarouselTrack');
+        const newPrevBtn = document.getElementById('newPrevBtn');
+        const newNextBtn = document.getElementById('newNextBtn');
+        const newDots = document.querySelectorAll('.new-carousel-dot');
+        
+        let newCurrentIndex = 0;
+        const newTotalSlides = 3;
+        let newAutoPlayInterval;
+        
+        function goToNewSlide(index) {
+            if (index < 0) index = newTotalSlides - 1;
+            if (index >= newTotalSlides) index = 0;
+            
+            newCurrentIndex = index;
+            newTrack.style.transform = `translateX(-${newCurrentIndex * 100}%)`;
+            
+            newDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === newCurrentIndex);
+            });
+        }
+        
+        function nextNewSlide() {
+            goToNewSlide(newCurrentIndex + 1);
+        }
+        
+        function prevNewSlide() {
+            goToNewSlide(newCurrentIndex - 1);
+        }
+        
+        function startNewAutoPlay() {
+            newAutoPlayInterval = setInterval(nextNewSlide, 5000);
+        }
+        
+        function stopNewAutoPlay() {
+            clearInterval(newAutoPlayInterval);
+        }
+        
+        newNextBtn.addEventListener('click', () => {
+            stopNewAutoPlay();
+            nextNewSlide();
+            startNewAutoPlay();
+        });
+        
+        newPrevBtn.addEventListener('click', () => {
+            stopNewAutoPlay();
+            prevNewSlide();
+            startNewAutoPlay();
+        });
+        
+        newDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                stopNewAutoPlay();
+                goToNewSlide(parseInt(dot.dataset.index));
+                startNewAutoPlay();
+            });
+        });
+        
+        newTrack.addEventListener('mouseenter', stopNewAutoPlay);
+        newTrack.addEventListener('mouseleave', startNewAutoPlay);
+        
+        startNewAutoPlay();
     </script>
 </body>
 </html>
