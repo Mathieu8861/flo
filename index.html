@@ -45,23 +45,30 @@
             }
         }
         .btn--outline-pink {
-            background-color: white;
+            background-color: white !important;
             color: #E84A8A !important;
             border: 2px solid #E84A8A !important;
-            box-shadow: 0 4px 12px rgba(232, 74, 138, 0.2);
+            box-shadow: 0 4px 12px rgba(232, 74, 138, 0.2) !important;
         }
         .btn--outline-pink:hover {
-            background-color: #E84A8A;
+            background-color: #E84A8A !important;
             color: white !important;
         }
-        .btn--primary {
+        .btn.btn--primary,
+        .hero .btn--primary,
+        a.btn.btn--primary {
             background-color: #4A90E2 !important;
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+            background: #4A90E2 !important;
+            border: none !important;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3) !important;
         }
+        section.hero,
         .hero {
             background-color: #ffffff !important;
+            background: #ffffff !important;
         }
     </style>
+
 </head>
 <body>
     <!-- ============================================ -->
