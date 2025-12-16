@@ -11,8 +11,13 @@
     <meta property="og:description" content="Arrêtez de perdre du temps avec des process non documentés. Centralisez tout en un seul endroit.">
     <meta property="og:type" content="website">
     
-    <!-- Favicon SVG -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%234A90E2'>F</text></svg>">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo-flo.png">
+    
+    <!-- Google Fonts - Poppins & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     
     <title>FLO - Centralisez vos Process Internes | SaaS RH & Recrutement</title>
     
@@ -26,12 +31,12 @@
    <!-- Animation IA -->
     <style>
         .letter-i {
-            color: #4A90E2;
+            color: #8000ff;
             display: inline-block;
             animation: bounce 2s ease-in-out infinite;
         }
         .letter-a {
-            color: #E84A8A;
+            color: #ff3f9b;
             display: inline-block;
             animation: bounce 2s ease-in-out infinite;
             animation-delay: 0.3s;
@@ -45,7 +50,105 @@
             }
         }
         
-        /* ===== NEW HEADER STYLES ===== */
+        /* ===== HEADER FLOATING + COLLAPSE ===== */
+        .header.header {
+            position: fixed !important;
+            top: 16px !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: calc(100% - 40px) !important;
+            max-width: 1200px !important;
+            margin: 0 !important;
+            background: rgba(128, 0, 255, 0.08) !important;
+            border-radius: 16px !important;
+            border: 1px solid rgba(128, 0, 255, 0.1) !important;
+            box-shadow: none !important;
+            transition: width 0.5s ease, max-width 0.5s ease, background 0.3s ease !important;
+        }
+        
+        .header.header.collapsed {
+            max-width: 72px !important;
+            width: 72px !important;
+            left: calc(50% - 600px - 88px) !important;
+            transform: translateX(0) !important;
+        }
+        
+        .header.header.collapsed .container {
+            padding: 0 !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        
+        .header.header.collapsed .nav {
+            justify-content: center !important;
+            padding: 12px 0 !important;
+        }
+        
+        .header.header.collapsed .nav__logo {
+            margin: 0 !important;
+        }
+        
+        .header.header.collapsed .nav__menu,
+        .header.header.collapsed .nav__menu--centered,
+        .header.header.collapsed .btn--primary,
+        .header.header.collapsed .btn--cta-pulse {
+            display: none !important;
+        }
+        
+        .header.header.collapsed.expanded .nav__menu,
+        .header.header.collapsed.expanded .nav__menu--centered {
+            display: flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            transition: opacity 0.3s ease, visibility 0.3s ease !important;
+        }
+        
+        .header.header.collapsed.expanded .btn--primary,
+        .header.header.collapsed.expanded .btn--cta-pulse {
+            display: inline-flex !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            transition: opacity 0.3s ease, visibility 0.3s ease !important;
+        }
+        
+        .header.header.collapsed.expanded {
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            width: calc(100% - 40px) !important;
+            max-width: 1200px !important;
+            background: rgba(248, 245, 255, 0.92) !important;
+            backdrop-filter: blur(8px) !important;
+            -webkit-backdrop-filter: blur(8px) !important;
+            border: 1px solid rgba(128, 0, 255, 0.15) !important;
+            box-shadow: 0 4px 24px rgba(128, 0, 255, 0.12) !important;
+        }
+        
+        .header.header.collapsed.expanded .container {
+            padding: 0 var(--spacing-lg) !important;
+            display: block !important;
+        }
+        
+        .header.header.collapsed.expanded .nav {
+            justify-content: space-between !important;
+            padding: var(--spacing-sm) 0 !important;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Small screens - collapsed button stays at left edge */
+        @media (max-width: 1400px) {
+            .header.header.collapsed {
+                left: 20px !important;
+            }
+        }
+        
+        /* ===== NAV MENU CENTERED ===== */
         .nav__menu--centered {
             position: absolute;
             left: 50%;
@@ -65,7 +168,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: #E84A8A;
+            background: #ff3f9b;
             transition: width 0.3s ease;
         }
         
@@ -79,9 +182,9 @@
         }
         
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74, 144, 226, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(74, 144, 226, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(74, 144, 226, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(255, 112, 61, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0); }
         }
         
         .btn--cta-pulse:hover {
@@ -97,12 +200,12 @@
         }
         .btn--outline-pink {
             background-color: white !important;
-            color: #E84A8A !important;
-            border: 2px solid #E84A8A !important;
+            color: #ff3f9b !important;
+            border: 2px solid #ff3f9b !important;
             box-shadow: 0 4px 12px rgba(232, 74, 138, 0.2) !important;
         }
         .btn--outline-pink:hover {
-            background-color: #E84A8A !important;
+            background-color: #ff3f9b !important;
             color: white !important;
         }
         /* Slider styling */
@@ -121,14 +224,14 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #E84A8A;
+            background: #ff3f9b;
             cursor: pointer;
         }
         #employees::-moz-range-thumb {
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: #E84A8A;
+            background: #ff3f9b;
             cursor: pointer;
             border: none;
         }
@@ -148,7 +251,7 @@
         .new-testimonials-badge {
             display: inline-block;
             padding: 6px 16px;
-            background: #E84A8A;
+            background: #ff3f9b;
             border-radius: 50px;
             font-size: 0.7rem;
             font-weight: 600;
@@ -162,10 +265,16 @@
             position: relative;
             overflow: hidden;
             border-radius: 24px;
-            background: white;
+            background: #ffffff;
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.08);
             max-width: 950px;
             margin: 0 auto;
+            cursor: grab;
+            user-select: none;
+        }
+        
+        .new-carousel-container:active {
+            cursor: grabbing;
         }
         
         .new-carousel-track {
@@ -197,7 +306,7 @@
         .new-testimonial-company {
             font-size: 1.15rem;
             font-weight: 700;
-            color: #202020;
+            color: #1a0033;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -206,7 +315,7 @@
         .new-testimonial-company svg {
             width: 30px;
             height: 30px;
-            color: #4A90E2;
+            color: #8000ff;
         }
         
         .new-testimonial-stars {
@@ -217,13 +326,13 @@
         .new-testimonial-stars svg {
             width: 22px;
             height: 22px;
-            fill: #4A90E2;
+            fill: #8000ff;
         }
         
         .new-testimonial-quote {
             font-size: 1.1rem;
             line-height: 1.75;
-            color: #202020;
+            color: #1a0033;
         }
         
         .new-testimonial-author {
@@ -236,12 +345,12 @@
         .new-testimonial-author-name {
             font-size: 1.05rem;
             font-weight: 700;
-            color: #202020;
+            color: #1a0033;
         }
         
         .new-testimonial-author-role {
             font-size: 0.9rem;
-            color: #64748b;
+            color: #4a4a4a;
         }
         
         .new-testimonial-image {
@@ -249,7 +358,7 @@
             border-radius: 16px;
             overflow: hidden;
             aspect-ratio: 4/3;
-            background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);
+            background: linear-gradient(135deg, #E5D5FF 0%, #E5D5FF 100%);
             width: 85%;
             margin-left: auto;
         }
@@ -280,13 +389,13 @@
         }
         
         .new-carousel-nav:hover {
-            background: #4A90E2;
+            background: #8000ff;
         }
         
         .new-carousel-nav svg {
             width: 20px;
             height: 20px;
-            color: #202020;
+            color: #1a0033;
             transition: color 0.3s ease;
         }
         
@@ -320,7 +429,7 @@
         }
         
         .new-carousel-dot.active {
-            background: #E84A8A;
+            background: #ff3f9b;
             width: 28px;
             border-radius: 5px;
         }
@@ -331,7 +440,7 @@
             gap: 60px;
             margin-top: 40px;
             padding: 32px;
-            background: white;
+            background: #ffffff;
             border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             max-width: 950px;
@@ -346,12 +455,12 @@
         .new-stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: #4A90E2;
+            color: #8000ff;
         }
         
         .new-stat-label {
             font-size: 0.9rem;
-            color: #64748b;
+            color: #4a4a4a;
             margin-top: 6px;
         }
         
@@ -426,15 +535,21 @@
         .btn.btn--primary,
         .hero .btn--primary,
         a.btn.btn--primary {
-            background-color: #4A90E2 !important;
-            background: #4A90E2 !important;
+            background-color: #ff703d !important;
+            background: #ff703d !important;
             border: none !important;
-            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3) !important;
+            box-shadow: 0 4px 12px rgba(255, 112, 61, 0.3) !important;
+        }
+        .btn.btn--primary:hover,
+        .hero .btn--primary:hover,
+        a.btn.btn--primary:hover {
+            box-shadow: 0 8px 20px rgba(255, 112, 61, 0.4) !important;
+            transform: translateY(-2px);
         }
         section.hero,
         .hero {
-            background-color: #ffffff !important;
-            background: #ffffff !important;
+            background-color: #E5D5FF !important;
+            background: #E5D5FF !important;
         }
     </style>
 
@@ -447,21 +562,18 @@
         <div class="container">
             <nav class="nav">
                 <a href="#" class="nav__logo">
-                    <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <text y=".9em" font-size="90" fill="#4A90E2" font-weight="bold">F</text>
-                    </svg>
-                    <span>FLO</span>
+                    <img src="logo-flo.png" alt="FLO" style="height: 40px; width: auto; border-radius: 8px;">
                 </a>
                 
                 <ul class="nav__menu nav__menu--centered">
                     <li><a href="#fonctionnalites" class="nav__link">L'outil</a></li>
                     <li><a href="#fonctionnalites" class="nav__link">Fonctionnalités</a></li>
                     <li><a href="#cas-usage" class="nav__link">Solutions métiers</a></li>
-                    <li><a href="#tarifs" class="nav__link">Tarifs</a></li>
                     <li><a href="#equipe" class="nav__link">L'équipe</a></li>
+                    <li><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
                 
-                <a href="#demo" class="btn btn--primary btn--cta-pulse"><span>Tester FLO</span></a>
+                <a href="demo.html" class="btn btn--primary btn--cta-pulse"><span>Tester FLO</span></a>
                 
                 <!-- Mobile Menu Toggle -->
                 <button class="nav__toggle" id="nav-toggle">
@@ -476,7 +588,7 @@
     <!-- ============================================ -->
     <!-- HERO SECTION WITH VIDEO -->
     <!-- ============================================ -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" style="background-color: #E5D5FF;">
         <div class="container">
             <div class="hero__content">
                 <div class="hero__text">
@@ -487,7 +599,7 @@
                         Application no-code qui digitalise vos processus d'entreprise et les enrichit avec l'IA pour rendre votre organisation plus fluide, sans changer vos outils.
                     </p>
                     <div class="hero__cta">
-                        <a href="#demo" class="btn btn--primary btn--large">
+                        <a href="demo.html" class="btn btn--large" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; border: none; box-shadow: 0 4px 15px rgba(128, 0, 255, 0.3);">
                             <i data-lucide="play-circle"></i>
                             Découvrir FLO
                         </a>
@@ -502,178 +614,328 @@
                 </div>
                 
        <div class="hero__visual">
-                    <img src="hero-illustration.png" alt="Illustration FLO" class="hero-image" style="max-width: 100%; height: auto;">
+                    <!-- Animation Cerveau IA C2 -->
+                    <svg viewBox="0 0 450 350" style="width: 100%; height: auto; max-width: 550px; margin: 0 auto; display: block;">
+                        <defs>
+                            <linearGradient id="gradBrain" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#7C3AED" />
+                                <stop offset="100%" stop-color="#E84A8A" />
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Cercles orbitaux subtils -->
+                        <circle cx="225" cy="175" r="140" fill="none" stroke="#7C3AED" stroke-width="1" opacity="0.12">
+                            <animateTransform attributeName="transform" type="rotate" from="0 225 175" to="360 225 175" dur="120s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="225" cy="175" r="110" fill="none" stroke="#E84A8A" stroke-width="1" opacity="0.15">
+                            <animateTransform attributeName="transform" type="rotate" from="360 225 175" to="0 225 175" dur="80s" repeatCount="indefinite" />
+                        </circle>
+                        
+                        <!-- Cerveau avec réseau neuronal -->
+                        <g>
+                            <!-- Halo pulsant -->
+                            <circle cx="225" cy="175" r="70" fill="none" stroke="url(#gradBrain)" stroke-width="4" opacity="0.2">
+                                <animate attributeName="r" values="70;78;70" dur="4s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.2;0.35;0.2" dur="4s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <!-- Forme du cerveau -->
+                            <ellipse cx="208" cy="170" rx="28" ry="36" fill="url(#gradBrain)" />
+                            <ellipse cx="242" cy="170" rx="28" ry="36" fill="url(#gradBrain)" />
+                            <ellipse cx="225" cy="195" rx="20" ry="15" fill="url(#gradBrain)" />
+                            
+                            <!-- Réseau neuronal - connexions -->
+                            <line x1="200" y1="150" x2="225" y2="165" stroke="white" stroke-width="1.5" opacity="0.4">
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite" />
+                            </line>
+                            <line x1="250" y1="150" x2="225" y2="165" stroke="white" stroke-width="1.5" opacity="0.4">
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite" begin="0.3s" />
+                            </line>
+                            <line x1="195" y1="175" x2="225" y2="175" stroke="white" stroke-width="1.5" opacity="0.4">
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite" begin="0.6s" />
+                            </line>
+                            <line x1="255" y1="175" x2="225" y2="175" stroke="white" stroke-width="1.5" opacity="0.4">
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite" begin="0.9s" />
+                            </line>
+                            <line x1="200" y1="190" x2="225" y2="180" stroke="white" stroke-width="1.5" opacity="0.4">
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite" begin="1.2s" />
+                            </line>
+                            <line x1="250" y1="190" x2="225" y2="180" stroke="white" stroke-width="1.5" opacity="0.4">
+                                <animate attributeName="opacity" values="0.2;0.6;0.2" dur="1.5s" repeatCount="indefinite" begin="0.2s" />
+                            </line>
+                            
+                            <!-- Noeuds du réseau -->
+                            <circle cx="200" cy="150" r="5" fill="white">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            <circle cx="250" cy="150" r="5" fill="white">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.4s" />
+                            </circle>
+                            <circle cx="195" cy="175" r="4" fill="white">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.8s" />
+                            </circle>
+                            <circle cx="255" cy="175" r="4" fill="white">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1.2s" />
+                            </circle>
+                            <circle cx="200" cy="190" r="4" fill="white">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="0.6s" />
+                            </circle>
+                            <circle cx="250" cy="190" r="4" fill="white">
+                                <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" begin="1s" />
+                            </circle>
+                            
+                            <!-- Noeud central -->
+                            <circle cx="225" cy="175" r="6" fill="white">
+                                <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" />
+                                <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                            
+                            <!-- Ligne centrale -->
+                            <line x1="225" y1="138" x2="225" y2="205" stroke="white" stroke-width="2" opacity="0.3" />
+                        </g>
+                        
+                        <!-- Points orbitaux animés -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="0 225 175" to="360 225 175" dur="12s" repeatCount="indefinite" />
+                            <circle cx="225" cy="70" r="8" fill="#7C3AED">
+                                <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="90 225 175" to="450 225 175" dur="12s" repeatCount="indefinite" />
+                            <circle cx="225" cy="70" r="7" fill="#E84A8A">
+                                <animate attributeName="r" values="7;9;7" dur="2s" repeatCount="indefinite" begin="0.5s" />
+                            </circle>
+                        </g>
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="180 225 175" to="540 225 175" dur="12s" repeatCount="indefinite" />
+                            <circle cx="225" cy="70" r="8" fill="#F97316">
+                                <animate attributeName="r" values="8;10;8" dur="2s" repeatCount="indefinite" begin="1s" />
+                            </circle>
+                        </g>
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="270 225 175" to="630 225 175" dur="12s" repeatCount="indefinite" />
+                            <circle cx="225" cy="70" r="6" fill="#E84A8A">
+                                <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" begin="1.5s" />
+                            </circle>
+                        </g>
+                        
+                        <!-- Points flottants décoratifs -->
+                        <circle cx="100" cy="100" r="5" fill="#7C3AED" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3s" repeatCount="indefinite" />
+                            <animateTransform attributeName="transform" type="translate" values="0,0; 0,-8; 0,0" dur="3.5s" repeatCount="indefinite" />
+                        </circle>
+                        <circle cx="350" cy="90" r="6" fill="#E84A8A" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.2s" repeatCount="indefinite" begin="0.5s" />
+                            <animateTransform attributeName="transform" type="translate" values="0,0; 0,-6; 0,0" dur="3.2s" repeatCount="indefinite" begin="0.5s" />
+                        </circle>
+                        <circle cx="80" cy="250" r="4" fill="#F97316" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="2.8s" repeatCount="indefinite" begin="1s" />
+                            <animateTransform attributeName="transform" type="translate" values="0,0; 0,6; 0,0" dur="2.8s" repeatCount="indefinite" begin="1s" />
+                        </circle>
+                        <circle cx="370" cy="260" r="5" fill="#7C3AED" opacity="0.6">
+                            <animate attributeName="opacity" values="0.3;0.8;0.3" dur="3.1s" repeatCount="indefinite" begin="1.5s" />
+                            <animateTransform attributeName="transform" type="translate" values="0,0; 0,5; 0,0" dur="3.1s" repeatCount="indefinite" begin="1.5s" />
+                        </circle>
+                        
+                        <!-- Petits carrés décoratifs -->
+                        <rect x="130" y="280" width="10" height="10" rx="2" fill="#E84A8A" opacity="0.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 135 285" to="360 135 285" dur="8s" repeatCount="indefinite" />
+                        </rect>
+                        <rect x="310" y="65" width="8" height="8" rx="2" fill="#F97316" opacity="0.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 314 69" to="360 314 69" dur="10s" repeatCount="indefinite" />
+                        </rect>
+                    </svg>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 3 ICÔNES ANIMÉES -->
+    <!-- SECTION 3 RAISONS - BLOC V1-D GLASSMORPHISM -->
     <!-- ============================================ -->
-    <section class="features-icons section" style="background-color: #f8fafc; padding: 80px 0;">
+    <style>
+        /* ===== ANIMATION ICÔNE IA ===== */
+        @keyframes flowCircuit { from { stroke-dashoffset: 40; } to { stroke-dashoffset: 0; } }
+        @keyframes pulseNode { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes pulseIA { 0%, 100% { opacity: 0; } 50% { opacity: 0.6; } }
+        .circuit-path { stroke-dasharray: 6 3; animation: flowCircuit 1s linear infinite; }
+        .circuit-path-delay-1 { animation-delay: 0.25s; }
+        .circuit-path-delay-2 { animation-delay: 0.5s; }
+        .circuit-path-delay-3 { animation-delay: 0.75s; }
+        .node-pulse { animation: pulseNode 1s ease-in-out infinite; }
+        .node-pulse-delay-1 { animation-delay: 0.25s; }
+        .node-pulse-delay-2 { animation-delay: 0.5s; }
+        .node-pulse-delay-3 { animation-delay: 0.75s; }
+        .ia-pulse { animation: pulseIA 2s ease-in-out infinite; }
+        
+        /* ===== ANIMATION CHRONOMÈTRE ===== */
+        @keyframes speedLines { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+        @keyframes rotateNeedle { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes chronoMove { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(2px); } }
+        .speed-line { animation: speedLines 0.8s ease-in-out infinite; }
+        .speed-line-delay-1 { animation-delay: 0.15s; }
+        .speed-line-delay-2 { animation-delay: 0.3s; }
+        .chrono-group { animation: chronoMove 0.8s ease-in-out infinite; }
+        .needle-fast { animation: rotateNeedle 4s linear infinite; transform-origin: 36px 30px; }
+        .needle-slow { animation: rotateNeedle 8s linear infinite; transform-origin: 36px 30px; }
+        
+        /* ===== ANIMATION SMILEY - ÉTOILES + TROU NOIR ===== */
+        @keyframes star1Blackhole {
+            0% { transform: translate(0, 0); opacity: 1; }
+            12% { transform: translate(12px, 3px); opacity: 1; }
+            24% { transform: translate(15px, 10px); opacity: 1; }
+            36% { transform: translate(-12px, 7px); opacity: 1; }
+            48% { transform: translate(-15px, 0); opacity: 1; }
+            60% { transform: translate(0, 0); opacity: 1; }
+            70% { transform: translate(0, 10px); opacity: 1; }
+            78% { transform: translate(0, 18px) scale(0.3); opacity: 0.5; }
+            82% { transform: translate(0, 22px) scale(0); opacity: 0; }
+            92% { transform: translate(0, 22px) scale(0); opacity: 0; }
+            96% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(0, 0); opacity: 1; }
+        }
+        @keyframes star2Blackhole {
+            0% { transform: translate(0, 0); opacity: 1; }
+            15% { transform: translate(-5px, -10px); opacity: 1; }
+            30% { transform: translate(7px, -7px); opacity: 1; }
+            45% { transform: translate(10px, 5px); opacity: 1; }
+            60% { transform: translate(0, 0); opacity: 1; }
+            72% { transform: translate(10px, -7px); opacity: 1; }
+            79% { transform: translate(16px, -12px) scale(0.3); opacity: 0.5; }
+            83% { transform: translate(18px, -14px) scale(0); opacity: 0; }
+            92% { transform: translate(18px, -14px) scale(0); opacity: 0; }
+            96% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(0, 0); opacity: 1; }
+        }
+        @keyframes star3Blackhole {
+            0% { transform: translate(0, 0); opacity: 1; }
+            12% { transform: translate(5px, -9px); opacity: 1; }
+            27% { transform: translate(-7px, -10px); opacity: 1; }
+            42% { transform: translate(-10px, 4px); opacity: 1; }
+            60% { transform: translate(0, 0); opacity: 1; }
+            74% { transform: translate(-10px, -7px); opacity: 1; }
+            80% { transform: translate(-16px, -12px) scale(0.3); opacity: 0.5; }
+            84% { transform: translate(-18px, -14px) scale(0); opacity: 0; }
+            92% { transform: translate(-18px, -14px) scale(0); opacity: 0; }
+            96% { transform: translate(0, 0) scale(1); opacity: 1; }
+            100% { transform: translate(0, 0); opacity: 1; }
+        }
+        @keyframes smileyBlackhole {
+            0%, 65% { transform: scale(1) rotate(0deg); opacity: 1; }
+            75% { transform: scale(0.5) rotate(180deg); opacity: 0.7; }
+            82% { transform: scale(0) rotate(360deg); opacity: 0; }
+            92% { transform: scale(0); opacity: 0; }
+            96% { transform: scale(1.08) rotate(0deg); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes eyesFollowBlackhole {
+            0% { transform: translate(0, -0.5px); }
+            12% { transform: translate(1px, 0); }
+            24% { transform: translate(0.5px, 0.5px); }
+            36% { transform: translate(-1px, 0.3px); }
+            48% { transform: translate(-0.5px, -0.3px); }
+            60% { transform: translate(0, -0.5px); }
+            65%, 100% { transform: translate(0, 0); }
+        }
+        @keyframes twinkle { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        .star1-bh { animation: star1Blackhole 7s ease-in-out infinite, twinkle 2s ease-in-out infinite; }
+        .star2-bh { animation: star2Blackhole 7s ease-in-out infinite 0.3s, twinkle 2.2s ease-in-out infinite 0.3s; }
+        .star3-bh { animation: star3Blackhole 7s ease-in-out infinite 0.6s, twinkle 1.8s ease-in-out infinite 0.6s; }
+        .smiley-bh { animation: smileyBlackhole 7s ease-in-out infinite; transform-origin: center; }
+        .eyes-follow-bh { animation: eyesFollowBlackhole 7s ease-in-out infinite; }
+        
+        /* ===== CARDS GLASSMORPHISM ===== */
+        .reason-card { transition: all 0.3s ease; }
+        .reason-card:hover { background: rgba(255, 255, 255, 0.25) !important; transform: translateY(-5px); }
+    </style>
+    
+    <section class="features-icons section" style="background-color: #E5D5FF; padding: 60px 0;">
         <div class="container">
-            <!-- Titre de section -->
-            <div style="text-align: center; margin-bottom: 48px;">
-                <h2 style="font-size: 2rem; font-weight: 700; color: #202020;">3 raisons de passer à FLO</h2>
-            </div>
-            
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; max-width: 1100px; margin: 0 auto;">
+            <div style="max-width: 1200px; width: 100%; padding: 50px; background: linear-gradient(90deg, #8000ff 0%, #ff3f9b 100%); border-radius: 28px; display: flex; align-items: center; gap: 50px; margin: 0 auto;">
                 
-                <!-- Icône 1 - IA -->
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 280px;">
-                    <svg width="150" height="150" viewBox="0 0 200 200">
-                        <!-- Traces avec animation de flux -->
-                        <path d="M 75 60 L 75 25 L 45 25" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite"/>
-                        </path>
-                        <circle cx="40" cy="25" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="40" cy="25" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                        
-                        <path d="M 125 60 L 125 25 L 155 25" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite" begin="0.25s"/>
-                        </path>
-                        <circle cx="160" cy="25" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="160" cy="25" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite" begin="0.25s"/>
-                        </circle>
-                        
-                        <path d="M 140 75 L 175 75 L 175 45" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite" begin="0.5s"/>
-                        </path>
-                        <circle cx="175" cy="40" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="175" cy="40" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite" begin="0.5s"/>
-                        </circle>
-                        
-                        <path d="M 140 125 L 175 125 L 175 155" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite" begin="0.75s"/>
-                        </path>
-                        <circle cx="175" cy="160" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="175" cy="160" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite" begin="0.75s"/>
-                        </circle>
-                        
-                        <path d="M 125 140 L 125 175 L 155 175" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite" begin="1s"/>
-                        </path>
-                        <circle cx="160" cy="175" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="160" cy="175" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite" begin="1s"/>
-                        </circle>
-                        
-                        <path d="M 75 140 L 75 175 L 45 175" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite" begin="1.25s"/>
-                        </path>
-                        <circle cx="40" cy="175" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="40" cy="175" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite" begin="1.25s"/>
-                        </circle>
-                        
-                        <path d="M 60 125 L 25 125 L 25 155" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite" begin="1.5s"/>
-                        </path>
-                        <circle cx="25" cy="160" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="25" cy="160" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite" begin="1.5s"/>
-                        </circle>
-                        
-                        <path d="M 60 75 L 25 75 L 25 45" fill="none" stroke="#4A90E2" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 4">
-                            <animate attributeName="stroke-dashoffset" from="60" to="0" dur="2s" repeatCount="indefinite" begin="1.75s"/>
-                        </path>
-                        <circle cx="25" cy="40" r="8" fill="none" stroke="#E84A8A" stroke-width="3"/>
-                        <circle cx="25" cy="40" r="5" fill="#E84A8A" opacity="0">
-                            <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.7;0.9;1" dur="2s" repeatCount="indefinite" begin="1.75s"/>
-                        </circle>
-                        
-                        <!-- Carré central -->
-                        <rect x="55" y="55" width="90" height="90" rx="15" fill="white" stroke="#202020" stroke-width="4"/>
-                        <text x="100" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#202020">IA</text>
-                        <text x="100" y="112" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="#4A90E2">
-                            IA
-                            <animate attributeName="opacity" values="0;0.6;0" dur="2s" repeatCount="indefinite"/>
-                        </text>
-                    </svg>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #202020; margin-top: 16px; margin-bottom: 8px;">Intelligence IA</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.6;">Une IA puissante qui automatise vos process et vous assiste au quotidien</p>
+                <div style="flex: 0 0 280px;">
+                    <h3 style="color: white; font-size: 2.2rem; font-weight: 700; line-height: 1.3; margin: 0;">
+                        3 raisons de passer à FLO
+                        <span style="display: block; font-size: 1rem; font-weight: 400; opacity: 0.85; margin-top: 12px;">Découvrez nos avantages clés</span>
+                    </h3>
                 </div>
                 
-                <!-- Icône 2 - Chronomètre (AGRANDI) -->
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 280px;">
-                    <svg width="200" height="160" viewBox="0 0 280 200">
-                        <!-- Traits de vitesse -->
-                        <rect x="30" y="75" width="28" height="8" rx="4" fill="#4A90E2">
-                            <animate attributeName="opacity" values="0.3;1;0.3" dur="0.8s" repeatCount="indefinite"/>
-                        </rect>
-                        <rect x="20" y="95" width="45" height="8" rx="4" fill="#E84A8A">
-                            <animate attributeName="opacity" values="0.3;1;0.3" dur="0.8s" repeatCount="indefinite" begin="0.15s"/>
-                        </rect>
-                        <rect x="30" y="115" width="28" height="8" rx="4" fill="#4A90E2">
-                            <animate attributeName="opacity" values="0.3;1;0.3" dur="0.8s" repeatCount="indefinite" begin="0.3s"/>
-                        </rect>
-                        
-                        <!-- Chronomètre -->
-                        <g>
-                            <animateTransform attributeName="transform" type="translate" values="0,0; 4,0; 0,0" dur="0.8s" repeatCount="indefinite"/>
-                            <circle cx="165" cy="100" r="58" fill="white" stroke="#202020" stroke-width="6"/>
-                            <circle cx="165" cy="100" r="48" fill="#E8F4FC" stroke="#4A90E2" stroke-width="4"/>
-                            <line x1="165" y1="100" x2="145" y2="70" stroke="#202020" stroke-width="4" stroke-linecap="round">
-                                <animateTransform attributeName="transform" type="rotate" from="0 165 100" to="360 165 100" dur="4s" repeatCount="indefinite"/>
-                            </line>
-                            <line x1="165" y1="100" x2="185" y2="100" stroke="#202020" stroke-width="4" stroke-linecap="round">
-                                <animateTransform attributeName="transform" type="rotate" from="0 165 100" to="360 165 100" dur="8s" repeatCount="indefinite"/>
-                            </line>
-                            <circle cx="165" cy="100" r="6" fill="#E84A8A"/>
-                        </g>
-                    </svg>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #202020; margin-top: 16px; margin-bottom: 8px;">Gain de temps</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.6;">Exécution ultra-rapide des tâches pour une productivité maximale</p>
+                <div style="flex: 1; display: flex; gap: 20px;">
+                    
+                    <div class="reason-card" style="flex: 1; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 20px; padding: 28px 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div style="width: 70px; height: 70px; margin: 0 auto 16px; background: white; border-radius: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                            <svg width="50" height="50" viewBox="0 0 60 60">
+                                <path d="M22 18 L22 10 L14 10" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" class="circuit-path"/>
+                                <circle cx="10" cy="10" r="4" fill="none" stroke="#8000ff" stroke-width="2"/>
+                                <circle cx="10" cy="10" r="2" fill="#ff3f9b" class="node-pulse"/>
+                                <path d="M38 18 L38 10 L46 10" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" class="circuit-path circuit-path-delay-1"/>
+                                <circle cx="50" cy="10" r="4" fill="none" stroke="#8000ff" stroke-width="2"/>
+                                <circle cx="50" cy="10" r="2" fill="#ff3f9b" class="node-pulse node-pulse-delay-1"/>
+                                <path d="M22 42 L22 50 L14 50" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" class="circuit-path circuit-path-delay-2"/>
+                                <circle cx="10" cy="50" r="4" fill="none" stroke="#8000ff" stroke-width="2"/>
+                                <circle cx="10" cy="50" r="2" fill="#ff3f9b" class="node-pulse node-pulse-delay-2"/>
+                                <path d="M38 42 L38 50 L46 50" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" class="circuit-path circuit-path-delay-3"/>
+                                <circle cx="50" cy="50" r="4" fill="none" stroke="#8000ff" stroke-width="2"/>
+                                <circle cx="50" cy="50" r="2" fill="#ff3f9b" class="node-pulse node-pulse-delay-3"/>
+                                <rect x="18" y="18" width="24" height="24" rx="5" fill="white" stroke="#8000ff" stroke-width="2.5"/>
+                                <text x="30" y="35" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#8000ff">IA</text>
+                                <text x="30" y="35" text-anchor="middle" font-family="Arial" font-size="12" font-weight="bold" fill="#ff3f9b" class="ia-pulse">IA</text>
+                            </svg>
+                        </div>
+                        <h4 style="color: white; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Intelligence IA</h4>
+                        <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; line-height: 1.6; margin: 0;">Automatisation intelligente de vos process</p>
+                    </div>
+                    
+                    <div class="reason-card" style="flex: 1; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 20px; padding: 28px 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div style="width: 70px; height: 70px; margin: 0 auto 16px; background: white; border-radius: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.15);">
+                            <svg width="50" height="50" viewBox="0 0 60 60">
+                                <rect x="4" y="22" width="10" height="3" rx="1.5" fill="#8000ff" class="speed-line"/>
+                                <rect x="2" y="29" width="14" height="3" rx="1.5" fill="#8000ff" class="speed-line speed-line-delay-1"/>
+                                <rect x="4" y="36" width="10" height="3" rx="1.5" fill="#8000ff" class="speed-line speed-line-delay-2"/>
+                                <g class="chrono-group">
+                                    <circle cx="36" cy="30" r="18" fill="white" stroke="#8000ff" stroke-width="2.5"/>
+                                    <circle cx="36" cy="30" r="14" fill="none" stroke="#ff3f9b" stroke-width="2"/>
+                                    <line x1="36" y1="30" x2="36" y2="18" stroke="#8000ff" stroke-width="2.5" stroke-linecap="round" class="needle-fast"/>
+                                    <line x1="36" y1="30" x2="44" y2="30" stroke="#8000ff" stroke-width="2.5" stroke-linecap="round" class="needle-slow"/>
+                                    <circle cx="36" cy="30" r="3" fill="#ff3f9b"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <h4 style="color: white; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Gain de temps</h4>
+                        <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; line-height: 1.6; margin: 0;">Productivité maximale garantie</p>
+                    </div>
+                    
+                    <div class="reason-card" style="flex: 1; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border-radius: 20px; padding: 28px 24px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.2);">
+                        <div style="width: 70px; height: 70px; margin: 0 auto 16px; background: white; border-radius: 18px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 20px rgba(0,0,0,0.15); overflow: hidden;">
+                            <svg width="70" height="70" viewBox="0 0 60 60">
+                                <g class="smiley-bh">
+                                    <circle cx="30" cy="30" r="14" fill="white" stroke="#8000ff" stroke-width="2"/>
+                                    <g class="eyes-follow-bh">
+                                        <circle cx="25" cy="28" r="2" fill="#8000ff"/>
+                                        <circle cx="35" cy="28" r="2" fill="#8000ff"/>
+                                    </g>
+                                    <path d="M 23 34 Q 30 41 37 34" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round"/>
+                                </g>
+                                <g class="star1-bh">
+                                    <path d="M30 4 L31.2 8 L30 12 L28.8 8 Z" fill="#ff3f9b"/>
+                                    <path d="M26 8 L30 6.8 L34 8 L30 9.2 Z" fill="#ff3f9b"/>
+                                </g>
+                                <g class="star2-bh">
+                                    <path d="M10 42 L11 45 L10 48 L9 45 Z" fill="#ff3f9b"/>
+                                    <path d="M7 45 L10 44 L13 45 L10 46 Z" fill="#ff3f9b"/>
+                                </g>
+                                <g class="star3-bh">
+                                    <path d="M50 42 L51 45 L50 48 L49 45 Z" fill="#ff3f9b"/>
+                                    <path d="M47 45 L50 44 L53 45 L50 46 Z" fill="#ff3f9b"/>
+                                </g>
+                            </svg>
+                        </div>
+                        <h4 style="color: white; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px;">Expérience ludique</h4>
+                        <p style="color: rgba(255, 255, 255, 0.85); font-size: 0.85rem; line-height: 1.6; margin: 0;">Interface fun et intuitive</p>
+                    </div>
+                    
                 </div>
-                
-                <!-- Icône 3 - Smiley -->
-                <div style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 280px;">
-                    <svg width="150" height="150" viewBox="0 0 200 200">
-                        <!-- Étincelles roses -->
-                        <g>
-                            <animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite"/>
-                            <line x1="25" y1="45" x2="35" y2="45" stroke="#E84A8A" stroke-width="4" stroke-linecap="round"/>
-                            <line x1="30" y1="40" x2="30" y2="50" stroke="#E84A8A" stroke-width="4" stroke-linecap="round"/>
-                        </g>
-                        <g>
-                            <animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite" begin="0.4s"/>
-                            <line x1="165" y1="35" x2="175" y2="35" stroke="#E84A8A" stroke-width="4" stroke-linecap="round"/>
-                            <line x1="170" y1="30" x2="170" y2="40" stroke="#E84A8A" stroke-width="4" stroke-linecap="round"/>
-                        </g>
-                        <g>
-                            <animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite" begin="0.8s"/>
-                            <line x1="170" y1="160" x2="180" y2="160" stroke="#E84A8A" stroke-width="4" stroke-linecap="round"/>
-                            <line x1="175" y1="155" x2="175" y2="165" stroke="#E84A8A" stroke-width="4" stroke-linecap="round"/>
-                        </g>
-                        
-                        <!-- Smiley -->
-                        <g>
-                            <animateTransform attributeName="transform" type="rotate" values="-8 100 100; 8 100 100; -8 100 100" dur="0.8s" repeatCount="indefinite"/>
-                            <g>
-                                <animateTransform attributeName="transform" type="scale" values="1; 1.05; 1" dur="0.8s" repeatCount="indefinite" additive="sum"/>
-                                <circle cx="100" cy="100" r="65" fill="white" stroke="#4A90E2" stroke-width="6"/>
-                                <path d="M 65 78 Q 77 65, 89 78" fill="none" stroke="#202020" stroke-width="5" stroke-linecap="round">
-                                    <animate attributeName="d" values="M 65 78 Q 77 65, 89 78; M 65 75 Q 77 60, 89 75; M 65 78 Q 77 65, 89 78" dur="0.8s" repeatCount="indefinite"/>
-                                </path>
-                                <path d="M 111 78 Q 123 65, 135 78" fill="none" stroke="#202020" stroke-width="5" stroke-linecap="round">
-                                    <animate attributeName="d" values="M 111 78 Q 123 65, 135 78; M 111 75 Q 123 60, 135 75; M 111 78 Q 123 65, 135 78" dur="0.8s" repeatCount="indefinite"/>
-                                </path>
-                                <path d="M 55 100 Q 100 155, 145 100 Z" fill="white" stroke="#202020" stroke-width="5" stroke-linejoin="round">
-                                    <animate attributeName="d" values="M 55 100 Q 100 155, 145 100 Z; M 55 100 Q 100 165, 145 100 Z; M 55 100 Q 100 155, 145 100 Z" dur="0.4s" repeatCount="indefinite"/>
-                                </path>
-                            </g>
-                        </g>
-                    </svg>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #202020; margin-top: 16px; margin-bottom: 8px;">Expérience ludique</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; line-height: 1.6;">Une interface fun et intuitive qui rend le travail agréable</p>
-                </div>
-                
             </div>
         </div>
     </section>
@@ -681,566 +943,478 @@
         <!-- ============================================ -->
     <!-- COMMENT ÇA MARCHE -->
     <!-- ============================================ -->
-    <section class="how-it-works section" id="comment-ca-marche">
+    <section class="how-it-works section" id="comment-ca-marche" style="background-color: #E5D5FF; padding: 60px 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: #1a0033; margin-bottom: 50px; text-align: center;">
+                Comment ça marche ?
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;" class="steps-grid">
+                <!-- Étape 01 -->
+                <div style="text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 2.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; color: #8000ff;">01</span>
+                        <div style="height: 2px; flex: 1; background: #8000ff; opacity: 0.3;"></div>
+                    </div>
+                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; color: #1a0033; margin-bottom: 10px;">Créer</h4>
+                    <p style="color: #1a0033; opacity: 0.6; font-size: 0.9rem; line-height: 1.6; font-family: 'Inter', sans-serif;">Créez vos process en quelques clics avec notre éditeur intuitif. Templates prêts à l'emploi ou création sur-mesure.</p>
+                </div>
+                
+                <!-- Étape 02 -->
+                <div style="text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 2.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; color: #ff3f9b;">02</span>
+                        <div style="height: 2px; flex: 1; background: #ff3f9b; opacity: 0.3;"></div>
+                    </div>
+                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; color: #1a0033; margin-bottom: 10px;">Structurer</h4>
+                    <p style="color: #1a0033; opacity: 0.6; font-size: 0.9rem; line-height: 1.6; font-family: 'Inter', sans-serif;">Organisez vos workflows par service, département ou projet. Assignez des responsables et définissez les étapes.</p>
+                </div>
+                
+                <!-- Étape 03 -->
+                <div style="text-align: left;">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <span style="font-size: 2.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; color: #ff703d;">03</span>
+                        <div style="height: 2px; flex: 1; background: #ff703d; opacity: 0.3;"></div>
+                    </div>
+                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; color: #1a0033; margin-bottom: 10px;">Suivre</h4>
+                    <p style="color: #1a0033; opacity: 0.6; font-size: 0.9rem; line-height: 1.6; font-family: 'Inter', sans-serif;">Suivez l'avancement en temps réel, identifiez les blocages et optimisez continuellement vos process.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CAS D'USAGE ET FONCTIONNALITÉS -->
+    <!-- ============================================ -->
+    <section class="profiles-section-wrapper section" id="cas-usage" style="background-color: #E5D5FF; padding: 60px 0 80px 0;">
         <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">Comment ça marche ?</h2>
-                <p class="section__subtitle">Trois étapes simples pour transformer votre organisation</p>
+            <div class="profiles-section" style="max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 32px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08); overflow: hidden;">
+                
+                <!-- Bandeau dégradé avec tabs -->
+                <div style="background: linear-gradient(135deg, #8000ff, #ff3f9b); padding: 30px 50px 24px;">
+                    <span style="display: inline-block; padding: 6px 14px; background: rgba(255,255,255,0.2); border-radius: 50px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: white; margin-bottom: 16px; backdrop-filter: blur(10px);">Cas d'usage et fonctionnalités</span>
+                    
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;" class="profile-tabs">
+                        <button class="profile-tab-btn active" data-target="rh" onclick="switchProfile('rh')" style="padding: 10px 20px; border: none; border-radius: 50px; background: white; color: #8000ff; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">RH</button>
+                        <button class="profile-tab-btn" data-target="commercial" onclick="switchProfile('commercial')" style="padding: 10px 20px; border: none; border-radius: 50px; background: rgba(255,255,255,0.15); color: white; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">Commercial</button>
+                        <button class="profile-tab-btn" data-target="developpeur" onclick="switchProfile('developpeur')" style="padding: 10px 20px; border: none; border-radius: 50px; background: rgba(255,255,255,0.15); color: white; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">Développeur</button>
+                        <button class="profile-tab-btn" data-target="support" onclick="switchProfile('support')" style="padding: 10px 20px; border: none; border-radius: 50px; background: rgba(255,255,255,0.15); color: white; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">Support Client</button>
+                        <button class="profile-tab-btn" data-target="manager" onclick="switchProfile('manager')" style="padding: 10px 20px; border: none; border-radius: 50px; background: rgba(255,255,255,0.15); color: white; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">Manager</button>
+                    </div>
+                </div>
+                
+                <!-- Contenu des slides -->
+                <div style="padding: 50px;">
+                    
+                    <!-- Slide RH -->
+                    <div class="profile-slide active" data-profile="rh" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
+                        <div style="aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #E5D5FF, #f8f4ff);">
+                            <img src="profile-rh.jpg" alt="Profil RH" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; color: #1a0033; margin-bottom: 16px;">Ressources Humaines</h3>
+                            <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #1a0033; opacity: 0.6; line-height: 1.7; margin-bottom: 24px;">Centralisez vos process d'onboarding, de recrutement et de formation. Automatisez les tâches répétitives et offrez une expérience collaborateur fluide de l'embauche à l'évolution de carrière.</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;">
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Onboarding</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Recrutement</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Formation</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Suivi RH</span>
+                            </div>
+                            <a href="demo.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #ff703d; color: white; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: 'Inter', sans-serif;">
+                                Voir le cas d'usage
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide Commercial -->
+                    <div class="profile-slide" data-profile="commercial" style="display: none; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
+                        <div style="aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #E5D5FF, #f8f4ff);">
+                            <img src="profile-commercial.jpg" alt="Profil Commercial" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; color: #1a0033; margin-bottom: 16px;">Équipe Commerciale</h3>
+                            <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #1a0033; opacity: 0.6; line-height: 1.7; margin-bottom: 24px;">Structurez votre pipeline de vente et suivez chaque opportunité en temps réel. Automatisez vos relances, centralisez vos devis et ne perdez plus jamais une affaire à cause d'un process mal défini.</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;">
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Pipeline</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Suivi clients</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Devis</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Relances</span>
+                            </div>
+                            <a href="demo.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #ff703d; color: white; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: 'Inter', sans-serif;">
+                                Voir le cas d'usage
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide Développeur -->
+                    <div class="profile-slide" data-profile="developpeur" style="display: none; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
+                        <div style="aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #E5D5FF, #f8f4ff);">
+                            <img src="profile-developpeur.jpg" alt="Profil Développeur" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; color: #1a0033; margin-bottom: 16px;">Développeurs & Tech</h3>
+                            <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #1a0033; opacity: 0.6; line-height: 1.7; margin-bottom: 24px;">Documentez vos process techniques de manière claire et accessible. Gérez vos workflows de développement, facilitez l'onboarding des nouveaux devs et gardez une trace de toutes vos procédures.</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;">
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Documentation</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Code review</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Sprints</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Déploiement</span>
+                            </div>
+                            <a href="demo.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #ff703d; color: white; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: 'Inter', sans-serif;">
+                                Voir le cas d'usage
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide Support -->
+                    <div class="profile-slide" data-profile="support" style="display: none; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
+                        <div style="aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #E5D5FF, #f8f4ff);">
+                            <img src="profile-support.jpg" alt="Profil Support Client" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; color: #1a0033; margin-bottom: 16px;">Support Client</h3>
+                            <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #1a0033; opacity: 0.6; line-height: 1.7; margin-bottom: 24px;">Offrez une expérience client exceptionnelle avec des process de support bien définis. Centralisez les demandes, automatisez les réponses courantes et suivez la satisfaction en temps réel.</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;">
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Tickets</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">FAQ</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Satisfaction</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Escalade</span>
+                            </div>
+                            <a href="demo.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #ff703d; color: white; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: 'Inter', sans-serif;">
+                                Voir le cas d'usage
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide Manager -->
+                    <div class="profile-slide" data-profile="manager" style="display: none; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: center;">
+                        <div style="aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; background: linear-gradient(135deg, #E5D5FF, #f8f4ff);">
+                            <img src="profile-manager.jpg" alt="Profil Manager" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                        </div>
+                        <div>
+                            <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.75rem; font-weight: 700; color: #1a0033; margin-bottom: 16px;">Managers</h3>
+                            <p style="font-family: 'Inter', sans-serif; font-size: 1rem; color: #1a0033; opacity: 0.6; line-height: 1.7; margin-bottom: 24px;">Pilotez votre équipe avec des dashboards clairs et des KPIs en temps réel. Identifiez les blocages, optimisez la charge de travail et prenez des décisions éclairées rapidement.</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px;">
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Reporting</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Suivi équipe</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">KPIs</span>
+                                <span style="padding: 10px 18px; background: #E5D5FF; border-radius: 50px; font-size: 0.85rem; color: #1a0033; font-weight: 500;">Planning</span>
+                            </div>
+                            <a href="demo.html" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #ff703d; color: white; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; font-family: 'Inter', sans-serif;">
+                                Voir le cas d'usage
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- BANDEAU STATS -->
+    <!-- ============================================ -->
+    <section style="background-color: #E5D5FF; padding: 50px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
+            <div style="text-align: center;">
+                <span style="font-size: 3.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #8000ff, #ff3f9b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">+500</span>
+                <p style="color: #1a0033; opacity: 0.6; font-size: 1rem; margin-top: 8px; font-family: 'Inter', sans-serif;">Entreprises nous font confiance</p>
+            </div>
+            <div style="text-align: center;">
+                <span style="font-size: 3.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff3f9b, #ff703d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">98%</span>
+                <p style="color: #1a0033; opacity: 0.6; font-size: 1rem; margin-top: 8px; font-family: 'Inter', sans-serif;">Taux de satisfaction client</p>
+            </div>
+            <div style="text-align: center;">
+                <span style="font-size: 3.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #8000ff, #ff3f9b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">-70%</span>
+                <p style="color: #1a0033; opacity: 0.6; font-size: 1rem; margin-top: 8px; font-family: 'Inter', sans-serif;">De temps sur les process</p>
+            </div>
+            <div style="text-align: center;">
+                <span style="font-size: 3.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #ff3f9b, #ff703d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">4.9/5</span>
+                <p style="color: #1a0033; opacity: 0.6; font-size: 1rem; margin-top: 8px; font-family: 'Inter', sans-serif;">Note moyenne</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <script>
+        function switchProfile(profileId) {
+            // Masquer tous les slides
+            document.querySelectorAll('.profile-slide').forEach(slide => {
+                slide.style.display = 'none';
+            });
+            
+            // Afficher le slide sélectionné
+            const activeSlide = document.querySelector('.profile-slide[data-profile="' + profileId + '"]');
+            if (activeSlide) {
+                activeSlide.style.display = 'grid';
+            }
+            
+            // Mettre à jour les tabs
+            document.querySelectorAll('.profile-tab-btn').forEach(btn => {
+                if (btn.dataset.target === profileId) {
+                    btn.style.background = 'white';
+                    btn.style.color = '#8000ff';
+                } else {
+                    btn.style.background = 'rgba(255,255,255,0.15)';
+                    btn.style.color = 'white';
+                }
+            });
+        }
+    </script>
+
+    <!-- ============================================ -->
+
+    <!-- ============================================ -->
+    <!-- VIDEO PRESENTATION -->
+    <!-- ============================================ -->
+    <section class="video-section section" id="video" style="background-color: #E5D5FF; padding: 60px 0;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+            
+            <div style="background: #1a0033; border-radius: 32px; padding: 40px; display: grid; grid-template-columns: 2fr 1fr; gap: 24px;" class="video-grid">
+                
+                <!-- Vidéo principale -->
+                <div id="main-video" style="position: relative; border-radius: 20px; overflow: hidden; aspect-ratio: 16/9; background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 100%);">
+                    <div style="position: absolute; top: 16px; left: 16px;">
+                        <span id="video-badge" style="padding: 8px 16px; background: rgba(0,0,0,0.3); backdrop-filter: blur(10px); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: white; font-family: 'Inter', sans-serif;">🎬 DÉMO PRODUIT</span>
+                    </div>
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                        <div style="width: 90px; height: 90px; background: rgba(255,255,255,0.95); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                            <svg id="play-icon" width="36" height="36" viewBox="0 0 24 24" fill="#8000ff"><polygon points="5,3 19,12 5,21"/></svg>
+                        </div>
+                    </div>
+                    <div style="position: absolute; bottom: 16px; left: 16px; right: 16px;">
+                        <h3 id="video-title" style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 600; margin-bottom: 4px;">Découvrez FLO en 2 minutes</h3>
+                        <p id="video-subtitle" style="color: rgba(255,255,255,0.8); font-size: 0.85rem; font-family: 'Inter', sans-serif;">Interface • Fonctionnalités • IA</p>
+                    </div>
+                </div>
+                
+                <!-- Colonne droite -->
+                <div style="display: flex; flex-direction: column;">
+                    <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; font-family: 'Inter', sans-serif;">À voir aussi</p>
+                    
+                    <!-- Mini Démo -->
+                    <div id="btn-demo" onclick="switchVideo('demo')" style="background: rgba(128,0,255,0.2); border-radius: 16px; padding: 12px; cursor: pointer; border: 2px solid #8000ff; transition: all 0.3s ease; margin-bottom: 12px;">
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <div style="width: 80px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+                            </div>
+                            <div>
+                                <span style="color: white; font-size: 0.85rem; font-weight: 600; display: block; font-family: 'Inter', sans-serif;">Démo produit</span>
+                                <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem; font-family: 'Inter', sans-serif;">2 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mini Témoignage -->
+                    <div id="btn-temoignage" onclick="switchVideo('temoignage')" style="background: rgba(255,255,255,0.06); border-radius: 16px; padding: 12px; cursor: pointer; border: 2px solid transparent; transition: all 0.3s ease; margin-bottom: 12px;">
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <div style="width: 80px; height: 50px; border-radius: 8px; background: linear-gradient(135deg, #ff703d 0%, #ff3f9b 100%); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+                            </div>
+                            <div>
+                                <span style="color: white; font-size: 0.85rem; font-weight: 600; display: block; font-family: 'Inter', sans-serif;">Témoignage</span>
+                                <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem; font-family: 'Inter', sans-serif;">3 min</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Durée totale -->
+                    <div style="padding: 20px; background: linear-gradient(135deg, rgba(128,0,255,0.2) 0%, rgba(255,63,155,0.2) 100%); border-radius: 12px; text-align: center; display: flex; flex-direction: column; align-items: center;">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12,6 12,12 16,14"/>
+                        </svg>
+                        <span style="color: white; font-size: 0.95rem; font-weight: 600; display: block; font-family: 'Inter', sans-serif;">5 min pour tout comprendre</span>
+                        <span style="color: rgba(255,255,255,0.5); font-size: 0.75rem; font-family: 'Inter', sans-serif;">Démo + Témoignage</span>
+                    </div>
+                </div>
+                
             </div>
             
-            <div class="steps-row">
-                <div class="step-box" id="step-1">
-                    <div class="step-box__icon">
-                        <i data-lucide="plus-circle"></i>
-                    </div>
-                    <h3 class="step-box__title">Créer</h3>
-                    <p class="step-box__text">Créez vos process en quelques clics avec notre éditeur intuitif. Templates prêts à l'emploi ou création sur-mesure.</p>
-                </div>
-                
-                <div class="step-box" id="step-2">
-                    <div class="step-box__icon">
-                        <i data-lucide="layers"></i>
-                    </div>
-                    <h3 class="step-box__title">Structurer</h3>
-                    <p class="step-box__text">Organisez vos workflows par service, département ou projet. Assignez des responsables et définissez les étapes.</p>
-                </div>
-                
-                <div class="step-box" id="step-3">
-                    <div class="step-box__icon">
-                        <i data-lucide="activity"></i>
-                    </div>
-                    <h3 class="step-box__title">Suivre</h3>
-                    <p class="step-box__text">Suivez l'avancement en temps réel, identifiez les blocages et optimisez continuellement vos process.</p>
-                </div>
-            </div>
         </div>
     </section>
+    
+    <script>
+        function switchVideo(type) {
+            const mainVideo = document.getElementById('main-video');
+            const badge = document.getElementById('video-badge');
+            const playIcon = document.getElementById('play-icon');
+            const title = document.getElementById('video-title');
+            const subtitle = document.getElementById('video-subtitle');
+            const btnDemo = document.getElementById('btn-demo');
+            const btnTemoignage = document.getElementById('btn-temoignage');
+            
+            if (type === 'demo') {
+                mainVideo.style.background = 'linear-gradient(135deg, #8000ff 0%, #ff3f9b 100%)';
+                badge.textContent = '🎬 DÉMO PRODUIT';
+                playIcon.setAttribute('fill', '#8000ff');
+                title.textContent = 'Découvrez FLO en 2 minutes';
+                subtitle.textContent = 'Interface • Fonctionnalités • IA';
+                btnDemo.style.background = 'rgba(128,0,255,0.2)';
+                btnDemo.style.border = '2px solid #8000ff';
+                btnTemoignage.style.background = 'rgba(255,255,255,0.06)';
+                btnTemoignage.style.border = '2px solid transparent';
+            } else {
+                mainVideo.style.background = 'linear-gradient(135deg, #ff703d 0%, #ff3f9b 100%)';
+                badge.textContent = '💬 TÉMOIGNAGE CLIENT';
+                playIcon.setAttribute('fill', '#ff3f9b');
+                title.textContent = 'Marie partage son expérience';
+                subtitle.textContent = 'DRH chez TechCorp • 6 mois d\'utilisation';
+                btnDemo.style.background = 'rgba(255,255,255,0.06)';
+                btnDemo.style.border = '2px solid transparent';
+                btnTemoignage.style.background = 'rgba(255,63,155,0.2)';
+                btnTemoignage.style.border = '2px solid #ff3f9b';
+            }
+        }
+    </script>
 
     <!-- ============================================ -->
-    <!-- CAS D'USAGE - PROFILS -->
     <!-- ============================================ -->
-    <section class="profiles-section-wrapper section" id="cas-usage" style="background-color: #f8fafc; padding: 80px 0 120px 0; overflow: visible !important; position: relative; z-index: 2;">
-        <div class="container" style="overflow: visible !important;">
-            <div class="profiles-section" style="max-width: 1100px; margin: 0 auto; background: #ffffff; border-radius: 24px; padding: 40px 50px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1), 0 4px 20px rgba(0, 0, 0, 0.06); position: relative; z-index: 3;">
-                
-                <!-- Badge -->
-                <span style="display: inline-block; padding: 8px 20px; background: #E84A8A; border-radius: 50px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: white; margin-bottom: 24px;">Cas d'usage</span>
-                
-                <!-- Slide 1 - RH -->
-                <div class="profile-slide active" data-profile="rh" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; animation: fadeInProfile 0.4s ease;">
-                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
-                        <img src="profile-rh.jpg" alt="Profil RH" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <h3 style="font-size: 1.75rem; font-weight: 700; color: #202020; margin-bottom: 16px;">Ressources Humaines</h3>
-                        <p style="font-size: 1rem; color: #64748b; line-height: 1.7; margin-bottom: 24px;">Centralisez vos process d'onboarding, de recrutement et de formation. Automatisez les tâches répétitives et offrez une expérience collaborateur fluide de l'embauche à l'évolution de carrière.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px;">
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Onboarding</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Recrutement</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Formation</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Suivi RH</span>
-                        </div>
-                        <a href="#demo" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #4A90E2; color: white; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none;">
-                            Voir le cas d'usage
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Slide 2 - Commercial -->
-                <div class="profile-slide" data-profile="commercial" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
-                        <img src="profile-commercial.jpg" alt="Profil Commercial" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <h3 style="font-size: 1.75rem; font-weight: 700; color: #202020; margin-bottom: 16px;">Équipe Commerciale</h3>
-                        <p style="font-size: 1rem; color: #64748b; line-height: 1.7; margin-bottom: 24px;">Structurez votre pipeline de vente et suivez chaque opportunité en temps réel. Automatisez vos relances, centralisez vos devis et ne perdez plus jamais une affaire à cause d'un process mal défini.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px;">
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Pipeline</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Suivi clients</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Devis</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Relances</span>
-                        </div>
-                        <a href="#demo" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #4A90E2; color: white; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none;">
-                            Voir le cas d'usage
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Slide 3 - Développeur -->
-                <div class="profile-slide" data-profile="developpeur" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
-                        <img src="profile-developpeur.jpg" alt="Profil Développeur" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <h3 style="font-size: 1.75rem; font-weight: 700; color: #202020; margin-bottom: 16px;">Développeurs & Tech</h3>
-                        <p style="font-size: 1rem; color: #64748b; line-height: 1.7; margin-bottom: 24px;">Documentez vos process techniques et partagez les bonnes pratiques avec toute l'équipe. Créez des workflows de validation, gérez vos sprints et assurez la qualité de vos livrables.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px;">
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Documentation</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Code review</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Sprints</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Déploiement</span>
-                        </div>
-                        <a href="#demo" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #4A90E2; color: white; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none;">
-                            Voir le cas d'usage
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Slide 4 - Support Client -->
-                <div class="profile-slide" data-profile="support" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
-                        <img src="profile-support.jpg" alt="Profil Support Client" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <h3 style="font-size: 1.75rem; font-weight: 700; color: #202020; margin-bottom: 16px;">Support Client</h3>
-                        <p style="font-size: 1rem; color: #64748b; line-height: 1.7; margin-bottom: 24px;">Offrez une expérience client exceptionnelle avec des process de support bien définis. Centralisez les demandes, automatisez les réponses courantes et suivez la satisfaction en temps réel.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px;">
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Tickets</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">FAQ</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Satisfaction</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Escalade</span>
-                        </div>
-                        <a href="#demo" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #4A90E2; color: white; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none;">
-                            Voir le cas d'usage
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Slide 5 - Manager -->
-                <div class="profile-slide" data-profile="manager" style="display: none; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <div style="position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: linear-gradient(135deg, #e8f3ff 0%, #f8fafc 100%);">
-                        <img src="profile-manager.jpg" alt="Profil Manager" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
-                    </div>
-                    <div style="padding: 20px 0;">
-                        <h3 style="font-size: 1.75rem; font-weight: 700; color: #202020; margin-bottom: 16px;">Managers</h3>
-                        <p style="font-size: 1rem; color: #64748b; line-height: 1.7; margin-bottom: 24px;">Pilotez votre équipe avec des dashboards clairs et des KPIs en temps réel. Identifiez les blocages, optimisez la charge de travail et prenez des décisions éclairées rapidement.</p>
-                        <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 32px;">
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Reporting</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Suivi équipe</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">KPIs</span>
-                            <span class="profile-tag" style="padding: 10px 20px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.875rem; color: #202020; font-weight: 500;">Planning</span>
-                        </div>
-                        <a href="#demo" style="display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: #4A90E2; color: white; border-radius: 8px; font-size: 1rem; font-weight: 600; text-decoration: none;">
-                            Voir le cas d'usage
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Navigation des profils -->
-                <div style="display: flex; gap: 8px; margin-top: 48px; justify-content: center; flex-wrap: wrap;">
-                    <button class="profile-nav-btn active" data-target="rh" style="padding: 12px 24px; border: 2px solid #E84A8A; background: #E84A8A; border-radius: 50px; font-size: 0.9rem; font-weight: 600; color: white; cursor: pointer;">RH</button>
-                    <button class="profile-nav-btn" data-target="commercial" style="padding: 12px 24px; border: 2px solid #e2e8f0; background: white; border-radius: 50px; font-size: 0.9rem; font-weight: 600; color: #64748b; cursor: pointer;">Commercial</button>
-                    <button class="profile-nav-btn" data-target="developpeur" style="padding: 12px 24px; border: 2px solid #e2e8f0; background: white; border-radius: 50px; font-size: 0.9rem; font-weight: 600; color: #64748b; cursor: pointer;">Développeur</button>
-                    <button class="profile-nav-btn" data-target="support" style="padding: 12px 24px; border: 2px solid #e2e8f0; background: white; border-radius: 50px; font-size: 0.9rem; font-weight: 600; color: #64748b; cursor: pointer;">Support Client</button>
-                    <button class="profile-nav-btn" data-target="manager" style="padding: 12px 24px; border: 2px solid #e2e8f0; background: white; border-radius: 50px; font-size: 0.9rem; font-weight: 600; color: #64748b; cursor: pointer;">Manager</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
     <!-- ============================================ -->
-    <!-- TARIFS -->
+    <!-- TARIFS / CONTACT -->
     <!-- ============================================ -->
-    <section class="pricing-section-wrapper section section--gray" id="tarifs">
+    <section class="pricing-section-wrapper section" id="tarifs" style="background-color: #E5D5FF; padding: 60px 0 80px;">
         <div class="container">
-            <div class="pricing-section" style="max-width: 1100px; margin: 0 auto;">
-                <!-- Header -->
-                <div class="pricing-header" style="text-align: center; margin-bottom: 60px;">
-                    <h2 class="section__title">Tarification simple et transparente</h2>
-                    <p class="section__subtitle">Payez uniquement pour ce dont vous avez besoin</p>
+            <div style="max-width: 1200px; margin: 0 auto;">
+                
+                <!-- Titre -->
+                <div style="text-align: center; margin-bottom: 50px;">
+                    <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1a0033;">Prêt à transformer vos process ?</h2>
+                    <p style="color: #1a0033; opacity: 0.6; margin-top: 12px; font-family: 'Inter', sans-serif;">Demandez une démo personnalisée ou testez gratuitement</p>
                 </div>
                 
-                <!-- Contenu principal -->
-                <div class="pricing-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: stretch;">
-                    <!-- Colonne gauche - Fonctionnalités -->
-                    <div class="pricing-features" style="padding: 40px; background: #ffffff; border-radius: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column;">
-                        <p style="font-size: 1.1rem; color: #64748b; margin-bottom: 32px; text-align: center;">Une solution complète pour toutes les entreprises</p>
+                <!-- 2 Blocs -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;" class="pricing-grid">
+                    
+                    <!-- Bloc Features - Fond blanc -->
+                    <div style="background: white; border-radius: 28px; padding: 45px; box-shadow: 0 10px 40px rgba(0,0,0,0.06);">
+                        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 30px;">
+                            <div style="width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, #8000ff, #ff3f9b); display: flex; align-items: center; justify-content: center;">
+                                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                            </div>
+                            <div>
+                                <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.3rem; font-weight: 700; color: #1a0033; margin: 0;">Offre Pro</h3>
+                                <p style="color: #1a0033; opacity: 0.6; font-size: 0.9rem; margin: 0;">Tout illimité</p>
+                            </div>
+                        </div>
                         
-                        <ul style="list-style: none; display: flex; flex-direction: column; gap: 20px; margin-bottom: 24px; padding: 0;">
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
+                        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px;">
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">Nombre illimité de process</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">Support prioritaire</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">Formation personnalisée</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">API disponible</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">Exports automatisés</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">Multi-utilisateurs</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">Mises à jour régulières</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 14px;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: #1a0033; font-size: 0.95rem;">Intégrations disponibles</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Barre de confiance -->
+                        <div style="border-top: 1px solid #eee; padding-top: 35px;">
+                            <p style="color: #1a0033; opacity: 0.5; font-size: 0.95rem; margin-bottom: 30px; text-align: center; font-weight: 500;">Ils nous font déjà confiance</p>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; max-width: 420px; margin: 0 auto;">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="1.8">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                                     </svg>
-                                </span>
-                                Nombre illimité de process
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
+                                    <span style="color: #1a0033; font-size: 0.95rem; font-weight: 500;">Données sécurisées RGPD</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="1.8">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M2 12h20"/>
+                                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
                                     </svg>
-                                </span>
-                                Support prioritaire
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
+                                    <span style="color: #1a0033; font-size: 0.95rem; font-weight: 500;">Hébergé en France</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="1.8">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                                     </svg>
-                                </span>
-                                Formation personnalisée
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
+                                    <span style="color: #1a0033; font-size: 0.95rem; font-weight: 500;">Support réactif</span>
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="1.8">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <polyline points="12 6 12 12 16 14"/>
                                     </svg>
-                                </span>
-                                API disponible
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </span>
-                                Exports automatisés
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </span>
-                                Multi-utilisateurs
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </span>
-                                Mises à jour régulières
-                            </li>
-                            <li style="display: flex; align-items: center; gap: 16px; font-size: 1.05rem; color: #202020;">
-                                <span style="width: 24px; height: 24px; background: #E8F5F1; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="#20C997" stroke-width="3" style="width: 14px; height: 14px;">
-                                        <path d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </span>
-                                Intégrations disponibles
-                            </li>
-                        </ul>
+                                    <span style="color: #1a0033; font-size: 0.95rem; font-weight: 500;">20 ans d'expérience</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bloc Contact / Démo - Fond dégradé -->
+                    <div style="background: linear-gradient(135deg, #8000ff, #ff3f9b); border-radius: 28px; padding: 45px; box-shadow: 0 10px 40px rgba(128,0,255,0.2);">
+                        <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.4rem; font-weight: 600; color: white; margin-bottom: 12px; text-align: center;">Demandez votre démo</h3>
+                        <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem; text-align: center; margin-bottom: 30px;">Un expert vous rappelle sous 24h</p>
+                        
+                        <!-- Formulaire -->
+                        <form style="display: flex; flex-direction: column; gap: 16px;">
+                            <input type="text" placeholder="Votre nom" required style="width: 100%; padding: 16px 20px; border: none; border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif; background: rgba(255,255,255,0.95); box-sizing: border-box;">
+                            <input type="email" placeholder="Votre email professionnel" required style="width: 100%; padding: 16px 20px; border: none; border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif; background: rgba(255,255,255,0.95); box-sizing: border-box;">
+                            <input type="text" placeholder="Nom de votre entreprise" style="width: 100%; padding: 16px 20px; border: none; border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif; background: rgba(255,255,255,0.95); box-sizing: border-box;">
+                            <select style="width: 100%; padding: 16px 20px; border: none; border-radius: 12px; font-size: 1rem; font-family: 'Inter', sans-serif; background: rgba(255,255,255,0.95); color: #666; cursor: pointer; box-sizing: border-box;">
+                                <option value="">Taille de l'équipe</option>
+                                <option value="1-10">1 - 10 employés</option>
+                                <option value="11-50">11 - 50 employés</option>
+                                <option value="51-200">51 - 200 employés</option>
+                                <option value="200+">200+ employés</option>
+                            </select>
+                            
+                            <button type="submit" style="width: 100%; padding: 18px; background: #ff703d; border: none; border-radius: 12px; color: white; font-weight: 600; font-size: 1rem; cursor: pointer; font-family: 'Inter', sans-serif; margin-top: 8px; transition: all 0.3s ease;">
+                                Demander ma démo gratuite
+                            </button>
+                        </form>
+                        
+                        <p style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.8rem; margin-top: 20px;">
+                            Ou appelez-nous : <a href="tel:+33123456789" style="color: white; text-decoration: none; font-weight: 600;">01 23 45 67 89</a>
+                        </p>
                         
                         <!-- Badges -->
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; padding: 20px; background: #4A90E2; border-radius: 16px;">
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: white; font-weight: 500;">
-                                <svg style="width: 18px; height: 18px; color: white; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                                </svg>
-                                Paiement sécurisé
+                        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: white; font-size: 0.8rem;">Réponse sous 24h</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: white; font-weight: 500;">
-                                <svg style="width: 18px; height: 18px; color: white; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                                    <line x1="16" y1="2" x2="16" y2="6"/>
-                                    <line x1="8" y1="2" x2="8" y2="6"/>
-                                    <line x1="3" y1="10" x2="21" y2="10"/>
-                                </svg>
-                                Facturation mensuelle
+                            <div style="display: flex; align-items: center; gap: 6px;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span style="color: white; font-size: 0.8rem;">Démo personnalisée</span>
                             </div>
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: white; font-weight: 500;">
-                                <svg style="width: 18px; height: 18px; color: white; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                                </svg>
-                                Support inclus
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #E84A8A; font-weight: 600; background: white; padding: 6px 12px; border-radius: 50px;">
-                                <svg style="width: 18px; height: 18px; color: #E84A8A; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                    <line x1="19" y1="5" x2="5" y2="19"/>
-                                    <circle cx="6.5" cy="6.5" r="2.5"/>
-                                    <circle cx="17.5" cy="17.5" r="2.5"/>
-                                </svg>
-                                -20% annuel
-                            </div>
-                        </div>
-                        
-                        <button style="display: flex; align-items: center; justify-content: center; width: 100%; padding: 16px 32px; background: #E84A8A; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: auto; transition: all 0.3s ease;">
-                            Tester gratuitement pendant 14 jours
-                        </button>
-                    </div>
-                    
-                    <!-- Colonne droite - Simulateur -->
-                    <div class="pricing-simulator" style="padding: 40px; background: #ffffff; border-radius: 24px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column;">
-                        <h3 style="font-size: 1.3rem; font-weight: 700; color: #202020; text-align: center; margin-bottom: 32px;">Calculez votre tarif</h3>
-                        
-                        <p style="font-size: 0.95rem; font-weight: 600; color: #202020; text-align: center; margin-bottom: 16px;">Nombre d'employés</p>
-                        <input type="range" id="employees" min="1" max="500" value="10" style="width: 100%; height: 8px; border-radius: 4px; background: #e2e8f0; outline: none; -webkit-appearance: none; margin-bottom: 24px;">
-                        <p style="text-align: center; font-size: 1.1rem; color: #202020; margin-bottom: 32px;"><span id="employees-count">10</span> employés</p>
-                        
-                        <!-- Bloc Mensuel / Annuel -->
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
-                            <div class="billing-option billing-option--active" id="billing-monthly" style="position: relative; display: flex; flex-direction: column; align-items: center; padding: 20px 16px; background: #E8F4FC; border: 2px solid #4A90E2; border-radius: 16px; cursor: pointer; transition: all 0.3s ease;">
-                                <span style="font-size: 0.9rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Mensuel</span>
-                                <span style="font-size: 1.5rem; font-weight: 700; color: #202020; margin-bottom: 4px;"><span id="price-monthly">9,00</span>€</span>
-                                <span style="font-size: 0.8rem; color: #94a3b8;">par utilisateur/mois</span>
-                                <span style="font-size: 0.75rem; color: #94a3b8; margin-top: 4px;">Sans engagement</span>
-                            </div>
-                            <div class="billing-option" id="billing-annual" style="position: relative; display: flex; flex-direction: column; align-items: center; padding: 20px 16px; background: #f8fafc; border: 2px solid #e2e8f0; border-radius: 16px; cursor: pointer; transition: all 0.3s ease;">
-                                <span style="position: absolute; top: -10px; right: -10px; background: #E84A8A; color: white; font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 50px;">-20%</span>
-                                <span style="font-size: 0.9rem; font-weight: 600; color: #64748b; margin-bottom: 8px;">Annuel</span>
-                                <span style="font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 8px;">
-                                    <span style="font-size: 1rem; color: #94a3b8; text-decoration: line-through;"><span id="price-annual-old">9,00</span>€</span>
-                                    <span style="color: #4A90E2;"><span id="price-annual">7,20</span>€</span>
-                                </span>
-                                <span style="font-size: 0.8rem; color: #94a3b8;">par utilisateur/mois</span>
-                                <span style="font-size: 0.75rem; color: #4A90E2; font-weight: 500; margin-top: 4px;">Paiement annuel en une fois</span>
-                            </div>
-                        </div>
-                        
-                        <div style="background: #E8F4FC; border-radius: 16px; padding: 32px; text-align: center; margin-bottom: 32px;">
-                            <p style="font-size: 4rem; font-weight: 700; color: #4A90E2; display: flex; align-items: baseline; justify-content: center; gap: 4px; line-height: 1;"><span id="price">90</span><span style="font-size: 2.5rem; font-weight: 500;">€</span><span style="font-size: 1.4rem; font-weight: 400; color: #64748b;">/mois</span></p>
-                            <p style="font-size: 1.1rem; color: #64748b; margin-top: 20px;">Soit <span id="price-per-user">9,00</span>€ / employé / mois</p>
-                        </div>
-                        
-                        <button style="width: 100%; padding: 16px 32px; background: #4A90E2; color: white; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; margin-top: auto; transition: all 0.3s ease;">Démarrer mon abonnement</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <!-- ============================================ -->
-    <!-- TÉMOIGNAGES - CARROUSEL -->
-    <!-- ============================================ -->
-    <section class="new-testimonials-section section" id="testimonials" style="background-color: #f8fafc; position: relative; z-index: 1;">
-        <div class="container">
-            <!-- Header -->
-            <div class="new-testimonials-header">
-                <span class="new-testimonials-badge">Témoignages</span>
-                <h2 class="section__title">Ils nous font confiance</h2>
-                <p class="section__subtitle">Découvrez comment FLO transforme le quotidien de nos clients</p>
-            </div>
-            
-            <!-- Carrousel -->
-            <div class="new-carousel-container">
-                <div class="new-carousel-track" id="newCarouselTrack">
-                    
-                    <!-- Témoignage 1 -->
-                    <div class="new-testimonial-slide">
-                        <div class="new-testimonial-content">
-                            <div class="new-testimonial-header">
-                                <div class="new-testimonial-company">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                                        <path d="M2 17l10 5 10-5"/>
-                                        <path d="M2 12l10 5 10-5"/>
-                                    </svg>
-                                    TechStart
-                                </div>
-                                <div class="new-testimonial-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </div>
-                            </div>
-                            
-                            <p class="new-testimonial-quote">
-                                "FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic. L'onboarding qui prenait 2 jours se fait maintenant en 3 heures."
-                            </p>
-                            
-                            <div class="new-testimonial-author">
-                                <span class="new-testimonial-author-name">Marc Leroy</span>
-                                <span class="new-testimonial-author-role">DRH, TechStart</span>
-                            </div>
-                        </div>
-                        
-                        <div class="new-testimonial-image">
-                            <img src="profile-avis1.jpg" alt="Marc Leroy">
-                        </div>
-                    </div>
-                    
-                    <!-- Témoignage 2 -->
-                    <div class="new-testimonial-slide">
-                        <div class="new-testimonial-content">
-                            <div class="new-testimonial-header">
-                                <div class="new-testimonial-company">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <circle cx="12" cy="12" r="10"/>
-                                        <path d="M12 6v6l4 2"/>
-                                    </svg>
-                                    InnovaGroup
-                                </div>
-                                <div class="new-testimonial-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </div>
-                            </div>
-                            
-                            <p class="new-testimonial-quote">
-                                "Avant FLO, chaque nouveau collaborateur devait chercher les informations partout. Maintenant, tout est centralisé et intelligent. On a réduit nos erreurs de process de 70% en 3 mois."
-                            </p>
-                            
-                            <div class="new-testimonial-author">
-                                <span class="new-testimonial-author-name">Thomas Dubois</span>
-                                <span class="new-testimonial-author-role">CEO, InnovaGroup</span>
-                            </div>
-                        </div>
-                        
-                        <div class="new-testimonial-image">
-                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=750&fit=crop" alt="Thomas Dubois">
-                        </div>
-                    </div>
-                    
-                    <!-- Témoignage 3 -->
-                    <div class="new-testimonial-slide">
-                        <div class="new-testimonial-content">
-                            <div class="new-testimonial-header">
-                                <div class="new-testimonial-company">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-                                    </svg>
-                                    DataFlow
-                                </div>
-                                <div class="new-testimonial-stars">
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                                </div>
-                            </div>
-                            
-                            <p class="new-testimonial-quote">
-                                "L'IA de FLO nous suggère des améliorations de process auxquelles on n'aurait jamais pensé. C'est comme avoir un consultant en organisation disponible 24h/24. ROI atteint en 2 mois."
-                            </p>
-                            
-                            <div class="new-testimonial-author">
-                                <span class="new-testimonial-author-name">Sophie Chen</span>
-                                <span class="new-testimonial-author-role">COO, DataFlow</span>
-                            </div>
-                        </div>
-                        
-                        <div class="new-testimonial-image">
-                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&h=750&fit=crop" alt="Sophie Chen">
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <!-- Dots de navigation -->
-            <div class="new-carousel-dots" id="newCarouselDots">
-                <button class="new-carousel-dot active" data-index="0"></button>
-                <button class="new-carousel-dot" data-index="1"></button>
-                <button class="new-carousel-dot" data-index="2"></button>
-            </div>
-            
-            <!-- Stats -->
-            <div class="new-testimonials-stats">
-                <div class="new-stat-item">
-                    <div class="new-stat-number">+500</div>
-                    <div class="new-stat-label">Entreprises nous font confiance</div>
-                </div>
-                <div class="new-stat-item">
-                    <div class="new-stat-number">98%</div>
-                    <div class="new-stat-label">Taux de satisfaction client</div>
-                </div>
-                <div class="new-stat-item">
-                    <div class="new-stat-number">-70%</div>
-                    <div class="new-stat-label">De temps sur les process</div>
-                </div>
-                <div class="new-stat-item">
-                    <div class="new-stat-number">4.9/5</div>
-                    <div class="new-stat-label">Note moyenne</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- FORMULAIRE DEMO -->
-    <!-- ============================================ -->
-    <section class="demo section section--gray" id="demo">
-        <div class="container">
-            <div class="demo__content">
-                <div class="demo__info">
-                    <h2 class="demo__title">Prêt à structurer votre entreprise ?</h2>
-                    <p class="demo__text">Demandez une démo personnalisée et découvrez comment FLO peut transformer votre organisation.</p>
-                    
-                    <div class="demo__benefits">
-                        <div class="demo__benefit">
-                            <i data-lucide="check-circle"></i>
-                            <span>Démo personnalisée de 30 minutes</span>
-                        </div>
-                        <div class="demo__benefit">
-                            <i data-lucide="check-circle"></i>
-                            <span>Audit gratuit de vos process actuels</span>
-                        </div>
-                        <div class="demo__benefit">
-                            <i data-lucide="check-circle"></i>
-                            <span>Essai gratuit de 14 jours</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="demo__form">
-                    <form name="demo" method="POST" data-netlify="true" class="form">
-                        <input type="hidden" name="form-name" value="demo">
-                        
-                        <div class="form__row">
-                            <div class="form__group">
-                                <label for="prenom" class="form__label">Prénom</label>
-                                <input type="text" id="prenom" name="prenom" class="form__input" required>
-                            </div>
-                            
-                            <div class="form__group">
-                                <label for="nom" class="form__label">Nom</label>
-                                <input type="text" id="nom" name="nom" class="form__input" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="email" class="form__label">Email professionnel</label>
-                            <input type="email" id="email" name="email" class="form__input" required>
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="telephone" class="form__label">Téléphone</label>
-                            <input type="tel" id="telephone" name="telephone" class="form__input" required>
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="entreprise" class="form__label">Entreprise</label>
-                            <input type="text" id="entreprise" name="entreprise" class="form__input" required>
-                        </div>
-                        
-                        <div class="form__group">
-                            <label for="taille" class="form__label">Taille de l'entreprise</label>
-                            <select id="taille" name="taille" class="form__select" required>
-                                <option value="">Sélectionnez...</option>
-                                <option value="1-10">1-10 employés</option>
-                                <option value="11-50">11-50 employés</option>
-                                <option value="51-200">51-200 employés</option>
-                                <option value="201-500">201-500 employés</option>
-                                <option value="500+">500+ employés</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="btn btn--primary btn--full btn--large">
-                            <i data-lucide="send"></i>
-                            Demander une démo
-                        </button>
-                        
-                        <p class="form__note">
-                            <i data-lucide="shield-check"></i>
-                            Vos données sont protégées et ne seront jamais partagées
-                        </p>
-                    </form>
-                </div>
             </div>
         </div>
     </section>
@@ -1248,70 +1422,48 @@
     <!-- ============================================ -->
     <!-- FAQ -->
     <!-- ============================================ -->
-    <section class="faq section" id="faq">
+    <section class="faq section" id="faq" style="background-color: #E5D5FF; padding: 60px 0;">
         <div class="container">
-            <div class="section__header">
-                <h2 class="section__title">Questions fréquentes</h2>
-            </div>
-            
-            <div class="faq__list">
-                <div class="faq-item">
-                    <button class="faq-item__question">
-                        <span>Combien de temps faut-il pour mettre en place FLO ?</span>
-                        <i data-lucide="plus" class="faq-item__icon"></i>
-                    </button>
-                    <div class="faq-item__answer">
-                        <p>La mise en place de FLO prend en moyenne 2 à 5 jours selon la taille de votre entreprise. Notre équipe vous accompagne avec un onboarding personnalisé, des templates prêts à l'emploi et une formation de vos équipes.</p>
-                    </div>
-                </div>
+            <div style="background: #1a0033; border-radius: 32px; padding: 50px 45px; max-width: 1200px; margin: 0 auto;">
+                <h2 style="text-align: center; font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0 0 50px 0;">
+                    Questions fréquentes
+                </h2>
                 
-                <div class="faq-item">
-                    <button class="faq-item__question">
-                        <span>FLO s'intègre-t-il avec mes outils actuels ?</span>
-                        <i data-lucide="plus" class="faq-item__icon"></i>
-                    </button>
-                    <div class="faq-item__answer">
-                        <p>Oui, FLO s'intègre avec les outils les plus populaires : Slack, Microsoft Teams, Google Workspace, Notion, Trello, et bien d'autres via notre API et nos webhooks.</p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;" class="faq-grid">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-card" onclick="toggleFaq(this)" style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+                            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                <span style="width: 26px; height: 26px; background: #ff3f9b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; color: white;">1</span>
+                                <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0; line-height: 1.4;">Mes données sont-elles sécurisées ?</h4>
+                            </div>
+                            <span class="faq-icon" style="color: rgba(255,255,255,0.5); font-size: 1.3rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
+                        </div>
+                        <p class="faq-answer" style="color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; margin: 0; line-height: 1.5; max-height: 0; overflow: hidden; transition: all 0.3s ease; padding-left: 36px;">Hébergement en France, cryptage AES-256, conformité RGPD et certification ISO 27001.</p>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-item__question">
-                        <span>Mes données sont-elles sécurisées ?</span>
-                        <i data-lucide="plus" class="faq-item__icon"></i>
-                    </button>
-                    <div class="faq-item__answer">
-                        <p>Absolument. Vos données sont hébergées en Europe (France), cryptées en transit et au repos, avec des backups quotidiens. Nous sommes conformes RGPD et certifiés ISO 27001.</p>
+                    
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-card" onclick="toggleFaq(this)" style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+                            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                <span style="width: 26px; height: 26px; background: #ff3f9b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; color: white;">2</span>
+                                <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0; line-height: 1.4;">FLO s'intègre-t-il à mes outils actuels ?</h4>
+                            </div>
+                            <span class="faq-icon" style="color: rgba(255,255,255,0.5); font-size: 1.3rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
+                        </div>
+                        <p class="faq-answer" style="color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; margin: 0; line-height: 1.5; max-height: 0; overflow: hidden; transition: all 0.3s ease; padding-left: 36px;">Oui : Slack, Microsoft Teams, Google Workspace, Notion, et plus via notre API.</p>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-item__question">
-                        <span>Puis-je personnaliser FLO selon mes besoins ?</span>
-                        <i data-lucide="plus" class="faq-item__icon"></i>
-                    </button>
-                    <div class="faq-item__answer">
-                        <p>Oui, FLO est entièrement personnalisable. Vous pouvez créer vos propres process, workflows, formulaires et fiches de poste. Le plan Enterprise offre des options de personnalisation avancées.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-item__question">
-                        <span>Que se passe-t-il si je dépasse mon nombre d'employés ?</span>
-                        <i data-lucide="plus" class="faq-item__icon"></i>
-                    </button>
-                    <div class="faq-item__answer">
-                        <p>Vous pouvez ajouter des employés à tout moment. Nous ajusterons votre facturation au prorata pour le mois en cours, et vous pourrez basculer sur un plan supérieur si nécessaire.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-item__question">
-                        <span>Proposez-vous une formation pour mes équipes ?</span>
-                        <i data-lucide="plus" class="faq-item__icon"></i>
-                    </button>
-                    <div class="faq-item__answer">
-                        <p>Oui, nous proposons des sessions de formation en ligne incluses dans tous nos plans. Le plan Enterprise inclut également des formations sur site et un accompagnement dédié.</p>
+                    
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-card" onclick="toggleFaq(this)" style="background: rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: all 0.3s ease;">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;">
+                            <div style="display: flex; align-items: flex-start; gap: 10px;">
+                                <span style="width: 26px; height: 26px; background: #ff3f9b; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; color: white;">3</span>
+                                <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 600; margin: 0; line-height: 1.4;">Combien de temps pour la mise en place ?</h4>
+                            </div>
+                            <span class="faq-icon" style="color: rgba(255,255,255,0.5); font-size: 1.3rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
+                        </div>
+                        <p class="faq-answer" style="color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-size: 0.85rem; margin: 0; line-height: 1.5; max-height: 0; overflow: hidden; transition: all 0.3s ease; padding-left: 36px;">2 à 5 jours avec un onboarding personnalisé et des templates prêts à l'emploi.</p>
                     </div>
                 </div>
             </div>
@@ -1319,80 +1471,250 @@
     </section>
 
     <!-- ============================================ -->
+    <!-- TÉMOIGNAGES - C3 EFFET 4 -->
+    <!-- ============================================ -->
+    <section class="testimonials-section section" id="testimonials" style="background-color: #E5D5FF; padding: 60px 0 80px;">
+        <style>
+            .testimonial-card {
+                background: white;
+                border-radius: 24px;
+                border: 2px solid rgba(128, 0, 255, 0.15);
+                box-shadow: 0 10px 40px rgba(0,0,0,0.04);
+                padding: 36px;
+                position: relative;
+                cursor: pointer;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+            .testimonial-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                border-radius: 0 0 4px 4px;
+                transition: width 0.3s ease;
+            }
+            .testimonial-card:hover::before {
+                width: 100%;
+            }
+            .testimonial-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+            }
+            .testimonial-card.violet { border-color: rgba(128, 0, 255, 0.2); }
+            .testimonial-card.violet::before { background: #8000ff; }
+            .testimonial-card.violet:hover { border-color: rgba(128, 0, 255, 0.4); }
+            
+            .testimonial-card.rose { border-color: rgba(255, 63, 155, 0.2); }
+            .testimonial-card.rose::before { background: #ff3f9b; }
+            .testimonial-card.rose:hover { border-color: rgba(255, 63, 155, 0.4); }
+            
+            .testimonial-card.orange { border-color: rgba(255, 112, 61, 0.2); }
+            .testimonial-card.orange::before { background: #ff703d; }
+            .testimonial-card.orange:hover { border-color: rgba(255, 112, 61, 0.4); }
+            
+            .testimonials-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 28px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            
+            @media (max-width: 1024px) {
+                .testimonials-grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 700px) {
+                .testimonials-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+        
+        <div class="container">
+            <!-- Header -->
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="display: inline-block; padding: 8px 20px; background: linear-gradient(135deg, #8000ff, #ff3f9b); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: white; margin-bottom: 16px;">Témoignages</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1a0033;">Ils nous font confiance</h2>
+            </div>
+            
+            <!-- Cards -->
+            <div class="testimonials-grid">
+                
+                <!-- Card 1 - Violet -->
+                <div class="testimonial-card violet">
+                    <div style="display: flex; gap: 4px; margin-bottom: 20px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#8000ff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#8000ff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#8000ff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#8000ff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#8000ff"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p style="color: #1a0033; font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px;">"FLO nous a permis de passer de 15 à 40 employés sans perdre en efficacité. Tous nos process sont documentés et accessibles en un clic. L'onboarding qui prenait 2 jours se fait maintenant en 3 heures."</p>
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <img src="profile-avis1.jpg" alt="Marc Leroy" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <p style="font-weight: 600; color: #1a0033; margin: 0;">Marc Leroy</p>
+                            <p style="font-size: 0.8rem; color: #8000ff; margin: 0; font-weight: 500;">DRH, TechStart</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 - Rose -->
+                <div class="testimonial-card rose">
+                    <div style="display: flex; gap: 4px; margin-bottom: 20px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff3f9b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff3f9b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff3f9b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff3f9b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff3f9b"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p style="color: #1a0033; font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px;">"Avant FLO, chaque nouveau collaborateur devait chercher les informations partout. Maintenant, tout est centralisé et intelligent. On a réduit nos erreurs de process de 70% en 3 mois."</p>
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <img src="profile-avis2.jpg" alt="Thomas Dubois" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <p style="font-weight: 600; color: #1a0033; margin: 0;">Thomas Dubois</p>
+                            <p style="font-size: 0.8rem; color: #ff3f9b; margin: 0; font-weight: 500;">CEO, InnovaGroup</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 - Orange -->
+                <div class="testimonial-card orange">
+                    <div style="display: flex; gap: 4px; margin-bottom: 20px;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff703d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff703d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff703d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff703d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="#ff703d"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p style="color: #1a0033; font-size: 0.95rem; line-height: 1.75; margin-bottom: 28px;">"L'IA de FLO comprend vraiment nos besoins. Elle suggère des améliorations pertinentes et nous fait gagner un temps fou sur la documentation. Un vrai game-changer pour notre équipe."</p>
+                    <div style="display: flex; align-items: center; gap: 14px;">
+                        <img src="profile-avis3.jpg" alt="Sophie Martin" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover;">
+                        <div>
+                            <p style="font-weight: 600; color: #1a0033; margin: 0;">Sophie Martin</p>
+                            <p style="font-size: 0.8rem; color: #ff703d; margin: 0; font-weight: 500;">COO, StartupFlow</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
     <!-- FOOTER -->
     <!-- ============================================ -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__content">
-                <div class="footer__brand">
-                    <div class="footer__logo">
-                        <svg width="40" height="40" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                            <text y=".9em" font-size="90" fill="#4A90E2" font-weight="bold">F</text>
-                        </svg>
-                        <span>FLO</span>
+    <footer style="background: #1a0033; padding: 0 0 30px 0; border-radius: 32px 32px 0 0; overflow: hidden; margin-top: 0;">
+        <!-- CTA Banner orange -->
+        <div style="background: #ff703d; padding: 24px 40px;">
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h4 style="color: white; font-size: 1.15rem; font-weight: 700; margin: 0 0 4px 0;">Prêt à transformer vos process ?</h4>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin: 0;">Essai gratuit 14 jours, sans engagement.</p>
+                </div>
+                <a href="demo.html" style="background: white; color: #ff703d; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                    Démarrer gratuitement
+                </a>
+            </div>
+        </div>
+        
+        <div style="max-width: 1200px; margin: 0 auto; padding: 45px 40px 0;">
+            <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: 35px; margin-bottom: 45px;">
+                
+                <!-- Brand -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <img src="logo-flo.png" alt="FLO" style="width: 48px; height: 48px; border-radius: 12px;">
+                        <span style="font-size: 1.5rem; font-weight: 700; color: white;">FLO</span>
                     </div>
-                    <p class="footer__tagline">Centralisez vos process internes en un seul endroit</p>
-                    <a href="/cdn-cgi/l/email-protection#462529283227253206202a296b352727356825292b" class="footer__email">
-                        <i data-lucide="mail"></i>
-                        <span class="__cf_email__" data-cfemail="e88b87869c898b9ca88e8487c59b89899bc68b8785">[email&#160;protected]</span>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                        L'IA qui structure vos process internes.
+                    </p>
+                    <!-- Email -->
+                    <a href="/cdn-cgi/l/email-protection#274448495346445367414b4809465757" style="color: #ff3f9b; text-decoration: none; font-size: 0.9rem; font-weight: 500;">
+                        <span class="__cf_email__" data-cfemail="c9aaa6a7bda8aabd89afa5a6e7a8b9b9">[email&#160;protected]</span>
                     </a>
                 </div>
                 
-                <div class="footer__links">
-                    <div class="footer__column">
-                        <h4 class="footer__title">Produit</h4>
-                        <ul class="footer__list">
-                            <li><a href="#fonctionnalites">Fonctionnalités</a></li>
-                            <li><a href="#tarifs">Tarifs</a></li>
-                            <li><a href="#demo">Demander une démo</a></li>
-                            <li><a href="#">Changelog</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer__column">
-                        <h4 class="footer__title">Entreprise</h4>
-                        <ul class="footer__list">
-                            <li><a href="#">À propos</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Carrières</a></li>
-                            <li><a href="#">Contact</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer__column">
-                        <h4 class="footer__title">Ressources</h4>
-                        <ul class="footer__list">
-                            <li><a href="#">Documentation</a></li>
-                            <li><a href="#">Centre d'aide</a></li>
-                            <li><a href="#">Guides</a></li>
-                            <li><a href="#">API</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="footer__column">
-                        <h4 class="footer__title">Légal</h4>
-                        <ul class="footer__list">
-                            <li><a href="#">Confidentialité</a></li>
-                            <li><a href="#">Conditions d'utilisation</a></li>
-                            <li><a href="#">Mentions légales</a></li>
-                            <li><a href="#">RGPD</a></li>
-                        </ul>
-                    </div>
+                <!-- Colonne Produit -->
+                <div>
+                    <h4 style="color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;">Produit</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 10px;"><a href="#fonctionnalites" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Fonctionnalités</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#tarifs" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Tarifs</a></li>
+                        <li style="margin-bottom: 10px;"><a href="demo.html" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Démo</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne Entreprise -->
+                <div>
+                    <h4 style="color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;">Entreprise</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">À propos</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Blog</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne Légal -->
+                <div>
+                    <h4 style="color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;">Légal</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Confidentialité</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">CGU</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">RGPD</a></li>
+                    </ul>
+                </div>
+                
+                <!-- CTA Box -->
+                <div style="background: rgba(255, 112, 61, 0.12); border: 1px solid rgba(255, 112, 61, 0.25); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 style="color: white; font-size: 0.95rem; font-weight: 700; margin: 0 0 6px 0;">Une question ?</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.8rem; margin: 0 0 14px 0; line-height: 1.4;">Notre équipe vous répond sous 24h</p>
+                    <a href="/cdn-cgi/l/email-protection#97f4f8f9e3f6f4e3d7f1fbf8b9f6e7e7" style="background: #ff703d; color: white; border: none; padding: 11px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-align: center; text-decoration: none;">
+                        Nous contacter
+                    </a>
                 </div>
             </div>
             
-            <div class="footer__bottom">
-                <p class="footer__copyright">&copy; 2025 FLO. Tous droits réservés.</p>
-                <div class="footer__social">
-                    <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
-                    <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
-                    <a href="#" aria-label="GitHub"><i data-lucide="github"></i></a>
+            <!-- Bottom -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin: 0;">© 2025 FLO. Tous droits réservés.</p>
+                
+                <!-- Icônes RS roses -->
+                <div style="display: flex; gap: 12px;">
+                    <!-- LinkedIn -->
+                    <a href="#" style="width: 42px; height: 42px; background: #ff3f9b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 16px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 15px rgba(255, 63, 155, 0.3);">in</a>
+                    
+                    <!-- Instagram -->
+                    <a href="#" style="width: 42px; height: 42px; background: #ff3f9b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 15px rgba(255, 63, 155, 0.3);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="white" stroke="none"/>
+                        </svg>
+                    </a>
+                    
+                    <!-- Google -->
+                    <a href="#" style="width: 42px; height: 42px; background: #ff3f9b; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; box-shadow: 0 4px 15px rgba(255, 63, 155, 0.3);">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
     </main>
     
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://unpkg.com/lucide@latest"></script>
     <script src="script.js"></script>
     
     <!-- Script pour la navigation des profils -->
@@ -1408,13 +1730,13 @@
                     b.classList.remove('active');
                     b.style.background = 'white';
                     b.style.borderColor = '#e2e8f0';
-                    b.style.color = '#64748b';
+                    b.style.color = '#4a4a4a';
                 });
                 
                 // Ajouter la classe active au bouton cliqué
                 btn.classList.add('active');
-                btn.style.background = '#E84A8A';
-                btn.style.borderColor = '#E84A8A';
+                btn.style.background = '#ff3f9b';
+                btn.style.borderColor = '#ff3f9b';
                 btn.style.color = 'white';
                 
                 // Récupérer le profil cible
@@ -1451,10 +1773,9 @@
             const employees = parseInt(slider.value);
             employeesCount.textContent = employees;
             
-            // Prix par utilisateur : 9€ de base, -0.10€ toutes les 20 licences (minimum 2€)
-            let basePrice = 9 - (Math.floor(employees / 20) * 0.10);
+            // Prix par utilisateur : 9€ de base, -1€ toutes les 5 licences (minimum 2€)
+            let basePrice = 9 - Math.floor((employees - 10) / 5);
             basePrice = Math.max(basePrice, 2); // Minimum 2€
-            basePrice = Math.round(basePrice * 100) / 100; // Arrondir à 2 décimales
             
             const monthlyPrice = basePrice;
             const annualPrice = Math.round(basePrice * 0.8 * 100) / 100;
@@ -1475,18 +1796,18 @@
         
         billingMonthly.addEventListener('click', function() {
             isAnnual = false;
-            billingMonthly.style.background = '#E8F4FC';
-            billingMonthly.style.borderColor = '#4A90E2';
-            billingAnnual.style.background = '#f8fafc';
+            billingMonthly.style.background = '#ffffff';
+            billingMonthly.style.borderColor = '#8000ff';
+            billingAnnual.style.background = '#E5D5FF';
             billingAnnual.style.borderColor = '#e2e8f0';
             updatePrices();
         });
         
         billingAnnual.addEventListener('click', function() {
             isAnnual = true;
-            billingAnnual.style.background = '#E8F4FC';
-            billingAnnual.style.borderColor = '#4A90E2';
-            billingMonthly.style.background = '#f8fafc';
+            billingAnnual.style.background = '#ffffff';
+            billingAnnual.style.borderColor = '#8000ff';
+            billingMonthly.style.background = '#E5D5FF';
             billingMonthly.style.borderColor = '#e2e8f0';
             updatePrices();
         });
@@ -1497,20 +1818,28 @@
     <!-- Script pour le carrousel témoignages -->
     <script>
         const newTrack = document.getElementById('newCarouselTrack');
-        const newPrevBtn = document.getElementById('newPrevBtn');
-        const newNextBtn = document.getElementById('newNextBtn');
+        const newContainer = document.querySelector('.new-carousel-container');
         const newDots = document.querySelectorAll('.new-carousel-dot');
         
         let newCurrentIndex = 0;
         const newTotalSlides = 3;
         let newAutoPlayInterval;
         
+        // Variables pour le drag/swipe
+        let isDragging = false;
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        
         function goToNewSlide(index) {
             if (index < 0) index = newTotalSlides - 1;
             if (index >= newTotalSlides) index = 0;
             
             newCurrentIndex = index;
-            newTrack.style.transform = `translateX(-${newCurrentIndex * 100}%)`;
+            currentTranslate = -newCurrentIndex * 100;
+            prevTranslate = currentTranslate;
+            newTrack.style.transition = 'transform 0.5s ease';
+            newTrack.style.transform = `translateX(${currentTranslate}%)`;
             
             newDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === newCurrentIndex);
@@ -1533,16 +1862,64 @@
             clearInterval(newAutoPlayInterval);
         }
         
-        newNextBtn.addEventListener('click', () => {
+        // Drag/Swipe events
+        function getPositionX(event) {
+            return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+        }
+        
+        function dragStart(event) {
+            isDragging = true;
+            startX = getPositionX(event);
+            newTrack.style.transition = 'none';
+            newContainer.style.cursor = 'grabbing';
             stopNewAutoPlay();
-            nextNewSlide();
+        }
+        
+        function drag(event) {
+            if (!isDragging) return;
+            const currentX = getPositionX(event);
+            const diff = currentX - startX;
+            const containerWidth = newContainer.offsetWidth;
+            const percentMove = (diff / containerWidth) * 100;
+            newTrack.style.transform = `translateX(${prevTranslate + percentMove}%)`;
+        }
+        
+        function dragEnd(event) {
+            if (!isDragging) return;
+            isDragging = false;
+            newContainer.style.cursor = 'grab';
+            
+            const currentX = event.type.includes('mouse') ? event.pageX : event.changedTouches[0].clientX;
+            const diff = currentX - startX;
+            const threshold = 50;
+            
+            if (diff < -threshold) {
+                nextNewSlide();
+            } else if (diff > threshold) {
+                prevNewSlide();
+            } else {
+                goToNewSlide(newCurrentIndex);
+            }
+            
             startNewAutoPlay();
+        }
+        
+        // Mouse events
+        newContainer.addEventListener('mousedown', dragStart);
+        newContainer.addEventListener('mousemove', drag);
+        newContainer.addEventListener('mouseup', dragEnd);
+        newContainer.addEventListener('mouseleave', (e) => {
+            if (isDragging) dragEnd(e);
         });
         
-        newPrevBtn.addEventListener('click', () => {
-            stopNewAutoPlay();
-            prevNewSlide();
-            startNewAutoPlay();
+        // Touch events
+        newContainer.addEventListener('touchstart', dragStart, { passive: true });
+        newContainer.addEventListener('touchmove', drag, { passive: true });
+        newContainer.addEventListener('touchend', dragEnd);
+        
+        // Prevent image drag
+        newTrack.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
         });
         
         newDots.forEach(dot => {
@@ -1558,5 +1935,169 @@
         
         startNewAutoPlay();
     </script>
+    
+    <!-- Script pour header collapse au scroll -->
+    <script>
+        (function() {
+            const header = document.getElementById('header');
+            if (!header) return;
+            
+            const SCROLL_THRESHOLD = 100;
+            const CLOSE_DELAY = 1000; // 1 seconde avant de fermer
+            
+            let isMouseOver = false;
+            let closeTimeout = null;
+            let lastScrollY = 0;
+            
+            // Fonction pour fermer le menu
+            function closeMenu() {
+                if (!isMouseOver) {
+                    header.classList.remove('expanded');
+                }
+            }
+            
+            // Fonction pour ouvrir le menu
+            function openMenu() {
+                clearTimeout(closeTimeout);
+                header.classList.add('expanded');
+            }
+            
+            // Gestion du scroll
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset;
+                
+                if (currentScroll > SCROLL_THRESHOLD) {
+                    // Ajouter collapsed si pas déjà fait
+                    if (!header.classList.contains('collapsed')) {
+                        header.classList.add('collapsed');
+                    }
+                    
+                    // Si on scrolle pendant que le menu est ouvert et qu'on n'est pas dessus, fermer
+                    if (header.classList.contains('expanded') && !isMouseOver) {
+                        header.classList.remove('expanded');
+                    }
+                } else {
+                    // En haut de page = menu normal
+                    header.classList.remove('collapsed');
+                    header.classList.remove('expanded');
+                }
+                
+                lastScrollY = currentScroll;
+            });
+            
+            // Survol du header
+            header.addEventListener('mouseenter', function() {
+                isMouseOver = true;
+                clearTimeout(closeTimeout);
+                
+                if (header.classList.contains('collapsed')) {
+                    openMenu();
+                }
+            });
+            
+            // Quitter le header
+            header.addEventListener('mouseleave', function() {
+                isMouseOver = false;
+                
+                // Délai généreux avant de fermer pour permettre la navigation
+                closeTimeout = setTimeout(closeMenu, CLOSE_DELAY);
+            });
+            
+            // Clic sur un lien = fermer après navigation
+            header.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    // Petit délai pour laisser la navigation se faire
+                    setTimeout(function() {
+                        isMouseOver = false;
+                        closeMenu();
+                    }, 100);
+                });
+            });
+            
+            console.log('Header collapse script loaded');
+        })();
+    </script>
+    
+    
+    <!-- Script FAQ Accordéon -->
+    <script>
+        function toggleFaq(element) {
+            const allCards = document.querySelectorAll('.faq-card');
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('.faq-icon');
+            const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+            
+            // Fermer toutes les autres cartes
+            allCards.forEach(card => {
+                const cardAnswer = card.querySelector('.faq-answer');
+                const cardIcon = card.querySelector('.faq-icon');
+                cardAnswer.style.maxHeight = '0';
+                cardAnswer.style.marginTop = '0';
+                cardIcon.style.transform = 'rotate(0deg)';
+                cardIcon.textContent = '+';
+                card.style.background = 'rgba(255,255,255,0.08)';
+                card.style.border = '1px solid rgba(255,255,255,0.1)';
+            });
+            
+            // Ouvrir la carte cliquée si elle était fermée
+            if (!isOpen) {
+                answer.style.maxHeight = '150px';
+                answer.style.marginTop = '12px';
+                icon.style.transform = 'rotate(45deg)';
+                icon.textContent = '+';
+                element.style.background = 'rgba(255,255,255,0.12)';
+                element.style.border = '1px solid rgba(255,63,155,0.3)';
+            }
+        }
+    </script>
+    
+    <!-- Script Menu Mobile -->
+    <script>
+        (function() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navMenu = document.querySelector('.nav__menu--centered') || document.querySelector('.nav__menu');
+            const body = document.body;
+            
+            if (navToggle && navMenu) {
+                navToggle.addEventListener('click', function() {
+                    navToggle.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                    
+                    // Empêcher le scroll quand menu ouvert
+                    if (body.classList.contains('menu-open')) {
+                        body.style.overflow = 'hidden';
+                    } else {
+                        body.style.overflow = '';
+                    }
+                });
+                
+                // Fermer le menu au clic sur un lien
+                navMenu.querySelectorAll('.nav__link').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navToggle.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        body.style.overflow = '';
+                    });
+                });
+                
+                // Fermer le menu au clic dehors
+                document.addEventListener('click', function(e) {
+                    if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                        if (navMenu.classList.contains('active')) {
+                            navToggle.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            body.classList.remove('menu-open');
+                            body.style.overflow = '';
+                        }
+                    }
+                });
+                
+                console.log('Mobile menu script loaded');
+            }
+        })();
+    </script>
+
 </body>
 </html>
