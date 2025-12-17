@@ -1473,7 +1473,7 @@
     <!-- ============================================ -->
     <!-- TÉMOIGNAGES - C3 EFFET 4 -->
     <!-- ============================================ -->
-    <section class="testimonials-section section" id="testimonials" style="background-color: #E5D5FF; padding: 60px 0 120px; overflow: visible !important;">
+    <section class="testimonials-section section" id="testimonials" style="background-color: #E5D5FF; padding: 60px 0 100px; overflow: visible !important; position: relative; z-index: 10;">
         <style>
             .testimonial-card {
                 background: white;
@@ -1483,7 +1483,7 @@
                 padding: 36px;
                 position: relative;
                 cursor: pointer;
-                overflow: hidden;
+                overflow: visible;
                 transition: all 0.3s ease;
             }
             .testimonial-card::before {
@@ -1491,17 +1491,18 @@
                 position: absolute;
                 top: 0;
                 left: 0;
+                right: 0;
                 width: 60px;
                 height: 4px;
-                border-radius: 0 0 4px 4px;
+                border-radius: 24px 24px 0 0;
                 transition: width 0.3s ease;
             }
             .testimonial-card:hover::before {
                 width: 100%;
             }
             .testimonial-card:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 15px 45px rgba(0,0,0,0.08);
+                transform: translateY(-8px);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.12);
             }
             .testimonial-card.violet { border-color: rgba(128, 0, 255, 0.2); }
             .testimonial-card.violet::before { background: #8000ff; }
@@ -1521,6 +1522,12 @@
                 gap: 28px;
                 max-width: 1200px;
                 margin: 0 auto;
+                padding-bottom: 20px;
+                overflow: visible !important;
+            }
+            
+            .testimonials-section .container {
+                overflow: visible !important;
             }
             
             @media (max-width: 1024px) {
@@ -1609,7 +1616,7 @@
     <!-- ============================================ -->
     <!-- FOOTER -->
     <!-- ============================================ -->
-    <footer style="background: #1a0033; padding: 0 0 30px 0; border-radius: 32px 32px 0 0; overflow: hidden; margin-top: 0;">
+    <footer style="background: #1a0033; padding: 0 0 30px 0; border-radius: 32px 32px 0 0; overflow: hidden; margin-top: 40px;">
         <!-- CTA Banner orange -->
         <div style="background: #ff703d; padding: 24px 40px;">
             <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
