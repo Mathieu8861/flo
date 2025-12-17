@@ -69,8 +69,13 @@
         .header.header.collapsed {
             max-width: 72px !important;
             width: 72px !important;
+            height: 72px !important;
             left: calc(50% - 600px - 88px) !important;
             transform: translateX(0) !important;
+        }
+        
+        .header.header.collapsed .nav__logo img {
+            height: 40px !important;
         }
         
         .header.header.collapsed .container {
@@ -78,15 +83,21 @@
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
+            height: 100% !important;
         }
         
         .header.header.collapsed .nav {
             justify-content: center !important;
-            padding: 12px 0 !important;
+            padding: 0 !important;
+            height: 100% !important;
+            align-items: center !important;
         }
         
         .header.header.collapsed .nav__logo {
             margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
         
         .header.header.collapsed .nav__menu,
@@ -1951,10 +1962,16 @@
             
             const SCROLL_THRESHOLD = 100;
             const CLOSE_DELAY = 1000; // 1 seconde avant de fermer
+            const MOBILE_BREAKPOINT = 900; // Ne pas activer collapse sur mobile
             
             let isMouseOver = false;
             let closeTimeout = null;
             let lastScrollY = 0;
+            
+            // Vérifier si on est sur mobile
+            function isMobile() {
+                return window.innerWidth <= MOBILE_BREAKPOINT;
+            }
             
             // Fonction pour fermer le menu
             function closeMenu() {
@@ -1971,6 +1988,13 @@
             
             // Gestion du scroll
             window.addEventListener('scroll', function() {
+                // Désactiver collapse sur mobile
+                if (isMobile()) {
+                    header.classList.remove('collapsed');
+                    header.classList.remove('expanded');
+                    return;
+                }
+                
                 const currentScroll = window.pageYOffset;
                 
                 if (currentScroll > SCROLL_THRESHOLD) {
@@ -1992,8 +2016,10 @@
                 lastScrollY = currentScroll;
             });
             
-            // Survol du header
+            // Survol du header (desktop only)
             header.addEventListener('mouseenter', function() {
+                if (isMobile()) return;
+                
                 isMouseOver = true;
                 clearTimeout(closeTimeout);
                 
@@ -2002,8 +2028,10 @@
                 }
             });
             
-            // Quitter le header
+            // Quitter le header (desktop only)
             header.addEventListener('mouseleave', function() {
+                if (isMobile()) return;
+                
                 isMouseOver = false;
                 
                 // Délai généreux avant de fermer pour permettre la navigation
@@ -2013,6 +2041,7 @@
             // Clic sur un lien = fermer après navigation
             header.querySelectorAll('a').forEach(function(link) {
                 link.addEventListener('click', function() {
+                    if (isMobile()) return;
                     // Petit délai pour laisser la navigation se faire
                     setTimeout(function() {
                         isMouseOver = false;

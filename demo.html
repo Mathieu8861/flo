@@ -28,26 +28,30 @@
             border: 1px solid rgba(128, 0, 255, 0.1) !important;
             transition: width 0.5s ease, max-width 0.5s ease, padding 0.5s ease, background 0.3s ease !important;
         }
-        .header img { height: 40px; border-radius: 8px; flex-shrink: 0; }
+        .header img { height: 48px; border-radius: 10px; flex-shrink: 0; }
         .header a { color: #8000ff; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .header a:hover { text-decoration: underline; }
         .header .back-link { white-space: nowrap; }
         
         /* Header collapsed */
         .header.collapsed {
-            max-width: 80px !important;
-            width: 80px !important;
-            left: calc(50% - 600px - 96px) !important;
+            max-width: 72px !important;
+            width: 72px !important;
+            height: 72px !important;
+            left: calc(50% - 600px - 88px) !important;
             transform: translateX(0) !important;
-            padding: 16px !important;
+            padding: 0 !important;
             justify-content: center !important;
+            align-items: center !important;
         }
         .header.collapsed img {
-    height: 40px !important;
-}
+            height: 40px !important;
+        }
+        .header.collapsed .back-link {
             opacity: 0 !important;
             visibility: hidden !important;
             pointer-events: none !important;
+            position: absolute !important;
             transition: opacity 0.3s ease, visibility 0.3s ease !important;
         }
         
@@ -81,6 +85,33 @@
         @media (max-width: 1400px) {
             .header.collapsed {
                 left: 20px !important;
+            }
+        }
+        
+        /* Mobile - désactiver collapse */
+        @media (max-width: 900px) {
+            .header,
+            .header.collapsed,
+            .header.collapsed.expanded {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                right: 0 !important;
+                transform: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                border-radius: 0 !important;
+                padding: 12px 20px !important;
+                justify-content: space-between !important;
+            }
+            .header img,
+            .header.collapsed img {
+                height: 36px !important;
+            }
+            .header .back-link {
+                opacity: 1 !important;
+                visibility: visible !important;
+                font-size: 0.85rem;
             }
         }
         
@@ -566,9 +597,14 @@
             
             const SCROLL_THRESHOLD = 100;
             const CLOSE_DELAY = 1000;
+            const MOBILE_BREAKPOINT = 900;
             
             let isMouseOver = false;
             let closeTimeout = null;
+            
+            function isMobile() {
+                return window.innerWidth <= MOBILE_BREAKPOINT;
+            }
             
             function closeMenu() {
                 if (!isMouseOver) {
@@ -582,6 +618,12 @@
             }
             
             window.addEventListener('scroll', function() {
+                if (isMobile()) {
+                    header.classList.remove('collapsed');
+                    header.classList.remove('expanded');
+                    return;
+                }
+                
                 const currentScroll = window.pageYOffset;
                 
                 if (currentScroll > SCROLL_THRESHOLD) {
@@ -598,6 +640,7 @@
             });
             
             header.addEventListener('mouseenter', function() {
+                if (isMobile()) return;
                 isMouseOver = true;
                 clearTimeout(closeTimeout);
                 if (header.classList.contains('collapsed')) {
@@ -606,12 +649,14 @@
             });
             
             header.addEventListener('mouseleave', function() {
+                if (isMobile()) return;
                 isMouseOver = false;
                 closeTimeout = setTimeout(closeMenu, CLOSE_DELAY);
             });
             
             header.querySelectorAll('a').forEach(function(link) {
                 link.addEventListener('click', function() {
+                    if (isMobile()) return;
                     setTimeout(function() {
                         isMouseOver = false;
                         closeMenu();
