@@ -273,15 +273,15 @@
 </head>
 <body>
     <!-- ============================================ -->
-    <!-- HEADER STICKY -->
+    <!-- HEADER DESKTOP -->
     <!-- ============================================ -->
-    <header class="header" id="header">
+    <header class="header desktop-only" id="header-desktop">
         <div class="container">
             <nav class="nav">
                 <a href="#" class="nav__logo">
                     <img src="assets/images/logo-flo.png" alt="FLO" style="height: 48px; width: auto; border-radius: 10px;">
                 </a>
-                
+
                 <ul class="nav__menu nav__menu--centered">
                     <li><a href="#fonctionnalites" class="nav__link">L'outil</a></li>
                     <li><a href="#fonctionnalites" class="nav__link">Fonctionnalités</a></li>
@@ -289,23 +289,51 @@
                     <li><a href="#equipe" class="nav__link">L'équipe</a></li>
                     <li><a href="#contact" class="nav__link">Contact</a></li>
                 </ul>
-                
+
                 <a href="demo.html" class="btn btn--primary btn--cta-pulse"><span>Tester FLO</span></a>
-                
-                <!-- Mobile Menu Toggle -->
-                <button class="nav__toggle" id="nav-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </nav>
         </div>
     </header>
 
     <!-- ============================================ -->
-    <!-- HERO SECTION WITH VIDEO -->
+    <!-- HEADER MOBILE V6 -->
     <!-- ============================================ -->
-    <section class="hero" id="hero" style="background-color: #E5D5FF;">
+    <header class="header-mobile mobile-only" id="header-mobile">
+        <div class="header-mobile__bar">
+            <a href="#" class="header-mobile__logo">
+                <img src="assets/images/logo-flo.png" alt="FLO" style="height: 36px; width: auto; border-radius: 8px;">
+            </a>
+            <div class="header-mobile__actions">
+                <a href="demo.html" class="header-mobile__cta">Tester FLO</a>
+                <button class="header-mobile__burger" id="mobile-burger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Overlay -->
+        <nav class="header-mobile__menu" id="mobile-menu">
+            <div class="header-mobile__menu-links">
+                <a href="#fonctionnalites" class="header-mobile__link">L'outil</a>
+                <a href="#fonctionnalites" class="header-mobile__link">Fonctionnalités</a>
+                <a href="#cas-usage" class="header-mobile__link">Solutions métiers</a>
+                <a href="#equipe" class="header-mobile__link">L'équipe</a>
+                <a href="#contact" class="header-mobile__link">Contact</a>
+            </div>
+            <div class="header-mobile__menu-separator"></div>
+            <div class="header-mobile__menu-contact">
+                <p>Une question ?</p>
+                <a href="tel:0123456789" class="header-mobile__phone">01 23 45 67 89</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- HERO SECTION DESKTOP -->
+    <!-- ============================================ -->
+    <section class="hero desktop-only" id="hero-desktop" style="background-color: #E5D5FF;">
         <div class="container">
             <div class="hero__content">
                 <div class="hero__text">
@@ -522,7 +550,58 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- SECTION 3 RAISONS - BLOC V1-D GLASSMORPHISM -->
+    <!-- HERO MOBILE V6 -->
+    <!-- ============================================ -->
+    <section class="hero-mobile mobile-only">
+        <h1 class="hero-mobile__title">Vos process.<br><span>Simplifiés.</span></h1>
+        <p class="hero-mobile__subtitle">FLO digitalise vos processus d'entreprise et les enrichit avec l'IA</p>
+        <a href="demo.html" class="hero-mobile__cta">Tester FLO gratuitement</a>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- 3 RAISONS MOBILE V6 -->
+    <!-- ============================================ -->
+    <section class="reasons-mobile mobile-only">
+        <div class="reasons-mobile__container">
+            <h2 class="reasons-mobile__title">Pourquoi choisir FLO ?</h2>
+            <div class="reasons-mobile__cards">
+                <div class="reasons-mobile__card">
+                    <div class="reasons-mobile__icon">
+                        <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="36" cy="36" r="20" stroke="#8000ff" stroke-width="3"/>
+                            <path d="M36 24v12l8 8" stroke="#ff3f9b" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>Gain de temps</h4>
+                    <p>Automatisez vos tâches répétitives</p>
+                </div>
+                <div class="reasons-mobile__card">
+                    <div class="reasons-mobile__icon">
+                        <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="16" y="20" width="40" height="32" rx="4" stroke="#8000ff" stroke-width="3"/>
+                            <path d="M24 36h24M24 44h16" stroke="#ff3f9b" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h4>No-code</h4>
+                    <p>Simple à utiliser, sans formation</p>
+                </div>
+                <div class="reasons-mobile__card">
+                    <div class="reasons-mobile__icon">
+                        <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="36" cy="36" r="16" stroke="#8000ff" stroke-width="3"/>
+                            <circle cx="36" cy="36" r="6" fill="#ff3f9b"/>
+                            <path d="M36 12v8M36 52v8M12 36h8M52 36h8" stroke="#8000ff" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h4>IA intégrée</h4>
+                    <p>Intelligence artificielle au service de vos process</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- SECTION 3 RAISONS DESKTOP - BLOC V1-D GLASSMORPHISM -->
     <!-- ============================================ -->
     <style>
         /* ===== ANIMATION ICÔNE IA ===== */
@@ -620,7 +699,7 @@
         .reason-card:hover { background: rgba(255, 255, 255, 0.25) !important; transform: translateY(-5px); }
     </style>
     
-    <section class="features-icons section" style="background-color: #E5D5FF; padding: 60px 0;">
+    <section class="features-icons section desktop-only" style="background-color: #E5D5FF; padding: 60px 0;">
         <div class="container">
             <div style="max-width: 1200px; width: 100%; padding: 50px; background: linear-gradient(90deg, #8000ff 0%, #ff3f9b 100%); border-radius: 28px; display: flex; align-items: center; gap: 50px; margin: 0 auto;">
                 
@@ -713,7 +792,7 @@
         <!-- ============================================ -->
     <!-- COMMENT ÇA MARCHE -->
     <!-- ============================================ -->
-    <section class="how-it-works section" id="comment-ca-marche" style="background-color: #E5D5FF; padding: 60px 0;">
+    <section class="how-it-works section desktop-only" id="comment-ca-marche" style="background-color: #E5D5FF; padding: 60px 0;">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: #1a0033; margin-bottom: 50px; text-align: center;">
                 Comment ça marche ?
@@ -756,7 +835,7 @@
     <!-- ============================================ -->
     <!-- CAS D'USAGE ET FONCTIONNALITÉS -->
     <!-- ============================================ -->
-    <section class="profiles-section-wrapper section" id="cas-usage" style="background-color: #E5D5FF; padding: 60px 0 80px 0;">
+    <section class="profiles-section-wrapper section desktop-only" id="cas-usage" style="background-color: #E5D5FF; padding: 60px 0 80px 0;">
         <div class="container">
             <div class="profiles-section" style="max-width: 1200px; margin: 0 auto; background: #ffffff; border-radius: 32px; box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08); overflow: hidden;">
                 
@@ -889,7 +968,7 @@
     <!-- ============================================ -->
     <!-- BANDEAU STATS -->
     <!-- ============================================ -->
-    <section style="background-color: #E5D5FF; padding: 50px 20px;">
+    <section class="desktop-only" style="background-color: #E5D5FF; padding: 50px 20px;">
         <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 80px; flex-wrap: wrap;">
             <div style="text-align: center;">
                 <span style="font-size: 3.5rem; font-weight: 700; font-family: 'Poppins', sans-serif; background: linear-gradient(135deg, #8000ff, #ff3f9b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">+500</span>
@@ -942,7 +1021,7 @@
     <!-- ============================================ -->
     <!-- VIDEO PRESENTATION -->
     <!-- ============================================ -->
-    <section class="video-section section" id="video" style="background-color: #E5D5FF; padding: 60px 0;">
+    <section class="video-section section desktop-only" id="video" style="background-color: #E5D5FF; padding: 60px 0;">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
             
             <div style="background: #1a0033; border-radius: 32px; padding: 40px; display: grid; grid-template-columns: 2fr 1fr; gap: 24px;" class="video-grid">
@@ -1048,7 +1127,7 @@
     <!-- ============================================ -->
     <!-- TARIFS / CONTACT -->
     <!-- ============================================ -->
-    <section class="pricing-section-wrapper section" id="tarifs" style="background-color: #E5D5FF; padding: 60px 0 80px;">
+    <section class="pricing-section-wrapper section desktop-only" id="tarifs" style="background-color: #E5D5FF; padding: 60px 0 80px;">
         <div class="container">
             <div style="max-width: 1200px; margin: 0 auto;">
                 
@@ -1192,7 +1271,7 @@
     <!-- ============================================ -->
     <!-- FAQ -->
     <!-- ============================================ -->
-    <section class="faq section" id="faq" style="background-color: #E5D5FF; padding: 60px 0;">
+    <section class="faq section desktop-only" id="faq" style="background-color: #E5D5FF; padding: 60px 0;">
         <div class="container">
             <div style="background: #1a0033; border-radius: 32px; padding: 50px 45px; max-width: 1200px; margin: 0 auto;">
                 <h2 style="text-align: center; font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; margin: 0 0 50px 0;">
@@ -1243,7 +1322,7 @@
     <!-- ============================================ -->
     <!-- TÉMOIGNAGES - C3 EFFET 4 -->
     <!-- ============================================ -->
-    <section class="testimonials-section section" id="testimonials" style="background-color: #E5D5FF; padding: 60px 0 100px; overflow: visible !important; position: relative; z-index: 10;">
+    <section class="testimonials-section section desktop-only" id="testimonials" style="background-color: #E5D5FF; padding: 60px 0 100px; overflow: visible !important; position: relative; z-index: 10;">
         <style>
             .testimonial-card {
                 background: white;
@@ -1384,9 +1463,248 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- FOOTER -->
+    <!-- CAS D'USAGE MOBILE V6 -->
     <!-- ============================================ -->
-    <footer style="background: #1a0033; padding: 0 0 30px 0; border-radius: 32px 32px 0 0; overflow: hidden; margin-top: 40px;">
+    <section class="profiles-mobile mobile-only">
+        <h2 class="profiles-mobile__title">FLO s'adapte à vous</h2>
+        <div class="profiles-mobile__tabs">
+            <div class="profiles-mobile__tabs-inner">
+                <button class="profiles-mobile__tab active" data-tab="rh">RH</button>
+                <button class="profiles-mobile__tab" data-tab="direction">Direction</button>
+                <button class="profiles-mobile__tab" data-tab="managers">Managers</button>
+                <button class="profiles-mobile__tab" data-tab="collab">Collaborateurs</button>
+            </div>
+        </div>
+        <div class="profiles-mobile__content">
+            <div class="profiles-mobile__card active" data-content="rh">
+                <h3>Ressources Humaines</h3>
+                <p>Automatisez l'onboarding, les demandes de congés et le suivi administratif.</p>
+                <div class="profiles-mobile__tags">
+                    <span class="profiles-mobile__tag">Onboarding</span>
+                    <span class="profiles-mobile__tag">Congés</span>
+                    <span class="profiles-mobile__tag">Évaluations</span>
+                </div>
+                <a href="demo.html" class="profiles-mobile__cta">Voir la démo RH</a>
+            </div>
+            <div class="profiles-mobile__card" data-content="direction">
+                <h3>Direction Générale</h3>
+                <p>Pilotez votre organisation avec des tableaux de bord intelligents.</p>
+                <div class="profiles-mobile__tags">
+                    <span class="profiles-mobile__tag">KPIs</span>
+                    <span class="profiles-mobile__tag">Reporting</span>
+                    <span class="profiles-mobile__tag">Décisions</span>
+                </div>
+                <a href="demo.html" class="profiles-mobile__cta">Voir la démo Direction</a>
+            </div>
+            <div class="profiles-mobile__card" data-content="managers">
+                <h3>Managers</h3>
+                <p>Gérez vos équipes et suivez les projets en temps réel.</p>
+                <div class="profiles-mobile__tags">
+                    <span class="profiles-mobile__tag">Équipes</span>
+                    <span class="profiles-mobile__tag">Projets</span>
+                    <span class="profiles-mobile__tag">Suivi</span>
+                </div>
+                <a href="demo.html" class="profiles-mobile__cta">Voir la démo Managers</a>
+            </div>
+            <div class="profiles-mobile__card" data-content="collab">
+                <h3>Collaborateurs</h3>
+                <p>Simplifiez vos demandes quotidiennes et gagnez en autonomie.</p>
+                <div class="profiles-mobile__tags">
+                    <span class="profiles-mobile__tag">Demandes</span>
+                    <span class="profiles-mobile__tag">Self-service</span>
+                    <span class="profiles-mobile__tag">Autonomie</span>
+                </div>
+                <a href="demo.html" class="profiles-mobile__cta">Voir la démo</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- STATS MOBILE V6 -->
+    <!-- ============================================ -->
+    <section class="stats-mobile mobile-only">
+        <div class="stats-mobile__grid">
+            <div class="stats-mobile__card">
+                <div class="stats-mobile__value">-70%</div>
+                <p class="stats-mobile__label">de temps administratif</p>
+            </div>
+            <div class="stats-mobile__card">
+                <div class="stats-mobile__value stats-mobile__value--alt">+50%</div>
+                <p class="stats-mobile__label">de productivité</p>
+            </div>
+            <div class="stats-mobile__card">
+                <div class="stats-mobile__value">24h</div>
+                <p class="stats-mobile__label">mise en place</p>
+            </div>
+            <div class="stats-mobile__card">
+                <div class="stats-mobile__value stats-mobile__value--alt">98%</div>
+                <p class="stats-mobile__label">satisfaction client</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- VIDEO MOBILE V6 -->
+    <!-- ============================================ -->
+    <section class="video-mobile mobile-only">
+        <div class="video-mobile__container">
+            <h2 class="video-mobile__title">Découvrez FLO en action</h2>
+            <div class="video-mobile__player">
+                <div class="video-mobile__play"></div>
+                <span class="video-mobile__duration">2:30</span>
+            </div>
+            <div class="video-mobile__tabs">
+                <div class="video-mobile__tab active">
+                    <div class="video-mobile__tab-icon"></div>
+                    <div class="video-mobile__tab-text">
+                        <p>Démo produit</p>
+                        <span>2:30</span>
+                    </div>
+                </div>
+                <div class="video-mobile__tab">
+                    <div class="video-mobile__tab-icon"></div>
+                    <div class="video-mobile__tab-text">
+                        <p>Témoignage</p>
+                        <span>1:45</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- TÉMOIGNAGES MOBILE V6 -->
+    <!-- ============================================ -->
+    <section class="testimonials-mobile mobile-only">
+        <h2 class="testimonials-mobile__title">Ils nous font confiance</h2>
+        <div class="testimonials-mobile__card active" data-color="purple">
+            <div class="testimonials-mobile__stars">
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+            </div>
+            <p class="testimonials-mobile__quote">"FLO a révolutionné notre gestion RH. On gagne un temps fou sur les tâches administratives."</p>
+            <div class="testimonials-mobile__author">
+                <div class="testimonials-mobile__avatar">MC</div>
+                <div>
+                    <p class="testimonials-mobile__name">Marie C.</p>
+                    <p class="testimonials-mobile__role">DRH - TechCorp</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonials-mobile__card" data-color="pink">
+            <div class="testimonials-mobile__stars">
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+            </div>
+            <p class="testimonials-mobile__quote">"Interface intuitive, équipe réactive. L'adoption par nos équipes a été immédiate."</p>
+            <div class="testimonials-mobile__author">
+                <div class="testimonials-mobile__avatar">PD</div>
+                <div>
+                    <p class="testimonials-mobile__name">Pierre D.</p>
+                    <p class="testimonials-mobile__role">CEO - StartupXYZ</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonials-mobile__card" data-color="orange">
+            <div class="testimonials-mobile__stars">
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+                <svg viewBox="0 0 20 20"><path d="M10 1l2.5 6.5H19l-5.5 4.5 2 7L10 14.5 4.5 19l2-7L1 7.5h6.5L10 1z"/></svg>
+            </div>
+            <p class="testimonials-mobile__quote">"Le meilleur investissement de l'année pour notre productivité."</p>
+            <div class="testimonials-mobile__author">
+                <div class="testimonials-mobile__avatar">SL</div>
+                <div>
+                    <p class="testimonials-mobile__name">Sophie L.</p>
+                    <p class="testimonials-mobile__role">Manager - Retail Plus</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonials-mobile__dots">
+            <button class="testimonials-mobile__dot active" data-slide="0"></button>
+            <button class="testimonials-mobile__dot" data-slide="1"></button>
+            <button class="testimonials-mobile__dot" data-slide="2"></button>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FAQ MOBILE V6 -->
+    <!-- ============================================ -->
+    <section class="faq-mobile mobile-only">
+        <div class="faq-mobile__container">
+            <h2 class="faq-mobile__title">Questions fréquentes</h2>
+            <div class="faq-mobile__list">
+                <div class="faq-mobile__item">
+                    <div class="faq-mobile__question">
+                        <p>Combien de temps pour mettre en place FLO ?</p>
+                        <span>+</span>
+                    </div>
+                    <p class="faq-mobile__answer">La mise en place se fait en 24h. Notre équipe vous accompagne de A à Z.</p>
+                </div>
+                <div class="faq-mobile__item">
+                    <div class="faq-mobile__question">
+                        <p>Faut-il des compétences techniques ?</p>
+                        <span>+</span>
+                    </div>
+                    <p class="faq-mobile__answer">Non, FLO est 100% no-code. Aucune compétence technique requise.</p>
+                </div>
+                <div class="faq-mobile__item">
+                    <div class="faq-mobile__question">
+                        <p>Mes données sont-elles sécurisées ?</p>
+                        <span>+</span>
+                    </div>
+                    <p class="faq-mobile__answer">Oui, hébergement en France, conformité RGPD et chiffrement de bout en bout.</p>
+                </div>
+                <div class="faq-mobile__item">
+                    <div class="faq-mobile__question">
+                        <p>Puis-je essayer gratuitement ?</p>
+                        <span>+</span>
+                    </div>
+                    <p class="faq-mobile__answer">Oui, essai gratuit 14 jours sans engagement ni carte bancaire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CTA MOBILE V6 -->
+    <!-- ============================================ -->
+    <section class="cta-mobile mobile-only">
+        <div class="cta-mobile__container">
+            <h2 class="cta-mobile__title">Prêt à transformer vos process ?</h2>
+            <p class="cta-mobile__subtitle">Essai gratuit 14 jours, sans engagement</p>
+            <a href="demo.html" class="cta-mobile__btn">Démarrer gratuitement</a>
+            <p class="cta-mobile__phone">Ou appelez-nous : 01 23 45 67 89</p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FOOTER MOBILE V6 -->
+    <!-- ============================================ -->
+    <footer class="footer-mobile mobile-only">
+        <div class="footer-mobile__logo">
+            <img src="assets/images/logo-flo.png" alt="FLO">
+        </div>
+        <div class="footer-mobile__links">
+            <a href="#">Confidentialité</a>
+            <a href="#">CGU</a>
+            <a href="#">Contact</a>
+        </div>
+        <p class="footer-mobile__copyright">© 2025 FLO. Tous droits réservés.</p>
+    </footer>
+
+    <!-- ============================================ -->
+    <!-- FOOTER DESKTOP -->
+    <!-- ============================================ -->
+    <footer class="desktop-only" style="background: #1a0033; padding: 0 0 30px 0; border-radius: 32px 32px 0 0; overflow: hidden; margin-top: 40px;">
         <!-- CTA Banner orange -->
         <div style="background: #ff703d; padding: 24px 40px;">
             <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
