@@ -55,7 +55,7 @@ function initTestimonialsCarousel() {
 // ============================================
 // HEADER SCROLL
 // ============================================
-const header = document.getElementById('header');
+const header = document.getElementById('header-desktop');
 if (header) {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
