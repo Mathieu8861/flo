@@ -6,6 +6,195 @@
     <title>Réserver une démo - FLO</title>
     <link rel="icon" type="image/png" href="assets/images/logo-flo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables CSS pour le header */
+        :root {
+            --spacing-sm: 8px;
+            --spacing-lg: 24px;
+        }
+
+        /* Classes desktop/mobile */
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+        @media (max-width: 900px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+        }
+
+        /* Header Desktop Base */
+        .header.desktop-only {
+            padding: 12px 24px;
+            background: rgba(128, 0, 255, 0.08);
+            backdrop-filter: blur(10px);
+        }
+        .header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+        }
+        .header .nav__menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+        }
+        .header .nav__link {
+            color: #1a0033;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+        .header .nav__link:hover { color: #8000ff; }
+        .header .btn--primary {
+            background: linear-gradient(135deg, #ff703d 0%, #ff3f9b 100%);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(255, 112, 61, 0.3);
+            transition: all 0.3s;
+        }
+        .header .btn--primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 112, 61, 0.4);
+        }
+
+        /* Header Mobile */
+        .header-mobile {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(128, 0, 255, 0.1);
+        }
+        .header-mobile__bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 16px;
+        }
+        .header-mobile__actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .header-mobile__cta {
+            background: linear-gradient(135deg, #ff703d, #ff3f9b);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        .header-mobile__burger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .header-mobile__burger span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+        .header-mobile__burger span:nth-child(1) { background: #8000ff; }
+        .header-mobile__burger span:nth-child(2) { background: #ff3f9b; width: 18px; }
+        .header-mobile__burger span:nth-child(3) { background: #ff703d; }
+        .header-mobile__burger.active span:nth-child(1) { transform: rotate(45deg) translateY(11px); }
+        .header-mobile__burger.active span:nth-child(2) { opacity: 0; }
+        .header-mobile__burger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-11px); }
+
+        /* Menu Mobile Overlay */
+        .header-mobile__menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: calc(100vh - 64px);
+            background-color: #ffffff !important;
+            padding: 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+        .header-mobile__menu.active { transform: translateX(0); }
+        .header-mobile__menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .header-mobile__link {
+            display: block;
+            padding: 18px 24px;
+            color: #1a0033;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.12), rgba(255, 63, 155, 0.08));
+            border-radius: 16px;
+            border-left: 4px solid #8000ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(128, 0, 255, 0.08);
+        }
+        .header-mobile__link:nth-of-type(2) {
+            background: linear-gradient(135deg, rgba(255, 63, 155, 0.12), rgba(255, 112, 61, 0.08));
+            border-left-color: #ff3f9b;
+            box-shadow: 0 2px 8px rgba(255, 63, 155, 0.08);
+        }
+        .header-mobile__link:nth-of-type(3) {
+            background: linear-gradient(135deg, rgba(255, 112, 61, 0.12), rgba(255, 200, 61, 0.08));
+            border-left-color: #ff703d;
+            box-shadow: 0 2px 8px rgba(255, 112, 61, 0.08);
+        }
+        .header-mobile__link:nth-of-type(4) {
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.08), rgba(255, 63, 155, 0.12));
+            border-left-color: #a64dff;
+            box-shadow: 0 2px 8px rgba(128, 0, 255, 0.08);
+        }
+        .header-mobile__link:active {
+            transform: scale(0.98);
+            box-shadow: 0 1px 4px rgba(128, 0, 255, 0.1);
+        }
+        .header-mobile__menu-separator {
+            height: 1px;
+            background: rgba(128, 0, 255, 0.1);
+            margin: 20px 0;
+        }
+        .header-mobile__menu-contact p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .header-mobile__phone {
+            color: #8000ff;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+        body.menu-open { overflow: hidden; }
+    </style>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -16,29 +205,141 @@
         }
 
         /* ============================================ */
-        /* HEADER                                       */
+        /* HEADER DESKTOP                               */
         /* ============================================ */
-        .header {
-            position: fixed;
-            top: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 1200px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            border-radius: 16px;
-            border: 1px solid rgba(128, 0, 255, 0.1);
-            box-shadow: 0 4px 20px rgba(128, 0, 255, 0.08);
+        @media screen and (min-width: 901px) {
+            .header.desktop-only {
+                position: fixed !important;
+                top: 16px !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: calc(100% - 40px) !important;
+                max-width: 1200px !important;
+                margin: 0 !important;
+                background: rgba(128, 0, 255, 0.08) !important;
+                border-radius: 16px !important;
+                border: 1px solid rgba(128, 0, 255, 0.1) !important;
+                z-index: 100 !important;
+                transition: all 0.5s ease !important;
+            }
+
+            /* Header collapsed (logo only) */
+            .header.desktop-only.collapsed {
+                max-width: 72px !important;
+                width: 72px !important;
+                height: 72px !important;
+                left: calc(50% - 600px - 88px) !important;
+                transform: translateX(0) !important;
+            }
+
+            .header.desktop-only.collapsed .nav__logo img { height: 40px !important; }
+
+            .header.desktop-only.collapsed .container {
+                padding: 0 !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                height: 100% !important;
+            }
+
+            .header.desktop-only.collapsed .nav {
+                justify-content: center !important;
+                padding: 0 !important;
+                height: 100% !important;
+            }
+
+            .header.desktop-only.collapsed .nav__logo {
+                margin: 0 !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+
+            .header.desktop-only.collapsed .nav__menu,
+            .header.desktop-only.collapsed .nav__menu--centered,
+            .header.desktop-only.collapsed .btn--primary,
+            .header.desktop-only.collapsed .btn--cta-pulse {
+                display: none !important;
+            }
+
+            /* Header expanded (hover state) */
+            .header.desktop-only.collapsed.expanded .nav__menu,
+            .header.desktop-only.collapsed.expanded .nav__menu--centered {
+                display: flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            .header.desktop-only.collapsed.expanded .btn--primary,
+            .header.desktop-only.collapsed.expanded .btn--cta-pulse {
+                display: inline-flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+
+            .header.desktop-only.collapsed.expanded {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: calc(100% - 40px) !important;
+                max-width: 1200px !important;
+                height: auto !important;
+                background: rgba(248, 245, 255, 0.95) !important;
+                backdrop-filter: blur(8px) !important;
+            }
+
+            .header.desktop-only.collapsed.expanded .container {
+                padding: 0 var(--spacing-lg) !important;
+                display: block !important;
+            }
+
+            .header.desktop-only.collapsed.expanded .nav {
+                justify-content: space-between !important;
+                padding: var(--spacing-sm) 0 !important;
+            }
+
+            .nav__menu--centered {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .nav__link {
+                position: relative;
+                padding-bottom: 4px;
+            }
+
+            .nav__link::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background: #ff3f9b;
+                transition: width 0.3s ease;
+            }
+
+            .nav__link:hover::after { width: 100%; }
+
+            .btn--cta-pulse {
+                padding: 10px 28px !important;
+                animation: pulse 2s infinite;
+            }
+            .btn--cta-pulse:hover {
+                animation: none;
+                transform: scale(1.05);
+            }
+
+            @keyframes pulse {
+                0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0.4); }
+                50% { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(255, 112, 61, 0); }
+                100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0); }
+            }
         }
-        .header img { height: 48px; border-radius: 10px; }
-        .header a { color: #8000ff; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .header a:hover { opacity: 0.8; }
+
+        @media screen and (min-width: 901px) and (max-width: 1400px) {
+            .header.desktop-only.collapsed { left: 20px !important; }
+        }
 
         /* ============================================ */
         /* HERO                                         */
@@ -149,7 +450,12 @@
             display: grid;
             grid-template-columns: 1fr 1.3fr;
             gap: 40px;
-            align-items: start;
+            align-items: stretch;
+        }
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         /* ============================================ */
@@ -206,13 +512,14 @@
         .dirigeant-quote {
             position: relative;
             z-index: 1;
-            background: rgba(255, 255, 255, 0.15);
+            background: white;
             border-radius: 16px;
             padding: 20px;
             font-style: italic;
             font-size: 0.95rem;
             line-height: 1.6;
-            border-left: 4px solid rgba(255, 255, 255, 0.5);
+            border-left: 4px solid #8000ff;
+            color: #1a0033;
         }
 
         /* Coordonnées sous le dirigeant */
@@ -237,6 +544,65 @@
         .coordonnee-item:hover { opacity: 1; }
         .coordonnee-item svg { width: 18px; height: 18px; opacity: 0.8; }
 
+        /* Bloc Entreprise + Map */
+        .entreprise-section {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(128, 0, 255, 0.1);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .entreprise-map {
+            height: 180px;
+            background: #f0f0f0;
+        }
+        .entreprise-map iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .entreprise-info {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .entreprise-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .entreprise-info h4 svg {
+            width: 22px;
+            height: 22px;
+            color: #8000ff;
+        }
+        .entreprise-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .entreprise-detail {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #1a0033;
+        }
+        .entreprise-detail svg {
+            width: 18px;
+            height: 18px;
+            color: #ff3f9b;
+            flex-shrink: 0;
+        }
+
         /* ============================================ */
         /* OPTIONS CONTACT                              */
         /* ============================================ */
@@ -255,17 +621,24 @@
             position: relative;
             overflow: hidden;
         }
-        .option-calendly::before {
-            content: 'RECOMMANDÉ';
+        .calendly-badge {
             position: absolute;
-            top: 20px;
-            right: -35px;
-            background: #ff703d;
-            color: white;
-            font-size: 0.65rem;
-            font-weight: 700;
-            padding: 6px 45px;
-            transform: rotate(45deg);
+            top: 16px;
+            right: 16px;
+            background: white;
+            border-radius: 8px;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #006bff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .calendly-badge svg {
+            width: 16px;
+            height: 16px;
         }
         .option-calendly .option-header {
             display: flex;
@@ -282,9 +655,10 @@
             align-items: center;
             justify-content: center;
         }
-        .option-calendly .option-icon svg { width: 26px; height: 26px; }
-        .option-calendly h3 { font-size: 1.3rem; font-weight: 700; }
+        .option-calendly .option-icon svg { width: 26px; height: 26px; color: white; }
+        .option-calendly h3 { font-size: 1.3rem; font-weight: 700; color: white; }
         .option-calendly > p {
+            color: white;
             opacity: 0.9;
             font-size: 0.9rem;
             margin-bottom: 20px;
@@ -411,9 +785,9 @@
             justify-content: center;
             flex-shrink: 0;
         }
-        .option-call .option-icon svg { width: 26px; height: 26px; }
-        .option-call h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
-        .option-call p { font-size: 0.85rem; opacity: 0.9; }
+        .option-call .option-icon svg { width: 26px; height: 26px; color: white; }
+        .option-call h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; color: white; }
+        .option-call p { font-size: 0.85rem; opacity: 0.9; color: white; }
         .btn-white-outline {
             display: flex;
             align-items: center;
@@ -544,44 +918,205 @@
             .testimonials-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 900px) {
-            .header {
-                top: 0;
-                left: 0;
-                right: 0;
-                transform: none;
-                width: 100%;
-                max-width: 100%;
-                border-radius: 0;
-                padding: 12px 20px;
+            .hero { padding: 100px 20px 30px; }
+            .hero h1 { font-size: 1.8rem; line-height: 1.3; }
+            .hero p { font-size: 1rem; }
+
+            /* Avantages - format carré 2x2 */
+            .avantages-section {
+                margin: 0 10px;
+                padding: 24px 16px;
+                border-radius: 20px;
             }
-            .header img { height: 36px; }
-            .hero { padding: 120px 20px 40px; }
-            .hero h1 { font-size: 2rem; }
-            .avantages-section { margin: 0 10px; padding: 40px 20px; border-radius: 20px; }
-            .avantages-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .main-section { padding: 40px 20px; }
-            .main-grid { grid-template-columns: 1fr; }
-            .option-call { flex-direction: column; text-align: center; }
-            .option-call-left { flex-direction: column; }
-            .form-grid { grid-template-columns: 1fr; }
+            .avantages-title { font-size: 1.1rem; margin-bottom: 20px; }
+            .avantages-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+            .avantage-card {
+                padding: 16px 12px;
+                border-radius: 14px;
+                aspect-ratio: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            .avantage-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 10px;
+                margin-bottom: 10px;
+            }
+            .avantage-icon svg { width: 20px; height: 20px; }
+            .avantage-card h4 { font-size: 0.8rem; margin-bottom: 4px; }
+            .avantage-card p { font-size: 0.68rem; line-height: 1.3; }
+
+            .main-section { padding: 30px 16px; }
+            .main-grid { grid-template-columns: 1fr; gap: 20px; }
+            .left-column { gap: 16px; }
+
+            .dirigeant-section { padding: 24px; border-radius: 20px; }
+            .dirigeant-header { gap: 16px; margin-bottom: 20px; }
+            .dirigeant-photo { width: 70px; height: 70px; border-width: 3px; }
+            .dirigeant-info h3 { font-size: 1.2rem; }
+            .dirigeant-info p { font-size: 0.85rem; }
+            .dirigeant-info span { font-size: 0.75rem; }
+            .dirigeant-quote { padding: 16px; font-size: 0.88rem; border-radius: 12px; }
+            .coordonnees { margin-top: 20px; gap: 10px; }
+            .coordonnee-item { font-size: 0.82rem; gap: 10px; }
+            .coordonnee-item svg { width: 16px; height: 16px; }
+
+            .entreprise-section { display: none; }
+
+            .contact-options { gap: 16px; }
+
+            /* Calendly - badge repositionné */
+            .option-calendly {
+                padding: 24px;
+                padding-top: 50px;
+                border-radius: 20px;
+                position: relative;
+            }
+            .calendly-badge {
+                position: absolute;
+                top: 14px;
+                right: 14px;
+                padding: 5px 10px;
+                font-size: 0.65rem;
+            }
+            .calendly-badge svg { width: 14px; height: 14px; }
+            .option-calendly .option-header { gap: 12px; margin-bottom: 12px; }
+            .option-calendly .option-icon { width: 44px; height: 44px; border-radius: 12px; }
+            .option-calendly .option-icon svg { width: 22px; height: 22px; }
+            .option-calendly h3 { font-size: 1.1rem; }
+            .option-calendly > p { font-size: 0.85rem; margin-bottom: 16px; }
+            .btn-white { padding: 14px 20px; font-size: 0.9rem; border-radius: 12px; }
+
+            .option-form { padding: 24px; border-radius: 20px; }
+            .option-form .option-header { gap: 12px; margin-bottom: 16px; }
+            .option-form .option-icon { width: 44px; height: 44px; border-radius: 12px; }
+            .option-form .option-icon svg { width: 22px; height: 22px; }
+            .option-form h3 { font-size: 1.05rem; }
+            .option-form .subtitle { font-size: 0.8rem; }
+            .form-grid { grid-template-columns: 1fr; gap: 10px; }
             .form-grid .full { grid-column: 1; }
-            .trust-container { gap: 20px; }
-            .trust-item { font-size: 0.8rem; }
+            .form-grid input, .form-grid select { padding: 12px 14px; font-size: 0.88rem; border-radius: 10px; }
+            .btn-pink { padding: 14px 20px; font-size: 0.9rem; border-radius: 12px; }
+
+            .option-call {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px;
+                border-radius: 20px;
+                gap: 16px;
+            }
+            .option-call-left { flex-direction: column; gap: 12px; }
+            .option-call .option-icon { width: 44px; height: 44px; border-radius: 12px; }
+            .option-call .option-icon svg { width: 22px; height: 22px; }
+            .option-call h3 { font-size: 1rem; }
+            .option-call p { font-size: 0.8rem; }
+            .btn-white-outline { padding: 12px 24px; font-size: 0.9rem; border-radius: 12px; }
+
+            .testimonials-section { padding: 30px 16px; margin-top: 20px; }
+            .testimonials-title { font-size: 1.2rem; margin-bottom: 20px; }
+            .testimonials-grid { grid-template-columns: 1fr; gap: 16px; }
+            .testimonial-card { padding: 20px; border-radius: 16px; }
+            .testimonial-quote { font-size: 0.85rem; margin-bottom: 12px; }
+            .testimonial-author img { width: 38px; height: 38px; }
+            .testimonial-author-info span { font-size: 0.85rem; }
+            .testimonial-author-info small { font-size: 0.7rem; }
+
+            /* Trust badges - grille 2x2 compacte */
+            .trust-section { padding: 20px 16px; }
+            .trust-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px 16px;
+            }
+            .trust-item {
+                flex-direction: column;
+                font-size: 0.7rem;
+                gap: 6px;
+                text-align: center;
+            }
+            .trust-item svg { width: 22px; height: 22px; }
+
+            /* Footer mobile */
+            footer { padding: 20px 16px !important; }
+            footer p { font-size: 0.8rem !important; }
+            footer div > div { gap: 16px !important; }
+            footer div > div a { font-size: 0.75rem !important; }
         }
         @media (max-width: 480px) {
-            .avantages-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 1.7rem; }
+            /* Avantages carrés conservés sur petit écran */
+            .avantages-grid { grid-template-columns: 1fr 1fr; }
+            .avantage-card { aspect-ratio: 1; }
+
+            .hero h1 { font-size: 1.5rem; }
+            .hero p { font-size: 0.9rem; }
+
+            /* Trust badges - reste 2x2 */
+            .trust-container { gap: 10px 12px; }
+            .trust-item { font-size: 0.65rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <a href="index.html"><img src="assets/images/logo-flo.png" alt="FLO"></a>
-        <a href="index.html">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            Retour à l'accueil
-        </a>
+    <!-- ============================================ -->
+    <!-- HEADER DESKTOP -->
+    <!-- ============================================ -->
+    <header class="header desktop-only" id="header-desktop">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/images/logo-flo.png" alt="FLO" style="height: 46px; width: auto; border-radius: 10px;">
+                </a>
+
+                <ul class="nav__menu nav__menu--centered">
+                    <li><a href="solutions.html" class="nav__link">Solutions métiers</a></li>
+                    <li><a href="accompagnement.html" class="nav__link">Accompagnement</a></li>
+                    <li><a href="equipe.html" class="nav__link">L'équipe</a></li>
+                    <li><a href="demo.html" class="nav__link">Contact</a></li>
+                </ul>
+
+                <a href="demo.html" class="btn btn--primary btn--cta-pulse"><span>Tester FLO</span></a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ============================================ -->
+    <!-- HEADER MOBILE -->
+    <!-- ============================================ -->
+    <header class="header-mobile mobile-only" id="header-mobile">
+        <div class="header-mobile__bar">
+            <a href="index.html" class="header-mobile__logo">
+                <img src="assets/images/logo-flo.png" alt="FLO" style="height: 40px; width: auto; border-radius: 8px;">
+            </a>
+            <div class="header-mobile__actions">
+                <a href="demo.html" class="header-mobile__cta">Tester FLO</a>
+                <button class="header-mobile__burger" id="mobile-burger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Overlay -->
+        <nav class="header-mobile__menu" id="mobile-menu">
+            <div class="header-mobile__menu-links">
+                <a href="solutions.html" class="header-mobile__link">Solutions métiers</a>
+                <a href="accompagnement.html" class="header-mobile__link">Accompagnement</a>
+                <a href="equipe.html" class="header-mobile__link">L'équipe</a>
+                <a href="demo.html" class="header-mobile__link">Contact</a>
+            </div>
+            <div class="header-mobile__menu-separator"></div>
+            <div class="header-mobile__menu-contact">
+                <p>Une question ?</p>
+                <a href="tel:+33180835210" class="header-mobile__phone">01 80 83 52 10</a>
+            </div>
+        </nav>
     </header>
 
     <!-- Hero -->
@@ -593,7 +1128,7 @@
     <!-- Avantages - Bloc sombre -->
     <section class="avantages-section">
         <div class="avantages-container">
-            <h2 class="avantages-title">Ce que vous obtiendrez</h2>
+            <h2 class="avantages-title">Votre prise de contact inclut</h2>
             <div class="avantages-grid">
                 <div class="avantage-card">
                     <div class="avantage-icon">
@@ -630,7 +1165,8 @@
     <!-- Section principale -->
     <section class="main-section">
         <div class="main-grid">
-            <!-- Gauche - Dirigeant -->
+            <!-- Gauche - Dirigeant + Entreprise -->
+            <div class="left-column">
             <div class="dirigeant-section">
                 <div class="dirigeant-header">
                     <img src="assets/images/tanguy.webp" alt="Tanguy Martin" class="dirigeant-photo">
@@ -644,25 +1180,61 @@
                     "Je prends le temps d'écouter vos défis pour vous proposer une solution vraiment adaptée. Chaque entreprise est unique."
                 </div>
                 <div class="coordonnees">
-                    <a href="mailto:tanguy@flo.fr" class="coordonnee-item">
+                    <a href="mailto:contact@ikno.fr" class="coordonnee-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        tanguy@flo.fr
+                        contact@ikno.fr
                     </a>
                     <a href="tel:+33180835210" class="coordonnee-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                         01 80 83 52 10
                     </a>
-                    <a href="#" class="coordonnee-item">
+                    <a href="https://maps.google.com/?q=2+Rue+Croix+Castel+78600+Maisons-Laffitte" target="_blank" class="coordonnee-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        Maisons-Laffitte, France
+                        2 Rue Croix Castel, 78600 Maisons-Laffitte
                     </a>
                 </div>
+            </div>
+
+            <!-- Bloc Entreprise + Map -->
+            <div class="entreprise-section">
+                <div class="entreprise-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2619.8!2d2.1380!3d48.9470!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e6635c0b0b0b0b%3A0x0!2s2+Rue+Croix+Castel%2C+78600+Maisons-Laffitte!5e0!3m2!1sfr!2sfr!4v1" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="entreprise-info">
+                    <h4>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        Nos bureaux
+                    </h4>
+                    <div class="entreprise-details">
+                        <div class="entreprise-detail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span>2 Rue Croix Castel, 78600 Maisons-Laffitte</span>
+                        </div>
+                        <div class="entreprise-detail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            <span>Lun - Ven : 9h00 - 18h00</span>
+                        </div>
+                        <div class="entreprise-detail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            <span>contact@ikno.fr</span>
+                        </div>
+                        <div class="entreprise-detail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
+                            <span>01 80 83 52 10</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
 
             <!-- Droite - Options contact -->
             <div class="contact-options">
                 <!-- Calendly -->
                 <div class="option-calendly">
+                    <div class="calendly-badge">
+                        <svg viewBox="0 0 24 24" fill="#006bff"><path d="M19.5 3h-15A1.5 1.5 0 003 4.5v15A1.5 1.5 0 004.5 21h15a1.5 1.5 0 001.5-1.5v-15A1.5 1.5 0 0019.5 3zm-9.75 12.75a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5zm6 0a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5z"/></svg>
+                        Calendly
+                    </div>
                     <div class="option-header">
                         <div class="option-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
@@ -687,17 +1259,17 @@
                             <p class="subtitle">Réponse sous 24h</p>
                         </div>
                     </div>
-                    <form class="form-grid">
-                        <input type="text" placeholder="Prénom" required>
-                        <input type="text" placeholder="Nom" required>
-                        <input type="email" placeholder="Email professionnel" required class="full">
-                        <input type="tel" placeholder="Téléphone">
-                        <select required>
+                    <form class="form-grid" id="contact-form" action="#" method="POST">
+                        <input type="text" id="firstname" name="firstname" placeholder="Prénom" aria-label="Prénom" required>
+                        <input type="text" id="lastname" name="lastname" placeholder="Nom" aria-label="Nom" required>
+                        <input type="email" id="email" name="email" placeholder="Email professionnel" aria-label="Email professionnel" required class="full">
+                        <input type="tel" id="phone" name="phone" placeholder="Téléphone" aria-label="Téléphone">
+                        <select id="company-size" name="company_size" aria-label="Taille entreprise" required>
                             <option value="">Taille entreprise</option>
-                            <option>1-10 employés</option>
-                            <option>11-50 employés</option>
-                            <option>51-200 employés</option>
-                            <option>200+ employés</option>
+                            <option value="1-10">1-10 employés</option>
+                            <option value="11-50">11-50 employés</option>
+                            <option value="51-200">51-200 employés</option>
+                            <option value="200+">200+ employés</option>
                         </select>
                         <button type="submit" class="btn-pink full">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
@@ -794,12 +1366,12 @@
                 <span>RGPD Compliant</span>
             </div>
             <div class="trust-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                <span>+500 entreprises</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 7v1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7m0 1a3 3 0 0 0 6 0V7H3l2-4h14l2 4M5 21V10.9M19 21V10.9"/></svg>
+                <span>100% Français</span>
             </div>
             <div class="trust-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <span>4.9/5 satisfaction</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span>+500 entreprises</span>
             </div>
             <div class="trust-item">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -807,5 +1379,129 @@
             </div>
         </div>
     </section>
+
+    <!-- Footer légal -->
+    <footer style="background: #0f001a; padding: 20px 40px; text-align: center;">
+        <div style="max-width: 1100px; margin: 0 auto;">
+            <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-bottom: 10px;">
+                FLO est édité par <strong style="color: rgba(255,255,255,0.7);">IKNO SAS</strong> - 2 Rue Croix Castel, 78600 Maisons-Laffitte
+            </p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="legal.html" style="color: rgba(255,255,255,0.5); font-size: 0.75rem; text-decoration: none;">Mentions légales</a>
+                <a href="privacy.html" style="color: rgba(255,255,255,0.5); font-size: 0.75rem; text-decoration: none;">Politique de confidentialité</a>
+                <a href="cookies.html" style="color: rgba(255,255,255,0.5); font-size: 0.75rem; text-decoration: none;">Cookies</a>
+            </div>
+            <p style="color: rgba(255,255,255,0.3); font-size: 0.7rem; margin-top: 15px;">© 2025 IKNO SAS - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Menu Mobile -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBurger = document.getElementById('mobile-burger');
+
+        if (mobileBurger && mobileMenu) {
+            mobileBurger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('.header-mobile__link');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileBurger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+        }
+    </script>
+
+    <!-- Script pour header collapse au scroll -->
+    <script>
+        (function() {
+            const header = document.getElementById('header-desktop');
+            if (!header) return;
+
+            const SCROLL_THRESHOLD = 100;
+            const CLOSE_DELAY = 1000;
+            const MOBILE_BREAKPOINT = 900;
+
+            let isMouseOver = false;
+            let closeTimeout = null;
+            let lastScrollY = 0;
+
+            function isMobile() {
+                return window.innerWidth <= MOBILE_BREAKPOINT;
+            }
+
+            function closeMenu() {
+                if (!isMouseOver) {
+                    header.classList.remove('expanded');
+                }
+            }
+
+            function openMenu() {
+                clearTimeout(closeTimeout);
+                header.classList.add('expanded');
+            }
+
+            window.addEventListener('scroll', function() {
+                if (isMobile()) {
+                    header.classList.remove('collapsed');
+                    header.classList.remove('expanded');
+                    return;
+                }
+
+                const currentScroll = window.pageYOffset;
+
+                if (currentScroll > SCROLL_THRESHOLD) {
+                    if (!header.classList.contains('collapsed')) {
+                        header.classList.add('collapsed');
+                    }
+
+                    if (header.classList.contains('expanded') && !isMouseOver) {
+                        header.classList.remove('expanded');
+                    }
+                } else {
+                    header.classList.remove('collapsed');
+                    header.classList.remove('expanded');
+                }
+
+                lastScrollY = currentScroll;
+            });
+
+            header.addEventListener('mouseenter', function() {
+                if (isMobile()) return;
+
+                isMouseOver = true;
+                clearTimeout(closeTimeout);
+
+                if (header.classList.contains('collapsed')) {
+                    openMenu();
+                }
+            });
+
+            header.addEventListener('mouseleave', function() {
+                if (isMobile()) return;
+
+                isMouseOver = false;
+                closeTimeout = setTimeout(closeMenu, CLOSE_DELAY);
+            });
+
+            header.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() {
+                    if (isMobile()) return;
+                    setTimeout(function() {
+                        isMouseOver = false;
+                        closeMenu();
+                    }, 100);
+                });
+            });
+        })();
+    </script>
 </body>
 </html>

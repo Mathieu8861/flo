@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales - FLO</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-flo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #E5D5FF;
+            min-height: 100vh;
+            color: #1a0033;
+        }
+
+        .header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-radius: 16px;
+            border: 1px solid rgba(128, 0, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(128, 0, 255, 0.08);
+        }
+        .header img { height: 48px; border-radius: 10px; }
+        .header a { color: #8000ff; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .header a:hover { opacity: 0.8; }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 140px 40px 80px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #8000ff, #ff3f9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .last-update {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(128, 0, 255, 0.08);
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #8000ff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h2 svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .section p, .section li {
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section li {
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: #ff3f9b;
+            border-radius: 50%;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.08), rgba(255, 63, 155, 0.05));
+            border-left: 4px solid #8000ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .info-box strong {
+            color: #8000ff;
+        }
+
+        a.link {
+            color: #ff3f9b;
+            text-decoration: none;
+        }
+
+        a.link:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #1a0033;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ff3f9b;
+        }
+
+        @media (max-width: 900px) {
+            .header {
+                top: 0;
+                left: 0;
+                right: 0;
+                transform: none;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0;
+                padding: 12px 20px;
+            }
+            .header img { height: 40px; }
+            .header a:last-child { font-size: 0.85rem; }
+            .header a:last-child span { display: none; }
+            .content { padding: 80px 16px 40px; }
+            h1 { font-size: 1.6rem; }
+            .last-update { font-size: 0.8rem; margin-bottom: 24px; }
+            .section {
+                padding: 20px;
+                border-radius: 16px;
+                margin-bottom: 16px;
+            }
+            .section h2 {
+                font-size: 1.1rem;
+                margin-bottom: 16px;
+                flex-wrap: wrap;
+            }
+            .section h2 svg { width: 20px; height: 20px; }
+            .section p, .section li { font-size: 0.88rem; line-height: 1.6; }
+            .info-box { padding: 16px; margin: 16px 0; }
+            .info-box p { font-size: 0.85rem; }
+            .footer { padding: 24px 20px; }
+            .footer p { font-size: 0.75rem; }
+            .footer-links { gap: 16px; flex-wrap: wrap; }
+            .footer-links a { font-size: 0.7rem; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html"><img src="assets/images/logo-flo.png" alt="FLO"></a>
+        <a href="index.html">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <span>Retour à l'accueil</span>
+        </a>
+    </header>
+
+    <main class="content">
+        <h1>Mentions Légales</h1>
+        <p class="last-update">Dernière mise à jour : 21 décembre 2025</p>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                Éditeur du site
+            </h2>
+            <p>Le site FLO est édité par :</p>
+            <div class="info-box">
+                <p><strong>IKNO SAS</strong></p>
+                <p>Société par Actions Simplifiée au capital de 315 000 €</p>
+                <p>Siège social : 2 Rue Croix Castel, 78600 Maisons-Laffitte, France</p>
+                <p>SIRET : 523 389 278 00038</p>
+                <p>N° TVA Intracommunautaire : FR37523389278</p>
+                <p>Directeur de la publication : Hervé Chapelle</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Contact
+            </h2>
+            <ul>
+                <li><strong>Téléphone :</strong> +33 1 80 83 52 10</li>
+                <li><strong>Email :</strong> <a href="mailto:contact@ikno.fr" class="link">contact@ikno.fr</a></li>
+                <li><strong>Email DPO (protection des données) :</strong> <a href="mailto:rgpd@ikno.fr" class="link">rgpd@ikno.fr</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                Hébergement
+            </h2>
+            <p>Ce site est hébergé par :</p>
+            <div class="info-box">
+                <p><strong>Google Cloud</strong></p>
+                <p>Google LLC</p>
+                <p>8 Rue de Londres, 75009 Paris, France</p>
+                <p>Site web : <a href="https://cloud.google.com" target="_blank" class="link">https://cloud.google.com</a></p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                Propriété intellectuelle
+            </h2>
+            <p>L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, logiciels, etc.) est la propriété exclusive d'IKNO SAS ou de ses partenaires et est protégé par les lois françaises et internationales relatives à la propriété intellectuelle.</p>
+            <p>Toute reproduction, représentation, modification, publication, transmission ou dénaturation, totale ou partielle du site ou de son contenu, par quelque procédé que ce soit, et sur quelque support que ce soit est interdite sans l'autorisation écrite préalable d'IKNO SAS.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Protection des données personnelles
+            </h2>
+            <p>Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition aux données personnelles vous concernant.</p>
+            <p>Pour exercer ces droits ou pour toute question relative à la protection de vos données, vous pouvez contacter notre Délégué à la Protection des Données (DPO) à l'adresse : <a href="mailto:rgpd@ikno.fr" class="link">rgpd@ikno.fr</a></p>
+            <p>Pour plus d'informations, consultez notre <a href="privacy.html" class="link">Politique de confidentialité</a>.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Cookies
+            </h2>
+            <p>Ce site utilise des cookies pour améliorer l'expérience utilisateur et analyser le trafic. Pour en savoir plus sur notre utilisation des cookies et gérer vos préférences, consultez notre <a href="cookies.html" class="link">Politique des cookies</a>.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                Droit applicable
+            </h2>
+            <p>Les présentes mentions légales sont soumises au droit français. En cas de litige, les tribunaux français seront seuls compétents.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>FLO est édité par <strong>IKNO SAS</strong> - 2 Rue Croix Castel, 78600 Maisons-Laffitte</p>
+        <div class="footer-links">
+            <a href="legal.html">Mentions légales</a>
+            <a href="privacy.html">Confidentialité</a>
+            <a href="cookies.html">Cookies</a>
+        </div>
+    </footer>
+</body>
+</html>

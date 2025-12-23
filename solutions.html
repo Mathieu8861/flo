@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions Métiers - FLO</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-flo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #E5D5FF;
+            min-height: 100vh;
+            color: #1a0033;
+        }
+
+        /* Variables CSS */
+        :root {
+            --spacing-sm: 8px;
+            --spacing-lg: 24px;
+        }
+
+        /* Classes desktop/mobile */
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+        @media (max-width: 900px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+        }
+
+        /* Header Desktop */
+        .header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            background: rgba(128, 0, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            z-index: 100;
+            border-radius: 16px;
+            border: 1px solid rgba(128, 0, 255, 0.1);
+            transition: all 0.5s ease;
+        }
+        .header .container { max-width: 1200px; margin: 0 auto; }
+        .header .nav { display: flex; align-items: center; justify-content: space-between; position: relative; }
+        .header .nav__logo img { height: 46px; width: auto; border-radius: 10px; }
+        .header .nav__menu {
+            display: flex; list-style: none; gap: 32px; margin: 0; padding: 0;
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+        .header .nav__link {
+            color: #1a0033; text-decoration: none; font-weight: 500; font-size: 0.95rem;
+            transition: color 0.3s; position: relative; padding-bottom: 4px;
+        }
+        .header .nav__link:hover { color: #8000ff; }
+        .header .nav__link::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: #ff3f9b; transition: width 0.3s ease;
+        }
+        .header .nav__link:hover::after { width: 100%; }
+        .header .btn--primary {
+            background: linear-gradient(135deg, #ff703d 0%, #ff3f9b 100%);
+            color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none;
+            font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center;
+            box-shadow: 0 4px 12px rgba(255, 112, 61, 0.3); transition: all 0.3s;
+        }
+        .header .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 112, 61, 0.4); }
+        .btn--cta-pulse { animation: pulse 2s infinite; }
+        .btn--cta-pulse:hover { animation: none; transform: scale(1.05); }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(255, 112, 61, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0); }
+        }
+
+        /* Header Desktop Collapse */
+        .header.collapsed { max-width: 72px; width: 72px; height: 72px; left: calc(50% - 600px - 88px); transform: translateX(0); }
+        .header.collapsed .nav__logo img { height: 40px; }
+        .header.collapsed .container { padding: 0; display: flex; justify-content: center; align-items: center; height: 100%; }
+        .header.collapsed .nav { justify-content: center; padding: 0; height: 100%; }
+        .header.collapsed .nav__logo { margin: 0; display: flex; align-items: center; justify-content: center; }
+        .header.collapsed .nav__menu, .header.collapsed .btn--primary { display: none; }
+        .header.collapsed.expanded .nav__menu { display: flex; opacity: 1; visibility: visible; }
+        .header.collapsed.expanded .btn--primary { display: inline-flex; opacity: 1; visibility: visible; }
+        .header.collapsed.expanded {
+            left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 1200px;
+            height: auto; background: rgba(248, 245, 255, 0.95); backdrop-filter: blur(8px);
+        }
+        .header.collapsed.expanded .container { padding: 0 var(--spacing-lg); display: block; }
+        .header.collapsed.expanded .nav { justify-content: space-between; padding: var(--spacing-sm) 0; }
+        @media screen and (min-width: 901px) and (max-width: 1400px) { .header.collapsed { left: 20px; } }
+
+        /* Header Mobile */
+        .header-mobile {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(128, 0, 255, 0.1);
+        }
+        .header-mobile__bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; }
+        .header-mobile__logo img { height: 40px; width: auto; border-radius: 8px; }
+        .header-mobile__actions { display: flex; align-items: center; gap: 12px; }
+        .header-mobile__cta {
+            background: linear-gradient(135deg, #ff703d, #ff3f9b); color: white;
+            padding: 8px 16px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.8rem;
+        }
+        .header-mobile__burger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+        .header-mobile__burger span { display: block; width: 24px; height: 3px; border-radius: 2px; transition: all 0.3s; }
+        .header-mobile__burger span:nth-child(1) { background: #8000ff; }
+        .header-mobile__burger span:nth-child(2) { background: #ff3f9b; width: 18px; }
+        .header-mobile__burger span:nth-child(3) { background: #ff703d; }
+        .header-mobile__burger.active span:nth-child(1) { transform: rotate(45deg) translateY(11px); }
+        .header-mobile__burger.active span:nth-child(2) { opacity: 0; }
+        .header-mobile__burger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-11px); }
+
+        /* Menu Mobile Overlay */
+        .header-mobile__menu {
+            position: absolute; top: 100%; left: 0; right: 0; height: calc(100vh - 64px);
+            background-color: #ffffff; padding: 20px; transform: translateX(100%);
+            transition: transform 0.3s ease; overflow-y: auto;
+        }
+        .header-mobile__menu.active { transform: translateX(0); }
+        .header-mobile__menu-links { display: flex; flex-direction: column; gap: 12px; }
+        .header-mobile__link {
+            display: block; padding: 18px 24px; color: #1a0033; text-decoration: none;
+            font-weight: 600; font-size: 1.05rem;
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.12), rgba(255, 63, 155, 0.08));
+            border-radius: 16px; border-left: 4px solid #8000ff; transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(128, 0, 255, 0.08);
+        }
+        .header-mobile__link:nth-of-type(2) { background: linear-gradient(135deg, rgba(255, 63, 155, 0.12), rgba(255, 112, 61, 0.08)); border-left-color: #ff3f9b; }
+        .header-mobile__link:nth-of-type(3) { background: linear-gradient(135deg, rgba(255, 112, 61, 0.12), rgba(255, 200, 61, 0.08)); border-left-color: #ff703d; }
+        .header-mobile__link:nth-of-type(4) { background: linear-gradient(135deg, rgba(128, 0, 255, 0.08), rgba(255, 63, 155, 0.12)); border-left-color: #a64dff; }
+        .header-mobile__link:active { transform: scale(0.98); }
+        .header-mobile__menu-separator { height: 1px; background: rgba(128, 0, 255, 0.1); margin: 20px 0; }
+        .header-mobile__menu-contact p { color: #666; font-size: 0.9rem; margin-bottom: 8px; }
+        .header-mobile__phone { color: #8000ff; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+        body.menu-open { overflow: hidden; }
+
+        /* Hero */
+        .hero {
+            padding: 160px 40px 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #8000ff, #ff3f9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #1a0033;
+            opacity: 0.7;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Navigation métiers */
+        .solutions-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 40px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .solutions-nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 22px;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a0033;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            box-shadow: 0 2px 12px rgba(128, 0, 255, 0.1);
+        }
+        .solutions-nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(128, 0, 255, 0.18);
+        }
+        .solutions-nav-btn.active {
+            background: #8000ff;
+            color: white;
+            box-shadow: 0 6px 20px rgba(128, 0, 255, 0.3);
+        }
+        .solutions-nav-btn svg {
+            width: 18px;
+            height: 18px;
+        }
+        .solutions-nav-btn:nth-child(2).active { background: #ff3f9b; box-shadow: 0 6px 20px rgba(255, 63, 155, 0.3); }
+        .solutions-nav-btn:nth-child(3).active { background: #ff703d; box-shadow: 0 6px 20px rgba(255, 112, 61, 0.3); }
+        .solutions-nav-btn:nth-child(4).active { background: #8000ff; }
+
+        /* Solutions Grid */
+        .solutions {
+            padding: 0 40px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .solution-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 60px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(128, 0, 255, 0.08);
+        }
+        .solution-card:nth-child(even) {
+            direction: rtl;
+        }
+        .solution-card:nth-child(even) > * {
+            direction: ltr;
+        }
+        .solution-image {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .solution-card:nth-child(1) .solution-image { background: linear-gradient(135deg, #8000ff, #a64dff); }
+        .solution-card:nth-child(2) .solution-image { background: linear-gradient(135deg, #ff3f9b, #ff6bb3); }
+        .solution-card:nth-child(3) .solution-image { background: linear-gradient(135deg, #ff703d, #ff8f66); }
+        .solution-card:nth-child(4) .solution-image { background: linear-gradient(135deg, #8000ff, #ff3f9b); }
+        .solution-image svg {
+            width: 150px;
+            height: 150px;
+            color: white;
+            opacity: 0.9;
+        }
+        .solution-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .solution-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .solution-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            width: fit-content;
+        }
+        .solution-card:nth-child(1) .solution-badge { background: rgba(128, 0, 255, 0.1); color: #8000ff; }
+        .solution-card:nth-child(2) .solution-badge { background: rgba(255, 63, 155, 0.1); color: #ff3f9b; }
+        .solution-card:nth-child(3) .solution-badge { background: rgba(255, 112, 61, 0.1); color: #ff703d; }
+        .solution-card:nth-child(4) .solution-badge { background: rgba(128, 0, 255, 0.1); color: #8000ff; }
+        .solution-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 16px;
+        }
+        .solution-content > p {
+            color: #1a0033;
+            opacity: 0.7;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+        .solution-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+        .solution-feature {
+            padding: 10px 18px;
+            background: #E5D5FF;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: #1a0033;
+            font-weight: 500;
+        }
+        .solution-benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .solution-benefit {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: #1a0033;
+        }
+        .solution-benefit svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .solution-card:nth-child(1) .solution-benefit svg { color: #8000ff; }
+        .solution-card:nth-child(2) .solution-benefit svg { color: #ff3f9b; }
+        .solution-card:nth-child(3) .solution-benefit svg { color: #ff703d; }
+        .solution-card:nth-child(4) .solution-benefit svg { color: #8000ff; }
+        .btn-solution {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            width: fit-content;
+        }
+        .solution-card:nth-child(1) .btn-solution { background: #8000ff; color: white; }
+        .solution-card:nth-child(2) .btn-solution { background: #ff3f9b; color: white; }
+        .solution-card:nth-child(3) .btn-solution { background: #ff703d; color: white; }
+        .solution-card:nth-child(4) .btn-solution { background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; }
+        .btn-solution:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Features Section */
+        .features-section {
+            background: #1a0033;
+            padding: 70px 40px;
+            margin: 0 20px;
+            border-radius: 30px;
+        }
+        .features-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .features-title {
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.12);
+            transform: translateY(-4px);
+        }
+        .feature-card:nth-child(1) { border-top: 3px solid #8000ff; }
+        .feature-card:nth-child(2) { border-top: 3px solid #ff3f9b; }
+        .feature-card:nth-child(3) { border-top: 3px solid #ff703d; }
+        .feature-card:nth-child(4) { border-top: 3px solid #8000ff; }
+        .feature-card:nth-child(5) { border-top: 3px solid #ff3f9b; }
+        .feature-card:nth-child(6) { border-top: 3px solid #ff703d; }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-card:nth-child(1) .feature-icon { background: linear-gradient(135deg, #8000ff, #a64dff); }
+        .feature-card:nth-child(2) .feature-icon { background: linear-gradient(135deg, #ff3f9b, #ff6bb3); }
+        .feature-card:nth-child(3) .feature-icon { background: linear-gradient(135deg, #ff703d, #ff8f66); }
+        .feature-card:nth-child(4) .feature-icon { background: linear-gradient(135deg, #8000ff, #ff3f9b); }
+        .feature-card:nth-child(5) .feature-icon { background: linear-gradient(135deg, #ff3f9b, #ff703d); }
+        .feature-card:nth-child(6) .feature-icon { background: linear-gradient(135deg, #ff703d, #8000ff); }
+        .feature-icon svg { width: 28px; height: 28px; color: white; }
+        .feature-card h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 40px;
+            text-align: center;
+        }
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            padding: 60px;
+            box-shadow: 0 12px 40px rgba(128, 0, 255, 0.1);
+        }
+        .cta-box h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 16px;
+        }
+        .cta-box p {
+            color: #1a0033;
+            opacity: 0.7;
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 18px 36px;
+            background: linear-gradient(135deg, #8000ff, #ff3f9b);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(128, 0, 255, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(128, 0, 255, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a0033;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #ff3f9b;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero { padding: 100px 20px 50px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+
+            .solutions-nav {
+                padding: 0 16px 20px;
+                gap: 8px;
+                position: sticky;
+                top: 64px;
+                background: #E5D5FF;
+                z-index: 50;
+                padding-top: 12px;
+            }
+            .solutions-nav-btn {
+                padding: 8px 14px;
+                font-size: 0.75rem;
+                gap: 5px;
+                border: none;
+                background: white;
+                box-shadow: 0 2px 8px rgba(128, 0, 255, 0.1);
+            }
+            .solutions-nav-btn:hover {
+                border: none;
+                box-shadow: 0 4px 12px rgba(128, 0, 255, 0.15);
+            }
+            .solutions-nav-btn svg { width: 14px; height: 14px; }
+            .solutions-nav-btn.active {
+                background: #8000ff;
+                color: white;
+                box-shadow: 0 4px 12px rgba(128, 0, 255, 0.3);
+            }
+            .solutions-nav-btn:nth-child(2).active { background: #ff3f9b; box-shadow: 0 4px 12px rgba(255, 63, 155, 0.3); }
+            .solutions-nav-btn:nth-child(3).active { background: #ff703d; box-shadow: 0 4px 12px rgba(255, 112, 61, 0.3); }
+            .solutions-nav-btn:nth-child(4).active { background: #8000ff; }
+
+            .solutions { padding: 0 16px 50px; }
+            .solution-card {
+                grid-template-columns: 1fr;
+                margin-bottom: 24px;
+                border-radius: 24px;
+            }
+            .solution-card:nth-child(even) { direction: ltr; }
+            .solution-image {
+                min-height: 200px;
+                order: -1;
+            }
+            .solution-image svg { width: 80px; height: 80px; }
+            .solution-content { padding: 28px 24px 36px; }
+            .solution-badge { font-size: 0.7rem; padding: 5px 12px; }
+            .solution-content h2 { font-size: 1.5rem; margin-bottom: 12px; }
+            .solution-content > p { font-size: 0.9rem; margin-bottom: 20px; }
+            .solution-features { gap: 8px; margin-bottom: 20px; }
+            .solution-feature { padding: 8px 14px; font-size: 0.8rem; }
+            .solution-benefits { gap: 10px; margin-bottom: 24px; }
+            .solution-benefit { font-size: 0.88rem; }
+            .btn-solution { padding: 12px 24px; font-size: 0.9rem; width: 100%; justify-content: center; }
+
+            .features-section { margin: 0 10px; padding: 50px 20px; border-radius: 24px; }
+            .features-title { font-size: 1.5rem; margin-bottom: 30px; }
+            .features-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .feature-card { padding: 24px 16px; }
+            .feature-icon { width: 50px; height: 50px; margin-bottom: 14px; }
+            .feature-icon svg { width: 24px; height: 24px; }
+            .feature-card h3 { font-size: 0.95rem; }
+            .feature-card p { font-size: 0.8rem; }
+
+            .cta-section { padding: 50px 20px; }
+            .cta-box { padding: 36px 24px; border-radius: 24px; }
+            .cta-box h2 { font-size: 1.5rem; }
+            .cta-box p { font-size: 0.95rem; }
+            .btn-primary { width: 100%; justify-content: center; padding: 16px 28px; font-size: 1rem; }
+
+            .footer { padding: 24px 20px; }
+            .footer p { font-size: 0.8rem; }
+            .footer-links { gap: 16px; flex-wrap: wrap; }
+            .footer-links a { font-size: 0.75rem; }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Desktop -->
+    <header class="header desktop-only" id="header-desktop">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/images/logo-flo.png" alt="FLO">
+                </a>
+                <ul class="nav__menu">
+                    <li><a href="solutions.html" class="nav__link">Solutions métiers</a></li>
+                    <li><a href="accompagnement.html" class="nav__link">Accompagnement</a></li>
+                    <li><a href="equipe.html" class="nav__link">L'équipe</a></li>
+                    <li><a href="demo.html" class="nav__link">Contact</a></li>
+                </ul>
+                <a href="demo.html" class="btn--primary btn--cta-pulse">Tester FLO</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Header Mobile -->
+    <header class="header-mobile mobile-only" id="header-mobile">
+        <div class="header-mobile__bar">
+            <a href="index.html" class="header-mobile__logo">
+                <img src="assets/images/logo-flo.png" alt="FLO">
+            </a>
+            <div class="header-mobile__actions">
+                <a href="demo.html" class="header-mobile__cta">Tester FLO</a>
+                <button class="header-mobile__burger" id="mobile-burger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="header-mobile__menu" id="mobile-menu">
+            <div class="header-mobile__menu-links">
+                <a href="solutions.html" class="header-mobile__link">Solutions métiers</a>
+                <a href="accompagnement.html" class="header-mobile__link">Accompagnement</a>
+                <a href="equipe.html" class="header-mobile__link">L'équipe</a>
+                <a href="demo.html" class="header-mobile__link">Contact</a>
+            </div>
+            <div class="header-mobile__menu-separator"></div>
+            <div class="header-mobile__menu-contact">
+                <p>Une question ?</p>
+                <a href="tel:+33180835210" class="header-mobile__phone">01 80 83 52 10</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>FLO s'adapte à <span>votre métier</span></h1>
+        <p>Chaque équipe a ses propres défis. Découvrez comment FLO transforme vos processus métier en workflows fluides et automatisés.</p>
+    </section>
+
+    <!-- Navigation métiers -->
+    <nav class="solutions-nav">
+        <a href="#rh" class="solutions-nav-btn active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            RH
+        </a>
+        <a href="#commercial" class="solutions-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/></svg>
+            Commercial
+        </a>
+        <a href="#support" class="solutions-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Support
+        </a>
+        <a href="#management" class="solutions-nav-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+            Management
+        </a>
+    </nav>
+
+    <!-- Solutions -->
+    <section class="solutions">
+        <!-- RH -->
+        <div class="solution-card" id="rh">
+            <div class="solution-image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <div class="solution-content">
+                <span class="solution-badge">Ressources Humaines</span>
+                <h2>Simplifiez votre quotidien RH</h2>
+                <p>Automatisez l'onboarding, centralisez les demandes administratives et offrez une expérience collaborateur fluide. FLO s'intègre à vos outils existants pour une gestion RH sans friction.</p>
+                <div class="solution-features">
+                    <span class="solution-feature">Onboarding</span>
+                    <span class="solution-feature">Recrutement</span>
+                    <span class="solution-feature">Formation</span>
+                    <span class="solution-feature">Suivi RH</span>
+                </div>
+                <div class="solution-benefits">
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Réduisez le temps d'onboarding de 70%</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Centralisez tous les documents collaborateur</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Automatisez les rappels et validations</span>
+                    </div>
+                </div>
+                <a href="demo.html" class="btn-solution">
+                    Découvrir la solution RH
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Commercial -->
+        <div class="solution-card" id="commercial">
+            <div class="solution-image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <div class="solution-content">
+                <span class="solution-badge">Équipe Commerciale</span>
+                <h2>Boostez votre pipeline de vente</h2>
+                <p>Structurez votre pipeline et suivez chaque opportunité en temps réel. Automatisez vos relances, centralisez vos devis et ne perdez plus jamais une affaire à cause d'un process mal défini.</p>
+                <div class="solution-features">
+                    <span class="solution-feature">Pipeline</span>
+                    <span class="solution-feature">Devis</span>
+                    <span class="solution-feature">Relances</span>
+                    <span class="solution-feature">CRM</span>
+                </div>
+                <div class="solution-benefits">
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Suivez chaque deal en temps réel</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Automatisez les relances intelligentes</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Générez des devis en quelques clics</span>
+                    </div>
+                </div>
+                <a href="demo.html" class="btn-solution">
+                    Découvrir la solution Commerciale
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Support -->
+        <div class="solution-card" id="support">
+            <div class="solution-image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="solution-content">
+                <span class="solution-badge">Support Client</span>
+                <h2>Améliorez la satisfaction client</h2>
+                <p>Centralisez les demandes, automatisez les réponses récurrentes et offrez un support cohérent. L'IA suggère les meilleures réponses basées sur votre historique.</p>
+                <div class="solution-features">
+                    <span class="solution-feature">Tickets</span>
+                    <span class="solution-feature">FAQ</span>
+                    <span class="solution-feature">Chatbot</span>
+                    <span class="solution-feature">Reporting</span>
+                </div>
+                <div class="solution-benefits">
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Réduisez le temps de réponse de 50%</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Suggestions IA pour des réponses cohérentes</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Historique client centralisé</span>
+                    </div>
+                </div>
+                <a href="demo.html" class="btn-solution">
+                    Découvrir la solution Support
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Management -->
+        <div class="solution-card" id="management">
+            <div class="solution-image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            </div>
+            <div class="solution-content">
+                <span class="solution-badge">Direction & Managers</span>
+                <h2>Pilotez votre organisation</h2>
+                <p>Pilotez votre équipe avec des dashboards clairs et des KPIs en temps réel. Identifiez les blocages, optimisez la charge de travail et prenez des décisions éclairées rapidement.</p>
+                <div class="solution-features">
+                    <span class="solution-feature">KPIs</span>
+                    <span class="solution-feature">Dashboards</span>
+                    <span class="solution-feature">Suivi équipe</span>
+                    <span class="solution-feature">Reporting</span>
+                </div>
+                <div class="solution-benefits">
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Visibilité globale sur tous les process</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Alertes automatiques sur les blocages</span>
+                    </div>
+                    <div class="solution-benefit">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Reporting automatisé et personnalisable</span>
+                    </div>
+                </div>
+                <a href="demo.html" class="btn-solution">
+                    Découvrir la solution Management
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <div class="features-container">
+            <h2 class="features-title">Fonctionnalités clés</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>IA intégrée</h3>
+                    <p>Suggestions intelligentes pour optimiser vos process</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+                    </div>
+                    <h3>No-code</h3>
+                    <p>Créez vos workflows sans aucune compétence technique</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>RGPD Compliant</h3>
+                    <p>Vos données sont protégées et hébergées en France</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+                    </div>
+                    <h3>Automatisation</h3>
+                    <p>Automatisez les tâches répétitives sans effort</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <h3>Intégrations</h3>
+                    <p>Connectez FLO à vos outils existants facilement</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <h3>Templates</h3>
+                    <p>Des modèles prêts à l'emploi pour démarrer vite</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Prêt à transformer vos processus ?</h2>
+            <p>Découvrez comment FLO peut s'adapter à votre métier lors d'une démo personnalisée de 30 minutes.</p>
+            <a href="demo.html" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Réserver ma démo gratuite
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>FLO est édité par <strong>IKNO SAS</strong> - 2 Rue Croix Castel, 78600 Maisons-Laffitte</p>
+        <div class="footer-links">
+            <a href="legal.html">Mentions légales</a>
+            <a href="privacy.html">Confidentialité</a>
+            <a href="cookies.html">Cookies</a>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation active state
+        const navBtns = document.querySelectorAll('.solutions-nav-btn');
+        const sections = document.querySelectorAll('.solution-card[id]');
+        let isClicking = false;
+
+        // Clic sur les boutons
+        navBtns.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                isClicking = true;
+                navBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                // Réactiver l'observer après le scroll
+                setTimeout(() => { isClicking = false; }, 1000);
+            });
+        });
+
+        // Scroll detection pour mettre à jour l'état actif
+        const observerOptions = {
+            root: null,
+            rootMargin: '-30% 0px -60% 0px',
+            threshold: 0
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            if (isClicking) return; // Ignorer pendant le scroll après clic
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    navBtns.forEach(btn => {
+                        btn.classList.remove('active');
+                        if (btn.getAttribute('href') === '#' + id) {
+                            btn.classList.add('active');
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+    </script>
+
+    <!-- JavaScript Menu Mobile -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBurger = document.getElementById('mobile-burger');
+        if (mobileBurger && mobileMenu) {
+            mobileBurger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            mobileMenu.querySelectorAll('.header-mobile__link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileBurger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+        }
+    </script>
+
+    <!-- Script Header Collapse -->
+    <script>
+        (function() {
+            const header = document.getElementById('header-desktop');
+            if (!header) return;
+            const SCROLL_THRESHOLD = 100;
+            const CLOSE_DELAY = 1000;
+            let isMouseOver = false;
+            let closeTimeout = null;
+            function isMobile() { return window.innerWidth <= 900; }
+            function closeMenu() { if (!isMouseOver) header.classList.remove('expanded'); }
+            function openMenu() { clearTimeout(closeTimeout); header.classList.add('expanded'); }
+            window.addEventListener('scroll', function() {
+                if (isMobile()) { header.classList.remove('collapsed', 'expanded'); return; }
+                if (window.pageYOffset > SCROLL_THRESHOLD) {
+                    if (!header.classList.contains('collapsed')) header.classList.add('collapsed');
+                    if (header.classList.contains('expanded') && !isMouseOver) header.classList.remove('expanded');
+                } else {
+                    header.classList.remove('collapsed', 'expanded');
+                }
+            });
+            header.addEventListener('mouseenter', function() {
+                if (isMobile()) return;
+                isMouseOver = true;
+                clearTimeout(closeTimeout);
+                if (header.classList.contains('collapsed')) openMenu();
+            });
+            header.addEventListener('mouseleave', function() {
+                if (isMobile()) return;
+                isMouseOver = false;
+                closeTimeout = setTimeout(closeMenu, CLOSE_DELAY);
+            });
+        })();
+    </script>
+</body>
+</html>
