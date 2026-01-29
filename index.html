@@ -358,33 +358,9 @@
 
        <div class="hero__visual" style="display: flex; align-items: center; justify-content: center; overflow: visible; margin-right: -80px;">
                     <!-- Vidéo Abstract (cerveau sauvegardé dans BACKUP-cerveau-hero.html) -->
-                    <video id="hero-video-pingpong" autoplay muted playsinline style="width: 140%; max-width: none; display: block; mask-image: radial-gradient(ellipse 47% 47% at center, black 45%, transparent 88%); -webkit-mask-image: radial-gradient(ellipse 47% 47% at center, black 45%, transparent 88%);">
+                    <video autoplay muted loop playsinline style="width: 140%; max-width: none; display: block; mask-image: radial-gradient(ellipse 47% 47% at center, black 45%, transparent 88%); -webkit-mask-image: radial-gradient(ellipse 47% 47% at center, black 45%, transparent 88%);">
                         <source src="assets/video/Abstract_organic_energy_mass_f_Kling_26_Pro_81695.mp4" type="video/mp4">
                     </video>
-                    <script>
-                    (function() {
-                        const vid = document.getElementById('hero-video-pingpong');
-                        let reversing = false;
-
-                        vid.addEventListener('ended', function() {
-                            reversing = true;
-                            vid.pause();
-                            stepBackward();
-                        });
-
-                        function stepBackward() {
-                            if (!reversing) return;
-                            vid.currentTime -= 0.04;
-                            if (vid.currentTime <= 0.05) {
-                                reversing = false;
-                                vid.currentTime = 0;
-                                vid.play();
-                                return;
-                            }
-                            requestAnimationFrame(stepBackward);
-                        }
-                    })();
-                    </script>
                 </div>
             </div>
         </div>
