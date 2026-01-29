@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'équipe - FLO</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-flo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #E5D5FF;
+            min-height: 100vh;
+            color: #1a0033;
+        }
+
+        /* Variables CSS */
+        :root {
+            --spacing-sm: 8px;
+            --spacing-lg: 24px;
+        }
+
+        /* Classes desktop/mobile */
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+        @media (max-width: 900px) {
+            .desktop-only { display: none !important; }
+            .mobile-only { display: block !important; }
+        }
+
+        /* Header Desktop */
+        .header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            background: rgba(128, 0, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 12px 24px;
+            z-index: 100;
+            border-radius: 16px;
+            border: 1px solid rgba(128, 0, 255, 0.1);
+            transition: all 0.5s ease;
+        }
+        .header .container { max-width: 1200px; margin: 0 auto; }
+        .header .nav { display: flex; align-items: center; justify-content: space-between; position: relative; }
+        .header .nav__logo img { height: 46px; width: auto; border-radius: 10px; }
+        .header .nav__menu {
+            display: flex; list-style: none; gap: 32px; margin: 0; padding: 0;
+            position: absolute; left: 50%; transform: translateX(-50%);
+        }
+        .header .nav__link {
+            color: #1a0033; text-decoration: none; font-weight: 500; font-size: 0.95rem;
+            transition: color 0.3s; position: relative; padding-bottom: 4px;
+        }
+        .header .nav__link:hover { color: #8000ff; }
+        .header .nav__link::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+            background: #ff3f9b; transition: width 0.3s ease;
+        }
+        .header .nav__link:hover::after { width: 100%; }
+        .header .btn--primary {
+            background: linear-gradient(135deg, #ff703d 0%, #ff3f9b 100%);
+            color: white; padding: 10px 24px; border-radius: 50px; text-decoration: none;
+            font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center;
+            box-shadow: 0 4px 12px rgba(255, 112, 61, 0.3); transition: all 0.3s;
+        }
+        .header .btn--primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255, 112, 61, 0.4); }
+        .btn--cta-pulse { animation: pulse 2s infinite; }
+        .btn--cta-pulse:hover { animation: none; transform: scale(1.05); }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0.4); }
+            50% { transform: scale(1.03); box-shadow: 0 0 0 8px rgba(255, 112, 61, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 112, 61, 0); }
+        }
+
+        /* Header Desktop Collapse */
+        .header.collapsed { max-width: 72px; width: 72px; height: 72px; left: calc(50% - 600px - 88px); transform: translateX(0); }
+        .header.collapsed .nav__logo img { height: 40px; }
+        .header.collapsed .container { padding: 0; display: flex; justify-content: center; align-items: center; height: 100%; }
+        .header.collapsed .nav { justify-content: center; padding: 0; height: 100%; }
+        .header.collapsed .nav__logo { margin: 0; display: flex; align-items: center; justify-content: center; }
+        .header.collapsed .nav__menu, .header.collapsed .btn--primary { display: none; }
+        .header.collapsed.expanded .nav__menu { display: flex; opacity: 1; visibility: visible; }
+        .header.collapsed.expanded .btn--primary { display: inline-flex; opacity: 1; visibility: visible; }
+        .header.collapsed.expanded {
+            left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 1200px;
+            height: auto; background: rgba(248, 245, 255, 0.95); backdrop-filter: blur(8px);
+        }
+        .header.collapsed.expanded .container { padding: 0 var(--spacing-lg); display: block; }
+        .header.collapsed.expanded .nav { justify-content: space-between; padding: var(--spacing-sm) 0; }
+        @media screen and (min-width: 901px) and (max-width: 1400px) { .header.collapsed { left: 20px; } }
+
+        /* Header Mobile */
+        .header-mobile {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(128, 0, 255, 0.1);
+        }
+        .header-mobile__bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; }
+        .header-mobile__logo img { height: 40px; width: auto; border-radius: 8px; }
+        .header-mobile__actions { display: flex; align-items: center; gap: 12px; }
+        .header-mobile__cta {
+            background: linear-gradient(135deg, #ff703d, #ff3f9b); color: white;
+            padding: 8px 16px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.8rem;
+        }
+        .header-mobile__burger { display: flex; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+        .header-mobile__burger span { display: block; width: 24px; height: 3px; border-radius: 2px; transition: all 0.3s; }
+        .header-mobile__burger span:nth-child(1) { background: #8000ff; }
+        .header-mobile__burger span:nth-child(2) { background: #ff3f9b; width: 18px; }
+        .header-mobile__burger span:nth-child(3) { background: #ff703d; }
+        .header-mobile__burger.active span:nth-child(1) { transform: rotate(45deg) translateY(11px); }
+        .header-mobile__burger.active span:nth-child(2) { opacity: 0; }
+        .header-mobile__burger.active span:nth-child(3) { transform: rotate(-45deg) translateY(-11px); }
+
+        /* Menu Mobile Overlay */
+        .header-mobile__menu {
+            position: absolute; top: 100%; left: 0; right: 0; height: calc(100vh - 64px);
+            background-color: #ffffff; padding: 20px; transform: translateX(100%);
+            transition: transform 0.3s ease; overflow-y: auto;
+        }
+        .header-mobile__menu.active { transform: translateX(0); }
+        .header-mobile__menu-links { display: flex; flex-direction: column; gap: 12px; }
+        .header-mobile__link {
+            display: block; padding: 18px 24px; color: #1a0033; text-decoration: none;
+            font-weight: 600; font-size: 1.05rem;
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.12), rgba(255, 63, 155, 0.08));
+            border-radius: 16px; border-left: 4px solid #8000ff; transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(128, 0, 255, 0.08);
+        }
+        .header-mobile__link:nth-of-type(2) { background: linear-gradient(135deg, rgba(255, 63, 155, 0.12), rgba(255, 112, 61, 0.08)); border-left-color: #ff3f9b; }
+        .header-mobile__link:nth-of-type(3) { background: linear-gradient(135deg, rgba(255, 112, 61, 0.12), rgba(255, 200, 61, 0.08)); border-left-color: #ff703d; }
+        .header-mobile__link:nth-of-type(4) { background: linear-gradient(135deg, rgba(128, 0, 255, 0.08), rgba(255, 63, 155, 0.12)); border-left-color: #a64dff; }
+        .header-mobile__link:active { transform: scale(0.98); }
+        .header-mobile__menu-separator { height: 1px; background: rgba(128, 0, 255, 0.1); margin: 20px 0; }
+        .header-mobile__menu-contact p { color: #666; font-size: 0.9rem; margin-bottom: 8px; }
+        .header-mobile__phone { color: #8000ff; font-weight: 700; font-size: 1.2rem; text-decoration: none; }
+        body.menu-open { overflow: hidden; }
+
+        /* Hero */
+        .hero {
+            padding: 160px 40px 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #8000ff, #ff3f9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: #1a0033;
+            opacity: 0.7;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Story Section */
+        .story {
+            background: white;
+            padding: 60px 40px;
+            margin: 0 20px;
+            border-radius: 30px;
+            box-shadow: 0 8px 40px rgba(128, 0, 255, 0.08);
+        }
+        .story-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .story h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 24px;
+        }
+        .story p {
+            font-size: 1.05rem;
+            color: #1a0033;
+            opacity: 0.7;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .story-highlight {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 16px 28px;
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.1), rgba(255, 63, 155, 0.08));
+            border-radius: 16px;
+            font-weight: 600;
+            color: #8000ff;
+        }
+
+        /* Timeline */
+        .timeline {
+            padding: 80px 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 50px;
+        }
+        .timeline-items {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+        }
+        .timeline-items::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8000ff, #ff3f9b, #ff703d, #8000ff);
+            border-radius: 2px;
+        }
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            flex: 1;
+        }
+        .timeline-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        .timeline-item:nth-child(1) .timeline-dot { background: linear-gradient(135deg, #8000ff, #a64dff); }
+        .timeline-item:nth-child(2) .timeline-dot { background: linear-gradient(135deg, #ff3f9b, #ff6bb3); }
+        .timeline-item:nth-child(3) .timeline-dot { background: linear-gradient(135deg, #ff703d, #ff8f66); }
+        .timeline-item:nth-child(4) .timeline-dot { background: linear-gradient(135deg, #8000ff, #ff3f9b); }
+        .timeline-year {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 8px;
+        }
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: #1a0033;
+            opacity: 0.7;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 60px 40px 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .team h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 50px;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .team-card {
+            background: white;
+            border-radius: 24px;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(128, 0, 255, 0.08);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 50px rgba(128, 0, 255, 0.15);
+        }
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+        .team-card:nth-child(1)::before { background: linear-gradient(90deg, #8000ff, #a64dff); }
+        .team-card:nth-child(2)::before { background: linear-gradient(90deg, #ff3f9b, #ff6bb3); }
+        .team-card:nth-child(3)::before { background: linear-gradient(90deg, #ff703d, #ff8f66); }
+        .team-card:nth-child(4)::before { background: linear-gradient(90deg, #8000ff, #ff3f9b); }
+        .team-card:nth-child(5)::before { background: linear-gradient(90deg, #ff3f9b, #ff703d); }
+        .team-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .team-card:nth-child(1) .team-photo { background: linear-gradient(135deg, rgba(128, 0, 255, 0.15), rgba(128, 0, 255, 0.05)); }
+        .team-card:nth-child(2) .team-photo { background: linear-gradient(135deg, rgba(255, 63, 155, 0.15), rgba(255, 63, 155, 0.05)); }
+        .team-card:nth-child(3) .team-photo { background: linear-gradient(135deg, rgba(255, 112, 61, 0.15), rgba(255, 112, 61, 0.05)); }
+        .team-card:nth-child(4) .team-photo { background: linear-gradient(135deg, rgba(128, 0, 255, 0.15), rgba(255, 63, 155, 0.05)); }
+        .team-card:nth-child(5) .team-photo { background: linear-gradient(135deg, rgba(255, 63, 155, 0.15), rgba(255, 112, 61, 0.05)); }
+        .team-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 4px;
+        }
+        .team-role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .team-card:nth-child(1) .team-role { color: #8000ff; }
+        .team-card:nth-child(2) .team-role { color: #ff3f9b; }
+        .team-card:nth-child(3) .team-role { color: #ff703d; }
+        .team-card:nth-child(4) .team-role { color: #8000ff; }
+        .team-card:nth-child(5) .team-role { color: #ff3f9b; }
+        .team-fun {
+            font-size: 0.85rem;
+            color: #1a0033;
+            opacity: 0.6;
+            font-style: italic;
+        }
+
+        /* Values Section */
+        .values {
+            background: #1a0033;
+            padding: 60px 40px;
+            margin: 0 20px;
+            border-radius: 30px;
+        }
+        .values-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .values h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 50px;
+        }
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .value-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .value-card:nth-child(1) { border-top: 3px solid #8000ff; }
+        .value-card:nth-child(2) { border-top: 3px solid #ff3f9b; }
+        .value-card:nth-child(3) { border-top: 3px solid #ff703d; }
+        .value-card:nth-child(4) { border-top: 3px solid #8000ff; }
+        .value-icon {
+            width: 56px;
+            height: 56px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .value-card:nth-child(1) .value-icon { background: linear-gradient(135deg, #8000ff, #a64dff); }
+        .value-card:nth-child(2) .value-icon { background: linear-gradient(135deg, #ff3f9b, #ff6bb3); }
+        .value-card:nth-child(3) .value-icon { background: linear-gradient(135deg, #ff703d, #ff8f66); }
+        .value-card:nth-child(4) .value-icon { background: linear-gradient(135deg, #8000ff, #ff3f9b); }
+        .value-icon svg { width: 28px; height: 28px; color: white; }
+        .value-card h3 {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .value-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 40px;
+            text-align: center;
+        }
+        .cta-box {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 12px 40px rgba(128, 0, 255, 0.1);
+        }
+        .cta-box h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a0033;
+            margin-bottom: 16px;
+        }
+        .cta-box p {
+            color: #1a0033;
+            opacity: 0.7;
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #8000ff, #ff3f9b);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(128, 0, 255, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(128, 0, 255, 0.4);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a0033;
+            padding: 30px 40px;
+            text-align: center;
+        }
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+        .footer-links a:hover {
+            color: #ff3f9b;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero { padding: 100px 20px 50px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+
+            .story { margin: 0 10px; padding: 40px 24px; border-radius: 20px; }
+            .story h2 { font-size: 1.4rem; }
+            .story p { font-size: 0.95rem; }
+            .story-highlight { padding: 14px 20px; font-size: 0.9rem; }
+
+            .timeline { padding: 50px 20px; }
+            .timeline h2 { font-size: 1.4rem; margin-bottom: 40px; }
+            .timeline-items {
+                flex-direction: column;
+                gap: 24px;
+            }
+            .timeline-items::before {
+                top: 0;
+                bottom: 0;
+                left: 20px;
+                right: auto;
+                width: 4px;
+                height: auto;
+            }
+            .timeline-item {
+                text-align: left;
+                padding-left: 60px;
+            }
+            .timeline-dot {
+                position: absolute;
+                left: 0;
+                margin: 0;
+            }
+
+            .team { padding: 40px 20px; }
+            .team h2 { font-size: 1.5rem; margin-bottom: 30px; }
+            .team-grid { grid-template-columns: 1fr; gap: 16px; }
+            .team-card { padding: 28px 24px; }
+            .team-photo { width: 100px; height: 100px; font-size: 2.5rem; }
+
+            .values { margin: 0 10px; padding: 40px 20px; border-radius: 20px; }
+            .values h2 { font-size: 1.4rem; margin-bottom: 30px; }
+            .values-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .value-card { padding: 24px 16px; }
+            .value-card h3 { font-size: 0.95rem; }
+            .value-card p { font-size: 0.8rem; }
+
+            .cta-section { padding: 50px 20px; }
+            .cta-box { padding: 36px 24px; border-radius: 24px; }
+            .cta-box h2 { font-size: 1.5rem; }
+
+            .footer { padding: 24px 20px; }
+            .footer p { font-size: 0.8rem; }
+            .footer-links { gap: 16px; flex-wrap: wrap; }
+            .footer-links a { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Desktop -->
+    <header class="header desktop-only" id="header-desktop">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">
+                    <img src="assets/images/logo-flo.png" alt="FLO">
+                </a>
+                <ul class="nav__menu">
+                    <li><a href="solutions.html" class="nav__link">Solutions métiers</a></li>
+                    <li><a href="accompagnement.html" class="nav__link">Accompagnement</a></li>
+                    <li><a href="equipe.html" class="nav__link">L'équipe</a></li>
+                    <li><a href="demo.html" class="nav__link">Contact</a></li>
+                </ul>
+                <a href="demo.html" class="btn--primary btn--cta-pulse">Tester FLO</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Header Mobile -->
+    <header class="header-mobile mobile-only" id="header-mobile">
+        <div class="header-mobile__bar">
+            <a href="index.html" class="header-mobile__logo">
+                <img src="assets/images/logo-flo.png" alt="FLO">
+            </a>
+            <div class="header-mobile__actions">
+                <a href="demo.html" class="header-mobile__cta">Tester FLO</a>
+                <button class="header-mobile__burger" id="mobile-burger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        <nav class="header-mobile__menu" id="mobile-menu">
+            <div class="header-mobile__menu-links">
+                <a href="solutions.html" class="header-mobile__link">Solutions métiers</a>
+                <a href="accompagnement.html" class="header-mobile__link">Accompagnement</a>
+                <a href="equipe.html" class="header-mobile__link">L'équipe</a>
+                <a href="demo.html" class="header-mobile__link">Contact</a>
+            </div>
+            <div class="header-mobile__menu-separator"></div>
+            <div class="header-mobile__menu-contact">
+                <p>Une question ?</p>
+                <a href="tel:+33180835210" class="header-mobile__phone">01 80 83 52 10</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Notre équipe <span>de choc</span></h1>
+        <p>FLO est né de la volonté de simplifier le quotidien des entreprises. Derrière chaque fonctionnalité, une équipe passionnée qui travaille pour vous faciliter la vie.</p>
+    </section>
+
+    <!-- Story -->
+    <section class="story">
+        <div class="story-container">
+            <h2>Notre histoire</h2>
+            <p>IKNO a été fondée avec une mission simple : aider les entreprises à digitaliser leurs processus sans complexité. Après des années d'expérience dans l'accompagnement des organisations, nous avons créé FLO pour répondre à un besoin concret.</p>
+            <p>Aujourd'hui, plus de 500 entreprises nous font confiance pour gérer leurs processus internes, de l'onboarding à la gestion documentaire.</p>
+            <div class="story-highlight">
+                100% solution française, hébergée en France
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline">
+        <h2>Les grandes étapes</h2>
+        <div class="timeline-items">
+            <div class="timeline-item">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-year">2010</div>
+                <div class="timeline-desc">Création d'IKNO</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-year">2018</div>
+                <div class="timeline-desc">Lancement de TEO</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-year">2023</div>
+                <div class="timeline-desc">Naissance de FLO</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-year">2025</div>
+                <div class="timeline-desc">+500 clients</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <h2>L'équipe derrière FLO</h2>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-photo">HC</div>
+                <div class="team-name">Hervé Chapelle</div>
+                <div class="team-role">Directeur Général</div>
+                <div class="team-fun">Visionnaire passionné par l'innovation</div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">TM</div>
+                <div class="team-name">Tanguy Martin</div>
+                <div class="team-role">Co-fondateur & Associé</div>
+                <div class="team-fun">Expert transformation digitale</div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">SC</div>
+                <div class="team-name">Sophie</div>
+                <div class="team-role">Responsable Clients</div>
+                <div class="team-fun">Votre satisfaction, sa priorité</div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">ML</div>
+                <div class="team-name">Mélanie</div>
+                <div class="team-role">Support Client</div>
+                <div class="team-fun">Toujours là pour vous aider</div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">HL</div>
+                <div class="team-name">Hichem</div>
+                <div class="team-role">Lead Développeur</div>
+                <div class="team-fun">Transforme le café en code</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values -->
+    <section class="values">
+        <div class="values-container">
+            <h2>Nos valeurs</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Confiance</h3>
+                    <p>Vos données sont précieuses, nous les protégeons</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3>Proximité</h3>
+                    <p>Un support humain et réactif à votre écoute</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>L'IA au service de votre productivité</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Simplicité</h3>
+                    <p>Des outils puissants, simples à utiliser</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-box">
+            <h2>Envie de rejoindre l'aventure ?</h2>
+            <p>Nous sommes toujours à la recherche de talents passionnés pour renforcer notre équipe.</p>
+            <a href="demo.html" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Contactez-nous
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>FLO est édité par <strong>IKNO SAS</strong> - 2 Rue Croix Castel, 78600 Maisons-Laffitte</p>
+        <div class="footer-links">
+            <a href="legal.html">Mentions légales</a>
+            <a href="privacy.html">Confidentialité</a>
+            <a href="cookies.html">Cookies</a>
+        </div>
+    </footer>
+
+    <!-- JavaScript Menu Mobile -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileBurger = document.getElementById('mobile-burger');
+        if (mobileBurger && mobileMenu) {
+            mobileBurger.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+                document.body.classList.toggle('menu-open');
+            });
+            mobileMenu.querySelectorAll('.header-mobile__link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileBurger.classList.remove('active');
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+            });
+        }
+    </script>
+
+    <!-- Script Header Collapse -->
+    <script>
+        (function() {
+            const header = document.getElementById('header-desktop');
+            if (!header) return;
+            const SCROLL_THRESHOLD = 100;
+            const CLOSE_DELAY = 1000;
+            let isMouseOver = false;
+            let closeTimeout = null;
+            function isMobile() { return window.innerWidth <= 900; }
+            function closeMenu() { if (!isMouseOver) header.classList.remove('expanded'); }
+            function openMenu() { clearTimeout(closeTimeout); header.classList.add('expanded'); }
+            window.addEventListener('scroll', function() {
+                if (isMobile()) { header.classList.remove('collapsed', 'expanded'); return; }
+                if (window.pageYOffset > SCROLL_THRESHOLD) {
+                    if (!header.classList.contains('collapsed')) header.classList.add('collapsed');
+                    if (header.classList.contains('expanded') && !isMouseOver) header.classList.remove('expanded');
+                } else {
+                    header.classList.remove('collapsed', 'expanded');
+                }
+            });
+            header.addEventListener('mouseenter', function() {
+                if (isMobile()) return;
+                isMouseOver = true;
+                clearTimeout(closeTimeout);
+                if (header.classList.contains('collapsed')) openMenu();
+            });
+            header.addEventListener('mouseleave', function() {
+                if (isMobile()) return;
+                isMouseOver = false;
+                closeTimeout = setTimeout(closeMenu, CLOSE_DELAY);
+            });
+        })();
+    </script>
+</body>
+</html>

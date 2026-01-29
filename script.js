@@ -55,7 +55,7 @@ function initTestimonialsCarousel() {
 // ============================================
 // HEADER SCROLL
 // ============================================
-const header = document.getElementById('header');
+const header = document.getElementById('header-desktop');
 if (header) {
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
@@ -242,4 +242,110 @@ function initBeforeAfterCarousel() {
 // Initialiser au chargement
 document.addEventListener('DOMContentLoaded', function() {
     setTimeout(initBeforeAfterCarousel, 100);
+
+    // Init mobile V6 interactions
+    initMobileV6();
 });
+
+
+// ============================================
+// MOBILE V6 INTERACTIONS
+// ============================================
+function initMobileV6() {
+    // ===== BURGER MENU =====
+    const burger = document.getElementById('mobile-burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (burger && mobileMenu) {
+        burger.addEventListener('click', function() {
+            burger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            document.body.classList.toggle('mobile-menu-open');
+        });
+
+        // Fermer le menu quand on clique sur un lien
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                burger.classList.remove('active');
+                mobileMenu.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            });
+        });
+    }
+
+    // ===== PROFILES TABS (CAS D'USAGE) =====
+    const profileTabs = document.querySelectorAll('.profiles-mobile__tab');
+    const profileCards = document.querySelectorAll('.profiles-mobile__card');
+
+    profileTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabId = this.dataset.tab;
+
+            // Désactiver tous les tabs et cards
+            profileTabs.forEach(t => t.classList.remove('active'));
+            profileCards.forEach(c => c.classList.remove('active'));
+
+            // Activer le tab cliqué et sa card
+            this.classList.add('active');
+            const targetCard = document.querySelector(`.profiles-mobile__card[data-content="${tabId}"]`);
+            if (targetCard) targetCard.classList.add('active');
+        });
+    });
+
+    // ===== FAQ MOBILE ACCORDION =====
+    const faqItems = document.querySelectorAll('.faq-mobile__item');
+
+    faqItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const isActive = this.classList.contains('active');
+
+            // Fermer tous les autres
+            faqItems.forEach(i => i.classList.remove('active'));
+
+            // Ouvrir celui-ci si fermé
+            if (!isActive) {
+                this.classList.add('active');
+            }
+        });
+    });
+
+    // ===== TÉMOIGNAGES CAROUSEL =====
+    const testimonialCards = document.querySelectorAll('.testimonials-mobile__card');
+    const testimonialDots = document.querySelectorAll('.testimonials-mobile__dot');
+
+    if (testimonialDots.length > 0 && testimonialCards.length > 0) {
+        testimonialDots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                // Désactiver tous
+                testimonialCards.forEach(c => c.classList.remove('active'));
+                testimonialDots.forEach(d => d.classList.remove('active'));
+
+                // Activer celui-ci
+                if (testimonialCards[index]) testimonialCards[index].classList.add('active');
+                this.classList.add('active');
+            });
+        });
+
+        // Auto-play témoignages
+        let currentTestimonial = 0;
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonialCards.length;
+
+            testimonialCards.forEach(c => c.classList.remove('active'));
+            testimonialDots.forEach(d => d.classList.remove('active'));
+
+            testimonialCards[currentTestimonial].classList.add('active');
+            testimonialDots[currentTestimonial].classList.add('active');
+        }, 5000);
+    }
+
+    // ===== VIDEO TABS =====
+    const videoTabs = document.querySelectorAll('.video-mobile__tab');
+
+    videoTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            videoTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
+}

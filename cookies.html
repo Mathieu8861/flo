@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique des Cookies - FLO</title>
+    <link rel="icon" type="image/png" href="assets/images/logo-flo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #E5D5FF;
+            min-height: 100vh;
+            color: #1a0033;
+        }
+
+        .header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-radius: 16px;
+            border: 1px solid rgba(128, 0, 255, 0.1);
+            box-shadow: 0 4px 20px rgba(128, 0, 255, 0.08);
+        }
+        .header img { height: 48px; border-radius: 10px; }
+        .header a { color: #8000ff; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .header a:hover { opacity: 0.8; }
+
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 140px 40px 80px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #8000ff, #ff3f9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .last-update {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 40px;
+        }
+
+        .intro {
+            background: linear-gradient(135deg, #ff703d, #ff3f9b);
+            color: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .intro p {
+            font-size: 1rem;
+            line-height: 1.7;
+            opacity: 0.95;
+        }
+
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 20px rgba(128, 0, 255, 0.08);
+        }
+
+        .section h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #8000ff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section h2 svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .section p, .section li {
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .section li {
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .section li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 6px;
+            height: 6px;
+            background: #ff3f9b;
+            border-radius: 50%;
+        }
+
+        .cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .cookie-table th,
+        .cookie-table td {
+            padding: 14px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(128, 0, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .cookie-table th {
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.08), rgba(255, 63, 155, 0.05));
+            color: #8000ff;
+            font-weight: 600;
+        }
+
+        .cookie-table tr:hover {
+            background: rgba(128, 0, 255, 0.02);
+        }
+
+        .cookie-type {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .cookie-type.essential {
+            background: rgba(128, 0, 255, 0.1);
+            color: #8000ff;
+        }
+
+        .cookie-type.analytics {
+            background: rgba(255, 63, 155, 0.1);
+            color: #ff3f9b;
+        }
+
+        .cookie-type.marketing {
+            background: rgba(255, 112, 61, 0.1);
+            color: #ff703d;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(128, 0, 255, 0.08), rgba(255, 63, 155, 0.05));
+            border-left: 4px solid #8000ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .info-box strong {
+            color: #8000ff;
+        }
+
+        a.link {
+            color: #ff3f9b;
+            text-decoration: none;
+        }
+
+        a.link:hover {
+            text-decoration: underline;
+        }
+
+        .browser-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .browser-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: rgba(128, 0, 255, 0.05);
+            border-radius: 10px;
+            color: #1a0033;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .browser-link:hover {
+            background: rgba(128, 0, 255, 0.1);
+        }
+
+        .footer {
+            background: #1a0033;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: #ff3f9b;
+        }
+
+        @media (max-width: 900px) {
+            .header {
+                top: 0;
+                left: 0;
+                right: 0;
+                transform: none;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0;
+                padding: 12px 20px;
+            }
+            .header img { height: 40px; }
+            .header a:last-child { font-size: 0.85rem; }
+            .header a:last-child span { display: none; }
+            .content { padding: 80px 16px 40px; }
+            h1 { font-size: 1.6rem; }
+            .last-update { font-size: 0.8rem; margin-bottom: 24px; }
+            .intro { padding: 24px; border-radius: 16px; }
+            .intro p { font-size: 0.9rem; }
+            .section {
+                padding: 20px;
+                border-radius: 16px;
+                margin-bottom: 16px;
+            }
+            .section h2 {
+                font-size: 1.1rem;
+                margin-bottom: 16px;
+                flex-wrap: wrap;
+            }
+            .section h2 svg { width: 20px; height: 20px; }
+            .section p, .section li { font-size: 0.88rem; line-height: 1.6; }
+            .info-box { padding: 16px; margin: 16px 0; }
+            .info-box p { font-size: 0.85rem; }
+            .cookie-table { font-size: 0.75rem; }
+            .cookie-table th, .cookie-table td { padding: 10px 8px; }
+            .cookie-type { font-size: 0.65rem; padding: 3px 8px; }
+            .browser-links { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .browser-link { padding: 10px 12px; font-size: 0.8rem; }
+            .footer { padding: 24px 20px; }
+            .footer p { font-size: 0.75rem; }
+            .footer-links { gap: 16px; flex-wrap: wrap; }
+            .footer-links a { font-size: 0.7rem; }
+        }
+
+        @media (max-width: 480px) {
+            .cookie-table { display: block; overflow-x: auto; }
+            .browser-links { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html"><img src="assets/images/logo-flo.png" alt="FLO"></a>
+        <a href="index.html">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+            <span>Retour à l'accueil</span>
+        </a>
+    </header>
+
+    <main class="content">
+        <h1>Politique des Cookies</h1>
+        <p class="last-update">Dernière mise à jour : 21 décembre 2025</p>
+
+        <div class="intro">
+            <p>Cette politique explique comment nous utilisons les cookies et technologies similaires sur notre site FLO. En continuant à naviguer sur notre site, vous acceptez l'utilisation des cookies conformément à cette politique.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                Qu'est-ce qu'un cookie ?
+            </h2>
+            <p>Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, tablette, smartphone) lors de la visite d'un site web. Il permet au site de mémoriser des informations sur votre visite, comme votre langue préférée ou d'autres paramètres.</p>
+            <p>Les cookies peuvent être :</p>
+            <ul>
+                <li><strong>De session :</strong> supprimés à la fermeture du navigateur</li>
+                <li><strong>Persistants :</strong> conservés pendant une durée déterminée</li>
+                <li><strong>Propriétaires :</strong> déposés par notre site</li>
+                <li><strong>Tiers :</strong> déposés par des services externes</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                Cookies utilisés sur notre site
+            </h2>
+
+            <table class="cookie-table">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Type</th>
+                        <th>Finalité</th>
+                        <th>Durée</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>session_id</td>
+                        <td><span class="cookie-type essential">Essentiel</span></td>
+                        <td>Maintien de votre session de connexion</td>
+                        <td>Session</td>
+                    </tr>
+                    <tr>
+                        <td>cookie_consent</td>
+                        <td><span class="cookie-type essential">Essentiel</span></td>
+                        <td>Mémorisation de vos préférences cookies</td>
+                        <td>12 mois</td>
+                    </tr>
+                    <tr>
+                        <td>_ga</td>
+                        <td><span class="cookie-type analytics">Analytique</span></td>
+                        <td>Google Analytics - statistiques de visite</td>
+                        <td>13 mois</td>
+                    </tr>
+                    <tr>
+                        <td>_gid</td>
+                        <td><span class="cookie-type analytics">Analytique</span></td>
+                        <td>Google Analytics - distinction des utilisateurs</td>
+                        <td>24h</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Types de cookies
+            </h2>
+
+            <h3 style="color: #8000ff; margin-top: 20px;">Cookies essentiels</h3>
+            <p>Ces cookies sont nécessaires au fonctionnement du site. Ils ne peuvent pas être désactivés. Ils sont généralement déposés en réponse à des actions de votre part (connexion, remplissage de formulaires, préférences de confidentialité).</p>
+
+            <h3 style="color: #ff3f9b; margin-top: 20px;">Cookies analytiques</h3>
+            <p>Ces cookies nous permettent de mesurer l'audience de notre site et d'analyser la façon dont les visiteurs l'utilisent. Ces informations nous aident à améliorer nos services. Les données sont anonymisées.</p>
+
+            <h3 style="color: #ff703d; margin-top: 20px;">Cookies marketing (optionnels)</h3>
+            <p>Ces cookies peuvent être utilisés pour vous proposer des publicités pertinentes. Ils permettent également de limiter le nombre de fois où vous voyez une publicité et de mesurer l'efficacité des campagnes.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                Gérer vos préférences
+            </h2>
+            <p>Vous pouvez à tout moment modifier vos préférences en matière de cookies :</p>
+
+            <div class="info-box">
+                <p><strong>Via notre bandeau cookies :</strong> Cliquez sur "Gérer mes cookies" en bas de page pour modifier vos choix.</p>
+            </div>
+
+            <p>Vous pouvez également configurer votre navigateur pour refuser les cookies :</p>
+
+            <div class="browser-links">
+                <a href="https://support.google.com/chrome/answer/95647" target="_blank" class="browser-link">
+                    Chrome
+                </a>
+                <a href="https://support.mozilla.org/fr/kb/activer-desactiver-cookies" target="_blank" class="browser-link">
+                    Firefox
+                </a>
+                <a href="https://support.apple.com/fr-fr/guide/safari/sfri11471/mac" target="_blank" class="browser-link">
+                    Safari
+                </a>
+                <a href="https://support.microsoft.com/fr-fr/microsoft-edge/supprimer-les-cookies-dans-microsoft-edge" target="_blank" class="browser-link">
+                    Edge
+                </a>
+            </div>
+
+            <p style="margin-top: 20px;"><strong>Attention :</strong> Le refus de certains cookies peut affecter votre expérience de navigation et limiter l'accès à certaines fonctionnalités du site.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Durée de conservation
+            </h2>
+            <p>Conformément à la réglementation, les cookies ont une durée de vie maximale de 13 mois. Au-delà, votre consentement vous sera de nouveau demandé.</p>
+        </div>
+
+        <div class="section">
+            <h2>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Contact
+            </h2>
+            <p>Pour toute question concernant notre utilisation des cookies, vous pouvez nous contacter :</p>
+            <ul>
+                <li>Email : <a href="mailto:rgpd@ikno.fr" class="link">rgpd@ikno.fr</a></li>
+                <li>Téléphone : +33 1 80 83 52 10</li>
+            </ul>
+            <p>Pour plus d'informations sur la protection de vos données, consultez notre <a href="privacy.html" class="link">Politique de confidentialité</a>.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>FLO est édité par <strong>IKNO SAS</strong> - 2 Rue Croix Castel, 78600 Maisons-Laffitte</p>
+        <div class="footer-links">
+            <a href="legal.html">Mentions légales</a>
+            <a href="privacy.html">Confidentialité</a>
+            <a href="cookies.html">Cookies</a>
+        </div>
+    </footer>
+</body>
+</html>
