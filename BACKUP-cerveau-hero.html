@@ -1,0 +1,190 @@
+<!-- BACKUP - Animation Cerveau IA V4 - À remettre dans .hero__visual si besoin -->
+<!-- Remplace le contenu de <div class="hero__visual"> ... </div> dans index.html -->
+
+       <div class="hero__visual">
+                    <!-- Animation Cerveau IA V4 - Signal nerveux -->
+                    <svg viewBox="0 0 450 350" style="width: 100%; height: auto; max-width: 550px; margin: 0 auto; display: block;">
+                        <defs>
+                            <linearGradient id="brainGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#7C3AED" />
+                                <stop offset="100%" stop-color="#E84A8A" />
+                            </linearGradient>
+                            <linearGradient id="orangeGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#FFB347" />
+                                <stop offset="100%" stop-color="#FF8C00" />
+                            </linearGradient>
+                        </defs>
+
+                        <!-- Cercles orbitaux extérieurs -->
+                        <circle cx="225" cy="175" r="160" fill="none" stroke="#C4B5D8" stroke-width="1" opacity="0.4" />
+                        <circle cx="225" cy="175" r="120" fill="none" stroke="#D4C5E8" stroke-width="1" opacity="0.5" />
+
+                        <!-- Cercle stylé autour du cerveau -->
+                        <defs>
+                            <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.4" />
+                                <stop offset="50%" stop-color="#E84A8A" stop-opacity="0.3" />
+                                <stop offset="100%" stop-color="#7C3AED" stop-opacity="0.4" />
+                            </linearGradient>
+                            <filter id="glowCircle" x="-50%" y="-50%" width="200%" height="200%">
+                                <feGaussianBlur stdDeviation="3" result="blur" />
+                                <feMerge>
+                                    <feMergeNode in="blur" />
+                                    <feMergeNode in="SourceGraphic" />
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <circle cx="225" cy="175" r="75" fill="none" stroke="url(#circleGrad)" stroke-width="3" filter="url(#glowCircle)">
+                            <animate attributeName="stroke-opacity" values="0.5;0.8;0.5" dur="4s" repeatCount="indefinite" />
+                        </circle>
+
+                        <!-- Sphères qui gravitent sur les cercles -->
+                        <!-- Grande sphère violette - cercle extérieur -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="0 225 175" to="360 225 175" dur="25s" repeatCount="indefinite" />
+                            <circle cx="65" cy="175" r="12" fill="#7C3AED">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+
+                        <!-- Sphère rose - cercle extérieur -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="120 225 175" to="480 225 175" dur="28s" repeatCount="indefinite" />
+                            <circle cx="65" cy="175" r="9" fill="#E84A8A">
+                                <animate attributeName="opacity" values="0.75;1;0.75" dur="2.5s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+
+                        <!-- Grande sphère orange - cercle extérieur -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="220 225 175" to="580 225 175" dur="22s" repeatCount="indefinite" />
+                            <circle cx="65" cy="175" r="14" fill="url(#orangeGrad4)">
+                                <animate attributeName="opacity" values="0.85;1;0.85" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+
+                        <!-- Sphère orange - cercle intermédiaire -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="45 225 175" to="405 225 175" dur="18s" repeatCount="indefinite" />
+                            <circle cx="105" cy="175" r="8" fill="#FF8C00">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+
+                        <!-- Petite sphère pêche - cercle intermédiaire -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="180 225 175" to="540 225 175" dur="20s" repeatCount="indefinite" />
+                            <circle cx="105" cy="175" r="6" fill="#FBBF8A" opacity="0.85" />
+                        </g>
+
+                        <!-- Petite sphère violette - cercle intermédiaire -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="270 225 175" to="630 225 175" dur="16s" repeatCount="indefinite" />
+                            <circle cx="105" cy="175" r="5" fill="#A78BFA">
+                                <animate attributeName="opacity" values="0.6;1;0.6" dur="2.8s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+
+                        <!-- Sphère rose claire - cercle extérieur -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="300 225 175" to="660 225 175" dur="30s" repeatCount="indefinite" />
+                            <circle cx="65" cy="175" r="7" fill="#F0ABCF">
+                                <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite" />
+                            </circle>
+                        </g>
+
+                        <!-- Petite sphère orange - cercle extérieur -->
+                        <g>
+                            <animateTransform attributeName="transform" type="rotate" from="60 225 175" to="420 225 175" dur="24s" repeatCount="indefinite" />
+                            <circle cx="65" cy="175" r="5" fill="#FFB347" opacity="0.8" />
+                        </g>
+
+                        <!-- CERVEAU -->
+                        <path d="M215 125 C195 130, 175 155, 175 185 C175 215, 195 225, 215 225 C219 217, 218 205, 221 190 C224 175, 219 162, 222 148 C224 138, 219 128, 215 125 Z" fill="url(#brainGrad4)" />
+                        <path d="M235 125 C255 130, 275 155, 275 185 C275 215, 255 225, 235 225 C231 217, 232 205, 229 190 C226 175, 231 162, 228 148 C226 138, 231 128, 235 125 Z" fill="url(#brainGrad4)" />
+
+                        <!-- Sillons statiques -->
+                        <path d="M202 138 Q185 148, 190 162" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                        <path d="M196 158 Q180 172, 188 188" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                        <path d="M190 185 Q178 200, 188 215" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                        <path d="M195 212 Q185 220, 202 223" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                        <path d="M248 138 Q265 148, 260 162" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                        <path d="M254 158 Q270 172, 262 188" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                        <path d="M260 185 Q272 200, 262 215" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+                        <path d="M255 212 Q265 220, 248 223" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+
+                        <!-- Points de signal nerveux V4 - gauche -->
+                        <circle r="3" fill="white">
+                            <animateMotion dur="1.5s" repeatCount="indefinite">
+                                <mpath href="#pathL1" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" />
+                        </circle>
+                        <path id="pathL1" d="M202 138 Q185 148, 190 162" fill="none" stroke="none" />
+
+                        <circle r="3" fill="white">
+                            <animateMotion dur="1.8s" repeatCount="indefinite" begin="0.4s">
+                                <mpath href="#pathL2" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="1.8s" repeatCount="indefinite" begin="0.4s" />
+                        </circle>
+                        <path id="pathL2" d="M196 158 Q180 172, 188 188" fill="none" stroke="none" />
+
+                        <circle r="3" fill="white">
+                            <animateMotion dur="2s" repeatCount="indefinite" begin="0.8s">
+                                <mpath href="#pathL3" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="0.8s" />
+                        </circle>
+                        <path id="pathL3" d="M190 185 Q178 200, 188 215" fill="none" stroke="none" />
+
+                        <circle r="3" fill="white">
+                            <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.2s">
+                                <mpath href="#pathL4" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="1.6s" repeatCount="indefinite" begin="1.2s" />
+                        </circle>
+                        <path id="pathL4" d="M195 212 Q185 220, 202 223" fill="none" stroke="none" />
+
+                        <!-- Points de signal nerveux V4 - droite -->
+                        <circle r="3" fill="white">
+                            <animateMotion dur="1.5s" repeatCount="indefinite" begin="0.2s">
+                                <mpath href="#pathR1" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="1.5s" repeatCount="indefinite" begin="0.2s" />
+                        </circle>
+                        <path id="pathR1" d="M248 138 Q265 148, 260 162" fill="none" stroke="none" />
+
+                        <circle r="3" fill="white">
+                            <animateMotion dur="1.8s" repeatCount="indefinite" begin="0.6s">
+                                <mpath href="#pathR2" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="1.8s" repeatCount="indefinite" begin="0.6s" />
+                        </circle>
+                        <path id="pathR2" d="M254 158 Q270 172, 262 188" fill="none" stroke="none" />
+
+                        <circle r="3" fill="white">
+                            <animateMotion dur="2s" repeatCount="indefinite" begin="1s">
+                                <mpath href="#pathR3" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="2s" repeatCount="indefinite" begin="1s" />
+                        </circle>
+                        <path id="pathR3" d="M260 185 Q272 200, 262 215" fill="none" stroke="none" />
+
+                        <circle r="3" fill="white">
+                            <animateMotion dur="1.6s" repeatCount="indefinite" begin="1.4s">
+                                <mpath href="#pathR4" />
+                            </animateMotion>
+                            <animate attributeName="opacity" values="0;1;1;0" dur="1.6s" repeatCount="indefinite" begin="1.4s" />
+                        </circle>
+                        <path id="pathR4" d="M255 212 Q265 220, 248 223" fill="none" stroke="none" />
+
+                        <!-- Petits carrés décoratifs -->
+                        <rect x="130" y="280" width="10" height="10" rx="2" fill="#E84A8A" opacity="0.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 135 285" to="360 135 285" dur="8s" repeatCount="indefinite" />
+                        </rect>
+                        <rect x="310" y="65" width="8" height="8" rx="2" fill="#F97316" opacity="0.5">
+                            <animateTransform attributeName="transform" type="rotate" from="0 314 69" to="360 314 69" dur="10s" repeatCount="indefinite" />
+                        </rect>
+                    </svg>
+                </div>
