@@ -84,8 +84,8 @@
         }
 
         section.hero, .hero {
-            background-color: var(--bg) !important;
-            background: var(--bg) !important;
+            background-color: var(--dark) !important;
+            background: var(--dark) !important;
         }
 
         /* ============================================ */
@@ -100,9 +100,11 @@
                 width: calc(100% - 40px) !important;
                 max-width: 1200px !important;
                 margin: 0 !important;
-                background: rgba(128, 0, 255, 0.08) !important;
+                background: rgba(26, 0, 51, 0.6) !important;
+                backdrop-filter: blur(12px) !important;
+                -webkit-backdrop-filter: blur(12px) !important;
                 border-radius: 16px !important;
-                border: 1px solid rgba(128, 0, 255, 0.1) !important;
+                border: 1px solid rgba(255, 255, 255, 0.08) !important;
                 transition: all 0.5s ease !important;
                 z-index: 1000;
             }
@@ -122,12 +124,12 @@
             .header.header.collapsed .nav__menu, .header.header.collapsed .nav__menu--centered, .header.header.collapsed .btn--primary, .header.header.collapsed .btn--cta-pulse { display: none !important; }
             .header.header.collapsed.expanded .nav__menu, .header.header.collapsed.expanded .nav__menu--centered { display: flex !important; opacity: 1 !important; visibility: visible !important; }
             .header.header.collapsed.expanded .btn--primary, .header.header.collapsed.expanded .btn--cta-pulse { display: inline-flex !important; opacity: 1 !important; visibility: visible !important; }
-            .header.header.collapsed.expanded { left: 50% !important; transform: translateX(-50%) !important; width: calc(100% - 40px) !important; max-width: 1200px !important; background: rgba(248, 245, 255, 0.95) !important; backdrop-filter: blur(8px) !important; }
+            .header.header.collapsed.expanded { left: 50% !important; transform: translateX(-50%) !important; width: calc(100% - 40px) !important; max-width: 1200px !important; background: rgba(26, 0, 51, 0.9) !important; backdrop-filter: blur(12px) !important; -webkit-backdrop-filter: blur(12px) !important; }
             .header.header.collapsed.expanded .container { padding: 0 var(--spacing-lg) !important; display: block !important; }
             .header.header.collapsed.expanded .nav { justify-content: space-between !important; padding: var(--spacing-sm) 0 !important; }
 
             .nav__menu--centered { position: absolute; left: 50%; transform: translateX(-50%); }
-            .nav__link { position: relative; padding-bottom: 4px; }
+            .nav__link { position: relative; padding-bottom: 4px; color: white !important; }
             .nav__link::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--rose); transition: width 0.3s ease; }
             .nav__link:hover::after { width: 100%; }
             .btn--cta-pulse { padding: 10px 28px !important; animation: pulse 2s infinite; }
@@ -154,7 +156,7 @@
         /* ============================================ */
         /* SECTIONS CUSTOM                             */
         /* ============================================ */
-        .section-bg { background-color: var(--bg); }
+        .section-bg { background-color: var(--dark); }
 
         .gradient-card {
             background: linear-gradient(135deg, var(--violet), var(--rose));
@@ -236,11 +238,209 @@
         }
         .video-wrapper.playing .video-overlay { display: none; }
 
+        /* ============================================ */
+        /* SCROLL ANIMATIONS                           */
+        /* ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+
+        /* ============================================ */
+        /* SOCIAL PROOF                                */
+        /* ============================================ */
+        .logo-scroll {
+            display: flex;
+            gap: 60px;
+            animation: scrollLogos 20s linear infinite;
+        }
+        @keyframes scrollLogos {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes scrollTestimonials {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .trust-stat {
+            text-align: center;
+            padding: 24px;
+        }
+        .trust-stat .number {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a855f7, #ff3f9b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         /* FAQ */
         .faq-card { transition: all 0.3s ease; cursor: pointer; }
-        .faq-card:hover { background: rgba(255,255,255,0.15) !important; }
+        .faq-card:hover { background: rgba(255,255,255,0.08) !important; }
         .faq-card.open .faq-answer { max-height: 200px !important; margin-top: 14px !important; }
         .faq-card.open .faq-icon { transform: rotate(45deg); }
+
+        /* ============================================ */
+        /* TOGGLE DARK/LIGHT                           */
+        /* ============================================ */
+        .theme-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9999;
+            background: rgba(128,0,255,0.9);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(128,0,255,0.4);
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover { transform: scale(1.05); }
+
+        /* ====== LIGHT MODE OVERRIDES ====== */
+        body.light-mode section.hero,
+        body.light-mode .hero {
+            background: linear-gradient(165deg, #f8f4ff 0%, #E5D5FF 40%, #d4c0f9 100%) !important;
+        }
+        body.light-mode .header.header {
+            background: linear-gradient(135deg, rgba(128,0,255,0.06), rgba(255,63,155,0.04)) !important;
+            border: 1px solid rgba(128,0,255,0.12) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            box-shadow: 0 8px 32px rgba(128,0,255,0.08), inset 0 1px 0 rgba(255,255,255,0.6) !important;
+        }
+        body.light-mode .header.header:hover {
+            border-color: rgba(128,0,255,0.2) !important;
+            box-shadow: 0 8px 32px rgba(128,0,255,0.12), inset 0 1px 0 rgba(255,255,255,0.7) !important;
+        }
+        body.light-mode .header.header.collapsed.expanded {
+            background: linear-gradient(135deg, rgba(128,0,255,0.08), rgba(255,63,155,0.05)) !important;
+            backdrop-filter: blur(20px) !important;
+            box-shadow: 0 12px 40px rgba(128,0,255,0.12), inset 0 1px 0 rgba(255,255,255,0.5) !important;
+        }
+        body.light-mode .nav__link { color: #1a0033 !important; }
+        body.light-mode .nav__link:hover { color: #8000ff !important; }
+        body.light-mode .btn--cta-pulse {
+            background: linear-gradient(135deg, #8000ff, #ff3f9b) !important;
+            border: none !important;
+            box-shadow: 0 4px 16px rgba(128,0,255,0.3) !important;
+        }
+        /* Hero textes */
+        body.light-mode #hero-desktop h1 { color: #1a0033 !important; }
+        body.light-mode #hero-desktop h1 span { background: linear-gradient(135deg, #8000ff, #ff3f9b) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+        body.light-mode #hero-desktop p { color: #1a0033 !important; opacity: 0.6 !important; }
+        body.light-mode #hero-desktop .letter-i { -webkit-text-fill-color: var(--violet) !important; }
+        body.light-mode #hero-desktop .letter-a { -webkit-text-fill-color: var(--rose) !important; }
+        /* Hero badge */
+        body.light-mode #hero-desktop > div > div > div > span:first-child { background: white !important; color: #8000ff !important; border: none !important; box-shadow: 0 2px 12px rgba(128,0,255,0.1) !important; }
+        /* Hero boutons */
+        body.light-mode #hero-desktop a[style*="Acheter"] { background: white !important; color: #1a0033 !important; border: none !important; }
+        /* Hero checks */
+        body.light-mode #hero-desktop svg[stroke="#a855f7"] { stroke: #8000ff !important; }
+        body.light-mode #hero-desktop span[style*="rgba(255,255,255,0.45)"] { color: rgba(26,0,51,0.5) !important; }
+        /* Hero video frame */
+        body.light-mode #hero-desktop div[style*="rgba(255,255,255,0.05)"] { background: white !important; box-shadow: 0 25px 60px rgba(26,0,51,0.15) !important; border: none !important; }
+        body.light-mode #hero-desktop div[style*="rgba(255,255,255,0.06)"] { background: rgba(128,0,255,0.06) !important; }
+        /* Hero deco circles */
+        body.light-mode #hero-desktop > div[style*="radial-gradient"] { opacity: 0.3 !important; }
+        /* Badge x5 */
+        body.light-mode div[style*="Panier moyen x5"] { background: white !important; border: none !important; box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important; }
+        body.light-mode div[style*="Panier moyen x5"] p { color: #1a0033 !important; }
+
+        /* Probl&egrave;me section */
+        body.light-mode section[style*="padding: 80px 0 100px"] { background: #E5D5FF !important; }
+        body.light-mode section[style*="padding: 80px 0 100px"] h2 { color: #1a0033 !important; }
+        body.light-mode section[style*="padding: 80px 0 100px"] > div > div > div:first-child p { color: #1a0033 !important; opacity: 0.6 !important; }
+        body.light-mode section[style*="padding: 80px 0 100px"] > div > div > div:first-child span { background: rgba(255,63,155,0.1) !important; color: #ff3f9b !important; border: none !important; }
+        body.light-mode section[style*="padding: 80px 0 100px"] div[style*="rgba(255,63,155,0.08)"],
+        body.light-mode section[style*="padding: 80px 0 100px"] div[style*="rgba(128,0,255,0.1)"],
+        body.light-mode section[style*="padding: 80px 0 100px"] div[style*="rgba(255,112,61,0.1)"] {
+            background: white !important;
+            backdrop-filter: none !important;
+        }
+        body.light-mode section[style*="padding: 80px 0 100px"] div[style*="rgba(255,255,255,0.08)"] { background: rgba(128,0,255,0.06) !important; }
+        body.light-mode section[style*="padding: 80px 0 100px"] h4 { color: #1a0033 !important; }
+        body.light-mode section[style*="padding: 80px 0 100px"] div[style*="backdrop-filter"] p { color: #1a0033 !important; opacity: 0.6 !important; }
+
+        /* Comment &ccedil;a marche */
+        body.light-mode #comment-ca-marche { background: #E5D5FF !important; }
+        body.light-mode #comment-ca-marche h2,
+        body.light-mode #comment-ca-marche h3 { color: #1a0033 !important; }
+        body.light-mode #comment-ca-marche span[style*="color: white"] { color: #1a0033 !important; }
+        body.light-mode #comment-ca-marche p { color: rgba(26,0,51,0.6) !important; }
+
+        /* R&eacute;sultats */
+        body.light-mode #resultats { background: #E5D5FF !important; }
+        body.light-mode #resultats h2 { color: #1a0033 !important; }
+        body.light-mode #resultats span[style*="#a855f7"] { color: #8000ff !important; background: rgba(128,0,255,0.08) !important; }
+        body.light-mode #resultats div[style*="rgba(255,255,255,0.05)"] { background: white !important; border: 1px solid rgba(128,0,255,0.06) !important; }
+        body.light-mode #resultats div[style*="rgba(255,255,255,0.03)"],
+        body.light-mode #resultats div[style*="rgba(255,255,255,0.06)"] { background: #f9f7fc !important; }
+        body.light-mode #resultats span[style*="color: white"] { color: #1a0033 !important; }
+        body.light-mode #resultats span[style*="rgba(255,255,255,0.4)"] { color: rgba(26,0,51,0.5) !important; }
+        body.light-mode #resultats span[style*="color: #c084fc"] { color: #8000ff !important; }
+
+        /* Fonctionnalit&eacute;s (section-bg) */
+        body.light-mode .section-bg { background-color: #E5D5FF !important; }
+
+        /* S&eacute;curit&eacute; */
+        body.light-mode section[style*="S"] + section[style*="#1a0033"][style*="100px 0"][style*="overflow"] { background: #E5D5FF !important; }
+        body.light-mode div[style*="rgba(255,255,255,0.05)"][style*="border-radius: 20px"][style*="padding: 32px"] { background: white !important; border: 1px solid rgba(128,0,255,0.06) !important; box-shadow: 0 2px 12px rgba(128,0,255,0.04) !important; }
+        body.light-mode div[style*="rgba(255,255,255,0.05)"][style*="border-radius: 20px"] h4 { color: #1a0033 !important; }
+
+        /* FAQ */
+        body.light-mode #faq { background: #E5D5FF !important; }
+        body.light-mode #faq h2 { color: #1a0033 !important; }
+        body.light-mode #faq span[style*="#a855f7"] { color: #8000ff !important; background: rgba(128,0,255,0.08) !important; }
+        body.light-mode .faq-card { background: white !important; border: 1px solid rgba(128,0,255,0.06) !important; }
+        body.light-mode .faq-card:hover { background: #f8f6fc !important; }
+        body.light-mode .faq-card h4 { color: #1a0033 !important; }
+        body.light-mode .faq-card .faq-icon { color: #8000ff !important; }
+        body.light-mode .faq-card .faq-answer { color: #1a0033 !important; opacity: 0.65 !important; }
+
     </style>
 </head>
 <body>
@@ -299,56 +499,57 @@
     <!-- ============================================ -->
     <!-- HERO SECTION -->
     <!-- ============================================ -->
-    <section class="hero desktop-only" id="hero-desktop" style="background: linear-gradient(165deg, #f8f4ff 0%, #E5D5FF 40%, #d4c0f9 100%); overflow: visible; padding-top: 140px; padding-bottom: 100px; position: relative;">
-        <!-- D&eacute;co cercles subtils -->
-        <div style="position: absolute; top: 80px; right: 5%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(128,0,255,0.08), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
-        <div style="position: absolute; bottom: -50px; left: 10%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(255,63,155,0.06), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+    <section class="hero desktop-only" id="hero-desktop" style="background: #1a0033; overflow: visible; padding-top: 140px; padding-bottom: 100px; position: relative;">
+        <!-- D&eacute;co cercles gradient -->
+        <div style="position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(128,0,255,0.25), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        <div style="position: absolute; top: 20%; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255,63,155,0.15), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        <div style="position: absolute; top: 50%; left: 50%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255,112,61,0.08), transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%);"></div>
 
         <div class="container" style="position: relative; z-index: 1;">
             <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
                 <div>
-                    <span style="display: inline-block; padding: 8px 20px; background: white; border-radius: 50px; font-size: 0.82rem; font-weight: 600; color: #8000ff; margin-bottom: 24px; box-shadow: 0 2px 12px rgba(128,0,255,0.1);">Pour les agences marketing &amp; communication</span>
-                    <h1 style="font-family: 'Poppins', sans-serif; font-size: 2.7rem; font-weight: 700; color: #1a0033; line-height: 1.2; margin-bottom: 20px;">
+                    <span style="display: inline-block; padding: 8px 20px; background: rgba(128,0,255,0.25); border: 1px solid rgba(128,0,255,0.3); border-radius: 50px; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 24px;">Pour les agences marketing &amp; communication</span>
+                    <h1 style="font-family: 'Poppins', sans-serif; font-size: 2.7rem; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 20px;">
                         Transformez vos prospects en propositions commerciales.
-                        <span style="display: block; margin-top: 4px; background: linear-gradient(135deg, #8000ff, #ff3f9b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Automatiquement.</span>
+                        <span style="display: block; margin-top: 4px; background: linear-gradient(135deg, #a855f7, #ff3f9b, #ff703d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Automatiquement.</span>
                     </h1>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: #1a0033; opacity: 0.65; line-height: 1.7; margin-bottom: 36px; max-width: 480px;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 36px; max-width: 480px;">
                         FLO structure votre processus commercial, collecte le besoin client et g&eacute;n&egrave;re des propositions argument&eacute;es gr&acirc;ce &agrave; l'<span class="letter-i">I</span><span class="letter-a">A</span>.
                     </p>
                     <div style="display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 20px;">
-                        <a href="demo.html" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; border: none; box-shadow: 0 6px 20px rgba(128, 0, 255, 0.3); padding: 16px 36px; border-radius: 14px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">
+                        <a href="demo.html" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; border: none; box-shadow: 0 6px 20px rgba(128, 0, 255, 0.4); padding: 16px 36px; border-radius: 14px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">
                             Essayer gratuitement
                         </a>
-                        <a href="demo.html" style="background: white; color: #1a0033; border: none; padding: 16px 36px; border-radius: 14px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: all 0.3s ease; font-family: 'Inter', sans-serif;">
+                        <a href="demo.html" style="background: rgba(255,255,255,0.08); color: white; border: 1px solid rgba(255,255,255,0.15); padding: 16px 36px; border-radius: 14px; font-size: 1rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif; backdrop-filter: blur(4px);">
                             Acheter la licence
                         </a>
                     </div>
                     <div style="display: flex; gap: 20px; align-items: center;">
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span style="font-size: 0.82rem; color: #1a0033; opacity: 0.5; font-family: 'Inter', sans-serif;">Essai gratuit</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span style="font-size: 0.82rem; color: rgba(255,255,255,0.45); font-family: 'Inter', sans-serif;">Essai gratuit</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span style="font-size: 0.82rem; color: #1a0033; opacity: 0.5; font-family: 'Inter', sans-serif;">Sans engagement</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span style="font-size: 0.82rem; color: rgba(255,255,255,0.45); font-family: 'Inter', sans-serif;">Sans engagement</span>
                         </div>
                         <div style="display: flex; align-items: center; gap: 6px;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                            <span style="font-size: 0.82rem; color: #1a0033; opacity: 0.5; font-family: 'Inter', sans-serif;">Pr&ecirc;t en 48h</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                            <span style="font-size: 0.82rem; color: rgba(255,255,255,0.45); font-family: 'Inter', sans-serif;">Pr&ecirc;t en 48h</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Vid&eacute;o dans un cadre "app" -->
                 <div style="position: relative;">
-                    <div style="background: white; border-radius: 20px; box-shadow: 0 25px 60px rgba(26,0,51,0.15), 0 0 0 1px rgba(128,0,255,0.08); overflow: hidden;">
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(255,255,255,0.08); overflow: hidden;">
                         <!-- Barre type navigateur -->
-                        <div style="background: #f8f6fc; padding: 12px 20px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(128,0,255,0.06);">
+                        <div style="background: rgba(255,255,255,0.05); padding: 12px 20px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid rgba(255,255,255,0.06);">
                             <div style="width: 10px; height: 10px; border-radius: 50%; background: #ff5f57;"></div>
                             <div style="width: 10px; height: 10px; border-radius: 50%; background: #ffbd2e;"></div>
                             <div style="width: 10px; height: 10px; border-radius: 50%; background: #28c840;"></div>
-                            <div style="flex: 1; margin-left: 12px; background: rgba(128,0,255,0.06); border-radius: 6px; padding: 6px 14px;">
-                                <span style="font-size: 0.72rem; color: rgba(26,0,51,0.4); font-family: 'Inter', sans-serif;">D&eacute;couvrez FLO en action</span>
+                            <div style="flex: 1; margin-left: 12px; background: rgba(255,255,255,0.06); border-radius: 6px; padding: 6px 14px;">
+                                <span style="font-size: 0.72rem; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif;">D&eacute;couvrez FLO en action</span>
                             </div>
                         </div>
                         <!-- Vid&eacute;o -->
@@ -372,11 +573,11 @@
                         </div>
                     </div>
                     <!-- Badge flottant -->
-                    <div style="position: absolute; bottom: -16px; right: 24px; background: white; border-radius: 12px; padding: 10px 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 8px; z-index: 3;">
+                    <div style="position: absolute; bottom: -16px; right: 24px; background: rgba(26,0,51,0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 10px 18px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; z-index: 3;">
                         <div style="width: 32px; height: 32px; background: linear-gradient(135deg, #8000ff, #ff3f9b); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-size: 0.85rem; font-weight: 800; color: white;">x5</div>
                         <div>
-                            <p style="font-size: 0.78rem; font-weight: 700; color: #1a0033; margin: 0; font-family: 'Inter', sans-serif;">Panier moyen x5</p>
-                            <p style="font-size: 0.68rem; color: #1a0033; opacity: 0.5; margin: 0;">R&eacute;sultat client r&eacute;el</p>
+                            <p style="font-size: 0.78rem; font-weight: 700; color: white; margin: 0; font-family: 'Inter', sans-serif;">Panier moyen x5</p>
+                            <p style="font-size: 0.68rem; color: rgba(255,255,255,0.5); margin: 0;">R&eacute;sultat client r&eacute;el</p>
                         </div>
                     </div>
                 </div>
@@ -394,48 +595,164 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- PROBL&Egrave;ME / SOLUTION - FOND BLANC -->
+    <!-- AVIS CLIENTS - BLOC GRADIENT -->
     <!-- ============================================ -->
-    <section class="desktop-only" style="background: #E5D5FF; padding: 100px 0;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto;">
+    <section class="desktop-only" style="background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 50%, #ff703d 100%); padding: 80px 0; position: relative; overflow: hidden;">
+        <!-- Texture subtile -->
+        <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%224%22 height=%224%22><rect width=%224%22 height=%224%22 fill=%22transparent%22/><rect width=%221%22 height=%221%22 fill=%22rgba(255,255,255,0.03)%22/></svg>'); pointer-events: none;"></div>
+
+        <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
+            <div class="reveal" style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: white;">
+                    Ce que nos clients en disent
+                </h2>
+            </div>
+
+            <!-- Carousel avis -->
+            <div style="overflow: hidden;">
+                <div class="testimonials-track" style="display: flex; gap: 24px; animation: scrollTestimonials 18s linear infinite;">
+                    <!-- Avis 1 -->
+                    <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 4px; margin-bottom: 16px;">
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">
+                            &laquo; Avant FLO, on passait 3-4 heures par proposition. Aujourd'hui c'est 15 minutes et nos offres sont mieux argument&eacute;es. Notre panier moyen est pass&eacute; de 2&nbsp;000&euro; &agrave; 10&nbsp;000&euro;. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; color: white; font-size: 0.85rem;">O</div>
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; margin: 0;">Oc&eacute;ane</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Directrice d'agence marketing</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Avis 2 -->
+                    <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 4px; margin-bottom: 16px;">
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">
+                            &laquo; FLO a compl&egrave;tement transform&eacute; notre processus commercial. On traite 3x plus de prospects et chaque proposition est pertinente. Un vrai game-changer pour notre agence. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; color: white; font-size: 0.85rem;">M</div>
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; margin: 0;">Marc</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Fondateur, agence communication</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Avis 3 -->
+                    <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 4px; margin-bottom: 16px;">
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">
+                            &laquo; L'IA de FLO comprend vraiment nos offres de services. Les propositions g&eacute;n&eacute;r&eacute;es sont pr&ecirc;tes &agrave; envoyer, on n'a presque rien &agrave; retoucher. Gain de temps &eacute;norme. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; color: white; font-size: 0.85rem;">S</div>
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; margin: 0;">Sophie</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">CEO, agence digitale</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duplicatas pour boucle infinie -->
+                    <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 4px; margin-bottom: 16px;">
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">&laquo; Avant FLO, on passait 3-4 heures par proposition. Aujourd'hui c'est 15 minutes et nos offres sont mieux argument&eacute;es. Notre panier moyen est pass&eacute; de 2&nbsp;000&euro; &agrave; 10&nbsp;000&euro;. &raquo;</p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; color: white; font-size: 0.85rem;">O</div>
+                            <div><p style="color: white; font-size: 0.85rem; font-weight: 600; margin: 0;">Oc&eacute;ane</p><p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Directrice d'agence marketing</p></div>
+                        </div>
+                    </div>
+                    <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 4px; margin-bottom: 16px;">
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">&laquo; FLO a compl&egrave;tement transform&eacute; notre processus commercial. On traite 3x plus de prospects et chaque proposition est pertinente. Un vrai game-changer pour notre agence. &raquo;</p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; color: white; font-size: 0.85rem;">M</div>
+                            <div><p style="color: white; font-size: 0.85rem; font-weight: 600; margin: 0;">Marc</p><p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Fondateur, agence communication</p></div>
+                        </div>
+                    </div>
+                    <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 4px; margin-bottom: 16px;">
+                            <span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span><span style="color: #fbbf24; font-size: 1.1rem;">&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">&laquo; L'IA de FLO comprend vraiment nos offres de services. Les propositions g&eacute;n&eacute;r&eacute;es sont pr&ecirc;tes &agrave; envoyer, on n'a presque rien &agrave; retoucher. Gain de temps &eacute;norme. &raquo;</p>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <div style="width: 40px; height: 40px; background: rgba(255,255,255,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Poppins', sans-serif; font-weight: 700; color: white; font-size: 0.85rem;">S</div>
+                            <div><p style="color: white; font-size: 0.85rem; font-weight: 600; margin: 0;">Sophie</p><p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">CEO, agence digitale</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PROBL&Egrave;ME / SOLUTION -->
+    <!-- ============================================ -->
+    <section class="desktop-only" style="background: #1a0033; padding: 80px 0 100px 0; position: relative;">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
             <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center;">
                 <!-- Colonne gauche : titre + contexte -->
-                <div>
-                    <span style="display: inline-block; padding: 6px 14px; background: rgba(255,63,155,0.1); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #ff3f9b; margin-bottom: 16px;">Le probl&egrave;me</span>
-                    <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1a0033; line-height: 1.25; margin-bottom: 20px;">
+                <div class="reveal-left">
+                    <span style="display: inline-block; padding: 6px 14px; background: rgba(255,63,155,0.15); border: 1px solid rgba(255,63,155,0.2); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #ff3f9b; margin-bottom: 16px;">Le probl&egrave;me</span>
+                    <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 700; color: white; line-height: 1.25; margin-bottom: 20px;">
                         Vous perdez du temps<br>&agrave; formaliser vos offres ?
                     </h2>
-                    <p style="color: #1a0033; opacity: 0.6; font-size: 1rem; line-height: 1.7; font-family: 'Inter', sans-serif;">
+                    <p style="color: rgba(255,255,255,0.55); font-size: 1rem; line-height: 1.7; font-family: 'Inter', sans-serif;">
                         Les CRM ne g&egrave;rent pas la r&eacute;daction de propositions. Les outils de devis ne couvrent pas les prestations sur-mesure. R&eacute;sultat : vous passez des heures &agrave; formaliser vos offres.
                     </p>
                 </div>
                 <!-- Colonne droite : 3 probl&egrave;mes empil&eacute;s -->
-                <div style="display: flex; flex-direction: column; gap: 16px;">
-                    <div style="display: flex; align-items: flex-start; gap: 20px; padding: 24px 28px; background: #fef2f2; border-radius: 16px; border-left: 4px solid #ff3f9b;">
-                        <div style="width: 44px; height: 44px; flex-shrink: 0; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                <div class="reveal-right" style="display: flex; flex-direction: column; gap: 16px;">
+                    <div style="display: flex; align-items: flex-start; gap: 20px; padding: 24px 28px; background: rgba(255,63,155,0.08); border-radius: 16px; border-left: 4px solid #ff3f9b; backdrop-filter: blur(8px);">
+                        <div style="width: 44px; height: 44px; flex-shrink: 0; background: rgba(255,255,255,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff3f9b" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                         </div>
                         <div>
-                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: #1a0033; margin: 0 0 6px 0;">Infos &eacute;parpill&eacute;es</h4>
-                            <p style="color: #1a0033; opacity: 0.6; font-size: 0.88rem; line-height: 1.5; margin: 0;">Emails, notes, &eacute;changes oraux... vos infos prospects sont partout sauf au m&ecirc;me endroit.</p>
+                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: white; margin: 0 0 6px 0;">Infos &eacute;parpill&eacute;es</h4>
+                            <p style="color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.5; margin: 0;">Emails, notes, &eacute;changes oraux... vos infos prospects sont partout sauf au m&ecirc;me endroit.</p>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: flex-start; gap: 20px; padding: 24px 28px; background: #f3f0ff; border-radius: 16px; border-left: 4px solid #8000ff;">
-                        <div style="width: 44px; height: 44px; flex-shrink: 0; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                    <div style="display: flex; align-items: flex-start; gap: 20px; padding: 24px 28px; background: rgba(128,0,255,0.1); border-radius: 16px; border-left: 4px solid #8000ff; backdrop-filter: blur(8px);">
+                        <div style="width: 44px; height: 44px; flex-shrink: 0; background: rgba(255,255,255,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
                         </div>
                         <div>
-                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: #1a0033; margin: 0 0 6px 0;">Trop de temps perdu</h4>
-                            <p style="color: #1a0033; opacity: 0.6; font-size: 0.88rem; line-height: 1.5; margin: 0;">R&eacute;diger une proposition commerciale prend des heures. Des prospects passent &agrave; la trappe.</p>
+                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: white; margin: 0 0 6px 0;">Trop de temps perdu</h4>
+                            <p style="color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.5; margin: 0;">R&eacute;diger une proposition commerciale prend des heures. Des prospects passent &agrave; la trappe.</p>
                         </div>
                     </div>
-                    <div style="display: flex; align-items: flex-start; gap: 20px; padding: 24px 28px; background: #fff7ed; border-radius: 16px; border-left: 4px solid #ff703d;">
-                        <div style="width: 44px; height: 44px; flex-shrink: 0; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+                    <div style="display: flex; align-items: flex-start; gap: 20px; padding: 24px 28px; background: rgba(255,112,61,0.1); border-radius: 16px; border-left: 4px solid #ff703d; backdrop-filter: blur(8px);">
+                        <div style="width: 44px; height: 44px; flex-shrink: 0; background: rgba(255,255,255,0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
                             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ff703d" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                         </div>
                         <div>
-                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: #1a0033; margin: 0 0 6px 0;">Prestations sous-valoris&eacute;es</h4>
-                            <p style="color: #1a0033; opacity: 0.6; font-size: 0.88rem; line-height: 1.5; margin: 0;">Sans structure, vos propositions manquent d'arguments. Vous vendez en dessous de votre valeur.</p>
+                            <h4 style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: white; margin: 0 0 6px 0;">Prestations sous-valoris&eacute;es</h4>
+                            <p style="color: rgba(255,255,255,0.5); font-size: 0.88rem; line-height: 1.5; margin: 0;">Sans structure, vos propositions manquent d'arguments. Vous vendez en dessous de votre valeur.</p>
                         </div>
                     </div>
                 </div>
@@ -467,7 +784,7 @@
     <!-- ============================================ -->
     <!-- COMMENT &Ccedil;A MARCHE - TIMELINE -->
     <!-- ============================================ -->
-    <section class="desktop-only" id="comment-ca-marche" style="background: var(--dark); padding: 100px 0; position: relative; overflow: hidden;">
+    <section class="desktop-only" id="comment-ca-marche" style="background: #1a0033; padding: 100px 0 0 0; position: relative; overflow: hidden;">
         <!-- D&eacute;co subtile -->
         <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(128,0,255,0.15), transparent); border-radius: 50%;"></div>
         <div style="position: absolute; bottom: -80px; left: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,63,155,0.1), transparent); border-radius: 50%;"></div>
@@ -546,19 +863,19 @@
     <!-- ============================================ -->
     <!-- R&Eacute;SULTATS CONCRETS -->
     <!-- ============================================ -->
-    <section class="desktop-only" id="resultats" style="background: #E5D5FF; padding: 100px 0;">
+    <section class="desktop-only" id="resultats" style="background: linear-gradient(180deg, #1e0a3a 0%, #1a0033 100%); padding: 100px 0; border-top: 1px solid rgba(255,255,255,0.04);">
         <div class="container" style="max-width: 1100px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 56px;">
-                <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.08); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #8000ff; margin-bottom: 14px;">Avant / Apr&egrave;s</span>
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 700; color: #1a0033;">
+            <div class="reveal" style="text-align: center; margin-bottom: 56px;">
+                <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.15); border: 1px solid rgba(128,0,255,0.2); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #a855f7; margin-bottom: 14px;">Avant / Apr&egrave;s</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.2rem; font-weight: 700; color: white;">
                     Ce que FLO change concr&egrave;tement
                 </h2>
             </div>
 
             <!-- Tableau comparatif -->
-            <div style="border-radius: 20px; overflow: hidden; box-shadow: 0 4px 30px rgba(128,0,255,0.06);">
+            <div class="reveal-scale" style="border-radius: 20px; overflow: hidden; box-shadow: 0 4px 30px rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08);">
                 <!-- Header -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: #1a0033;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: rgba(255,255,255,0.05);">
                     <div style="padding: 20px 28px;"></div>
                     <div style="padding: 20px 28px; text-align: center; border-left: 1px solid rgba(255,255,255,0.1);">
                         <span style="font-family: 'Poppins', sans-serif; font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.5);">Sans FLO</span>
@@ -569,69 +886,69 @@
                 </div>
 
                 <!-- Ligne 1 : Temps -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: #f9f7fc; border-bottom: 1px solid rgba(128,0,255,0.06);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);">
                     <div style="padding: 24px 28px; display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.08); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.2); display: flex; align-items: center; justify-content: center;">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                         </div>
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: #1a0033;">Temps de r&eacute;daction</span>
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: white;">Temps de r&eacute;daction</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(128,0,255,0.06);">
-                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(26,0,51,0.5);">2 &agrave; 4 heures par offre</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,0.06);">
+                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.4);">2 &agrave; 4 heures par offre</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; border-left: 1px solid rgba(128,0,255,0.06); background: rgba(128,0,255,0.03);">
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #8000ff;">15 minutes</span>
-                        <span style="font-size: 0.75rem; background: rgba(128,0,255,0.1); color: #8000ff; padding: 2px 8px; border-radius: 50px; font-weight: 600;">-80%</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; border-left: 1px solid rgba(255,255,255,0.06); background: rgba(128,0,255,0.12);">
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #c084fc;">15 minutes</span>
+                        <span style="font-size: 0.75rem; background: rgba(128,0,255,0.2); color: #c084fc; padding: 2px 8px; border-radius: 50px; font-weight: 600;">-80%</span>
                     </div>
                 </div>
 
                 <!-- Ligne 2 : Qualit&eacute; des infos -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: white; border-bottom: 1px solid rgba(128,0,255,0.06);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
                     <div style="padding: 24px 28px; display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.08); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.2); display: flex; align-items: center; justify-content: center;">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                         </div>
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: #1a0033;">Qualification prospect</span>
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: white;">Qualification prospect</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(128,0,255,0.06);">
-                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(26,0,51,0.5);">Infos &eacute;parpill&eacute;es, incompl&egrave;tes</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,0.06);">
+                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.4);">Infos &eacute;parpill&eacute;es, incompl&egrave;tes</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(128,0,255,0.06); background: rgba(128,0,255,0.03);">
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #8000ff;">Structur&eacute;e &amp; compl&egrave;te</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,0.06); background: rgba(128,0,255,0.12);">
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #c084fc;">Structur&eacute;e &amp; compl&egrave;te</span>
                     </div>
                 </div>
 
                 <!-- Ligne 3 : Offre tarifaire -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: #f9f7fc; border-bottom: 1px solid rgba(128,0,255,0.06);">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06);">
                     <div style="padding: 24px 28px; display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.08); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.2); display: flex; align-items: center; justify-content: center;">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                         </div>
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: #1a0033;">Offre tarifaire</span>
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: white;">Offre tarifaire</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(128,0,255,0.06);">
-                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(26,0,51,0.5);">Sous-valoris&eacute;e, au feeling</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,0.06);">
+                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.4);">Sous-valoris&eacute;e, au feeling</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; border-left: 1px solid rgba(128,0,255,0.06); background: rgba(128,0,255,0.03);">
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #8000ff;">Adapt&eacute;e &amp; argument&eacute;e</span>
-                        <span style="font-size: 0.75rem; background: rgba(128,0,255,0.1); color: #8000ff; padding: 2px 8px; border-radius: 50px; font-weight: 600;">x5</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; border-left: 1px solid rgba(255,255,255,0.06); background: rgba(128,0,255,0.12);">
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #c084fc;">Adapt&eacute;e &amp; argument&eacute;e</span>
+                        <span style="font-size: 0.75rem; background: rgba(128,0,255,0.2); color: #c084fc; padding: 2px 8px; border-radius: 50px; font-weight: 600;">x5</span>
                     </div>
                 </div>
 
                 <!-- Ligne 4 : Prospects -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: white;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; background: rgba(255,255,255,0.03);">
                     <div style="padding: 24px 28px; display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.08); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 36px; height: 36px; border-radius: 10px; background: rgba(128,0,255,0.2); display: flex; align-items: center; justify-content: center;">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8000ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                         </div>
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: #1a0033;">Volume de prospects</span>
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 600; color: white;">Volume de prospects</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(128,0,255,0.06);">
-                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(26,0,51,0.5);">Beaucoup pass&eacute;s &agrave; la trappe</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; border-left: 1px solid rgba(255,255,255,0.06);">
+                        <span style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.4);">Beaucoup pass&eacute;s &agrave; la trappe</span>
                     </div>
-                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; border-left: 1px solid rgba(128,0,255,0.06); background: rgba(128,0,255,0.03);">
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #8000ff;">Tous trait&eacute;s</span>
-                        <span style="font-size: 0.75rem; background: rgba(128,0,255,0.1); color: #8000ff; padding: 2px 8px; border-radius: 50px; font-weight: 600;">+70%</span>
+                    <div style="padding: 24px 28px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; border-left: 1px solid rgba(255,255,255,0.06); background: rgba(128,0,255,0.12);">
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; color: #c084fc;">Tous trait&eacute;s</span>
+                        <span style="font-size: 0.75rem; background: rgba(128,0,255,0.2); color: #c084fc; padding: 2px 8px; border-radius: 50px; font-weight: 600;">+70%</span>
                     </div>
                 </div>
             </div>
@@ -680,7 +997,7 @@
     <!-- ============================================ -->
     <section class="section-bg desktop-only" style="padding: 80px 0;">
         <div class="container" style="max-width: 1200px; margin: 0 auto;">
-            <div class="dark-card">
+            <div class="dark-card reveal-scale">
                 <div style="text-align: center; margin-bottom: 40px;">
                     <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.8rem; font-weight: 700; color: white;">
                         Concr&egrave;tement, FLO c'est quoi ?
@@ -723,18 +1040,18 @@
     <!-- ============================================ -->
     <!-- S&Eacute;CURIT&Eacute; & INFRASTRUCTURE -->
     <!-- ============================================ -->
-    <section class="desktop-only" style="background: linear-gradient(135deg, #f3edff 0%, #e8dff5 100%); padding: 100px 0; position: relative; overflow: hidden;">
+    <section class="desktop-only" style="background: linear-gradient(180deg, #1a0033 0%, #150029 100%); padding: 100px 0; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.04);">
         <!-- D&eacute;co subtile -->
-        <div style="position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: rgba(128,0,255,0.04); border-radius: 50%;"></div>
-        <div style="position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: rgba(255,63,155,0.04); border-radius: 50%;"></div>
+        <div style="position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: rgba(128,0,255,0.12); border-radius: 50%;"></div>
+        <div style="position: absolute; bottom: -40px; left: -40px; width: 160px; height: 160px; background: rgba(255,63,155,0.08); border-radius: 50%;"></div>
 
         <div class="container" style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.08); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #8000ff; margin-bottom: 14px;">S&eacute;curit&eacute; &amp; Infrastructure</span>
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: #1a0033; margin-bottom: 12px;">
+            <div class="reveal" style="text-align: center; margin-bottom: 60px;">
+                <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.15); border: 1px solid rgba(128,0,255,0.2); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #a855f7; margin-bottom: 14px;">S&eacute;curit&eacute; &amp; Infrastructure</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: white; margin-bottom: 12px;">
                     Vos donn&eacute;es m&eacute;ritent le meilleur
                 </h2>
-                <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: rgba(26,0,51,0.6); max-width: 600px; margin: 0 auto; line-height: 1.6;">
+                <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; line-height: 1.6;">
                     FLO est h&eacute;berg&eacute; sur Google Cloud en France, avec les plus hauts standards de s&eacute;curit&eacute; et de conformit&eacute;.
                 </p>
             </div>
@@ -742,44 +1059,44 @@
             <!-- Grille infrastructure -->
             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px;">
                 <!-- H&eacute;bergement -->
-                <div style="background: white; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(128,0,255,0.06); box-shadow: 0 2px 12px rgba(128,0,255,0.04);">
+                <div style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.2);">
                     <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #8000ff 0%, #a855f7 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12H2"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/><line x1="6" y1="16" x2="6.01" y2="16"/><line x1="10" y1="16" x2="10.01" y2="16"/></svg>
                     </div>
-                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; color: #1a0033; margin-bottom: 10px;">H&eacute;bergement France</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(26,0,51,0.55); line-height: 1.6; margin-bottom: 16px;">Infrastructure Google Cloud Platform avec datacenter europ&eacute;en pour une latence minimale.</p>
+                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 10px;">H&eacute;bergement France</h4>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 16px;">Infrastructure Google Cloud Platform avec datacenter europ&eacute;en pour une latence minimale.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span style="padding: 4px 10px; background: rgba(128,0,255,0.06); border-radius: 6px; font-size: 0.75rem; color: #8000ff; font-weight: 500;">Google Cloud</span>
-                        <span style="padding: 4px 10px; background: rgba(128,0,255,0.06); border-radius: 6px; font-size: 0.75rem; color: #8000ff; font-weight: 500;">Cloud Run</span>
-                        <span style="padding: 4px 10px; background: rgba(128,0,255,0.06); border-radius: 6px; font-size: 0.75rem; color: #8000ff; font-weight: 500;">Cloud SQL</span>
+                        <span style="padding: 4px 10px; background: rgba(128,0,255,0.15); border-radius: 6px; font-size: 0.75rem; color: #a855f7; font-weight: 500;">Google Cloud</span>
+                        <span style="padding: 4px 10px; background: rgba(128,0,255,0.15); border-radius: 6px; font-size: 0.75rem; color: #a855f7; font-weight: 500;">Cloud Run</span>
+                        <span style="padding: 4px 10px; background: rgba(128,0,255,0.15); border-radius: 6px; font-size: 0.75rem; color: #a855f7; font-weight: 500;">Cloud SQL</span>
                     </div>
                 </div>
 
                 <!-- S&eacute;curit&eacute; -->
-                <div style="background: white; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(128,0,255,0.06); box-shadow: 0 2px 12px rgba(128,0,255,0.04);">
+                <div style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.2);">
                     <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ff3f9b 0%, #ff6fb5 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
                     </div>
-                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; color: #1a0033; margin-bottom: 10px;">Chiffrement &amp; Protection</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(26,0,51,0.55); line-height: 1.6; margin-bottom: 16px;">Chiffrement AES-256 au repos, TLS 1.3 en transit. Vos donn&eacute;es ne sont jamais partag&eacute;es.</p>
+                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 10px;">Chiffrement &amp; Protection</h4>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 16px;">Chiffrement AES-256 au repos, TLS 1.3 en transit. Vos donn&eacute;es ne sont jamais partag&eacute;es.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span style="padding: 4px 10px; background: rgba(255,63,155,0.06); border-radius: 6px; font-size: 0.75rem; color: #ff3f9b; font-weight: 500;">AES-256</span>
-                        <span style="padding: 4px 10px; background: rgba(255,63,155,0.06); border-radius: 6px; font-size: 0.75rem; color: #ff3f9b; font-weight: 500;">TLS 1.3</span>
-                        <span style="padding: 4px 10px; background: rgba(255,63,155,0.06); border-radius: 6px; font-size: 0.75rem; color: #ff3f9b; font-weight: 500;">HTTPS</span>
+                        <span style="padding: 4px 10px; background: rgba(255,63,155,0.15); border-radius: 6px; font-size: 0.75rem; color: #ff6fb5; font-weight: 500;">AES-256</span>
+                        <span style="padding: 4px 10px; background: rgba(255,63,155,0.15); border-radius: 6px; font-size: 0.75rem; color: #ff6fb5; font-weight: 500;">TLS 1.3</span>
+                        <span style="padding: 4px 10px; background: rgba(255,63,155,0.15); border-radius: 6px; font-size: 0.75rem; color: #ff6fb5; font-weight: 500;">HTTPS</span>
                     </div>
                 </div>
 
                 <!-- Conformit&eacute; -->
-                <div style="background: white; border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(128,0,255,0.06); box-shadow: 0 2px 12px rgba(128,0,255,0.04);">
+                <div style="background: rgba(255,255,255,0.05); border-radius: 20px; padding: 32px 28px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 2px 12px rgba(0,0,0,0.2);">
                     <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #ff703d 0%, #ff9a6c 100%); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15l2 2 4-4"/></svg>
                     </div>
-                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; color: #1a0033; margin-bottom: 10px;">Conformit&eacute; RGPD</h4>
-                    <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(26,0,51,0.55); line-height: 1.6; margin-bottom: 16px;">Conforme au R&egrave;glement G&eacute;n&eacute;ral sur la Protection des Donn&eacute;es. DPO d&eacute;di&eacute;.</p>
+                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 600; color: white; margin-bottom: 10px;">Conformit&eacute; RGPD</h4>
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 16px;">Conforme au R&egrave;glement G&eacute;n&eacute;ral sur la Protection des Donn&eacute;es. DPO d&eacute;di&eacute;.</p>
                     <div style="display: flex; flex-wrap: wrap; gap: 6px;">
-                        <span style="padding: 4px 10px; background: rgba(255,112,61,0.06); border-radius: 6px; font-size: 0.75rem; color: #ff703d; font-weight: 500;">RGPD</span>
-                        <span style="padding: 4px 10px; background: rgba(255,112,61,0.06); border-radius: 6px; font-size: 0.75rem; color: #ff703d; font-weight: 500;">DPO d&eacute;di&eacute;</span>
-                        <span style="padding: 4px 10px; background: rgba(255,112,61,0.06); border-radius: 6px; font-size: 0.75rem; color: #ff703d; font-weight: 500;">UE</span>
+                        <span style="padding: 4px 10px; background: rgba(255,112,61,0.15); border-radius: 6px; font-size: 0.75rem; color: #ff9a6c; font-weight: 500;">RGPD</span>
+                        <span style="padding: 4px 10px; background: rgba(255,112,61,0.15); border-radius: 6px; font-size: 0.75rem; color: #ff9a6c; font-weight: 500;">DPO d&eacute;di&eacute;</span>
+                        <span style="padding: 4px 10px; background: rgba(255,112,61,0.15); border-radius: 6px; font-size: 0.75rem; color: #ff9a6c; font-weight: 500;">UE</span>
                     </div>
                 </div>
             </div>
@@ -872,43 +1189,43 @@
     <!-- ============================================ -->
     <!-- FAQ - FOND BLANC ACCORD&Eacute;ON -->
     <!-- ============================================ -->
-    <section class="desktop-only" id="faq" style="background: #E5D5FF; padding: 100px 0;">
+    <section class="desktop-only" id="faq" style="background: #1a0033; padding: 100px 0;">
         <div class="container" style="max-width: 800px; margin: 0 auto;">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.08); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #8000ff; margin-bottom: 14px;">FAQ</span>
-                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: #1a0033;">
+            <div class="reveal" style="text-align: center; margin-bottom: 50px;">
+                <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.15); border: 1px solid rgba(128,0,255,0.2); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #a855f7; margin-bottom: 14px;">FAQ</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: white;">
                     Questions fr&eacute;quentes
                 </h2>
             </div>
 
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <div class="faq-card" onclick="toggleFaq(this)" style="background: #f8f6fc; border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(128,0,255,0.08);">
+                <div class="faq-card" onclick="toggleFaq(this)" style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(255,255,255,0.08);">
                     <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
-                        <h4 style="color: #1a0033; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">C'est quoi exactement FLO ?</h4>
-                        <span class="faq-icon" style="color: #8000ff; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
+                        <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">C'est quoi exactement FLO ?</h4>
+                        <span class="faq-icon" style="color: #a855f7; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
                     </div>
-                    <p class="faq-answer" style="color: #1a0033; opacity: 0.65; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">FLO est une application no-code qui structure votre processus commercial : collecte du besoin client via des formulaires partag&eacute;s, analyse par IA, et g&eacute;n&eacute;ration automatique de propositions commerciales argument&eacute;es.</p>
+                    <p class="faq-answer" style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">FLO est une application no-code qui structure votre processus commercial : collecte du besoin client via des formulaires partag&eacute;s, analyse par IA, et g&eacute;n&eacute;ration automatique de propositions commerciales argument&eacute;es.</p>
                 </div>
-                <div class="faq-card" onclick="toggleFaq(this)" style="background: #f8f6fc; border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(128,0,255,0.08);">
+                <div class="faq-card" onclick="toggleFaq(this)" style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(255,255,255,0.08);">
                     <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
-                        <h4 style="color: #1a0033; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">Mes donn&eacute;es sont-elles s&eacute;curis&eacute;es ?</h4>
-                        <span class="faq-icon" style="color: #8000ff; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
+                        <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">Mes donn&eacute;es sont-elles s&eacute;curis&eacute;es ?</h4>
+                        <span class="faq-icon" style="color: #a855f7; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
                     </div>
-                    <p class="faq-answer" style="color: #1a0033; opacity: 0.65; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">Oui. H&eacute;bergement en France (Google Cloud), conformit&eacute; RGPD, chiffrement des donn&eacute;es. Vos donn&eacute;es ne sont jamais partag&eacute;es avec des tiers.</p>
+                    <p class="faq-answer" style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">Oui. H&eacute;bergement en France (Google Cloud), conformit&eacute; RGPD, chiffrement des donn&eacute;es. Vos donn&eacute;es ne sont jamais partag&eacute;es avec des tiers.</p>
                 </div>
-                <div class="faq-card" onclick="toggleFaq(this)" style="background: #f8f6fc; border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(128,0,255,0.08);">
+                <div class="faq-card" onclick="toggleFaq(this)" style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(255,255,255,0.08);">
                     <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
-                        <h4 style="color: #1a0033; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">Combien de temps pour d&eacute;marrer ?</h4>
-                        <span class="faq-icon" style="color: #8000ff; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
+                        <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">Combien de temps pour d&eacute;marrer ?</h4>
+                        <span class="faq-icon" style="color: #a855f7; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
                     </div>
-                    <p class="faq-answer" style="color: #1a0033; opacity: 0.65; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">48h max. On configure votre espace, on adapte les formulaires &agrave; votre activit&eacute;, et vous &ecirc;tes op&eacute;rationnel.</p>
+                    <p class="faq-answer" style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">48h max. On configure votre espace, on adapte les formulaires &agrave; votre activit&eacute;, et vous &ecirc;tes op&eacute;rationnel.</p>
                 </div>
-                <div class="faq-card" onclick="toggleFaq(this)" style="background: #f8f6fc; border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(128,0,255,0.08);">
+                <div class="faq-card" onclick="toggleFaq(this)" style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 24px 28px; border: 1px solid rgba(255,255,255,0.08);">
                     <div style="display: flex; justify-content: space-between; align-items: center; gap: 16px;">
-                        <h4 style="color: #1a0033; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">Faut-il des comp&eacute;tences techniques ?</h4>
-                        <span class="faq-icon" style="color: #8000ff; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
+                        <h4 style="color: white; font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 600; margin: 0; line-height: 1.4;">Faut-il des comp&eacute;tences techniques ?</h4>
+                        <span class="faq-icon" style="color: #a855f7; font-size: 1.5rem; font-weight: 300; transition: transform 0.3s ease; flex-shrink: 0;">+</span>
                     </div>
-                    <p class="faq-answer" style="color: #1a0033; opacity: 0.65; font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">Non, FLO est 100% no-code. Si vous savez utiliser un CRM ou un outil de gestion de projet, vous saurez utiliser FLO.</p>
+                    <p class="faq-answer" style="color: rgba(255,255,255,0.55); font-family: 'Inter', sans-serif; font-size: 0.9rem; margin: 0; line-height: 1.6; max-height: 0; overflow: hidden; transition: all 0.3s ease;">Non, FLO est 100% no-code. Si vous savez utiliser un CRM ou un outil de gestion de projet, vous saurez utiliser FLO.</p>
                 </div>
             </div>
         </div>
@@ -943,38 +1260,40 @@
     <!-- CTA FINAL - GRADIENT IMMERSIF -->
     <!-- ============================================ -->
     <section class="desktop-only" style="padding: 0;">
-        <div style="background: linear-gradient(135deg, #1a0033 0%, #3d1a6e 40%, #8000ff 100%); padding: 100px 40px; text-align: center; position: relative; overflow: hidden;">
-            <!-- D&eacute;co -->
-            <div style="position: absolute; top: -60px; left: 20%; width: 200px; height: 200px; background: radial-gradient(circle, rgba(255,63,155,0.2), transparent); border-radius: 50%;"></div>
-            <div style="position: absolute; bottom: -40px; right: 15%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,112,61,0.15), transparent); border-radius: 50%;"></div>
+        <div style="background: #1a0033; padding: 100px 40px; text-align: center; position: relative; overflow: hidden;">
+            <!-- Bordure gradient en haut -->
+            <div style="position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(128,0,255,0.3), rgba(255,63,155,0.3), transparent);"></div>
+            <!-- D&eacute;co subtile -->
+            <div style="position: absolute; top: -80px; left: 25%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(128,0,255,0.12), transparent 70%); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -60px; right: 20%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(255,63,155,0.08), transparent 70%); border-radius: 50%;"></div>
 
             <div style="position: relative; z-index: 1; max-width: 700px; margin: 0 auto;">
                 <h2 style="font-family: 'Poppins', sans-serif; font-size: 2.4rem; font-weight: 700; color: white; margin-bottom: 16px; line-height: 1.25;">
                     Pr&ecirc;t &agrave; structurer votre<br>process commercial ?
                 </h2>
-                <p style="color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 40px; font-family: 'Inter', sans-serif;">
+                <p style="color: rgba(255,255,255,0.5); font-size: 1.1rem; margin-bottom: 40px; font-family: 'Inter', sans-serif;">
                     Essayez gratuitement ou achetez directement votre licence.
                 </p>
                 <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-                    <a href="demo.html" style="background: white; color: #8000ff; text-decoration: none; padding: 18px 40px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; box-shadow: 0 8px 30px rgba(0,0,0,0.2); display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif;">
+                    <a href="demo.html" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; text-decoration: none; padding: 18px 40px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; box-shadow: 0 8px 30px rgba(128,0,255,0.4); display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif;">
                         Essayer gratuitement
                     </a>
-                    <a href="demo.html" style="background: transparent; color: white; text-decoration: none; padding: 18px 40px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; border: 2px solid rgba(255,255,255,0.3); display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif;">
+                    <a href="demo.html" style="background: rgba(255,255,255,0.05); color: white; text-decoration: none; padding: 18px 40px; border-radius: 14px; font-size: 1.05rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.12); display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; backdrop-filter: blur(4px);">
                         Acheter la licence
                     </a>
                 </div>
                 <div style="display: flex; justify-content: center; gap: 32px; margin-top: 32px;">
                     <div style="display: flex; align-items: center; gap: 6px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem; font-family: 'Inter', sans-serif;">Sans engagement</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem; font-family: 'Inter', sans-serif;">Sans engagement</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 6px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem; font-family: 'Inter', sans-serif;">RGPD &amp; s&eacute;curis&eacute;</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem; font-family: 'Inter', sans-serif;">RGPD &amp; s&eacute;curis&eacute;</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 6px;">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span style="color: rgba(255,255,255,0.6); font-size: 0.85rem; font-family: 'Inter', sans-serif;">Pr&ecirc;t en 48h</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span style="color: rgba(255,255,255,0.4); font-size: 0.85rem; font-family: 'Inter', sans-serif;">Pr&ecirc;t en 48h</span>
                     </div>
                 </div>
             </div>
@@ -1021,7 +1340,7 @@
     <!-- ============================================ -->
     <!-- FOOTER DESKTOP -->
     <!-- ============================================ -->
-    <footer class="desktop-only" style="background: #1a0033; padding: 0 0 30px 0; border-radius: 32px 32px 0 0; overflow: hidden; margin-top: 40px;">
+    <footer class="desktop-only" style="background: #1a0033; padding: 0 0 30px 0; overflow: hidden;">
         <!-- CTA Banner -->
         <div style="background: #ff703d; padding: 24px 40px;">
             <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
@@ -1156,6 +1475,22 @@
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
+
+        // Scroll reveal animations
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+            revealObserver.observe(el);
+        });
     </script>
+
+    <!-- Toggle Dark/Light -->
+    <button class="theme-toggle" onclick="document.body.classList.toggle('light-mode'); this.textContent = document.body.classList.contains('light-mode') ? '🌙 Mode sombre' : '☀️ Mode clair';">☀️ Mode clair</button>
 </body>
 </html>
