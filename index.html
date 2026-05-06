@@ -238,6 +238,33 @@
         }
         .video-wrapper.playing .video-overlay { display: none; }
 
+        /* SOUND TOGGLE */
+        .video-sound-btn {
+            position: absolute;
+            bottom: 14px;
+            right: 14px;
+            width: 38px;
+            height: 38px;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 5;
+            transition: background 0.25s ease, transform 0.2s ease;
+            padding: 0;
+        }
+        .video-sound-btn:hover {
+            background: rgba(0, 0, 0, 0.65);
+            transform: scale(1.1);
+        }
+        .video-sound-btn svg { color: white; }
+        .video-wrapper.playing .video-sound-btn { display: flex; }
+
         /* ============================================ */
         /* SCROLL ANIMATIONS                           */
         /* ============================================ */
@@ -557,14 +584,17 @@
                             </div>
                         </div>
                         <!-- Vid&eacute;o -->
-                        <div class="video-wrapper" id="hero-video-wrapper" onclick="playHeroVideo()" style="border-radius: 0;">
-                            <video id="hero-video" preload="none" poster="assets/images/demo-poster.jpg" playsinline style="background: #1a0033;">
+                        <div class="video-wrapper" id="hero-video-wrapper" onclick="playHeroVideo(event)" style="border-radius: 0;">
+                            <video id="hero-video" preload="none" poster="assets/images/demo-poster.jpg" playsinline muted style="background: #1a0033;">
                                 <source src="assets/video/FLO_demo.mp4" type="video/mp4">
                             </video>
                             <div class="video-overlay" style="background: linear-gradient(135deg, rgba(26,0,51,0.15), rgba(128,0,255,0.1));"></div>
                             <div class="video-play-btn" style="width: 52px; height: 52px;">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
                             </div>
+                            <button class="video-sound-btn" onclick="event.stopPropagation(); toggleSound('hero-video', this)" aria-label="Activer le son">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -965,8 +995,8 @@
     <!-- VID&Eacute;O D&Eacute;COUVERTE - MOBILE -->
     <!-- ============================================ -->
     <section class="mobile-only" style="background-color: #E5D5FF; padding: 40px 16px;">
-        <div class="video-wrapper" onclick="playMobileVideo()" id="mobile-video-wrapper" style="border-radius: 16px;">
-            <video id="mobile-video" preload="none" poster="assets/images/demo-poster.jpg" playsinline>
+        <div class="video-wrapper" onclick="playMobileVideo(event)" id="mobile-video-wrapper" style="border-radius: 16px;">
+            <video id="mobile-video" preload="none" poster="assets/images/demo-poster.jpg" playsinline muted>
                 <source src="assets/video/FLO_demo.mp4" type="video/mp4">
             </video>
             <div class="video-overlay"></div>
@@ -976,6 +1006,9 @@
             <div style="position: absolute; bottom: 12px; left: 12px; z-index: 2;">
                 <p style="color: white; font-size: 0.8rem; font-weight: 600; margin: 0; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">D&eacute;mo FLO &bull; 1 min</p>
             </div>
+            <button class="video-sound-btn" onclick="event.stopPropagation(); toggleSound('mobile-video', this)" aria-label="Activer le son">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            </button>
         </div>
     </section>
 
@@ -1628,7 +1661,8 @@
         }
 
         // Video players - chargement au clic uniquement
-        function playHeroVideo() {
+        function playHeroVideo(e) {
+            if (e && e.target.closest('.video-sound-btn')) return;
             const wrapper = document.getElementById('hero-video-wrapper');
             const video = document.getElementById('hero-video');
             if (wrapper.classList.contains('playing')) {
@@ -1640,7 +1674,8 @@
             }
         }
 
-        function playMobileVideo() {
+        function playMobileVideo(e) {
+            if (e && e.target.closest('.video-sound-btn')) return;
             const wrapper = document.getElementById('mobile-video-wrapper');
             const video = document.getElementById('mobile-video');
             if (wrapper.classList.contains('playing')) {
@@ -1649,6 +1684,19 @@
             } else {
                 video.play();
                 wrapper.classList.add('playing');
+            }
+        }
+
+        // Toggle son vid&eacute;o
+        function toggleSound(videoId, btn) {
+            const video = document.getElementById(videoId);
+            video.muted = !video.muted;
+            if (video.muted) {
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>';
+                btn.setAttribute('aria-label', 'Activer le son');
+            } else {
+                btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+                btn.setAttribute('aria-label', 'Couper le son');
             }
         }
 
