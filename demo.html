@@ -258,7 +258,7 @@
 
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 20px; }
         .form-grid .full { grid-column: 1 / -1; }
-        .form-grid input, .form-grid select {
+        .form-grid input, .form-grid select, .form-grid textarea {
             width: 100%; padding: 14px 16px;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 12px; font-size: 0.9rem;
@@ -266,15 +266,28 @@
             font-family: 'Inter', sans-serif;
             transition: all 0.3s;
         }
-        .form-grid input::placeholder { color: rgba(255,255,255,0.3); }
+        .form-grid input::placeholder,
+        .form-grid textarea::placeholder { color: rgba(255,255,255,0.3); }
         .form-grid select { color: rgba(255,255,255,0.4); -webkit-appearance: none; cursor: pointer; }
         .form-grid select option { background: var(--dark); color: white; }
-        .form-grid input:focus, .form-grid select:focus {
+        .form-grid input:focus,
+        .form-grid select:focus,
+        .form-grid textarea:focus {
             outline: none;
             border-color: var(--rose);
             box-shadow: 0 0 0 4px rgba(255, 63, 155, 0.1);
             background: rgba(255,255,255,0.08);
         }
+        .form-success {
+            display: flex; align-items: flex-start; gap: 12px;
+            margin-top: 16px; padding: 16px 18px;
+            background: linear-gradient(135deg, rgba(128,0,255,0.15), rgba(255,63,155,0.08));
+            border: 1px solid rgba(168,85,247,0.3);
+            border-radius: 12px;
+            color: rgba(255,255,255,0.85);
+            font-size: 0.9rem; line-height: 1.5;
+        }
+        .form-success svg { color: #a855f7; flex-shrink: 0; margin-top: 1px; }
         .btn-rose {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             width: 100%; padding: 16px 24px;
@@ -519,9 +532,9 @@
                     "Je prends le temps d'&eacute;couter vos d&eacute;fis pour vous proposer une solution vraiment adapt&eacute;e. Chaque entreprise est unique."
                 </div>
                 <div class="coordonnees">
-                    <a href="mailto:contact@ikno.fr" class="coordonnee-item">
+                    <a href="mailto:demo@floapp.fr" class="coordonnee-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                        contact@ikno.fr
+                        demo@floapp.fr
                     </a>
                     <a href="tel:+33180835210" class="coordonnee-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -555,7 +568,7 @@
                         </div>
                         <div class="entreprise-detail">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>contact@ikno.fr</span>
+                            <span>demo@floapp.fr</span>
                         </div>
                         <div class="entreprise-detail">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72"/></svg>
@@ -568,37 +581,22 @@
 
         <!-- DROITE - Options contact -->
         <div class="contact-options">
-            <!-- Calendly -->
-            <div class="option-calendly reveal">
-                <div class="calendly-badge">
-                    <svg viewBox="0 0 24 24" fill="#a855f7" width="16" height="16"><path d="M19.5 3h-15A1.5 1.5 0 003 4.5v15A1.5 1.5 0 004.5 21h15a1.5 1.5 0 001.5-1.5v-15A1.5 1.5 0 0019.5 3zm-9.75 12.75a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5zm6 0a2.25 2.25 0 110-4.5 2.25 2.25 0 010 4.5z"/></svg>
-                    Calendly
-                </div>
-                <div class="option-header">
-                    <div class="option-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    </div>
-                    <h3>R&eacute;server un cr&eacute;neau</h3>
-                </div>
-                <p>Acc&eacute;dez directement au calendrier et r&eacute;servez 30 minutes pour une d&eacute;mo personnalis&eacute;e de FLO.</p>
-                <a href="#" class="btn-gradient">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                    Voir les disponibilit&eacute;s
-                </a>
-            </div>
-
-            <!-- Formulaire -->
+            <!-- Formulaire (CTA principal &mdash; remplace Calendly tant que HubSpot n'est pas branch&eacute;) -->
             <div class="option-form reveal">
                 <div class="option-header">
                     <div class="option-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                     </div>
                     <div>
-                        <h3>On vous recontacte</h3>
-                        <p class="subtitle">R&eacute;ponse sous 24h</p>
+                        <h3>Demandez votre d&eacute;mo</h3>
+                        <p class="subtitle">R&eacute;ponse sous 24h ouvr&eacute;es</p>
                     </div>
                 </div>
-                <form class="form-grid" id="contact-form" action="#" method="POST">
+                <p style="color: rgba(255,255,255,0.55); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                    Remplissez le formulaire et nous vous recontactons pour planifier une d&eacute;mo de 30 min adapt&eacute;e &agrave; votre secteur.
+                </p>
+                <!-- TODO: brancher sur HubSpot Forms ou Formspree d&egrave;s disponible. Pour l'instant: mailto: via JS (voir submit handler en bas) -->
+                <form class="form-grid" id="contact-form" action="mailto:demo@floapp.fr" method="POST" enctype="text/plain">
                     <input type="text" id="firstname" name="firstname" placeholder="Pr&eacute;nom" aria-label="Pr&eacute;nom" required>
                     <input type="text" id="lastname" name="lastname" placeholder="Nom" aria-label="Nom" required>
                     <input type="email" id="email" name="email" placeholder="Email professionnel" aria-label="Email professionnel" required class="full">
@@ -610,11 +608,16 @@
                         <option value="51-200">51-200 employ&eacute;s</option>
                         <option value="200+">200+ employ&eacute;s</option>
                     </select>
+                    <textarea id="message" name="message" placeholder="Votre besoin en quelques mots (optionnel)" aria-label="Message" rows="3" class="full" style="resize: vertical; min-height: 80px;"></textarea>
                     <button type="submit" class="btn-rose full">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9"/></svg>
-                        &Ecirc;tre recontact&eacute;
+                        Demander ma d&eacute;mo
                     </button>
                 </form>
+                <div id="form-success" class="form-success" hidden>
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                    <span>Votre client mail s'est ouvert. Envoyez le message et nous vous recontactons sous 24h ouvr&eacute;es.</span>
+                </div>
             </div>
 
             <!-- Appel direct -->
@@ -733,6 +736,53 @@
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        // ============================================
+        // FORMULAIRE DE CONTACT - mailto: temporaire
+        // (à remplacer par HubSpot Forms / Formspree dès disponible)
+        // ============================================
+        (function() {
+            const RECIPIENT = 'demo@floapp.fr'; // <-- adresse de réception des leads
+            const form = document.getElementById('contact-form');
+            const success = document.getElementById('form-success');
+            if (!form) return;
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const data = new FormData(form);
+                const firstname = (data.get('firstname') || '').trim();
+                const lastname  = (data.get('lastname')  || '').trim();
+                const email     = (data.get('email')     || '').trim();
+                const phone     = (data.get('phone')     || '').trim();
+                const company   = (data.get('company_size') || '').trim();
+                const message   = (data.get('message')   || '').trim();
+
+                const subject = `[FLO] Demande de démo — ${firstname} ${lastname}`;
+                const body =
+`Nouvelle demande de démo FLO
+
+Prénom        : ${firstname}
+Nom           : ${lastname}
+Email         : ${email}
+Téléphone     : ${phone || '—'}
+Taille société: ${company || '—'}
+
+Message :
+${message || '(vide)'}
+
+---
+Envoyé depuis le formulaire de contact floapp.fr`;
+
+                const mailto = `mailto:${RECIPIENT}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = mailto;
+
+                if (success) {
+                    success.hidden = false;
+                    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        })();
     </script>
 </body>
 </html>

@@ -1,0 +1,14 @@
+# robots.txt — FLO (édité par IKNO SAS)
+# https://www.floapp.fr/
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_pages-retirées/
+Disallow: /template/
+Disallow: /scripts/
+Disallow: /docs/
+Disallow: /BACKUP-*
+
+# Sitemap
+Sitemap: https://www.floapp.fr/sitemap.xml

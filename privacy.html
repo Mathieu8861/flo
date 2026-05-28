@@ -4,261 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Politique de Confidentialité - FLO</title>
-    <link rel="icon" type="image/png" href="assets/images/logo-flo.png">
+    <meta name="description" content="Politique de confidentialité de FLO : collecte, traitement et protection de vos données personnelles selon le RGPD.">
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#1a0033">
+    <link rel="icon" type="image/png" href="assets/images/logo_flo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo_flo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #E5D5FF;
-            min-height: 100vh;
-            color: #1a0033;
-        }
-
-        .header {
-            position: fixed;
-            top: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 1200px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            border-radius: 16px;
-            border: 1px solid rgba(128, 0, 255, 0.1);
-            box-shadow: 0 4px 20px rgba(128, 0, 255, 0.08);
-        }
-        .header img { height: 48px; border-radius: 10px; }
-        .header a { color: #8000ff; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .header a:hover { opacity: 0.8; }
-
-        .content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 140px 40px 80px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #8000ff, #ff3f9b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .last-update {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 40px;
-        }
-
-        .intro {
-            background: linear-gradient(135deg, #8000ff, #ff3f9b);
-            color: white;
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 24px;
-        }
-
-        .intro p {
-            font-size: 1rem;
-            line-height: 1.7;
-            opacity: 0.95;
-        }
-
-        .section {
-            background: white;
-            border-radius: 20px;
-            padding: 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 4px 20px rgba(128, 0, 255, 0.08);
-        }
-
-        .section h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #8000ff;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section h2 svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .section h3 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #1a0033;
-            margin: 20px 0 12px;
-        }
-
-        .section p, .section li {
-            color: #333;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin-bottom: 12px;
-        }
-
-        .section ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .section li {
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .section li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            background: #ff3f9b;
-            border-radius: 50%;
-        }
-
-        .info-box {
-            background: linear-gradient(135deg, rgba(128, 0, 255, 0.08), rgba(255, 63, 155, 0.05));
-            border-left: 4px solid #8000ff;
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-
-        .info-box strong {
-            color: #8000ff;
-        }
-
-        .rights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 20px;
-        }
-
-        .right-item {
-            background: linear-gradient(135deg, rgba(128, 0, 255, 0.05), rgba(255, 63, 155, 0.03));
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid rgba(128, 0, 255, 0.1);
-        }
-
-        .right-item h4 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #8000ff;
-            margin-bottom: 6px;
-        }
-
-        .right-item p {
-            font-size: 0.85rem;
-            color: #666;
-            margin: 0;
-        }
-
-        a.link {
-            color: #ff3f9b;
-            text-decoration: none;
-        }
-
-        a.link:hover {
-            text-decoration: underline;
-        }
-
-        .footer {
-            background: #1a0033;
-            padding: 30px 40px;
-            text-align: center;
-        }
-
-        .footer p {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.85rem;
-            margin-bottom: 10px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.8rem;
-            text-decoration: none;
-        }
-
-        .footer-links a:hover {
-            color: #ff3f9b;
-        }
-
-        @media (max-width: 900px) {
-            .header {
-                top: 0;
-                left: 0;
-                right: 0;
-                transform: none;
-                width: 100%;
-                max-width: 100%;
-                border-radius: 0;
-                padding: 12px 20px;
-            }
-            .header img { height: 40px; }
-            .header a:last-child { font-size: 0.85rem; }
-            .header a:last-child span { display: none; }
-            .content { padding: 80px 16px 40px; }
-            h1 { font-size: 1.6rem; }
-            .last-update { font-size: 0.8rem; margin-bottom: 24px; }
-            .intro { padding: 24px; border-radius: 16px; }
-            .intro p { font-size: 0.9rem; }
-            .section {
-                padding: 20px;
-                border-radius: 16px;
-                margin-bottom: 16px;
-            }
-            .section h2 {
-                font-size: 1.1rem;
-                margin-bottom: 16px;
-                flex-wrap: wrap;
-            }
-            .section h2 svg { width: 20px; height: 20px; }
-            .section h3 { font-size: 0.95rem; }
-            .section p, .section li { font-size: 0.88rem; line-height: 1.6; }
-            .info-box { padding: 16px; margin: 16px 0; }
-            .info-box p { font-size: 0.85rem; }
-            .rights-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .right-item { padding: 14px; }
-            .right-item h4 { font-size: 0.82rem; }
-            .right-item p { font-size: 0.78rem; }
-            .footer { padding: 24px 20px; }
-            .footer p { font-size: 0.75rem; }
-            .footer-links { gap: 16px; flex-wrap: wrap; }
-            .footer-links a { font-size: 0.7rem; }
-        }
-
-        @media (max-width: 480px) {
-            .rights-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="legal.css">
 </head>
 <body>
     <header class="header">
-        <a href="index.html"><img src="assets/images/logo-flo.png" alt="FLO"></a>
+        <a href="index.html"><img src="assets/images/logo_flo.png" alt="FLO"></a>
         <a href="index.html">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
             <span>Retour à l'accueil</span>
@@ -461,7 +219,7 @@
     </main>
 
     <footer class="footer">
-        <p>FLO est édité par <strong>IKNO SAS</strong> - 2 Rue Croix Castel, 78600 Maisons-Laffitte</p>
+        <p>FLO est édité par <strong>IKNO SAS</strong> · 2 Rue Croix Castel, 78600 Maisons-Laffitte</p>
         <div class="footer-links">
             <a href="legal.html">Mentions légales</a>
             <a href="privacy.html">Confidentialité</a>

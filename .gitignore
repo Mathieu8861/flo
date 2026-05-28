@@ -1,0 +1,61 @@
+# ============================================
+# FLO — .gitignore
+# ============================================
+
+# ----- OS -----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ----- Editor / IDE -----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ----- Node (si on ajoute des build tools un jour) -----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.pnp.*
+
+# ----- Logs -----
+*.log
+logs/
+
+# ----- Build / Cache -----
+dist/
+build/
+.cache/
+.parcel-cache/
+
+# ----- Local dev -----
+_server.js                # serveur Node local (preview Regen Agency)
+*.local
+.env
+.env.local
+.env.*.local
+
+# ----- Vercel -----
+.vercel/
+
+# ----- Assets sources (trop lourds — utiliser le .mp4 transcodé) -----
+# On garde le .mp4 servi par le site, on ignore les sources .mov ProRes/QuickTime
+assets/video/*.mov
+
+# ----- Documents privés / commerciaux -----
+# Le brief IKNO est confidentiel — ne pas pousser sur un repo public
+docs/*.pdf
+docs/*.docx
+docs/*.xlsx
+
+# ----- Backup / dossiers archivés -----
+BACKUP-*.html
+_pages-retir*es/
+
+# ----- Claude Code -----
+.claude/
+.claude-flow/
