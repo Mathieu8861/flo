@@ -17,8 +17,7 @@
 
 | Type | Information |
 |------|-------------|
-| **Adresse** | 2 Rue Croix Castel, 78600 Maisons-Laffitte, France |
-| **Téléphone** | +33 1 80 83 52 10 |
+| **Adresse** | 200 rue de la Croix Nivert, 75015 Paris, France |
 | **Email général** | contact@ikno.fr |
 | **Email DPO (RGPD)** | rgpd@ikno.fr |
 
