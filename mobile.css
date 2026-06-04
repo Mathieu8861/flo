@@ -112,7 +112,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: #E5D5FF;
+    background: #1a0033;
     border-bottom: 1px solid rgba(128, 0, 255, 0.15);
     box-shadow: 0 2px 10px rgba(128, 0, 255, 0.1);
 }
@@ -209,7 +209,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #E5D5FF;
+    background: #1a0033;
     padding: 30px 25px;
     overflow-y: auto;
     z-index: 999;
@@ -228,7 +228,7 @@
 .header-mobile__link {
     display: block;
     padding: 16px 20px;
-    color: #1a0033;
+    color: white;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.05rem;
@@ -265,7 +265,7 @@
 }
 
 .header-mobile__menu-contact p {
-    color: #1a0033;
+    color: white;
     opacity: 0.5;
     font-size: 0.85rem;
     margin-bottom: 10px;
@@ -295,14 +295,14 @@ body.mobile-menu-open {
 .hero-mobile {
     padding: 20px 20px 35px;
     text-align: center;
-    background: #E5D5FF;
+    background: #1a0033;
 }
 
 .hero-mobile__title {
     font-family: 'Poppins', sans-serif;
     font-size: 1.8rem;
     font-weight: 700;
-    color: #1a0033;
+    color: white;
     line-height: 1.2;
     margin-bottom: 16px;
 }
@@ -315,7 +315,7 @@ body.mobile-menu-open {
 }
 
 .hero-mobile__subtitle {
-    color: #1a0033;
+    color: white;
     opacity: 0.7;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -356,7 +356,7 @@ body.mobile-menu-open {
 
 .clients-mobile__label {
     font-size: 0.75rem;
-    color: #1a0033;
+    color: white;
     opacity: 0.5;
     margin: 0 0 14px;
     font-weight: 500;
@@ -392,7 +392,7 @@ body.mobile-menu-open {
 .clients-mobile__logo svg {
     height: 22px;
     width: auto;
-    color: #1a0033;
+    color: white;
     opacity: 0.5;
 }
 
@@ -481,7 +481,7 @@ body.mobile-menu-open {
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
-    color: #1a0033;
+    color: white;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -546,12 +546,12 @@ body.mobile-menu-open {
     font-family: 'Poppins', sans-serif;
     font-size: 1rem;
     font-weight: 700;
-    color: #1a0033;
+    color: white;
     margin: 0 0 6px;
 }
 
 .steps-mobile__content p {
-    color: #1a0033;
+    color: white;
     opacity: 0.7;
     font-size: 0.85rem;
     line-height: 1.5;
@@ -571,7 +571,7 @@ body.mobile-menu-open {
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
-    color: #1a0033;
+    color: white;
     text-align: center;
     margin-bottom: 20px;
     padding: 0 20px;
@@ -593,7 +593,7 @@ body.mobile-menu-open {
     border-radius: 12px;
     border: none;
     background: linear-gradient(135deg, rgba(128, 0, 255, 0.12), rgba(255, 63, 155, 0.08));
-    color: #1a0033;
+    color: white;
     font-weight: 600;
     font-size: 0.82rem;
     cursor: pointer;
@@ -674,12 +674,12 @@ body.mobile-menu-open {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1rem;
     font-weight: 700;
-    color: #1a0033;
+    color: white;
     margin: 0 0 10px;
 }
 
 .profiles-mobile__card > p {
-    color: #1a0033;
+    color: white;
     opacity: 0.7;
     font-size: 0.9rem;
     line-height: 1.6;
@@ -760,7 +760,7 @@ body.mobile-menu-open {
 }
 
 .stats-mobile__label {
-    color: #1a0033;
+    color: white;
     opacity: 0.6;
     font-size: 0.75rem;
     margin-top: 4px;
@@ -921,7 +921,7 @@ body.mobile-menu-open {
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
-    color: #1a0033;
+    color: white;
     text-align: center;
     margin-bottom: 16px;
 }
@@ -989,7 +989,7 @@ body.mobile-menu-open {
 .testimonials-mobile__name {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    color: #1a0033;
+    color: white;
     font-size: 0.95rem;
     margin: 0 0 2px;
 }
@@ -1010,7 +1010,7 @@ body.mobile-menu-open {
 }
 
 .testimonials-mobile__company {
-    color: #1a0033;
+    color: white;
     opacity: 0.6;
     font-size: 0.75rem;
     margin: 2px 0 0;
@@ -1037,7 +1037,7 @@ body.mobile-menu-open {
 }
 
 .testimonials-mobile__quote {
-    color: #1a0033;
+    color: white;
     font-size: 0.9rem;
     line-height: 1.7;
     margin: 0;
@@ -1206,7 +1206,7 @@ body.mobile-menu-open {
 .security-mobile__badge span {
     font-size: 0.72rem;
     font-weight: 600;
-    color: #1a0033;
+    color: white;
 }
 
 
@@ -1275,7 +1275,7 @@ body.mobile-menu-open {
 
 .cta-mobile__option--secondary {
     background: rgba(255, 255, 255, 0.95);
-    color: #1a0033;
+    color: white;
 }
 
 .cta-mobile__option--tertiary {
