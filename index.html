@@ -42,7 +42,7 @@
     <meta name="twitter:image:alt" content="FLO &mdash; G&eacute;n&eacute;ration de propositions commerciales B2B par IA">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="assets/images/logo_flo.png">
+    <link rel="icon" type="image/svg+xml" href="assets/images/flo.svg">
     <link rel="apple-touch-icon" href="assets/images/logo_flo.png">
 
     <!-- Google Fonts - Poppins & Inter -->
@@ -63,7 +63,7 @@
       "operatingSystem": "Web",
       "inLanguage": "fr-FR",
       "image": "https://www.floapp.fr/assets/images/hero-illustration.png",
-      "logo": "https://www.floapp.fr/assets/images/logo_flo.png",
+      "logo": "https://www.floapp.fr/assets/images/flo.svg",
       "offers": {
         "@type": "Offer",
         "price": "49",
@@ -87,7 +87,7 @@
         "name": "IKNO",
         "legalName": "IKNO SAS",
         "url": "https://ikno.fr",
-        "logo": "https://www.floapp.fr/assets/images/logo_flo.png",
+        "logo": "https://www.floapp.fr/assets/images/flo.svg",
         "vatID": "FR37523389278",
         "taxID": "523389278",
         "email": "contact@ikno.fr",
@@ -612,11 +612,11 @@
         <div class="container">
             <nav class="nav">
                 <a href="index.html" class="nav__logo">
-                    <img src="assets/images/logo_flo.png" alt="FLO" style="height: 46px; width: auto; border-radius: 10px;">
+                    <img src="assets/images/flo.svg" alt="FLO" style="height: 46px; width: auto; border-radius: 10px;">
                 </a>
                 <ul class="nav__menu nav__menu--centered">
                     <li><a href="#comment-ca-marche" class="nav__link">Comment &ccedil;a marche</a></li>
-                    <li><a href="#resultats" class="nav__link">R&eacute;sultats</a></li>
+                    <li><a href="#pricing" class="nav__link">Tarifs</a></li>
                     <li><a href="#faq" class="nav__link">FAQ</a></li>
                 </ul>
                 <div style="display: flex; align-items: center; gap: 14px;">
@@ -632,7 +632,7 @@
     <header class="header-mobile mobile-only" id="header-mobile">
         <div class="header-mobile__bar">
             <a href="index.html" class="header-mobile__logo">
-                <img src="assets/images/logo_flo.png" alt="FLO" style="height: 40px; width: auto; border-radius: 8px;">
+                <img src="assets/images/flo.svg" alt="FLO" style="height: 40px; width: auto; border-radius: 8px;">
             </a>
             <div class="header-mobile__actions">
                 <a href="demo.html" class="header-mobile__cta">Nous contacter</a>
@@ -645,10 +645,9 @@
         </div>
         <nav class="header-mobile__menu" id="mobile-menu">
             <div class="header-mobile__menu-links">
-                <a href="#comment-ca-marche" class="header-mobile__link">Comment &ccedil;a marche</a>
-                <a href="#resultats" class="header-mobile__link">R&eacute;sultats</a>
-                <a href="#faq" class="header-mobile__link">FAQ</a>
-                <a href="demo.html" class="header-mobile__link">Contact</a>
+                <a href="#comment-ca-marche-m" class="header-mobile__link">Comment &ccedil;a marche</a>
+                <a href="#pricing-m" class="header-mobile__link">Tarifs</a>
+                <a href="#faq-m" class="header-mobile__link">FAQ</a>
             </div>
         </nav>
     </header>
@@ -729,12 +728,62 @@
     </section>
 
     <!-- HERO MOBILE -->
-    <section class="hero-mobile mobile-only" style="background-color: #1a0033;">
-        <span style="display: inline-block; padding: 6px 16px; background: rgba(128,0,255,0.12); border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: #8000ff; margin-bottom: 12px;">Pour les consultants &amp; agences B2B</span>
-        <h1 class="hero-mobile__title">Vos propositions B2B<br><span>en 10 min.</span></h1>
-        <p class="hero-mobile__subtitle">Du brief client au document pr&ecirc;t &agrave; envoyer. IA + vos templates.</p>
-        <a href="demo.html" class="hero-mobile__cta">R&eacute;server ma d&eacute;mo</a>
-        <p style="font-size: 0.75rem; color: white; opacity: 0.5; margin-top: 8px;">2h gagn&eacute;es par proposition &bull; &Agrave; partir de 49&euro;/mois</p>
+    <section class="hero-mobile mobile-only" style="background-color: #1a0033; position: relative; overflow: hidden;">
+        <!-- D&eacute;co cercles gradient -->
+        <div style="position: absolute; top: -80px; right: -80px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(128,0,255,0.22), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        <div style="position: absolute; top: 30%; left: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,63,155,0.15), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+        <div style="position: relative; z-index: 1;">
+            <span style="display: inline-block; padding: 6px 16px; background: rgba(128,0,255,0.25); border: 1px solid rgba(128,0,255,0.3); border-radius: 50px; font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 14px;">Pour les consultants &amp; agences B2B</span>
+            <h1 class="hero-mobile__title">Vos propositions B2B<br><span>en 10 min.</span></h1>
+            <p class="hero-mobile__subtitle">Du brief client au document pr&ecirc;t &agrave; envoyer. IA + vos templates.</p>
+
+            <!-- Vid&eacute;o int&eacute;gr&eacute;e dans le hero (comme la version desktop) -->
+            <div style="background: rgba(255,255,255,0.04); border-radius: 18px; box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.06); overflow: hidden; margin: 22px 0;">
+                <!-- Barre type navigateur -->
+                <div style="background: rgba(255,255,255,0.04); padding: 9px 14px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <div style="width: 8px; height: 8px; border-radius: 50%; background: #ff5f57;"></div>
+                    <div style="width: 8px; height: 8px; border-radius: 50%; background: #ffbd2e;"></div>
+                    <div style="width: 8px; height: 8px; border-radius: 50%; background: #28c840;"></div>
+                    <div style="flex: 1; margin-left: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; padding: 4px 10px;">
+                        <span style="font-size: 0.65rem; color: rgba(255,255,255,0.35); font-family: 'Inter', sans-serif;">D&eacute;couvrez FLO en action</span>
+                    </div>
+                </div>
+                <div class="video-wrapper" onclick="playMobileVideo(event)" id="mobile-video-wrapper" style="border-radius: 0;">
+                    <video id="mobile-video" preload="metadata" poster="assets/images/video-poster.jpg" playsinline muted style="background: #1a0033;">
+                        <source src="assets/video/FLO_visuel_site.mp4" type="video/mp4">
+                        <source src="assets/video/video_1.mov" type="video/quicktime">
+                    </video>
+                    <div class="video-overlay" style="background: linear-gradient(135deg, rgba(26,0,51,0.15), rgba(128,0,255,0.1));"></div>
+                    <div class="video-play-btn" style="width: 52px; height: 52px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+                    </div>
+                    <button class="video-sound-btn" onclick="event.stopPropagation(); toggleSound('mobile-video', this)" aria-label="Activer le son">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <a href="demo.html" class="hero-mobile__cta">R&eacute;server ma d&eacute;mo</a>
+
+            <!-- Bandeau ROI compact (d&eacute;plac&eacute; depuis la section stats-mobile, sous le bouton CTA) -->
+            <div style="background: linear-gradient(135deg, rgba(128,0,255,0.18), rgba(255,63,155,0.12)); border: 1px solid rgba(168,85,247,0.25); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; backdrop-filter: blur(8px); margin-top: 18px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <div>
+                        <span style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: white;">10 min</span>
+                        <span style="font-family: 'Inter', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-left: 4px;">vs 3h</span>
+                    </div>
+                </div>
+                <div style="width: 1px; height: 22px; background: rgba(255,255,255,0.12);"></div>
+                <div style="text-align: right;">
+                    <span style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; background: linear-gradient(135deg, #c084fc, #ff8ec3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">+1 600&euro;</span>
+                    <span style="font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-left: 4px;">/mois</span>
+                </div>
+            </div>
+
+            <p style="font-size: 0.72rem; color: rgba(255,255,255,0.45); margin-top: 12px;">&Agrave; partir de 49&euro;/mois &middot; Sans engagement</p>
+        </div>
     </section>
 
     <!-- ============================================ -->
@@ -835,24 +884,7 @@
         </div>
     </section>
 
-    <!-- R&Eacute;SULTATS MOBILE -->
-    <section class="stats-mobile mobile-only" style="background-color: #1a0033;">
-        <div style="background: linear-gradient(135deg, #8000ff, #ff3f9b); border-radius: 20px; padding: 30px; margin: 0 16px; text-align: center;">
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">ROI client calcul&eacute;</p>
-            <p style="font-size: 2.5rem; font-weight: 700; color: white; font-family: 'Poppins', sans-serif; margin-bottom: 8px;">10 min</p>
-            <p style="color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 20px;">au lieu de 3h par proposition</p>
-            <div style="display: flex; justify-content: center; gap: 24px;">
-                <div>
-                    <span style="font-size: 1.5rem; font-weight: 700; color: white;">x3</span>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem;">Propositions</p>
-                </div>
-                <div>
-                    <span style="font-size: 1.5rem; font-weight: 700; color: white;">1 600&euro;</span>
-                    <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem;">R&eacute;cup&eacute;r&eacute;s/mois</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- (Bandeau ROI mobile d&eacute;plac&eacute; dans le hero-mobile, sous le bouton CTA) -->
 
     <!-- ============================================ -->
     <!-- POUR QUI ? -->
@@ -965,7 +997,7 @@
     </section>
 
     <!-- COMMENT &Ccedil;A MARCHE MOBILE -->
-    <section class="steps-mobile mobile-only" style="background-color: #1a0033;">
+    <section class="steps-mobile mobile-only" id="comment-ca-marche-m" style="background-color: #1a0033;">
         <h2 class="steps-mobile__title">Comment &ccedil;a marche ?</h2>
         <div class="steps-mobile__container">
             <div class="steps-mobile__step">
@@ -992,27 +1024,7 @@
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- VID&Eacute;O D&Eacute;COUVERTE - MOBILE -->
-    <!-- ============================================ -->
-    <section class="mobile-only" style="background-color: #1a0033; padding: 40px 16px;">
-        <div class="video-wrapper" onclick="playMobileVideo(event)" id="mobile-video-wrapper" style="border-radius: 16px;">
-            <video id="mobile-video" preload="metadata" poster="assets/images/video-poster.jpg" playsinline muted>
-                <source src="assets/video/video_1.mov" type="video/quicktime">
-                <source src="assets/video/video_1.mov" type="video/mp4">
-            </video>
-            <div class="video-overlay"></div>
-            <div class="video-play-btn" style="width: 60px; height: 60px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
-            </div>
-            <div style="position: absolute; bottom: 12px; left: 12px; z-index: 2;">
-                <p style="color: white; font-size: 0.8rem; font-weight: 600; margin: 0; text-shadow: 0 2px 8px rgba(0,0,0,0.3);">D&eacute;mo FLO &bull; 1 min</p>
-            </div>
-            <button class="video-sound-btn" onclick="event.stopPropagation(); toggleSound('mobile-video', this)" aria-label="Activer le son">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
-            </button>
-        </div>
-    </section>
+    <!-- (Vid&eacute;o d&eacute;couverte mobile a &eacute;t&eacute; int&eacute;gr&eacute;e dans le hero mobile pour matcher le format desktop) -->
 
     <!-- ============================================ -->
     <!-- CE QUE FLO FAIT + D&Eacute;MO VID&Eacute;O -->
@@ -1163,23 +1175,60 @@
     </section>
 
     <!-- PRICING MOBILE -->
-    <section class="mobile-only" id="pricing-mobile" style="background-color: #1a0033; padding: 60px 16px;">
-        <div style="text-align: center; margin-bottom: 24px;">
-            <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.1); border-radius: 50px; font-size: 0.75rem; font-weight: 600; color: #8000ff; margin-bottom: 10px;">Tarif</span>
-            <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white;">Rentabilis&eacute; d&egrave;s la 1&egrave;re proposition</h2>
-            <p style="font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 8px; line-height: 1.5;">2h gagn&eacute;es par proposition. &Agrave; 5 propals/mois, c'est 800 &agrave; 1 600&euro; r&eacute;cup&eacute;r&eacute;s.</p>
-        </div>
-        <div style="background: linear-gradient(135deg, #8000ff, #ff3f9b); border-radius: 24px; padding: 36px 28px; text-align: center;">
-            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">FLO pour votre activit&eacute;</p>
-            <div style="display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 8px;">
-                <span style="font-size: 0.95rem; color: rgba(255,255,255,0.7);">&Agrave; partir de</span>
-                <span style="font-family: 'Poppins', sans-serif; font-size: 2.8rem; font-weight: 800; color: white;">49&euro;</span>
-                <span style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">/ mois</span>
+    <section class="mobile-only" id="pricing-m" style="background-color: #1a0033; padding: 60px 16px; position: relative; overflow: hidden;">
+        <!-- D&eacute;co -->
+        <div style="position: absolute; top: 0; right: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(128,0,255,0.18), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        <div style="position: absolute; bottom: 20px; left: -50px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(255,63,155,0.12), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+        <div style="position: relative; z-index: 1;">
+            <div style="text-align: center; margin-bottom: 28px;">
+                <span style="display: inline-block; padding: 6px 14px; background: rgba(168,85,247,0.15); border: 1px solid rgba(168,85,247,0.25); border-radius: 50px; font-size: 0.72rem; font-weight: 600; color: #c084fc; margin-bottom: 12px;">Tarif</span>
+                <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; line-height: 1.25;">
+                    Rentabilis&eacute; d&egrave;s la <span style="background: linear-gradient(135deg, #a855f7, #ff3f9b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">1<sup>&egrave;re</sup> proposition</span>
+                </h2>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-top: 10px; line-height: 1.55;">2h gagn&eacute;es par proposition. &Agrave; 5 propals/mois, c'est 800 &agrave; 1 600&euro; r&eacute;cup&eacute;r&eacute;s.</p>
             </div>
-            <p style="font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-bottom: 24px;">Formule adapt&eacute;e lors de la d&eacute;mo</p>
-            <a href="demo.html" style="display: block; text-align: center; padding: 16px; background: white; color: #8000ff; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 0.95rem;">R&eacute;server ma d&eacute;mo</a>
+
+            <!-- Card pricing - glassmorphism gradient marqué + glow extérieur intense -->
+            <div style="background: linear-gradient(135deg, rgba(128,0,255,0.42) 0%, rgba(255,63,155,0.28) 50%, rgba(255,112,61,0.18) 100%); border-radius: 24px; padding: 32px 22px 26px; border: 1.5px solid rgba(168,85,247,0.55); text-align: center; box-shadow: 0 0 50px rgba(168,85,247,0.4), 0 0 90px rgba(255,63,155,0.15), 0 16px 40px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden;">
+                <!-- Badge populaire -->
+                <div style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; font-size: 0.68rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 20px; backdrop-filter: blur(8px);">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    Le plus demand&eacute;
+                </div>
+
+                <div style="display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 6px;">
+                    <span style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.7);">&Agrave; partir de</span>
+                    <span style="font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 800; line-height: 1; color: white; text-shadow: 0 2px 12px rgba(168,85,247,0.4);">49&euro;</span>
+                    <span style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.7);">/ mois</span>
+                </div>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0 0 24px; line-height: 1.5;">Formule adapt&eacute;e &agrave; votre volume &mdash; on en parle lors de la d&eacute;mo</p>
+
+                <!-- Bouton gradient -->
+                <a href="demo.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; background: linear-gradient(180deg, #ff7a51 0%, #ff3f9b 100%); color: white; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 0.95rem; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px rgba(255,63,155,0.4); font-family: 'Inter', sans-serif;">
+                    R&eacute;server ma d&eacute;mo
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </a>
+
+                <!-- Trust signals -->
+                <div style="display: flex; justify-content: center; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); flex-wrap: wrap;">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span style="font-size: 0.72rem; color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-weight: 500;">ROI x10 &agrave; x20</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span style="font-size: 0.72rem; color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-weight: 500;">Pr&ecirc;t en 48h</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span style="font-size: 0.72rem; color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-weight: 500;">Pay-to-try</span>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; font-size: 0.72rem; color: rgba(255,255,255,0.35); margin-top: 16px;">Prix HT. Plans d&eacute;taill&eacute;s lors de la d&eacute;mo.</p>
         </div>
-        <p style="text-align: center; font-size: 0.75rem; color: rgba(255,255,255,0.45); margin-top: 16px;">Prix HT. Plans d&eacute;taill&eacute;s lors de la d&eacute;mo.</p>
     </section>
 
     <!-- ============================================ -->
@@ -1776,8 +1825,8 @@
     <!-- CERTIFICATIONS GCP - MOBILE -->
     <!-- ============================================ -->
     <section class="mobile-only" style="background-color: #1a0033; padding: 40px 16px;">
-        <div style="background: linear-gradient(135deg, rgba(128,0,255,0.06), rgba(255,63,155,0.03)); border: 1px solid rgba(128,0,255,0.1); border-radius: 18px; padding: 22px 18px;">
-            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+        <div style="background: linear-gradient(135deg, rgba(128,0,255,0.06), rgba(255,63,155,0.03)); border: 1px solid rgba(128,0,255,0.1); border-radius: 18px; padding: 22px 18px; text-align: center;">
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 18px;">
                 <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #8000ff, #a855f7); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(128,0,255,0.25);">
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="8" r="6"/><polyline points="9 14 9 22 12 19 15 22 15 14"/></svg>
                 </div>
@@ -1791,7 +1840,7 @@
                 </div>
             </div>
 
-            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center;">
                 <span style="padding: 4px 10px; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #8000ff;">ISO 27001</span>
                 <span style="padding: 4px 10px; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #8000ff;">ISO 27017</span>
                 <span style="padding: 4px 10px; background: rgba(168,85,247,0.12); border: 1px solid rgba(168,85,247,0.25); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #8000ff;">ISO 27018</span>
@@ -1803,7 +1852,7 @@
         </div>
     </section>
 
-    <section class="faq-mobile mobile-only" style="background-color: #1a0033;">
+    <section class="faq-mobile mobile-only" id="faq-m" style="background-color: #1a0033;">
         <div class="faq-mobile__container">
             <h2 class="faq-mobile__title">Questions fr&eacute;quentes</h2>
             <div class="faq-mobile__list">
@@ -1868,32 +1917,18 @@
         </div>
     </section>
 
-    <!-- CTA MOBILE -->
-    <section class="cta-mobile mobile-only" style="background-color: #1a0033;">
-        <div class="cta-mobile__container">
-            <h2 class="cta-mobile__title">Encore 3h par proposition ?</h2>
-            <p class="cta-mobile__subtitle">Passez &agrave; 10 minutes avec FLO</p>
-            <div class="cta-mobile__options">
-                <a href="demo.html" class="cta-mobile__option cta-mobile__option--primary">
-                    <div class="cta-mobile__option-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    </div>
-                    <div class="cta-mobile__option-text">
-                        <strong>R&eacute;server ma d&eacute;mo</strong>
-                        <span>20 min, sans engagement</span>
-                    </div>
-                </a>
-                <a href="#pricing-mobile" class="cta-mobile__option cta-mobile__option--secondary">
-                    <div class="cta-mobile__option-icon">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                    </div>
-                    <div class="cta-mobile__option-text">
-                        <strong>Voir les tarifs</strong>
-                        <span>3 formules</span>
-                    </div>
-                </a>
-            </div>
-        </div>
+    <!-- CTA MOBILE - simple rappel d&eacute;mo -->
+    <section class="cta-mobile mobile-only" style="background-color: #1a0033; padding: 50px 16px 60px; text-align: center;">
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.55; margin: 0 auto 22px; max-width: 320px;">
+            R&eacute;servez une d&eacute;mo et d&eacute;couvrez l'outil qui va transformer vos propositions B2B.
+        </p>
+        <a href="demo.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; background: linear-gradient(180deg, #ff7a51 0%, #ff3f9b 100%); color: white; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px rgba(255,63,155,0.35); font-family: 'Inter', sans-serif;">
+            R&eacute;server ma d&eacute;mo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); margin: 14px 0 0;">
+            20 min en visio &middot; Sans engagement
+        </p>
     </section>
 
     <!-- ============================================ -->
@@ -1918,7 +1953,7 @@
                 <!-- Brand -->
                 <div>
                     <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-                        <img src="assets/images/logo_flo.png" alt="FLO" style="width: 48px; height: 48px; border-radius: 12px;">
+                        <img src="assets/images/flo.svg" alt="FLO" style="width: 48px; height: 48px; border-radius: 12px;">
                         <span style="font-size: 1.5rem; font-weight: 700; color: white;">FLO</span>
                     </div>
                     <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
@@ -1972,7 +2007,7 @@
     <footer class="footer-mobile mobile-only">
         <div class="footer-mobile__top">
             <div class="footer-mobile__logo">
-                <img src="assets/images/logo_flo.png" alt="FLO">
+                <img src="assets/images/flo.svg" alt="FLO">
             </div>
             <p class="footer-mobile__tagline">Du brief au livrable, en 10 minutes</p>
         </div>

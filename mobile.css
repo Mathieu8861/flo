@@ -113,8 +113,6 @@
     right: 0;
     z-index: 1000;
     background: #1a0033;
-    border-bottom: 1px solid rgba(128, 0, 255, 0.15);
-    box-shadow: 0 2px 10px rgba(128, 0, 255, 0.1);
 }
 
 .header-mobile__bar {
@@ -137,15 +135,22 @@
 }
 
 .header-mobile__cta {
-    padding: 10px 16px;
-    background: #ff703d;
+    padding: 7px 16px;
+    background: linear-gradient(180deg, #ff7a51 0%, #ff3f9b 100%);
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     color: white;
     font-weight: 600;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     text-decoration: none;
-    box-shadow: 0 2px 10px rgba(255, 112, 61, 0.3);
+    display: inline-block;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s ease;
+}
+
+.header-mobile__cta:hover,
+.header-mobile__cta:active {
+    transform: translateY(-1px);
 }
 
 /* Burger tricolore */
@@ -201,9 +206,8 @@
     width: 24px;
 }
 
-/* Menu overlay */
+/* Menu overlay - aligné sur le style page contact (slide animation + barres colorées) */
 .header-mobile__menu {
-    display: none;
     position: fixed;
     top: 60px;
     left: 0;
@@ -213,43 +217,44 @@
     padding: 30px 25px;
     overflow-y: auto;
     z-index: 999;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
 }
 
 .header-mobile__menu.active {
-    display: block;
+    transform: translateX(0);
 }
 
 .header-mobile__menu-links {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 12px;
 }
 
 .header-mobile__link {
     display: block;
-    padding: 16px 20px;
+    padding: 18px 24px;
     color: white;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.05rem;
-    border-radius: 14px;
-    border-left: 3px solid transparent;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    border-left: 4px solid #8000ff;
     transition: all 0.3s ease;
 }
 
+/* Barres colorées par défaut (violet / rose / orange) — match page contact */
+.header-mobile__link:nth-of-type(2) { border-left-color: #ff3f9b; }
+.header-mobile__link:nth-of-type(3) { border-left-color: #ff703d; }
+.header-mobile__link:nth-of-type(4) { border-left-color: #8000ff; }
+.header-mobile__link:nth-of-type(5) { border-left-color: #ff3f9b; }
+
 .header-mobile__link:hover,
 .header-mobile__link:active {
-    background: rgba(255, 255, 255, 0.6);
-    border-left-color: #8000ff;
-    padding-left: 24px;
-    color: #8000ff;
+    background: rgba(168, 85, 247, 0.12);
+    padding-left: 28px;
 }
-
-.header-mobile__link:nth-child(2):hover { border-left-color: #ff3f9b; color: #ff3f9b; }
-.header-mobile__link:nth-child(3):hover { border-left-color: #ff703d; color: #ff703d; }
-.header-mobile__link:nth-child(4):hover { border-left-color: #8000ff; color: #8000ff; }
-.header-mobile__link:nth-child(5):hover { border-left-color: #ff3f9b; color: #ff3f9b; }
 
 .header-mobile__menu-separator {
     height: 2px;
@@ -496,24 +501,24 @@ body.mobile-menu-open {
     display: flex;
     align-items: flex-start;
     gap: 16px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(128, 0, 255, 0.08));
+    background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border-radius: 16px;
     padding: 18px;
-    border: 1px solid rgba(128, 0, 255, 0.15);
-    box-shadow: 0 4px 15px rgba(128, 0, 255, 0.08);
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .steps-mobile__step:nth-child(2) {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 63, 155, 0.08));
-    border-color: rgba(255, 63, 155, 0.15);
-    box-shadow: 0 4px 15px rgba(255, 63, 155, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 63, 155, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .steps-mobile__step:nth-child(3) {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 112, 61, 0.08));
-    border-color: rgba(255, 112, 61, 0.15);
-    box-shadow: 0 4px 15px rgba(255, 112, 61, 0.08);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 112, 61, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .steps-mobile__number {
