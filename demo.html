@@ -291,14 +291,14 @@
         .btn-rose {
             display: flex; align-items: center; justify-content: center; gap: 10px;
             width: 100%; padding: 16px 24px;
-            background: linear-gradient(135deg, var(--rose), #ff6bb3);
+            background: linear-gradient(180deg, #ff7a51 0%, #ff3f9b 100%);
             color: white; border: none; border-radius: 14px;
-            font-size: 1rem; font-weight: 600; cursor: pointer;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255, 63, 155, 0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 15px rgba(255, 112, 61, 0.3);
             margin-top: 8px; font-family: 'Inter', sans-serif;
         }
-        .btn-rose:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(255, 63, 155, 0.4); }
+        .btn-rose:hover { transform: translateY(-2px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 25px rgba(255, 112, 61, 0.4); }
 
         /* Appel direct */
         .option-call {
@@ -508,9 +508,9 @@
         <div class="info-stack">
             <div class="dirigeant-card reveal">
                 <div class="dirigeant-header">
-                    <img src="assets/images/tanguy.webp" alt="Tanguy Martin" class="dirigeant-photo">
+                    <img src="assets/images/tanguy.webp" alt="Tanguy Giton" class="dirigeant-photo">
                     <div class="dirigeant-info">
-                        <h3>Tanguy Martin</h3>
+                        <h3>Tanguy Giton</h3>
                         <p>Co-fondateur &amp; Associ&eacute;</p>
                         <span>Expert transformation digitale</span>
                     </div>
@@ -530,32 +530,7 @@
                 </div>
             </div>
 
-            <!-- Bloc Entreprise + Map -->
-            <div class="entreprise-card reveal">
-                <div class="entreprise-map">
-                    <iframe src="https://www.google.com/maps?q=200+rue+de+la+Croix+Nivert,+75015+Paris&output=embed" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-                <div class="entreprise-info">
-                    <h4>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                        Nos bureaux
-                    </h4>
-                    <div class="entreprise-details">
-                        <div class="entreprise-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            <span>200 rue de la Croix Nivert, 75015 Paris</span>
-                        </div>
-                        <div class="entreprise-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            <span>Lun - Ven : 9h00 - 18h00</span>
-                        </div>
-                        <div class="entreprise-detail">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            <span>demo@floapp.fr</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- (Bloc Entreprise + Map retir&eacute; sur demande client &mdash; les coordonn&eacute;es restent sur la carte Tanguy ci-dessus) -->
         </div>
 
         <!-- DROITE - Options contact -->
@@ -595,7 +570,7 @@
                 </form>
                 <div id="form-success" class="form-success" hidden>
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                    <span>Votre client mail s'est ouvert. Envoyez le message et nous vous recontactons sous 24h ouvr&eacute;es.</span>
+                    <span>Une fen&ecirc;tre de mail s'est ouverte. <strong>Cliquez sur "Envoyer"</strong> pour valider votre demande. Nous revenons vers vous sous 24h.</span>
                 </div>
             </div>
 
