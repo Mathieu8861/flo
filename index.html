@@ -6,8 +6,8 @@
 
     <!-- SEO de base -->
     <title>FLO &mdash; Propositions B2B en 10 min | IA + Templates</title>
-    <meta name="description" content="FLO transforme vos discussions prospects en propositions B2B pr&ecirc;tes &agrave; signer en 10 minutes. IA + templates intelligents pour consultants et agences.">
-    <meta name="keywords" content="proposition commerciale B2B, IA proposition, SaaS, consultant ind&eacute;pendant, agence marketing, productivit&eacute;, templates intelligents, g&eacute;n&eacute;ration de documents, devis automatique, propal commerciale">
+    <meta name="description" content="FLO transforme vos discussions prospects en propositions B2B pr&ecirc;tes &agrave; signer en 10 minutes. IA + templates intelligents pour consultants et entreprises.">
+    <meta name="keywords" content="proposition commerciale B2B, IA proposition, SaaS, consultant ind&eacute;pendant, entreprise marketing, productivit&eacute;, templates intelligents, g&eacute;n&eacute;ration de documents, devis automatique, propal commerciale">
     <meta name="author" content="IKNO">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
     <meta name="theme-color" content="#8000ff">
@@ -566,10 +566,10 @@
             opacity: 0.6;
         }
 
-        /* Logos clients : hover passe en couleur originale */
-        .client-logos-grid img:hover {
-            filter: none !important;
-            opacity: 1 !important;
+        /* Logos clients : hover lift subtle */
+        .client-logos-grid > div:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.35), 0 0 0 1px rgba(168,85,247,0.2) !important;
         }
 
         /* Timeline circle glow pulse */
@@ -670,7 +670,7 @@
         <div class="container" style="position: relative; z-index: 1;">
             <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.1fr; gap: 60px; align-items: center;">
                 <div>
-                    <span style="display: inline-block; padding: 8px 20px; background: rgba(128,0,255,0.25); border: 1px solid rgba(128,0,255,0.3); border-radius: 50px; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 24px;">Pour les consultants &amp; agences B2B</span>
+                    <span style="display: inline-block; padding: 8px 20px; background: rgba(128,0,255,0.25); border: 1px solid rgba(128,0,255,0.3); border-radius: 50px; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 24px;">Pour les consultants &amp; entreprises B2B</span>
                     <h1 style="font-family: 'Poppins', sans-serif; font-size: 2.7rem; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 20px;">
                         Vos propositions B2B<br>en <span style="background: linear-gradient(135deg, #a855f7, #ff3f9b, #ff703d); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">10 min au lieu de 3h.</span>
                     </h1>
@@ -740,7 +740,7 @@
         <div style="position: absolute; top: 30%; left: -60px; width: 220px; height: 220px; background: radial-gradient(circle, rgba(255,63,155,0.15), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
 
         <div style="position: relative; z-index: 1;">
-            <span style="display: inline-block; padding: 6px 16px; background: rgba(128,0,255,0.25); border: 1px solid rgba(128,0,255,0.3); border-radius: 50px; font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 14px;">Pour les consultants &amp; agences B2B</span>
+            <span style="display: inline-block; padding: 6px 16px; background: rgba(128,0,255,0.25); border: 1px solid rgba(128,0,255,0.3); border-radius: 50px; font-size: 0.72rem; font-weight: 600; color: rgba(255,255,255,0.9); margin-bottom: 14px;">Pour les consultants &amp; entreprises B2B</span>
             <h1 class="hero-mobile__title">Vos propositions B2B<br><span>en 10 min.</span></h1>
             <p class="hero-mobile__subtitle">Du brief client au document pr&ecirc;t &agrave; envoyer. IA + vos templates.</p>
 
@@ -793,9 +793,29 @@
     </section>
 
     <!-- ============================================ -->
-    <!-- R&Eacute;SULTATS CONCRETS -->
+    <!-- LOGOS CLIENTS T&Eacute;O - DESKTOP (titre seul, le bandeau est dans #resultats en absolute) -->
     <!-- ============================================ -->
-    <section class="desktop-only" id="resultats" style="background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 50%, #ff703d 100%); padding: 80px 0; position: relative; overflow: hidden;">
+    <section class="desktop-only" style="background: #1a0033; padding: 40px 0 80px; position: relative;">
+        <div class="container" style="max-width: 1100px; margin: 0 auto; text-align: center; padding: 0 24px;">
+            <p style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1.5px; margin: 0;">
+                Ils nous font d&eacute;j&agrave; confiance
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- R&Eacute;SULTATS CONCRETS (avec bandeau logos en absolute, chevauchant le haut) -->
+    <!-- ============================================ -->
+    <section class="desktop-only" id="resultats" style="background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 50%, #ff703d 100%); padding: 130px 0 80px; position: relative; overflow: visible;">
+        <!-- BANDEAU LOGOS - en position absolute pour chevaucher 50/50 -->
+        <div style="position: absolute; top: -55px; left: 50%; transform: translateX(-50%); width: calc(100% - 48px); max-width: 1100px; z-index: 100; background: linear-gradient(135deg, #d4b3ff 0%, #e8d4ff 50%, #f0c8e0 100%); border-radius: 24px; padding: 28px 40px; box-shadow: 0 18px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(168,85,247,0.3); display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 24px 32px; box-sizing: border-box;">
+            <img src="assets/logos/aksis.png" alt="Aksis" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
+            <img src="assets/logos/catalys.png" alt="Catalys" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
+            <img src="assets/logos/cibc.png" alt="CIBC" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
+            <img src="assets/logos/creder.png" alt="Creder" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
+            <img src="assets/logos/envergure.png" alt="Envergure" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
+            <img src="assets/logos/socrate.png" alt="Socrate" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
+        </div>
         <!-- D&eacute;co subtile -->
         <div style="position: absolute; top: 0; left: 0; width: 200px; height: 200px; background: rgba(255,255,255,0.06); border-radius: 50%; pointer-events: none;"></div>
         <div style="position: absolute; bottom: 0; right: 0; width: 180px; height: 180px; background: rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
@@ -921,12 +941,12 @@
                     <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6; margin: 0;">5 &agrave; 15 propals/mois. Gagnez 2h sur chacune et concentrez-vous sur le closing.</p>
                 </div>
 
-                <!-- Agences &mdash; visage Barbara (agence &eacute;v&eacute;nementielle Montpellier, brief 19/05) -->
+                <!-- Entreprises &mdash; visage Barbara (entreprise &eacute;v&eacute;nementielle Montpellier, brief 19/05) -->
                 <div class="reveal persona-card" style="background: rgba(255,255,255,0.06); border-radius: 20px; padding: 32px 24px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                     <div class="persona-avatar" style="--ring-gradient: linear-gradient(135deg, #ff3f9b, #ff6fb5);">
-                        <img src="assets/images/avatar-barbara.jpg" alt="Barbara &mdash; agence &eacute;v&eacute;nementielle" loading="lazy">
+                        <img src="assets/images/avatar-barbara.jpg" alt="Barbara &mdash; entreprise &eacute;v&eacute;nementielle" loading="lazy">
                     </div>
-                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 8px;">Agences</h4>
+                    <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: white; margin-bottom: 8px;">Entreprises</h4>
                     <p style="color: rgba(255,255,255,0.5); font-size: 0.85rem; line-height: 1.6; margin: 0;">Propositions branded, coh&eacute;rentes, quelle que soit la personne qui les r&eacute;dige.</p>
                 </div>
 
@@ -1003,7 +1023,25 @@
     </section>
 
     <!-- COMMENT &Ccedil;A MARCHE MOBILE -->
-    <section class="steps-mobile mobile-only" id="comment-ca-marche-m" style="background-color: #1a0033;">
+    <!-- ============================================ -->
+    <!-- LOGOS CLIENTS T&Eacute;O - MOBILE (titre seul, bandeau en absolute dans la section suivante) -->
+    <!-- ============================================ -->
+    <section class="mobile-only" style="background-color: #1a0033; padding: 20px 16px 60px; text-align: center; position: relative;">
+        <p style="font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1.2px; margin: 0;">
+            Ils nous font d&eacute;j&agrave; confiance
+        </p>
+    </section>
+
+    <section class="steps-mobile mobile-only" id="comment-ca-marche-m" style="background-color: #1a0033; padding-top: 75px; position: relative; overflow: visible;">
+        <!-- BANDEAU LOGOS MOBILE - en absolute pour chevaucher 50/50 -->
+        <div style="position: absolute; top: -42px; left: 16px; right: 16px; z-index: 100; background: linear-gradient(135deg, #d4b3ff 0%, #e8d4ff 50%, #f0c8e0 100%); border-radius: 18px; padding: 20px 14px; box-shadow: 0 14px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(168,85,247,0.3); display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 10px; align-items: center; justify-items: center; box-sizing: border-box;">
+            <img src="assets/logos/aksis.png" alt="Aksis" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
+            <img src="assets/logos/catalys.png" alt="Catalys" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
+            <img src="assets/logos/cibc.png" alt="CIBC" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
+            <img src="assets/logos/creder.png" alt="Creder" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
+            <img src="assets/logos/envergure.png" alt="Envergure" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
+            <img src="assets/logos/socrate.png" alt="Socrate" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
+        </div>
         <h2 class="steps-mobile__title">Comment &ccedil;a marche ?</h2>
         <div class="steps-mobile__container">
             <div class="steps-mobile__step">
@@ -1442,7 +1480,7 @@
                             <img src="assets/images/avatar-barbara.jpg" alt="Barbara" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                             <div>
                                 <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; margin: 0;">Barbara</p>
-                                <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Dirigeante, agence &eacute;v&eacute;nementielle</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Dirigeante, entreprise &eacute;v&eacute;nementielle</p>
                             </div>
                         </div>
                     </div>
@@ -1463,7 +1501,7 @@
                             <img src="assets/images/avatar-oceane.jpg" alt="Océane" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
                             <div>
                                 <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 600; margin: 0;">Oc&eacute;ane</p>
-                                <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Directrice d'agence marketing</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Directrice d'entreprise marketing</p>
                             </div>
                         </div>
                     </div>
@@ -1486,7 +1524,7 @@
                         <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">&laquo; La qualit&eacute; de la pr&eacute;sentation refl&egrave;te notre professionnalisme. Avant, je passais 8 &agrave; 10 heures sur une proposition complexe. Avec FLO, le Canva c'est fini. &raquo;</p>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <img src="assets/images/avatar-barbara.jpg" alt="Barbara" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
-                            <div><p style="color: white; font-size: 0.85rem; font-weight: 600; margin: 0;">Barbara</p><p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Agence &eacute;v&eacute;nementielle</p></div>
+                            <div><p style="color: white; font-size: 0.85rem; font-weight: 600; margin: 0;">Barbara</p><p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Entreprise &eacute;v&eacute;nementielle</p></div>
                         </div>
                     </div>
                     <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
@@ -1496,7 +1534,7 @@
                         <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: white; line-height: 1.7; margin-bottom: 20px;">&laquo; L'outil est form&eacute; sur mon contexte &mdash; mes clients, mes templates. Ce n'est pas une IA g&eacute;n&eacute;rique. Le ROI est imm&eacute;diat : je gagne au moins 2h par proposition. &raquo;</p>
                         <div style="display: flex; align-items: center; gap: 12px;">
                             <img src="assets/images/avatar-oceane.jpg" alt="Océane" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
-                            <div><p style="color: white; font-size: 0.85rem; font-weight: 600; margin: 0;">Oc&eacute;ane</p><p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Directrice d'agence marketing</p></div>
+                            <div><p style="color: white; font-size: 0.85rem; font-weight: 600; margin: 0;">Oc&eacute;ane</p><p style="color: rgba(255,255,255,0.7); font-size: 0.75rem; margin: 0;">Directrice d'entreprise marketing</p></div>
                         </div>
                     </div>
                 </div>
@@ -1603,25 +1641,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================ -->
-    <!-- LOGOS CLIENTS T&Eacute;O - DESKTOP -->
-    <!-- ============================================ -->
-    <section class="desktop-only" style="background: #1a0033; padding: 50px 0 30px; position: relative; overflow: hidden;">
-        <div class="container" style="max-width: 1200px; margin: 0 auto; text-align: center;">
-            <p class="reveal" style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 32px;">
-                Quelques centres qui nous font d&eacute;j&agrave; confiance via T&eacute;o
-            </p>
-            <div class="reveal client-logos-grid" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 48px 56px; max-width: 1000px; margin: 0 auto;">
-                <img src="assets/logos/aksis.png" alt="Aksis" loading="lazy" style="max-height: 44px; max-width: 130px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6; transition: opacity 0.3s ease;">
-                <img src="assets/logos/catalys.png" alt="Catalys" loading="lazy" style="max-height: 44px; max-width: 130px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6; transition: opacity 0.3s ease;">
-                <img src="assets/logos/cibc.png" alt="CIBC" loading="lazy" style="max-height: 44px; max-width: 130px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6; transition: opacity 0.3s ease;">
-                <img src="assets/logos/creder.png" alt="Creder" loading="lazy" style="max-height: 44px; max-width: 130px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6; transition: opacity 0.3s ease;">
-                <img src="assets/logos/envergure.png" alt="Envergure" loading="lazy" style="max-height: 44px; max-width: 130px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6; transition: opacity 0.3s ease;">
-                <img src="assets/logos/socrate.png" alt="Socrate" loading="lazy" style="max-height: 44px; max-width: 130px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6; transition: opacity 0.3s ease;">
             </div>
         </div>
     </section>
@@ -1734,12 +1753,12 @@
                 <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">5 &agrave; 15 propals/mois. Gagnez 2h sur chacune.</p>
             </div>
 
-            <!-- Agences -->
+            <!-- Entreprises -->
             <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
                 <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #ff3f9b, #ff6fb5);">
                     <img src="assets/images/avatar-barbara.jpg" alt="Barbara" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
                 </div>
-                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Agences</h4>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Entreprises</h4>
                 <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">Propositions branded, coh&eacute;rentes &agrave; chaque envoi.</p>
             </div>
 
@@ -1846,22 +1865,7 @@
         </div>
     </section>
 
-    <!-- ============================================ -->
-    <!-- LOGOS CLIENTS T&Eacute;O - MOBILE -->
-    <!-- ============================================ -->
-    <section class="mobile-only" style="background-color: #1a0033; padding: 30px 16px 10px; text-align: center;">
-        <p style="font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1.2px; margin: 0 0 20px;">
-            Quelques centres qui nous font d&eacute;j&agrave; confiance via T&eacute;o
-        </p>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px 14px; align-items: center; justify-items: center; max-width: 360px; margin: 0 auto;">
-            <img src="assets/logos/aksis.png" alt="Aksis" loading="lazy" style="max-height: 28px; max-width: 90px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6;">
-            <img src="assets/logos/catalys.png" alt="Catalys" loading="lazy" style="max-height: 28px; max-width: 90px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6;">
-            <img src="assets/logos/cibc.png" alt="CIBC" loading="lazy" style="max-height: 28px; max-width: 90px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6;">
-            <img src="assets/logos/creder.png" alt="Creder" loading="lazy" style="max-height: 28px; max-width: 90px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6;">
-            <img src="assets/logos/envergure.png" alt="Envergure" loading="lazy" style="max-height: 28px; max-width: 90px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6;">
-            <img src="assets/logos/socrate.png" alt="Socrate" loading="lazy" style="max-height: 28px; max-width: 90px; width: auto; height: auto; filter: brightness(0) invert(1); opacity: 0.6;">
-        </div>
-    </section>
+    <!-- (Bandeau logos clients mobile d&eacute;plac&eacute; en haut, sous le hero) -->
 
     <!-- ============================================ -->
     <!-- CERTIFICATIONS GCP - MOBILE -->
