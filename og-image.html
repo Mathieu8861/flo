@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>FLO OG Image — 1200x630</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0010; }
+        .og-canvas {
+            width: 1200px;
+            height: 630px;
+            background: linear-gradient(135deg, #1a0033 0%, #2d0a4a 30%, #6a1850 70%, #ff703d 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Decorative gradient circles */
+        .deco-1 {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.45), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .deco-2 {
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 63, 155, 0.35), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .deco-3 {
+            position: absolute;
+            top: 40%;
+            right: 30%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 112, 61, 0.25), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Dots pattern */
+        .dots {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 28px 28px;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            padding: 70px 80px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Header : Logo + Badge */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo-block {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .logo-box {
+            width: 72px;
+            height: 72px;
+            background: #8000ff;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            box-shadow: 0 10px 30px rgba(128, 0, 255, 0.4);
+            letter-spacing: -1px;
+        }
+        .logo-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            backdrop-filter: blur(8px);
+        }
+        .badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4ade80;
+        }
+
+        /* Main : Title + Subtitle */
+        .main-text {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.05;
+            letter-spacing: -1.5px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+        .title .accent {
+            background: linear-gradient(135deg, #ffd6e4 0%, #ffb38a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.4;
+            max-width: 800px;
+        }
+
+        /* Footer : URL + Features */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        .features {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .feature-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.22);
+            border-radius: 50px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: white;
+            backdrop-filter: blur(8px);
+        }
+        .check {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            font-weight: 900;
+        }
+        .url {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: white;
+            opacity: 0.95;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="og-canvas">
+        <div class="deco-1"></div>
+        <div class="deco-2"></div>
+        <div class="deco-3"></div>
+        <div class="dots"></div>
+
+        <div class="content">
+            <!-- Header : Logo + Badge -->
+            <div class="header">
+                <div class="logo-block">
+                    <img src="assets/images/flo.svg" alt="FLO" style="width: 72px; height: 72px; border-radius: 18px; box-shadow: 0 10px 30px rgba(128, 0, 255, 0.4);">
+                    <span class="logo-text">FLO</span>
+                </div>
+                <div class="badge">
+                    <span class="badge-dot"></span>
+                    Édité par IKNO
+                </div>
+            </div>
+
+            <!-- Main : Title -->
+            <div class="main-text">
+                <h1 class="title">
+                    Vos propositions B2B<br>
+                    en <span class="accent">10 min au lieu de 3h.</span>
+                </h1>
+                <p class="subtitle">
+                    L'IA + vos templates intelligents pour consultants et entreprises.<br>
+                    Du brief client au document prêt à envoyer.
+                </p>
+            </div>
+
+            <!-- Footer : Features + URL -->
+            <div class="footer">
+                <div class="features">
+                    <span class="feature-pill">
+                        <span class="check">✓</span>
+                        2h gagnées / proposition
+                    </span>
+                    <span class="feature-pill">
+                        <span class="check">✓</span>
+                        À partir de 49€/mois
+                    </span>
+                    <span class="feature-pill">
+                        <span class="check">✓</span>
+                        RGPD & sécurisé
+                    </span>
+                </div>
+                <div class="url">www.floapp.fr</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

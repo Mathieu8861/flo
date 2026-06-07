@@ -8,8 +8,8 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://www.floapp.fr/assets/images/hero-illustration.png</image:loc>
-      <image:title>FLO — L'IA qui transforme vos discussions prospects en propositions B2B</image:title>
+      <image:loc>https://www.floapp.fr/assets/images/og-image.png</image:loc>
+      <image:title>FLO — Vos propositions B2B en 10 min au lieu de 3h</image:title>
     </image:image>
   </url>
 
