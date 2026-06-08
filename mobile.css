@@ -312,7 +312,7 @@ body.mobile-menu-open {
     margin-bottom: 16px;
 }
 
-.hero-mobile__title span {
+.hero-mobile__title .gradient {
     background: linear-gradient(135deg, #8000ff, #ff3f9b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

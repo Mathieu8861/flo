@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>FLO Video Poster — 1280x720</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #0a0010; }
+        .poster {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #2d0a4a 0%, #6a1d72 25%, #b81d6a 55%, #ff3f9b 75%, #ff7a3d 100%);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Decorative gradient circles - plus saturés */
+        .deco-1 {
+            position: absolute;
+            top: -140px;
+            right: -100px;
+            width: 620px;
+            height: 620px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.75), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .deco-2 {
+            position: absolute;
+            bottom: -120px;
+            left: -120px;
+            width: 540px;
+            height: 540px;
+            background: radial-gradient(circle, rgba(255, 63, 155, 0.65), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .deco-3 {
+            position: absolute;
+            top: 35%;
+            right: 25%;
+            width: 440px;
+            height: 440px;
+            background: radial-gradient(circle, rgba(255, 122, 61, 0.55), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+        .deco-4 {
+            position: absolute;
+            top: 5%;
+            left: 20%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(128, 0, 255, 0.50), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Dots pattern */
+        .dots {
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 36px;
+            text-align: center;
+            padding: 0 80px;
+        }
+
+        /* Play button */
+        .play-btn {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+        .play-btn svg {
+            width: 52px;
+            height: 52px;
+            margin-left: 8px;
+        }
+
+        /* Title */
+        .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.4rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1.15;
+            letter-spacing: -1.2px;
+            text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            max-width: 900px;
+        }
+        .title .accent {
+            background: linear-gradient(135deg, #ffd6e4 0%, #ffb38a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="deco-1"></div>
+        <div class="deco-2"></div>
+        <div class="deco-3"></div>
+        <div class="deco-4"></div>
+        <div class="dots"></div>
+
+        <div class="content">
+            <div class="play-btn">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <polygon points="5,3 19,12 5,21"/>
+                </svg>
+            </div>
+
+            <h1 class="title">
+                <span class="accent">Vidéo d'1 minute</span><br>
+                pour vous expliquer<br>
+                le fonctionnement de FLO
+            </h1>
+        </div>
+    </div>
+</body>
+</html>
