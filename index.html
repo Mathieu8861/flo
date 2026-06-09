@@ -584,19 +584,86 @@
         .timeline-grid > div:nth-child(2) > div:first-child { animation-delay: 1s; }
         .timeline-grid > div:nth-child(3) > div:first-child { animation-delay: 2s; }
 
-        /* CTA hover lift */
+        /* CTA hover lift + active press (mobile-friendly) */
         .cta-hover {
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease !important;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease !important;
         }
         .cta-hover:hover {
             transform: translateY(-3px) !important;
             filter: brightness(1.1);
+        }
+        .cta-hover:active {
+            transform: translateY(-1px) scale(0.98) !important;
+            filter: brightness(0.95);
+            transition-duration: 0.1s !important;
+        }
+        /* Sur device tactile, on remplace le hover (qui reste collé apr&egrave;s tap) par un effet press */
+        @media (hover: none) {
+            .cta-hover:hover { transform: none !important; filter: none; }
+            .cta-hover:active {
+                transform: scale(0.97) !important;
+                filter: brightness(0.9);
+            }
         }
 
         /* Enhanced FAQ glow on hover */
         .faq-card:hover {
             border-color: rgba(168,85,247,0.25) !important;
             box-shadow: 0 4px 24px rgba(128,0,255,0.1);
+        }
+
+        /* ===== PRICING ICONS ANIMATIONS ===== */
+        .pricing-benefit-row {
+            opacity: 0;
+            transform: translateX(-15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        .pricing-benefit-row.in-view {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        .pricing-benefit-row:nth-child(1) { transition-delay: 0.15s; }
+        .pricing-benefit-row:nth-child(2) { transition-delay: 0.30s; }
+        .pricing-benefit-row:nth-child(3) { transition-delay: 0.45s; }
+
+        .pricing-icon-box {
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+        }
+        .pricing-benefit-row:hover .pricing-icon-box {
+            transform: scale(1.12) rotate(-6deg);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+        }
+
+        /* Horloge - aiguille qui tourne lentement */
+        .pricing-icon-clock svg path {
+            transform-origin: 12px 12px;
+            animation: clockRotate 12s linear infinite;
+        }
+        @keyframes clockRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Euro - pulse + glow doré */
+        .pricing-icon-euro {
+            animation: euroPulse 2.8s ease-in-out infinite;
+        }
+        @keyframes euroPulse {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(255,142,195,0)); }
+            50% { transform: scale(1.08); filter: drop-shadow(0 0 8px rgba(255,142,195,0.7)); }
+        }
+
+        /* Éclair - flicker rapide subtil */
+        .pricing-icon-lightning {
+            animation: lightningFlicker 3.5s ease-in-out infinite;
+        }
+        @keyframes lightningFlicker {
+            0%, 100% { opacity: 1; filter: drop-shadow(0 0 2px rgba(255,165,128,0.3)); }
+            45% { opacity: 1; filter: drop-shadow(0 0 2px rgba(255,165,128,0.3)); }
+            48% { opacity: 0.6; filter: drop-shadow(0 0 10px rgba(255,165,128,1)); }
+            50% { opacity: 1; filter: drop-shadow(0 0 12px rgba(255,165,128,1)); }
+            52% { opacity: 0.7; filter: drop-shadow(0 0 6px rgba(255,165,128,0.8)); }
+            55% { opacity: 1; filter: drop-shadow(0 0 2px rgba(255,165,128,0.3)); }
         }
 
         /* Tag pills micro-interaction */
@@ -1022,7 +1089,7 @@
 
     <section class="steps-mobile mobile-only" id="comment-ca-marche-m" style="background-color: #1a0033; padding-top: 75px; position: relative; overflow: visible;">
         <!-- BANDEAU LOGOS MOBILE - en absolute pour chevaucher 50/50 -->
-        <div style="position: absolute; top: -42px; left: 16px; right: 16px; z-index: 100; background: linear-gradient(135deg, #d4b3ff 0%, #e8d4ff 50%, #f0c8e0 100%); border-radius: 18px; padding: 20px 14px; box-shadow: 0 14px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(168,85,247,0.3); display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 10px; align-items: center; justify-items: center; box-sizing: border-box;">
+        <div style="position: absolute; top: -42px; left: 16px; right: 16px; z-index: 100; background: linear-gradient(135deg, #d4b3ff 0%, #e8d4ff 50%, #f0c8e0 100%); border-radius: 18px; padding: 20px 14px; box-shadow: 0 14px 32px rgba(0,0,0,0.5); display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 10px; align-items: center; justify-items: center; box-sizing: border-box;">
             <img src="assets/logos/aksis.png" alt="Aksis" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
             <img src="assets/logos/catalys.png" alt="Catalys" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
             <img src="assets/logos/cibc.png" alt="CIBC" loading="lazy" style="max-height: 26px; max-width: 90px; width: auto; height: auto;">
@@ -1227,28 +1294,28 @@
                     <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.9); line-height: 1.7; margin-bottom: 28px;">
                         Vous gagnez 2h minimum par proposition. &Agrave; 5 propositions/mois, c'est 800 &agrave; 1 600&euro; de temps r&eacute;cup&eacute;r&eacute;.
                     </p>
-                    <div style="display: flex; flex-direction: column; gap: 16px;">
-                        <div style="display: flex; align-items: flex-start; gap: 14px;">
-                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1a0033 0%, #2d0a4a 100%); border: 1px solid rgba(168,85,247,0.4); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <div class="pricing-benefits" style="display: flex; flex-direction: column; gap: 16px;">
+                        <div class="pricing-benefit-row" style="display: flex; align-items: flex-start; gap: 14px;">
+                            <div class="pricing-icon-box" style="width: 40px; height: 40px; background: linear-gradient(135deg, #1a0033 0%, #2d0a4a 100%); border: 1px solid rgba(168,85,247,0.4); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">
+                                <svg class="pricing-icon-clock" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                             </div>
                             <div>
                                 <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600; margin: 0 0 4px;">10 min au lieu de 3h</p>
                                 <p style="color: rgba(255,255,255,0.85); font-size: 0.83rem; margin: 0; line-height: 1.5;">Chaque proposition g&eacute;n&eacute;r&eacute;e en quelques clics, pas en heures.</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: flex-start; gap: 14px;">
-                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1a0033 0%, #3d0a36 100%); border: 1px solid rgba(255,142,195,0.4); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8ec3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17.2 7A7 7 0 0 0 7 12a7 7 0 0 0 10.2 5"/><line x1="4" y1="10" x2="13" y2="10"/><line x1="4" y1="14" x2="13" y2="14"/></svg>
+                        <div class="pricing-benefit-row" style="display: flex; align-items: flex-start; gap: 14px;">
+                            <div class="pricing-icon-box" style="width: 40px; height: 40px; background: linear-gradient(135deg, #1a0033 0%, #3d0a36 100%); border: 1px solid rgba(255,142,195,0.4); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">
+                                <svg class="pricing-icon-euro" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8ec3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M17.2 7A7 7 0 0 0 7 12a7 7 0 0 0 10.2 5"/><line x1="4" y1="10" x2="13" y2="10"/><line x1="4" y1="14" x2="13" y2="14"/></svg>
                             </div>
                             <div>
                                 <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600; margin: 0 0 4px;">800 &agrave; 1 600&euro; r&eacute;cup&eacute;r&eacute;s/mois</p>
                                 <p style="color: rgba(255,255,255,0.85); font-size: 0.83rem; margin: 0; line-height: 1.5;">Du temps consultant transform&eacute; en valeur facturable.</p>
                             </div>
                         </div>
-                        <div style="display: flex; align-items: flex-start; gap: 14px;">
-                            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #1a0033 0%, #3d1a0d 100%); border: 1px solid rgba(255,165,128,0.4); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffa580" stroke-width="2.4"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <div class="pricing-benefit-row" style="display: flex; align-items: flex-start; gap: 14px;">
+                            <div class="pricing-icon-box" style="width: 40px; height: 40px; background: linear-gradient(135deg, #1a0033 0%, #3d1a0d 100%); border: 1px solid rgba(255,165,128,0.4); border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 8px 18px rgba(0,0,0,0.25);">
+                                <svg class="pricing-icon-lightning" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffa580" stroke-width="2.4"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                             </div>
                             <div>
                                 <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.92rem; font-weight: 600; margin: 0 0 4px;">Op&eacute;rationnel en 48h</p>
@@ -1297,7 +1364,7 @@
                 <p style="font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(255,255,255,0.65); margin: 0 0 24px; line-height: 1.5;">Formule adapt&eacute;e &agrave; votre volume &mdash; on en parle lors de la d&eacute;mo</p>
 
                 <!-- Bouton dark violet (m&ecirc;me style que desktop) -->
-                <a href="demo.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 24px; background: linear-gradient(135deg, #1a0033 0%, #2d0a4a 55%, #5a1850 100%); color: white; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 0.98rem; box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); font-family: 'Inter', sans-serif;">
+                <a href="demo.html" class="cta-hover" style="display: flex; align-items: center; justify-content: center; gap: 8px; padding: 16px 24px; background: linear-gradient(135deg, #1a0033 0%, #2d0a4a 55%, #5a1850 100%); color: white; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 0.98rem; box-shadow: 0 12px 30px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 0 rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1); font-family: 'Inter', sans-serif;">
                     R&eacute;server ma d&eacute;mo
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -1501,11 +1568,11 @@
                         Notre premi&egrave;re solution, <strong style="color: white; font-weight: 600;">T&eacute;o</strong>, &eacute;quipe d&eacute;j&agrave; <strong style="color: #c084fc;">350+ centres de formation</strong> en France. Pas un produit pivot&eacute; en 3 mois pour surfer la hype IA &mdash; un outil pens&eacute; par une &eacute;quipe qui vit la vente B2B au quotidien depuis deux d&eacute;cennies.
                     </p>
                     <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-                        <a href="demo.html" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; padding: 14px 28px; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 6px 20px rgba(128, 0, 255, 0.35); transition: all 0.3s ease; font-family: 'Inter', sans-serif;">
+                        <a href="demo.html" class="cta-hover" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; padding: 14px 28px; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 6px 20px rgba(128, 0, 255, 0.35); transition: all 0.3s ease; font-family: 'Inter', sans-serif;">
                             R&eacute;server ma d&eacute;mo
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
-                        <a href="https://teo-lesite.com" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.06); color: white; border: 1px solid rgba(255,255,255,0.15); padding: 14px 28px; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">
+                        <a href="https://teo-lesite.com" target="_blank" rel="noopener" class="cta-hover" style="background: rgba(255,255,255,0.06); color: white; border: 1px solid rgba(255,255,255,0.15); padding: 14px 28px; border-radius: 12px; font-size: 0.95rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; font-family: 'Inter', sans-serif;">
                             En savoir plus sur IKNO
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                         </a>
@@ -1788,11 +1855,11 @@
 
         <!-- CTAs mobile -->
         <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 22px; position: relative; z-index: 1;">
-            <a href="demo.html" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; padding: 14px 24px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 20px rgba(128, 0, 255, 0.35); font-family: 'Inter', sans-serif;">
+            <a href="demo.html" class="cta-hover" style="background: linear-gradient(135deg, #8000ff, #ff3f9b); color: white; padding: 14px 24px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 6px 20px rgba(128, 0, 255, 0.35); font-family: 'Inter', sans-serif;">
                 R&eacute;server ma d&eacute;mo
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
-            <a href="https://teo-lesite.com" target="_blank" rel="noopener" style="background: rgba(255,255,255,0.06); color: white; border: 1px solid rgba(255,255,255,0.15); padding: 14px 24px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif;">
+            <a href="https://teo-lesite.com" target="_blank" rel="noopener" class="cta-hover" style="background: rgba(255,255,255,0.06); color: white; border: 1px solid rgba(255,255,255,0.15); padding: 14px 24px; border-radius: 12px; font-size: 0.92rem; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Inter', sans-serif;">
                 En savoir plus sur IKNO
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
@@ -2018,7 +2085,7 @@
         <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.55; margin: 0 auto 22px; max-width: 320px;">
             R&eacute;servez une d&eacute;mo et d&eacute;couvrez l'outil qui va transformer vos propositions B2B.
         </p>
-        <a href="demo.html" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; background: linear-gradient(180deg, #ff7a51 0%, #ff3f9b 100%); color: white; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px rgba(255,63,155,0.35); font-family: 'Inter', sans-serif;">
+        <a href="demo.html" class="cta-hover" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; background: linear-gradient(180deg, #ff7a51 0%, #ff3f9b 100%); color: white; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px rgba(255,63,155,0.35); font-family: 'Inter', sans-serif;">
             R&eacute;server ma d&eacute;mo
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -2038,7 +2105,7 @@
                     <h4 style="color: white; font-size: 1.15rem; font-weight: 700; margin: 0 0 4px 0;">Vos propositions B2B en 10 min au lieu de 3h</h4>
                     <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin: 0;">&Agrave; partir de 49&euro;/mois. Pr&ecirc;t en 48h.</p>
                 </div>
-                <a href="demo.html" style="background: white; color: #ff703d; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                <a href="demo.html" class="cta-hover" style="background: white; color: #ff703d; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
                     R&eacute;server ma d&eacute;mo
                 </a>
             </div>
@@ -2197,6 +2264,20 @@
 
         document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
             revealObserver.observe(el);
+        });
+
+        // Pricing benefit rows : observer d&eacute;di&eacute; pour ajouter "in-view" en cascade
+        const pricingObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    pricingObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.pricing-benefit-row').forEach(el => {
+            pricingObserver.observe(el);
         });
     </script>
 

@@ -148,9 +148,17 @@
     transition: transform 0.2s ease;
 }
 
-.header-mobile__cta:hover,
+.header-mobile__cta {
+    transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+.header-mobile__cta:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+}
 .header-mobile__cta:active {
-    transform: translateY(-1px);
+    transform: scale(0.96);
+    filter: brightness(0.92);
+    transition-duration: 0.1s;
 }
 
 /* Burger tricolore */
@@ -341,6 +349,17 @@ body.mobile-menu-open {
     text-decoration: none;
     display: block;
     text-align: center;
+    transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+}
+.hero-mobile__cta:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: 0 8px 22px rgba(255, 112, 61, 0.45);
+}
+.hero-mobile__cta:active {
+    transform: scale(0.97);
+    filter: brightness(0.92);
+    transition-duration: 0.1s;
 }
 
 
