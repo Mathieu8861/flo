@@ -612,6 +612,18 @@
             box-shadow: 0 4px 24px rgba(128,0,255,0.1);
         }
 
+        /* Carrousels t&eacute;moignages : scrollable + auto-scroll JS */
+        .testimonials-scroll {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            cursor: grab;
+        }
+        .testimonials-scroll::-webkit-scrollbar { display: none; }
+        .testimonials-scroll.dragging { cursor: grabbing; user-select: none; }
+        /* Mobile : snap d'avis en avis */
+        #testimonials-scroll-m > div > div { scroll-snap-align: start; }
+
         /* ===== PRICING ICONS ANIMATIONS ===== */
         .pricing-benefit-row {
             opacity: 0;
@@ -827,19 +839,12 @@
 
             <a href="/demo" class="hero-mobile__cta">R&eacute;server ma d&eacute;mo</a>
 
-            <!-- Bandeau ROI compact (d&eacute;plac&eacute; depuis la section stats-mobile, sous le bouton CTA) -->
-            <div style="background: linear-gradient(135deg, rgba(128,0,255,0.18), rgba(255,63,155,0.12)); border: 1px solid rgba(168,85,247,0.25); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; backdrop-filter: blur(8px); margin-top: 18px;">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                    <div>
-                        <span style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; color: white;">10 min</span>
-                        <span style="font-family: 'Inter', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.6); margin-left: 4px;">vs 3h</span>
-                    </div>
-                </div>
-                <div style="width: 1px; height: 22px; background: rgba(255,255,255,0.12);"></div>
-                <div style="text-align: right;">
-                    <span style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 700; background: linear-gradient(135deg, #c084fc, #ff8ec3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">+1 600&euro;</span>
-                    <span style="font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.6); margin-left: 4px;">/mois</span>
+            <!-- Bandeau ROI compact : accroche temps gagn&eacute; (2 lignes &eacute;quilibr&eacute;es) -->
+            <div style="background: linear-gradient(135deg, rgba(128,0,255,0.18), rgba(255,63,155,0.12)); border: 1px solid rgba(168,85,247,0.25); border-radius: 14px; padding: 14px 18px; display: flex; align-items: center; justify-content: center; gap: 12px; backdrop-filter: blur(8px); margin-top: 18px;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c084fc" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div style="text-align: left; line-height: 1.3;">
+                    <p style="font-family: 'Inter', sans-serif; font-size: 0.74rem; color: rgba(255,255,255,0.6); margin: 0;">En moyenne, vous gagnez</p>
+                    <p style="font-family: 'Poppins', sans-serif; font-size: 1.05rem; font-weight: 700; color: white; margin: 0; white-space: nowrap;"><span style="background: linear-gradient(135deg, #c084fc, #ff8ec3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">1 &agrave; 4h</span> par prospect</p>
                 </div>
             </div>
 
@@ -1135,7 +1140,7 @@
             <div style="text-align: center; margin-bottom: 28px;">
                 <span style="display: inline-block; padding: 5px 12px; background: rgba(128,0,255,0.15); border: 1px solid rgba(128,0,255,0.2); border-radius: 50px; font-size: 0.7rem; font-weight: 600; color: #a855f7; margin-bottom: 12px;">D&eacute;mo &amp; Fonctionnalit&eacute;s</span>
                 <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; line-height: 1.25; margin: 0;">
-                    Ce que FLO fait concr&egrave;tement
+                    D&eacute;couvrez FLO en action
                 </h2>
             </div>
 
@@ -1191,7 +1196,7 @@
             <div class="reveal" style="text-align: center; margin-bottom: 50px;">
                 <span style="display: inline-block; padding: 6px 14px; background: rgba(128,0,255,0.15); border: 1px solid rgba(128,0,255,0.2); border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: #a855f7; margin-bottom: 14px;">D&eacute;mo &amp; Fonctionnalit&eacute;s</span>
                 <h2 style="font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 700; color: white;">
-                    Ce que FLO fait concr&egrave;tement
+                    D&eacute;couvrez FLO en action
                 </h2>
             </div>
 
@@ -1268,18 +1273,14 @@
                             R&eacute;server ma d&eacute;mo
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                         </a>
-                        <div style="display: flex; justify-content: center; gap: 20px; margin-top: 28px; flex-wrap: wrap;">
-                            <div style="display: flex; align-items: center; gap: 6px;">
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.9); font-family: 'Inter', sans-serif; font-weight: 500;">ROI x10 &agrave; x20</span>
-                            </div>
+                        <div style="display: flex; justify-content: center; gap: 28px; margin-top: 28px;">
                             <div style="display: flex; align-items: center; gap: 6px;">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                                 <span style="font-size: 0.8rem; color: rgba(255,255,255,0.9); font-family: 'Inter', sans-serif; font-weight: 500;">Pr&ecirc;t en 48h</span>
                             </div>
                             <div style="display: flex; align-items: center; gap: 6px;">
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.9); font-family: 'Inter', sans-serif; font-weight: 500;">Pay-to-try</span>
+                                <span style="font-size: 0.8rem; color: rgba(255,255,255,0.9); font-family: 'Inter', sans-serif; font-weight: 500;">Sans engagement</span>
                             </div>
                         </div>
                     </div>
@@ -1292,7 +1293,7 @@
                         Un outil rentabilis&eacute; d&egrave;s la premi&egrave;re proposition
                     </h2>
                     <p style="font-family: 'Inter', sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.9); line-height: 1.7; margin-bottom: 28px;">
-                        Vous gagnez 2h minimum par proposition. &Agrave; 5 propositions/mois, c'est 800 &agrave; 1 600&euro; de temps r&eacute;cup&eacute;r&eacute;.
+                        Vous gagnez en moyenne 1 &agrave; 4h par proposition. &Agrave; 5 propositions/mois, c'est jusqu'&agrave; 1 600&euro; de temps r&eacute;cup&eacute;r&eacute;.
                     </p>
                     <div class="pricing-benefits" style="display: flex; flex-direction: column; gap: 16px;">
                         <div class="pricing-benefit-row" style="display: flex; align-items: flex-start; gap: 14px;">
@@ -1331,6 +1332,61 @@
         </div>
     </section>
 
+    <!-- ============================================ -->
+    <!-- POUR QUI ? - MOBILE -->
+    <!-- ============================================ -->
+    <section class="mobile-only" style="background-color: #1a0033; padding: 60px 16px; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 30px; right: -50px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(128,0,255,0.12), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+        <div style="text-align: center; margin-bottom: 28px; position: relative; z-index: 1;">
+            <span style="display: inline-block; padding: 5px 12px; background: rgba(128,0,255,0.12); border: 1px solid rgba(128,0,255,0.15); border-radius: 50px; font-size: 0.72rem; font-weight: 600; color: #8000ff; margin-bottom: 12px;">Pour qui ?</span>
+            <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; line-height: 1.25; margin-bottom: 10px;">
+                FLO s'adapte &agrave; votre m&eacute;tier
+            </h2>
+            <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.55; margin: 0;">
+                Partout o&ugrave; il y a des propositions commerciales &agrave; envoyer, FLO fait gagner du temps.
+            </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; z-index: 1;">
+            <!-- Consultants -->
+            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
+                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #8000ff, #a855f7);">
+                    <img src="assets/images/avatar-marieange.jpg" alt="Marie-Ange" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Consultants</h4>
+                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">5 &agrave; 15 propositions/mois. Gagnez 2h sur chacune.</p>
+            </div>
+
+            <!-- Entreprises -->
+            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
+                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #ff3f9b, #ff6fb5);">
+                    <img src="assets/images/avatar-barbara.jpg" alt="Barbara" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Entreprises</h4>
+                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">Propositions harmonis&eacute;es, coh&eacute;rentes &agrave; chaque envoi.</p>
+            </div>
+
+            <!-- ESN & IT -->
+            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
+                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #ff703d, #ff9a6c);">
+                    <img src="assets/profiles/profile-developpeur.jpg" alt="ESN/IT" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">ESN &amp; IT</h4>
+                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">R&eacute;ponses aux appels d'offres avec ROI calcul&eacute;.</p>
+            </div>
+
+            <!-- Freelances -->
+            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
+                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #8000ff, #ff3f9b);">
+                    <img src="assets/images/avatar-oceane.jpg" alt="Océane" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
+                </div>
+                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Freelances</h4>
+                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">Propositions pro sans y passer la soir&eacute;e.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- PRICING MOBILE -->
     <section class="mobile-only" id="pricing-m" style="background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 50%, #ff703d 100%); padding: 60px 16px; position: relative; overflow: hidden;">
         <!-- Texture subtile (m&ecirc;me que desktop) -->
@@ -1345,17 +1401,12 @@
                 <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; line-height: 1.25;">
                     Rentabilis&eacute; d&egrave;s la 1<sup>&egrave;re</sup> proposition
                 </h2>
-                <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-top: 10px; line-height: 1.55;">2h gagn&eacute;es par proposition. &Agrave; 5 propositions/mois, c'est 800 &agrave; 1 600&euro; r&eacute;cup&eacute;r&eacute;s.</p>
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.85); margin-top: 10px; line-height: 1.55;">Gagnez en moyenne 1 &agrave; 4h par proposition. &Agrave; 5 propositions/mois, c'est jusqu'&agrave; 1 600&euro; r&eacute;cup&eacute;r&eacute;s.</p>
             </div>
 
             <!-- Card pricing - glassmorphism blanc comme desktop -->
             <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 24px; padding: 32px 22px 26px; border: 1px solid rgba(255,255,255,0.25); text-align: center; box-shadow: 0 16px 40px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.3); position: relative; overflow: hidden;">
-                <!-- Badge populaire -->
-                <div style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; font-size: 0.68rem; font-weight: 700; color: white; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 20px; backdrop-filter: blur(8px);">
-                    <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-                    Le plus demand&eacute;
-                </div>
-
+                <p style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 14px;">FLO pour votre activit&eacute;</p>
                 <div style="display: flex; align-items: baseline; justify-content: center; gap: 4px; margin-bottom: 6px;">
                     <span style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.7);">&Agrave; partir de</span>
                     <span style="font-family: 'Poppins', sans-serif; font-size: 3rem; font-weight: 800; line-height: 1; color: white; text-shadow: 0 2px 12px rgba(168,85,247,0.4);">49&euro;</span>
@@ -1370,18 +1421,14 @@
                 </a>
 
                 <!-- Trust signals -->
-                <div style="display: flex; justify-content: center; gap: 16px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15); flex-wrap: wrap;">
-                    <div style="display: flex; align-items: center; gap: 5px;">
-                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span style="font-size: 0.72rem; color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-weight: 500;">ROI x10 &agrave; x20</span>
-                    </div>
+                <div style="display: flex; justify-content: center; gap: 24px; margin-top: 24px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.15);">
                     <div style="display: flex; align-items: center; gap: 5px;">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
                         <span style="font-size: 0.72rem; color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-weight: 500;">Pr&ecirc;t en 48h</span>
                     </div>
                     <div style="display: flex; align-items: center; gap: 5px;">
                         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-                        <span style="font-size: 0.72rem; color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-weight: 500;">Pay-to-try</span>
+                        <span style="font-size: 0.72rem; color: rgba(255,255,255,0.8); font-family: 'Inter', sans-serif; font-weight: 500;">Sans engagement</span>
                     </div>
                 </div>
             </div>
@@ -1393,7 +1440,7 @@
     <!-- ============================================ -->
     <!-- S&Eacute;CURIT&Eacute; & INFRASTRUCTURE -->
     <!-- ============================================ -->
-    <section class="desktop-only" style="background: #1a0033; padding: 80px 0; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.04);">
+    <section class="desktop-only" id="securite" style="background: #1a0033; padding: 80px 0; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.04);">
         <!-- D&eacute;co subtile -->
         <div style="position: absolute; top: 0; right: 0; width: 180px; height: 180px; background: rgba(255,255,255,0.06); border-radius: 50%; pointer-events: none;"></div>
         <div style="position: absolute; bottom: 0; left: 0; width: 160px; height: 160px; background: rgba(255,255,255,0.04); border-radius: 50%; pointer-events: none;"></div>
@@ -1477,7 +1524,7 @@
     </section>
 
     <!-- Version mobile S&eacute;curit&eacute; -->
-    <section class="mobile-only" style="background: #1a0033; padding: 60px 20px; position: relative; overflow: hidden;">
+    <section class="mobile-only" id="securite-m" style="background: #1a0033; padding: 60px 20px; position: relative; overflow: hidden;">
         <div style="position: absolute; top: -50px; right: -80px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(128,0,255,0.18), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
         <div style="position: absolute; bottom: -50px; left: -80px; width: 240px; height: 240px; background: radial-gradient(circle, rgba(255,63,155,0.12), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
         <div style="text-align: center; margin-bottom: 36px;">
@@ -1649,7 +1696,7 @@
     <!-- ============================================ -->
     <!-- CERTIFICATIONS INFRASTRUCTURE GCP -->
     <!-- ============================================ -->
-    <section class="desktop-only" id="securite" style="background: #1a0033; padding: 60px 0 80px; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.04);">
+    <section class="desktop-only" id="certifications" style="background: #1a0033; padding: 60px 0 80px; position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.04);">
         <div class="container" style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
             <div class="reveal" style="background: linear-gradient(135deg, rgba(168,85,247,0.08), rgba(255,63,155,0.04)); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px; padding: 36px 40px; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center;">
 
@@ -1727,61 +1774,6 @@
         </div>
     </section>
 
-    <!-- FAQ MOBILE -->
-    <!-- ============================================ -->
-    <!-- POUR QUI ? - MOBILE -->
-    <!-- ============================================ -->
-    <section class="mobile-only" style="background-color: #1a0033; padding: 60px 16px; position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 30px; right: -50px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(128,0,255,0.12), transparent 70%); border-radius: 50%; pointer-events: none;"></div>
-
-        <div style="text-align: center; margin-bottom: 28px; position: relative; z-index: 1;">
-            <span style="display: inline-block; padding: 5px 12px; background: rgba(128,0,255,0.12); border: 1px solid rgba(128,0,255,0.15); border-radius: 50px; font-size: 0.72rem; font-weight: 600; color: #8000ff; margin-bottom: 12px;">Pour qui ?</span>
-            <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; line-height: 1.25; margin-bottom: 10px;">
-                FLO s'adapte &agrave; votre m&eacute;tier
-            </h2>
-            <p style="font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.65); line-height: 1.55; margin: 0;">
-                Partout o&ugrave; il y a des propositions commerciales &agrave; envoyer, FLO fait gagner du temps.
-            </p>
-        </div>
-
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: relative; z-index: 1;">
-            <!-- Consultants -->
-            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
-                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #8000ff, #a855f7);">
-                    <img src="assets/images/avatar-marieange.jpg" alt="Marie-Ange" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
-                </div>
-                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Consultants</h4>
-                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">5 &agrave; 15 propositions/mois. Gagnez 2h sur chacune.</p>
-            </div>
-
-            <!-- Entreprises -->
-            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
-                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #ff3f9b, #ff6fb5);">
-                    <img src="assets/images/avatar-barbara.jpg" alt="Barbara" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
-                </div>
-                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Entreprises</h4>
-                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">Propositions harmonis&eacute;es, coh&eacute;rentes &agrave; chaque envoi.</p>
-            </div>
-
-            <!-- ESN & IT -->
-            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
-                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #ff703d, #ff9a6c);">
-                    <img src="assets/profiles/profile-developpeur.jpg" alt="ESN/IT" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
-                </div>
-                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">ESN &amp; IT</h4>
-                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">R&eacute;ponses aux appels d'offres avec ROI calcul&eacute;.</p>
-            </div>
-
-            <!-- Freelances -->
-            <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 20px 14px; border: 1px solid rgba(255,255,255,0.08); text-align: center; box-shadow: 0 8px 24px rgba(0,0,0,0.2); backdrop-filter: blur(8px);">
-                <div style="width: 56px; height: 56px; margin: 0 auto 12px; border-radius: 50%; padding: 2px; background: linear-gradient(135deg, #8000ff, #ff3f9b);">
-                    <img src="assets/images/avatar-oceane.jpg" alt="Océane" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;">
-                </div>
-                <h4 style="font-family: 'Poppins', sans-serif; font-size: 0.92rem; font-weight: 700; color: white; margin: 0 0 6px;">Freelances</h4>
-                <p style="color: rgba(255,255,255,0.65); font-size: 0.76rem; line-height: 1.5; margin: 0;">Propositions pro sans y passer la soir&eacute;e.</p>
-            </div>
-        </div>
-    </section>
 
     <!-- ============================================ -->
     <!-- &Eacute;DIT&Eacute; PAR IKNO - MOBILE -->
@@ -1871,7 +1863,7 @@
     <!-- ============================================ -->
     <!-- CERTIFICATIONS GCP - MOBILE -->
     <!-- ============================================ -->
-    <section class="mobile-only" id="securite-m" style="background-color: #1a0033; padding: 40px 16px;">
+    <section class="mobile-only" id="certifications-m" style="background-color: #1a0033; padding: 40px 16px;">
         <div style="background: linear-gradient(135deg, rgba(128,0,255,0.06), rgba(255,63,155,0.03)); border: 1px solid rgba(128,0,255,0.1); border-radius: 18px; padding: 22px 18px; text-align: center;">
             <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; margin-bottom: 18px;">
                 <div style="flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: linear-gradient(135deg, #8000ff, #a855f7); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(128,0,255,0.25);">
@@ -1924,6 +1916,117 @@
     </section>
 
     <!-- ============================================ -->
+    <!-- AVIS CLIENTS - MOBILE (version compacte du carousel desktop) -->
+    <!-- ============================================ -->
+    <section class="mobile-only" style="background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 50%, #ff703d 100%); padding: 50px 16px; position: relative; overflow: hidden;">
+        <div style="position: absolute; inset: 0; background: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%224%22 height=%224%22><rect width=%224%22 height=%224%22 fill=%22transparent%22/><rect width=%221%22 height=%221%22 fill=%22rgba(255,255,255,0.03)%22/></svg>'); pointer-events: none;"></div>
+        <div style="position: relative; z-index: 1;">
+            <h2 style="font-family: 'Poppins', sans-serif; font-size: 1.5rem; font-weight: 700; color: white; text-align: center; margin: 0 0 28px;">
+                Ils l'ont test&eacute;, ils t&eacute;moignent
+            </h2>
+            <!-- Carrousel auto-d&eacute;filant (m&ecirc;me m&eacute;canique que desktop, cartes dupliqu&eacute;es pour la boucle) -->
+            <div class="testimonials-scroll" id="testimonials-scroll-m" style="margin: 0 -16px; padding: 0 16px; scroll-snap-type: x mandatory; scroll-padding-left: 16px;">
+                <div style="display: flex; gap: 14px; width: max-content;">
+                    <!-- Avis 1 - Marie-Ange -->
+                    <div style="width: 290px; flex-shrink: 0; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 18px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+                            <span style="color: #fbbf24; font-size: 0.95rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.84rem; color: white; line-height: 1.6; margin: 0 0 16px;">
+                            &laquo; Le brief client est captur&eacute; en r&eacute;union, mais il ne rentrait jamais proprement dans la proposition. Avec FLO, tout s'aligne automatiquement. Je gagne 2h par proposition minimum. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/images/avatar-marieange.jpg" alt="Marie-Ange" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; margin: 0;">Marie-Ange</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.7rem; margin: 0;">Consultante commerciale, 8-12 propositions/mois</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Avis 2 - Barbara -->
+                    <div style="width: 290px; flex-shrink: 0; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 18px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+                            <span style="color: #fbbf24; font-size: 0.95rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.84rem; color: white; line-height: 1.6; margin: 0 0 16px;">
+                            &laquo; La qualit&eacute; de la pr&eacute;sentation refl&egrave;te notre professionnalisme. Avant, je passais 8 &agrave; 10 heures sur une proposition complexe. Avec FLO, le Canva c'est fini. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/images/avatar-barbara.jpg" alt="Barbara" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; margin: 0;">Barbara</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.7rem; margin: 0;">Dirigeante, entreprise &eacute;v&eacute;nementielle</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Avis 3 - Oc&eacute;ane -->
+                    <div style="width: 290px; flex-shrink: 0; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 18px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+                            <span style="color: #fbbf24; font-size: 0.95rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.84rem; color: white; line-height: 1.6; margin: 0 0 16px;">
+                            &laquo; L'outil est form&eacute; sur mon contexte &mdash; mes clients, mes mod&egrave;les. Ce n'est pas une IA g&eacute;n&eacute;rique. Le ROI est imm&eacute;diat : je gagne au moins 2h par proposition. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/images/avatar-oceane.jpg" alt="Oc&eacute;ane" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; margin: 0;">Oc&eacute;ane</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.7rem; margin: 0;">Directrice d'entreprise marketing</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duplicatas pour boucle infinie -->
+                    <div style="width: 290px; flex-shrink: 0; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 18px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+                            <span style="color: #fbbf24; font-size: 0.95rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.84rem; color: white; line-height: 1.6; margin: 0 0 16px;">
+                            &laquo; Le brief client est captur&eacute; en r&eacute;union, mais il ne rentrait jamais proprement dans la proposition. Avec FLO, tout s'aligne automatiquement. Je gagne 2h par proposition minimum. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/images/avatar-marieange.jpg" alt="Marie-Ange" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; margin: 0;">Marie-Ange</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.7rem; margin: 0;">Consultante commerciale, 8-12 propositions/mois</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 290px; flex-shrink: 0; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 18px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+                            <span style="color: #fbbf24; font-size: 0.95rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.84rem; color: white; line-height: 1.6; margin: 0 0 16px;">
+                            &laquo; La qualit&eacute; de la pr&eacute;sentation refl&egrave;te notre professionnalisme. Avant, je passais 8 &agrave; 10 heures sur une proposition complexe. Avec FLO, le Canva c'est fini. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/images/avatar-barbara.jpg" alt="Barbara" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; margin: 0;">Barbara</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.7rem; margin: 0;">Dirigeante, entreprise &eacute;v&eacute;nementielle</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 290px; flex-shrink: 0; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 18px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.2);">
+                        <div style="display: flex; gap: 3px; margin-bottom: 12px;">
+                            <span style="color: #fbbf24; font-size: 0.95rem;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                        </div>
+                        <p style="font-family: 'Inter', sans-serif; font-size: 0.84rem; color: white; line-height: 1.6; margin: 0 0 16px;">
+                            &laquo; L'outil est form&eacute; sur mon contexte &mdash; mes clients, mes mod&egrave;les. Ce n'est pas une IA g&eacute;n&eacute;rique. Le ROI est imm&eacute;diat : je gagne au moins 2h par proposition. &raquo;
+                        </p>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <img src="assets/images/avatar-oceane.jpg" alt="Oc&eacute;ane" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                            <div>
+                                <p style="color: white; font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; margin: 0;">Oc&eacute;ane</p>
+                                <p style="color: rgba(255,255,255,0.7); font-size: 0.7rem; margin: 0;">Directrice d'entreprise marketing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
     <!-- AVIS CLIENTS - BLOC GRADIENT (d&eacute;plac&eacute; ici apr&egrave;s la FAQ, avant le CTA final) -->
     <!-- ============================================ -->
     <section class="desktop-only" style="background: linear-gradient(135deg, #8000ff 0%, #ff3f9b 50%, #ff703d 100%); padding: 80px 0; position: relative; overflow: hidden;">
@@ -1938,8 +2041,8 @@
             </div>
 
             <!-- Carousel avis -->
-            <div style="overflow: hidden;">
-                <div class="testimonials-track" style="display: flex; gap: 24px; animation: scrollTestimonials 18s linear infinite;">
+            <div class="testimonials-scroll" id="testimonials-scroll-d">
+                <div class="testimonials-track" style="display: flex; gap: 24px; width: max-content;">
                     <!-- Avis 1 - Marie-Ange -->
                     <div style="min-width: 380px; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px); border-radius: 20px; padding: 32px; border: 1px solid rgba(255,255,255,0.2);">
                         <div style="display: flex; gap: 4px; margin-bottom: 16px;">
@@ -2080,19 +2183,6 @@
         </div>
     </section>
 
-    <!-- CTA MOBILE - simple rappel d&eacute;mo -->
-    <section class="cta-mobile mobile-only" style="background-color: #1a0033; padding: 50px 16px 60px; text-align: center;">
-        <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.55; margin: 0 auto 22px; max-width: 320px;">
-            R&eacute;servez une d&eacute;mo et d&eacute;couvrez l'outil qui va transformer vos propositions B2B.
-        </p>
-        <a href="/demo" class="cta-hover" style="display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 32px; background: linear-gradient(180deg, #ff7a51 0%, #ff3f9b 100%); color: white; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 1rem; box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 8px 24px rgba(255,63,155,0.35); font-family: 'Inter', sans-serif;">
-            R&eacute;server ma d&eacute;mo
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <p style="font-family: 'Inter', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.4); margin: 14px 0 0;">
-            20 min en visio &middot; Sans engagement
-        </p>
-    </section>
 
     <!-- ============================================ -->
     <!-- FOOTER DESKTOP -->
@@ -2166,26 +2256,45 @@
     </footer>
 
     <!-- FOOTER MOBILE -->
-    <footer class="footer-mobile mobile-only">
-        <div class="footer-mobile__top">
-            <div class="footer-mobile__logo">
-                <img src="assets/images/flo.svg" alt="FLO">
-            </div>
-            <p class="footer-mobile__tagline">Du brief au livrable, en 10 minutes</p>
-        </div>
-        <div class="footer-mobile__contact">
-            <a href="mailto:demo@floapp.fr" class="footer-mobile__contact-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                demo@floapp.fr
+    <footer class="mobile-only" style="background: #1a0033; padding: 0 0 30px 0; overflow: hidden;">
+        <!-- CTA Banner orange (m&ecirc;me esprit que desktop) -->
+        <div style="background: #ff703d; padding: 26px 20px; text-align: center;">
+            <h4 style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.02rem; font-weight: 700; margin: 0 0 4px 0; line-height: 1.35;">Vos propositions B2B<br>en 10&nbsp;min au lieu de 3h</h4>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.82rem; margin: 0 0 16px;">&Agrave; partir de 49&euro;/mois. Pr&ecirc;t en 48h.</p>
+            <a href="/demo" class="cta-hover" style="display: inline-block; background: white; color: #ff703d; text-decoration: none; padding: 12px 30px; border-radius: 50px; font-size: 0.9rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.15); font-family: 'Inter', sans-serif;">
+                R&eacute;server ma d&eacute;mo
             </a>
         </div>
-        <div class="footer-mobile__links">
-            <a href="/privacy">Confidentialit&eacute;</a>
-            <a href="/legal">Mentions l&eacute;gales</a>
-            <a href="/cookies">Cookies</a>
+
+        <div style="padding: 35px 20px 0; text-align: center;">
+            <!-- Brand -->
+            <img src="assets/images/flo.svg" alt="FLO" style="width: 46px; height: 46px; border-radius: 12px; display: block; margin: 0 auto 12px;">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.88rem; margin: 0 0 8px;">Du brief au livrable, en 10 minutes.</p>
+            <a href="mailto:demo@floapp.fr" style="color: #ff3f9b; text-decoration: none; font-size: 0.88rem; font-weight: 500;">demo@floapp.fr</a>
+
+            <!-- Carte "Une question ?" (orange tint comme desktop) -->
+            <div style="background: rgba(255, 112, 61, 0.12); border: 1px solid rgba(255, 112, 61, 0.25); border-radius: 16px; padding: 20px; margin: 24px 0;">
+                <h4 style="color: white; font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; margin: 0 0 4px 0;">Une question ?</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.78rem; margin: 0 0 14px 0;">Notre &eacute;quipe vous r&eacute;pond sous 24h</p>
+                <a href="mailto:demo@floapp.fr" class="cta-hover" style="display: block; background: #ff703d; color: white; padding: 12px 20px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; text-align: center; text-decoration: none; font-family: 'Inter', sans-serif;">
+                    Nous contacter
+                </a>
+            </div>
+
+            <!-- Liens l&eacute;gaux -->
+            <div style="display: flex; justify-content: center; gap: 18px; margin-bottom: 18px;">
+                <a href="/privacy" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem;">Confidentialit&eacute;</a>
+                <a href="/legal" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem;">Mentions l&eacute;gales</a>
+                <a href="/cookies" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem;">Cookies</a>
+            </div>
+
+            <!-- Copyright -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.75rem; margin: 0 0 4px;">&copy; 2025 IKNO SAS. Tous droits r&eacute;serv&eacute;s.</p>
+                <p style="color: rgba(255,255,255,0.3); font-size: 0.68rem; margin: 0;">200 rue de la Croix Nivert, 75015 Paris | SIRET: 523 389 278 00038</p>
+                <p style="color: rgba(255,255,255,0.35); font-size: 0.68rem; margin: 8px 0 0;">Site r&eacute;alis&eacute; par <a href="https://regen-agency.com/" target="_blank" style="color: #b388ff; text-decoration: none;">Regen Agency</a></p>
+            </div>
         </div>
-        <p class="footer-mobile__copyright">&copy; 2025 IKNO SAS. Tous droits r&eacute;serv&eacute;s.</p>
-        <p class="footer-mobile__copyright" style="font-size: 0.7rem; margin-top: 6px; opacity: 0.7;">Site r&eacute;alis&eacute; par <a href="https://regen-agency.com/" target="_blank" style="color: #b388ff; text-decoration: none;">Regen Agency</a></p>
     </footer>
 
     <!-- ============================================ -->
@@ -2279,6 +2388,100 @@
         document.querySelectorAll('.pricing-benefit-row').forEach(el => {
             pricingObserver.observe(el);
         });
+
+        // Carrousels t&eacute;moignages : auto-scroll JS + interaction manuelle (drag / molette / swipe)
+        // L'auto-d&eacute;filement se met en pause d&egrave;s que l'utilisateur interagit, puis reprend apr&egrave;s 2,5s.
+        function initTestimonialCarousel(id, speed) {
+            const scroller = document.getElementById(id);
+            if (!scroller) return;
+            const track = scroller.firstElementChild;
+            let pos = 0, paused = false, resumeTimer = null;
+
+            const pause = () => {
+                paused = true;
+                clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(() => { paused = false; }, 2500);
+            };
+
+            function loop() {
+                const half = track.scrollWidth / 2;
+                if (!paused && half > 0) {
+                    pos += speed;
+                    if (pos >= half) pos -= half;
+                    scroller.scrollLeft = pos;
+                } else {
+                    // Synchronise la position apr&egrave;s un scroll manuel (et boucle si on d&eacute;passe la moiti&eacute;)
+                    pos = scroller.scrollLeft;
+                    if (half > 0 && pos >= half) { pos -= half; scroller.scrollLeft = pos; }
+                }
+                requestAnimationFrame(loop);
+            }
+            requestAnimationFrame(loop);
+
+            scroller.addEventListener('wheel', pause, { passive: true });
+            scroller.addEventListener('touchstart', pause, { passive: true });
+
+            // Drag-to-scroll &agrave; la souris (desktop)
+            let isDown = false, startX = 0, startScroll = 0;
+            scroller.addEventListener('pointerdown', (e) => {
+                if (e.pointerType !== 'mouse') return;
+                isDown = true;
+                startX = e.clientX;
+                startScroll = scroller.scrollLeft;
+                scroller.classList.add('dragging');
+                pause();
+                e.preventDefault();
+            });
+            window.addEventListener('pointermove', (e) => {
+                if (!isDown) return;
+                scroller.scrollLeft = startScroll - (e.clientX - startX);
+                pause();
+            });
+            window.addEventListener('pointerup', () => {
+                isDown = false;
+                scroller.classList.remove('dragging');
+            });
+        }
+        initTestimonialCarousel('testimonials-scroll-d', 0.7);
+
+        // Carrousel mobile : avance d'avis en avis (snap), pause longue d&egrave;s que l'utilisateur touche
+        function initSnapCarousel(id, stepMs) {
+            const scroller = document.getElementById(id);
+            if (!scroller) return;
+            const track = scroller.firstElementChild;
+            const cards = track.children;
+            const realCount = cards.length / 2; // cartes dupliqu&eacute;es pour la boucle
+            let index = 0, paused = false, resumeTimer = null;
+
+            const step = () => cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 0;
+
+            const pause = (delay) => {
+                paused = true;
+                clearTimeout(resumeTimer);
+                resumeTimer = setTimeout(() => {
+                    const s = step();
+                    if (s > 0) index = Math.round(scroller.scrollLeft / s) % cards.length;
+                    paused = false;
+                }, delay);
+            };
+
+            scroller.addEventListener('touchstart', () => pause(8000), { passive: true });
+            scroller.addEventListener('wheel', () => pause(8000), { passive: true });
+
+            setInterval(() => {
+                if (paused || scroller.offsetParent === null) return;
+                const s = step();
+                if (s <= 0) return;
+                index++;
+                if (index > realCount) {
+                    // On vient d'afficher le 1er duplicata : reset invisible au d&eacute;but puis on avance
+                    scroller.scrollLeft = 0;
+                    index = 1;
+                }
+                scroller.scrollTo({ left: index * s, behavior: 'smooth' });
+            }, stepMs);
+        }
+        initSnapCarousel('testimonials-scroll-m', 4000);
     </script>
 
     <!-- Toggle Dark/Light -->

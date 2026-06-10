@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mobile.css">
 
     <style>
         :root {
@@ -394,6 +395,8 @@
             .contact-main .info-stack { order: 2; }
             .entreprise-card { display: none; }
             .avantages-strip { grid-template-columns: 1fr 1fr; padding: 0 16px; gap: 10px; margin: 60px 0 40px; }
+            .logos-banner-demo { display: grid !important; grid-template-columns: 1fr 1fr; gap: 20px 14px; padding: 22px 18px !important; justify-items: center; }
+            .logos-banner-demo img { max-height: 30px !important; max-width: 110px !important; }
             .avantage-pill { padding: 18px 14px; }
             .avantage-pill h4 { font-size: 0.8rem; }
             .avantage-pill p { font-size: 0.72rem; }
@@ -429,7 +432,7 @@
                     <li><a href="/#faq" class="nav__link">FAQ</a></li>
                 </ul>
                 <div style="display: flex; align-items: center; gap: 14px;">
-                    <a href="/demo" class="btn--primary btn--cta-pulse"><span>R&eacute;server ma d&eacute;mo</span></a>
+                    <a href="#contact-form" class="btn--primary btn--cta-pulse"><span>R&eacute;server ma d&eacute;mo</span></a>
                 </div>
             </nav>
         </div>
@@ -442,7 +445,7 @@
                 <img src="assets/images/flo.svg" alt="FLO" style="height: 40px; width: auto; border-radius: 8px;">
             </a>
             <div class="header-mobile__actions">
-                <a href="/demo" class="header-mobile__cta">Nous contacter</a>
+                <a href="#contact-form" class="header-mobile__cta">Nous contacter</a>
                 <button class="header-mobile__burger" id="mobile-burger" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -626,7 +629,7 @@
         <p style="font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1.5px; margin: 0 0 22px;">
             Ils nous font d&eacute;j&agrave; confiance
         </p>
-        <div style="background: linear-gradient(135deg, #d4b3ff 0%, #e8d4ff 50%, #f0c8e0 100%); border-radius: 24px; padding: 28px 40px; box-shadow: 0 18px 50px rgba(0,0,0,0.45), 0 0 0 1px rgba(168,85,247,0.25); display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 24px 32px;">
+        <div class="logos-banner-demo" style="background: linear-gradient(135deg, #d4b3ff 0%, #e8d4ff 50%, #f0c8e0 100%); border-radius: 24px; padding: 28px 40px; box-shadow: 0 18px 50px rgba(0,0,0,0.45), 0 0 0 1px rgba(168,85,247,0.25); display: flex; flex-wrap: wrap; justify-content: space-around; align-items: center; gap: 24px 32px;">
             <img src="assets/logos/aksis.png" alt="Aksis" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
             <img src="assets/logos/catalys.png" alt="Catalys" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
             <img src="assets/logos/cibc.png" alt="CIBC" loading="lazy" style="max-height: 40px; max-width: 130px; width: auto; height: auto; flex-shrink: 0;">
@@ -636,16 +639,117 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer-dark">
-        <p>FLO est &eacute;dit&eacute; par <strong>IKNO SAS</strong> &mdash; 200 rue de la Croix Nivert, 75015 Paris</p>
-        <div>
-            <a href="/legal">Mentions l&eacute;gales</a>
-            <a href="/privacy">Confidentialit&eacute;</a>
-            <a href="/cookies">Cookies</a>
+    <!-- ============================================ -->
+    <!-- FOOTER DESKTOP -->
+    <!-- ============================================ -->
+    <footer class="desktop-only" style="background: #1a0033; padding: 0 0 30px 0; overflow: hidden;">
+        <!-- CTA Banner -->
+        <div style="background: #ff703d; padding: 24px 40px;">
+            <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <h4 style="color: white; font-size: 1.15rem; font-weight: 700; margin: 0 0 4px 0;">Vos propositions B2B en 10 min au lieu de 3h</h4>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 0.9rem; margin: 0;">&Agrave; partir de 49&euro;/mois. Pr&ecirc;t en 48h.</p>
+                </div>
+                <a href="#contact-form" class="cta-hover" style="background: white; color: #ff703d; text-decoration: none; padding: 14px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+                    R&eacute;server ma d&eacute;mo
+                </a>
+            </div>
         </div>
-        <p style="margin-top: 12px;">&copy; 2025 IKNO SAS &mdash; Tous droits r&eacute;serv&eacute;s</p>
-        <p style="margin-top: 6px;">Site r&eacute;alis&eacute; par <a href="https://regen-agency.com/" target="_blank" class="regen-link">Regen Agency</a></p>
+
+        <div style="max-width: 1200px; margin: 0 auto; padding: 45px 40px 0;">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 35px; margin-bottom: 45px;">
+                <!-- Brand -->
+                <div>
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+                        <img src="assets/images/flo.svg" alt="FLO" style="width: 48px; height: 48px; border-radius: 12px;">
+                    </div>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.6; margin-bottom: 20px;">
+                        Du brief au livrable, en 10 minutes.
+                    </p>
+                    <a href="mailto:demo@floapp.fr" style="color: #ff3f9b; text-decoration: none; font-size: 0.9rem; font-weight: 500;">demo@floapp.fr</a>
+                </div>
+
+                <!-- Produit -->
+                <div>
+                    <h4 style="color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;">Produit</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/#comment-ca-marche" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Solution</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/#resultats" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">R&eacute;sultats</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/demo" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">D&eacute;mo</a></li>
+                    </ul>
+                </div>
+
+                <!-- L&eacute;gal -->
+                <div>
+                    <h4 style="color: white; font-size: 0.9rem; font-weight: 700; margin-bottom: 16px;">L&eacute;gal</h4>
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: 10px;"><a href="/legal" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Mentions l&eacute;gales</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/privacy" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Confidentialit&eacute;</a></li>
+                        <li style="margin-bottom: 10px;"><a href="/cookies" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem;">Cookies</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div style="background: rgba(255, 112, 61, 0.12); border: 1px solid rgba(255, 112, 61, 0.25); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; justify-content: center;">
+                    <h4 style="color: white; font-size: 0.95rem; font-weight: 700; margin: 0 0 6px 0;">Une question ?</h4>
+                    <p style="color: rgba(255,255,255,0.7); font-size: 0.8rem; margin: 0 0 14px 0; line-height: 1.4;">Notre &eacute;quipe vous r&eacute;pond sous 24h</p>
+                    <a href="mailto:demo@floapp.fr" style="background: #ff703d; color: white; border: none; padding: 11px 20px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; text-align: center; text-decoration: none;">
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+                <div>
+                    <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin: 0 0 4px 0;">&copy; 2025 IKNO SAS. Tous droits r&eacute;serv&eacute;s.</p>
+                    <p style="color: rgba(255,255,255,0.3); font-size: 0.7rem; margin: 0;">200 rue de la Croix Nivert, 75015 Paris | SIRET: 523 389 278 00038</p>
+                    <p style="color: rgba(255,255,255,0.35); font-size: 0.7rem; margin: 8px 0 0 0;">Site r&eacute;alis&eacute; par <a href="https://regen-agency.com/" target="_blank" style="color: #b388ff; text-decoration: none;">Regen Agency</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- FOOTER MOBILE -->
+    <footer class="mobile-only" style="background: #1a0033; padding: 0 0 30px 0; overflow: hidden;">
+        <!-- CTA Banner orange (m&ecirc;me esprit que desktop) -->
+        <div style="background: #ff703d; padding: 26px 20px; text-align: center;">
+            <h4 style="color: white; font-family: 'Poppins', sans-serif; font-size: 1.02rem; font-weight: 700; margin: 0 0 4px 0; line-height: 1.35;">Vos propositions B2B<br>en 10&nbsp;min au lieu de 3h</h4>
+            <p style="color: rgba(255,255,255,0.9); font-size: 0.82rem; margin: 0 0 16px;">&Agrave; partir de 49&euro;/mois. Pr&ecirc;t en 48h.</p>
+            <a href="#contact-form" class="cta-hover" style="display: inline-block; background: white; color: #ff703d; text-decoration: none; padding: 12px 30px; border-radius: 50px; font-size: 0.9rem; font-weight: 700; box-shadow: 0 4px 15px rgba(0,0,0,0.15); font-family: 'Inter', sans-serif;">
+                R&eacute;server ma d&eacute;mo
+            </a>
+        </div>
+
+        <div style="padding: 35px 20px 0; text-align: center;">
+            <!-- Brand -->
+            <img src="assets/images/flo.svg" alt="FLO" style="width: 46px; height: 46px; border-radius: 12px; display: block; margin: 0 auto 12px;">
+            <p style="color: rgba(255,255,255,0.6); font-size: 0.88rem; margin: 0 0 8px;">Du brief au livrable, en 10 minutes.</p>
+            <a href="mailto:demo@floapp.fr" style="color: #ff3f9b; text-decoration: none; font-size: 0.88rem; font-weight: 500;">demo@floapp.fr</a>
+
+            <!-- Carte "Une question ?" (orange tint comme desktop) -->
+            <div style="background: rgba(255, 112, 61, 0.12); border: 1px solid rgba(255, 112, 61, 0.25); border-radius: 16px; padding: 20px; margin: 24px 0;">
+                <h4 style="color: white; font-family: 'Poppins', sans-serif; font-size: 0.95rem; font-weight: 700; margin: 0 0 4px 0;">Une question ?</h4>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.78rem; margin: 0 0 14px 0;">Notre &eacute;quipe vous r&eacute;pond sous 24h</p>
+                <a href="mailto:demo@floapp.fr" class="cta-hover" style="display: block; background: #ff703d; color: white; padding: 12px 20px; border-radius: 10px; font-size: 0.85rem; font-weight: 600; text-align: center; text-decoration: none; font-family: 'Inter', sans-serif;">
+                    Nous contacter
+                </a>
+            </div>
+
+            <!-- Liens l&eacute;gaux -->
+            <div style="display: flex; justify-content: center; gap: 18px; margin-bottom: 18px;">
+                <a href="/privacy" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem;">Confidentialit&eacute;</a>
+                <a href="/legal" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem;">Mentions l&eacute;gales</a>
+                <a href="/cookies" style="color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.78rem;">Cookies</a>
+            </div>
+
+            <!-- Copyright -->
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 16px;">
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.75rem; margin: 0 0 4px;">&copy; 2025 IKNO SAS. Tous droits r&eacute;serv&eacute;s.</p>
+                <p style="color: rgba(255,255,255,0.3); font-size: 0.68rem; margin: 0;">200 rue de la Croix Nivert, 75015 Paris | SIRET: 523 389 278 00038</p>
+                <p style="color: rgba(255,255,255,0.35); font-size: 0.68rem; margin: 8px 0 0;">Site r&eacute;alis&eacute; par <a href="https://regen-agency.com/" target="_blank" style="color: #b388ff; text-decoration: none;">Regen Agency</a></p>
+            </div>
+        </div>
     </footer>
 
     <!-- SCRIPTS -->
